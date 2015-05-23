@@ -1,0 +1,88 @@
+# set colors
+set -g default-terminal "screen-256color"
+set -g status-utf8 on
+
+# set history limit 10k
+set -g history-limit 10000
+
+# automatically renumber windows
+set -g renumber-windows on
+
+# unbind default prefix and set it to ctrl + a
+unbind C-b
+set -g prefix C-a
+bind C-a send-prefix
+bind-key a send-prefix
+
+# shorten delay
+set -sg escape-time 0
+
+# enable mouse
+setw -g mode-mouse on
+set -g mouse-select-pane on
+set -g mouse-resize-pane on
+set -g mouse-select-window on
+
+# switch panes with C-a + h,j,k,l
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+# resize panes with C-a + H,J,K,L
+bind -r H resize-pane -L 10
+bind -r J resize-pane -D 10
+bind -r K resize-pane -U 10
+bind -r L resize-pane -R 10
+
+# split window
+bind | split-window -h -c "#{pane_current_path}"
+bind - split-window -h -c "#{pane_current_path}"
+
+
+# ui stuff
+tm_icon=""
+tm_color_active=colour213
+tm_color_inactive=colour41
+tm_color_feature=colour4
+
+set -g status-left-length 32
+set -g status-right-length 150
+
+# default statusbar colors
+# set-option -g status-bg colour0
+set-option -g status-fg $tm_color_active
+set-option -g status-bg default
+set-option -g status-attr default
+
+# default window title colors
+set-window-option -g window-status-fg $tm_color_inactive
+set-window-option -g window-status-bg default
+set -g window-status-format "#I #W"
+
+# active window title colors
+set-window-option -g window-status-current-fg $tm_color_active
+set-window-option -g window-status-current-bg default
+set-window-option -g window-status-current-format "#[bold]#I #W"
+
+# pane border
+set-option -g pane-border-fg $tm_color_inactive
+set-option -g pane-active-border-fg $tm_color_active
+
+# message text
+set-option -g message-bg default
+set-option -g message-fg $tm_color_active
+
+# pane number display
+set-option -g display-panes-active-colour $tm_color_active
+set-option -g display-panes-colour $tm_color_inactive
+
+# clock
+set-window-option -g clock-mode-colour $tm_color_active
+
+tm_date="#[fg=$tm_color_inactive] %R %d %b"
+tm_host="#[fg=$tm_color_feature,bold]#h"
+tm_session_name="#[fg=$tm_color_feature,bold]$tm_icon #S"
+
+set -g status-left $tm_session_name
+set -g status-right $tm_date' '$tm_host

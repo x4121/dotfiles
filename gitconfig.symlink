@@ -1,0 +1,8 @@
+# gitconfig
+[user]
+    name = Armin Grodon
+    email = armin.grodon@googlemail.com
+[github]
+    user = x4121
+[push]
+    default = simple
