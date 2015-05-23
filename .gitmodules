@@ -1,0 +1,7 @@
+[submodule "Vundle"]
+    path = gmarik/Vundle
+    url = git://github.com/gmarik/Vundle.git
+
+[submodule "powerline_fonts"]
+    path = powerline/fonts
+    url = git://github.com/powerline/fonts.git
