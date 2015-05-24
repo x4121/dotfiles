@@ -79,3 +79,11 @@ let g:goyo_width=100
 let g:goyo_margin_top = 2
 let g:goyo_margin_bottom = 2
 nnoremap <silent> <leader>z :Goyo<cr>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => indent highlight
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:indentLine_color_term = 239
+let g:indentLine_color_gui = '#09AA08'
+let g:indentLine_char = '|'
