@@ -41,7 +41,7 @@ bind - split-window -h -c "#{pane_current_path}"
 
 
 # ui stuff
-tm_icon=""
+tm_icon="⧜"
 tm_color_active=colour213
 tm_color_inactive=colour41
 tm_color_feature=colour4
