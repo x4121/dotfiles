@@ -87,3 +87,13 @@ nnoremap <silent> <leader>z :Goyo<cr>
 let g:indentLine_color_term = 239
 let g:indentLine_color_gui = '#09AA08'
 let g:indentLine_char = '|'
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => syntastic
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:syntastic_ignore = ['\m\c\.h$', '\m\.sbt$']
+
+" Scala has fsc and scalac checkers--running both is pretty redundant and
+" slow. An explicit `:SyntasticCheck scalac` can always run the other.
+let g:syntastic_scala_checkers = ['fsc']
