@@ -80,3 +80,7 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+# Set colors
+export TERM=xterm-256color
+eval `dircolors ~/.dircolors`

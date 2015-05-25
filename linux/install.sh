@@ -14,8 +14,8 @@ sudo apt-get -y upgrade
 echo 'Installing basics'
 sudo apt-get install -y ctags git htop tmux vim zsh
 
-gconftool-2 --load linux/gnome-terminal.conf.xml
-
 if [ ! -d "$HOME/.fonts" ]; then
     mkdir $HOME/.fonts
 fi
+
+gnome-terminal-colors-solarized/install.sh -s dark -p Default
