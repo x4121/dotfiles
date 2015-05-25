@@ -8,8 +8,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo 'Updating system'
-sudo apt-get update
-sudo apt-get -y upgrade
+sudo apt-get update > /dev/null
 
 echo 'Installing basics'
 sudo apt-get install -y ctags git htop tmux vim zsh
@@ -18,4 +17,4 @@ if [ ! -d "$HOME/.fonts" ]; then
     mkdir $HOME/.fonts
 fi
 
-gnome-terminal-colors-solarized/install.sh -s dark -p Default
+linux/gnome-terminal-colors-solarized/install.sh -s dark -p Default

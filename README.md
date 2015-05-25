@@ -2,6 +2,7 @@
 My dotfiles
 
 ## Contents
+* terminal colors
 * zsh config
 * vim config
 * tmux config
@@ -11,3 +12,8 @@ My dotfiles
 1. `cd ~/.dotfiles`
 1. `./install.sh`
 1. `vim +PluginInstall +qall`
+
+## TODO
+* create/find gnome-terminal profile
+* set font in terminal profile
+* test on OSX
