@@ -39,6 +39,12 @@ bind -r L resize-pane -R 10
 bind | split-window -h -c "#{pane_current_path}"
 bind - split-window -v -c "#{pane_current_path}"
 
+# synchronize all panes in a window
+bind y setw synchronize-panes
+
+bind -r C-h select-window -t :-
+bind -r C-l select-window -t :+
+
 
 # ui stuff
 tm_icon="⧜"
