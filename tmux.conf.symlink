@@ -37,7 +37,7 @@ bind -r L resize-pane -R 10
 
 # split window
 bind | split-window -h -c "#{pane_current_path}"
-bind - split-window -h -c "#{pane_current_path}"
+bind - split-window -v -c "#{pane_current_path}"
 
 
 # ui stuff
