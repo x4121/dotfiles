@@ -83,7 +83,7 @@ fi
 #
 # Set colors
 export TERM=xterm-256color
-if [[ `uname` -eq "Darwin" ]]; then
+if [ "$(uname)" = "Darwin" ]; then
     eval `gdircolors ~/.dircolors`
 else
     eval `dircolors ~/.dircolors`
