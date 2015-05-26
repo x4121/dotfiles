@@ -20,4 +20,6 @@ git submodule update --init --recursive
 echo 'Installing powerline fonts'
 sh powerline_fonts/install.sh
 
+sh $platform/post_submodule_init.sh
+
 sh ./symlinks.sh	
