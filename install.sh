@@ -12,13 +12,13 @@ fi
 sh $platform/install.sh
 
 echo 'Setting zsh as default shell'
-chsh -s $(which zsh)
+sudo chsh -s $(which zsh) $USER
 
 echo 'Initializing submodule(s)'
 git submodule update --init --recursive
 
 echo 'Installing powerline fonts'
-sh powerline_fonts/install.sh
+source powerline_fonts/install.sh
 
 sh $platform/post_submodule_init.sh
 
