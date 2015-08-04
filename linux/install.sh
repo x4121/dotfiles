@@ -11,7 +11,7 @@ echo 'Updating system'
 sudo apt-get update > /dev/null
 
 echo 'Installing basics'
-sudo apt-get install -y ctags git htop tmux vim zsh
+sudo apt-get install -y exuberant-ctags git htop tmux vim zsh
 
 if [ ! -d "$HOME/.fonts" ]; then
     mkdir $HOME/.fonts
