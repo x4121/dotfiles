@@ -112,13 +112,12 @@ map <Right> <NOP>
 " Enable syntax highlighting
 syntax enable 
 set t_Co=256
+set background=dark
 
 try
-    colorscheme desert
+    colorscheme solarized
 catch
 endtry
-
-set background=dark
 
 " Set extra options when running in GUI mode
 if has("gui_running")

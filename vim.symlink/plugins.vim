@@ -9,6 +9,7 @@ Plugin 'gmarik/Vundle'
 
 " plugins
 Plugin 'airblade/vim-gitgutter'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'ervandew/supertab'
 Plugin 'jlanzarotta/bufexplorer'
@@ -32,6 +33,7 @@ Plugin 'taglist.vim'
 " languages
 Plugin 'derekwyatt/vim-sbt'
 Plugin 'derekwyatt/vim-scala'
+Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-markdown'
 
 call vundle#end()
