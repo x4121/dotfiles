@@ -30,6 +30,13 @@ sudo apt-get update > /dev/null
 echo 'Installing basics'
 sudo apt-get install -y exuberant-ctags git htop tmux vim zsh guake gnome-keyring-query mutt
 
+#echo 'Installing mutt'
+#sudo apt-get install -y autoconf libslang2-dev libiconv-hook-dev libssl-dev > /dev/null
+#git clone https://github.com/karelzak/mutt-kz $HOME/mutt-kz_tmp > /dev/null
+#pushd $HOME/mutt-kz_tmp > /dev/null
+#./prepare --with-slang --enable-imap --enable-pop --with-ssl
+#make && sudo make install
+
 #sudo apt-get install -y oracle-java7-installer oracle-java8-installer oracle-java8-set-default sublime-text-installer scudcloud
 
 if [ ! -d "$HOME/.fonts" ]; then
