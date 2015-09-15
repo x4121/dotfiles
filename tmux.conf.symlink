@@ -50,7 +50,6 @@ bind -r C-l select-window -t :+
 tm_icon="⧜"
 tm_color_active=yellow
 tm_color_inactive=brightblue
-tm_color_feature=colour4
 
 set -g status-left-length 32
 set -g status-right-length 150
@@ -64,16 +63,16 @@ set-option -g status-attr default
 # default window title colors
 set-window-option -g window-status-fg brightblue
 set-window-option -g window-status-bg default
-set -g window-status-format "#I #W"
+set -g window-status-format "#I:#W"
 
 # active window title colors
 set-window-option -g window-status-current-fg brightred
 set-window-option -g window-status-current-bg default
-set-window-option -g window-status-current-format "#[bold]#I #W"
+set-window-option -g window-status-current-format "#[bold]#I:#W"
 
 # pane border
 set-option -g pane-border-fg black
-set-option -g pane-active-border-fg brightgreen
+set-option -g pane-active-border-fg black
 
 # message text
 set-option -g message-bg black
@@ -87,7 +86,7 @@ set-option -g display-panes-colour brightred
 set-window-option -g clock-mode-colour green
 
 tm_date="#[fg=yellow] %R %d %b"
-tm_host="#[fg=brightred,bold]#h"
+tm_host="#[fg=brightred]#h"
 tm_session_name="#[fg=brightred,bold]$tm_icon #S"
 
 set -g status-left $tm_session_name
