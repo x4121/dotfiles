@@ -2,13 +2,19 @@
 include "%L"
 
 # Custom definitions
-<Multi_key> <p> <i>     : U03C0 # U03C0 PI
-<Multi_key> <P> <I>     : U03C0 # U03C0 PI
+<Multi_key> <p> <i>         : U03C0 # PI
+<Multi_key> <P> <I>         : U03C0 # PI
 
-<Multi_key> <i> <n> <f> : U221E # U221E infinity
-<Multi_key> <I> <N> <F> : U221E # U221E infinity
+<Multi_key> <i> <n> <f>     : U221E # infinity
+<Multi_key> <I> <N> <F>     : U221E # infinity
 
-<Multi_key> </> <?>     : U2E2E # U2E2E irony punctuation (reversed ?)
-<Multi_key> <?> </>     : U2E2E # U2E2E irony punctuation (reversed ?)
+<Multi_key> <n> <i> <n> <f> : U29DC # incomplete infinity
+<Multi_key> <N> <I> <N> <F> : U29DC # incomplete infinity
 
-<Multi_key> <3> <*>     : U2042 # U2042 asterism
+<Multi_key> <i> <n> <t>     : U222B # integral
+<Multi_key> <I> <N> <T>     : U222B # integral
+
+<Multi_key> </> <?>         : U2E2E # irony punctuation
+<Multi_key> <?> </>         : U2E2E # irony punctuation
+
+<Multi_key> <3> <*>         : U2042 # asterism

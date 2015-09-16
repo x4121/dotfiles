@@ -28,7 +28,7 @@ echo 'Updating system'
 sudo apt-get update > /dev/null
 
 echo 'Installing basics'
-sudo apt-get install -y exuberant-ctags git htop tmux vim zsh guake gnome-keyring-query mutt
+sudo apt-get install -y exuberant-ctags git htop tmux vim zsh urxvt guake gnome-keyring-query mutt
 
 #echo 'Installing mutt'
 #sudo apt-get install -y autoconf libslang2-dev libiconv-hook-dev libssl-dev > /dev/null
