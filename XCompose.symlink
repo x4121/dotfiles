@@ -2,19 +2,44 @@
 include "%L"
 
 # Custom definitions
-<Multi_key> <p> <i>         : U03C0 # PI
-<Multi_key> <P> <I>         : U03C0 # PI
+<Multi_key> <p> <i>             : U03C0 # PI
+<Multi_key> <P> <I>             : U03C0 # PI
 
-<Multi_key> <i> <n> <f>     : U221E # infinity
-<Multi_key> <I> <N> <F>     : U221E # infinity
+<Multi_key> <i> <n> <f>         : U221E # infinity
+<Multi_key> <I> <N> <F>         : U221E # infinity
 
-<Multi_key> <n> <i> <n> <f> : U29DC # incomplete infinity
-<Multi_key> <N> <I> <N> <F> : U29DC # incomplete infinity
+<Multi_key> <n> <i> <n> <f>     : U29DC # incomplete infinity
+<Multi_key> <N> <I> <N> <F>     : U29DC # incomplete infinity
 
-<Multi_key> <i> <n> <t>     : U222B # integral
-<Multi_key> <I> <N> <T>     : U222B # integral
+<Multi_key> <i> <n> <t>         : U222B # integral
+<Multi_key> <I> <N> <T>         : U222B # integral
 
-<Multi_key> </> <?>         : U2E2E # irony punctuation
-<Multi_key> <?> </>         : U2E2E # irony punctuation
+<Multi_key> <slash> <question>  : U2E2E # irony punctuation
+<Multi_key> <question> <slash>  : U2E2E # irony punctuation
 
-<Multi_key> <3> <*>         : U2042 # asterism
+<Multi_key> <backslash> <space> : U2423 # printable space
+
+<Multi_key> <3> <asterisk>      : U2042 # asterism
+
+<Multi_key> <S> <S>             : U1E9E # capital sharp s
+
+<Multi_key> <exclam> <equal>    : U2260 # not equal
+
+<Multi_key> <i> <n>             : U2208 # element of
+<Multi_key> <I> <N>             : U2208 # element of
+
+<Multi_key> <n> <i> <n>         : U2208 # not an element of
+<Multi_key> <N> <I> <N>         : U2208 # not an element of
+<Multi_key> <exclam> <i> <n>    : U2208 # not an element of
+<Multi_key> <exclam> <I> <N>    : U2208 # not an element of
+
+<Multi_key> <E> <E>             : U2203 # there exists
+<Multi_key> <slash> <E> <E>     : U2204 # there does not exist
+
+<Multi_key> <A> <A>             : U2200 # for all
+
+<Multi_key> <q> <e> <d>         : U220E # end of proof
+<Multi_key> <Q> <E> <D>         : U220E # end of proof
+
+<Multi_key> <s> <u> <m>         : U2211 # sum
+<Multi_key> <S> <U> <M>         : U2211 # sum

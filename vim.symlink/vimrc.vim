@@ -236,11 +236,7 @@ autocmd BufReadPost *
 set viminfo^=%
 
 " set clipboard to system default
-if has("mac") || has("macunix")
-    set clipboard=unnamed
-else
-    set clipboard=unnamedplus
-endif
+set clipboard=unnamedplus
 
 
 """"""""""""""""""""""""""""""

@@ -35,6 +35,10 @@ bind -r J resize-pane -D 10
 bind -r K resize-pane -U 10
 bind -r L resize-pane -R 10
 
+# copy to clipboard
+bind -t vi-copy y copy-pipe 'xclip -i -selection clipboard'
+bind v 'xclip -o -selection clipboard'
+
 # split window
 bind | split-window -h -c "#{pane_current_path}"
 bind - split-window -v -c "#{pane_current_path}"

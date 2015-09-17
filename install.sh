@@ -28,7 +28,9 @@ echo 'Updating system'
 sudo apt-get update > /dev/null
 
 echo 'Installing basics'
-sudo apt-get install -y exuberant-ctags git htop tmux vim zsh urxvt guake gnome-keyring-query mutt
+sudo apt-get install -y exuberant-ctags git\
+    htop tmux vim-gnome zsh rxvt-unicode-256color\
+    gnome-keyring-query mutt xclip guake
 
 #echo 'Installing mutt'
 #sudo apt-get install -y autoconf libslang2-dev libiconv-hook-dev libssl-dev > /dev/null
@@ -36,8 +38,21 @@ sudo apt-get install -y exuberant-ctags git htop tmux vim zsh urxvt guake gnome-
 #pushd $HOME/mutt-kz_tmp > /dev/null
 #./prepare --with-slang --enable-imap --enable-pop --with-ssl
 #make && sudo make install
+#popd > /dev/null
+#rm -rf $HOME/mutt-kz_tmp
 
-#sudo apt-get install -y oracle-java7-installer oracle-java8-installer oracle-java8-set-default sublime-text-installer scudcloud
+#echo 'Installing keepassx'
+# dependencies?
+#git clone https://github.com/x4121/keepassx $HOME/keepassx_tmp > /dev/null
+#mkdir $HOME/keepassx_tmp/build
+#pushd $HOME/keepassx_tmp/build > /dev/null
+#cmake .. && make -j4 && sudo make install
+#popd > /dev/null
+#rm -rf $HOME/keepassx_tmp
+
+#echo 'Installing additional software'
+#sudo apt-get install -y oracle-java7-installer oracle-java8-installer\
+#    oracle-java8-set-default sublime-text-installer scudcloud
 
 if [ ! -d "$HOME/.fonts" ]; then
     mkdir $HOME/.fonts
