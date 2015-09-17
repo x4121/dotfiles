@@ -36,8 +36,11 @@ bind -r K resize-pane -U 10
 bind -r L resize-pane -R 10
 
 # copy to clipboard
-bind -t vi-copy y copy-pipe "xclip -i -sel -c"
-bind v run "xclip -o -sel -c"
+bind -t vi-copy y copy-pipe "xclip -i -sel p -f | xclip -i -sel c"
+bind v run "xclip -o | tmux load-buffer - ; tmux paste-buffer"
+
+# act like vim
+setw -g mode-keys vi
 
 # toggle fullscreen
 bind -n F11 run "wmctrl -r :ACTIVE: -b toggle,fullscreen"
