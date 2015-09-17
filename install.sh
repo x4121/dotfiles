@@ -29,8 +29,15 @@ sudo apt-get update > /dev/null
 
 echo 'Installing basics'
 sudo apt-get install -y exuberant-ctags git\
-    htop tmux vim-gnome zsh rxvt-unicode-256color\
-    gnome-keyring-query mutt xclip guake
+    htop tmux vim-gnome zsh guake xclip mutt\
+    gnome-keyring-query wmctrl
+
+echo 'Installing st'
+git clone https://github.com/x4121/st $HOME/st_tmp > /dev/null
+pushd $HOME/st_tmp > /dev/null
+make && sudo make install
+popd > /dev/null
+rm -rf $HOME/st_tmp
 
 #echo 'Installing mutt'
 #sudo apt-get install -y autoconf libslang2-dev libiconv-hook-dev libssl-dev > /dev/null
