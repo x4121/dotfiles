@@ -18,7 +18,8 @@ My dotfiles
 
 ## TODO
 * test!
-* better install script
+* better install script (single executable without dependencies)
 * mutt config
 * XCompose bindings
 * maybe leave zsh for fish
+* todo.txt

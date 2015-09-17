@@ -74,7 +74,7 @@ git submodule update --init --recursive
 echo 'Installing powerline fonts'
 source powerline_fonts/install.sh
 
-echo 'Setting font and color'
+echo 'Setting font and color in gnome-terminal (as fallback)'
 profile=$(dconf read /org/gnome/terminal/legacy/profiles:/default | tr -d "'")
 if [ "$profile" = "" ]; then
     profile=$(dconf list /org/gnome/terminal/legacy/profiles:/ | tr -d ":/")
