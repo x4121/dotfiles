@@ -19,7 +19,7 @@ My dotfiles
 ## TODO
 * test!
 * better install script (single executable without dependencies)
+* move git projects in ppa
 * mutt config
-* XCompose bindings
 * maybe leave zsh for fish
 * todo.txt
