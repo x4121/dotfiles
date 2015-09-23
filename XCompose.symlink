@@ -25,13 +25,13 @@ include "%L"
 
 <Multi_key> <exclam> <equal>    : U2260 # not equal
 
-<Multi_key> <i> <n>             : U2208 # element of
-<Multi_key> <I> <N>             : U2208 # element of
+<Multi_key> <e> <l>             : U2208 # element of
+<Multi_key> <E> <L>             : U2208 # element of
 
-<Multi_key> <n> <i> <n>         : U2208 # not an element of
-<Multi_key> <N> <I> <N>         : U2208 # not an element of
-<Multi_key> <exclam> <i> <n>    : U2208 # not an element of
-<Multi_key> <exclam> <I> <N>    : U2208 # not an element of
+<Multi_key> <n> <e> <l>         : U2209 # not an element of
+<Multi_key> <N> <E> <L>         : U2209 # not an element of
+<Multi_key> <exclam> <e> <l>    : U2209 # not an element of
+<Multi_key> <exclam> <E> <L>    : U2209 # not an element of
 
 <Multi_key> <E> <E>             : U2203 # there exists
 <Multi_key> <slash> <E> <E>     : U2204 # there does not exist
