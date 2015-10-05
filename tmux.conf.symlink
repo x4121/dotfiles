@@ -1,10 +1,3 @@
-# set colors
-set -g default-terminal "screen-256color"
-set -g status-utf8 on
-
-# set history limit 10k
-set -g history-limit 10000
-
 # automatically renumber windows
 set -g renumber-windows on
 
@@ -14,30 +7,11 @@ set -g prefix C-a
 bind C-a send-prefix
 bind-key a send-prefix
 
-# shorten delay
-set -sg escape-time 0
-
 # enable mouse
 setw -g mode-mouse on
 set -g mouse-select-pane on
 set -g mouse-resize-pane on
 set -g mouse-select-window on
-
-# switch panes with C-a + h,j,k,l
-bind h select-pane -L
-bind j select-pane -D
-bind k select-pane -U
-bind l select-pane -R
-
-# resize panes with C-a + H,J,K,L
-bind -r H resize-pane -L 10
-bind -r J resize-pane -D 10
-bind -r K resize-pane -U 10
-bind -r L resize-pane -R 10
-
-# copy to clipboard
-bind -t vi-copy y copy-pipe "xclip -i -sel p -f | xclip -i -sel c"
-bind v run "xclip -o | tmux load-buffer - ; tmux paste-buffer"
 
 # act like vim
 setw -g mode-keys vi
@@ -45,15 +19,19 @@ setw -g mode-keys vi
 # toggle fullscreen
 bind -n F11 run "wmctrl -r :ACTIVE: -b toggle,fullscreen"
 
-# split window
-bind | split-window -h -c "#{pane_current_path}"
-bind - split-window -v -c "#{pane_current_path}"
-
 # synchronize all panes in a window
 bind y setw synchronize-panes
 
 bind -r C-h select-window -t :-
 bind -r C-l select-window -t :+
+
+# copy/paste with clipboard
+bind-key -t vi-copy 'v' begin-selection
+bind-key -t vi-copy 'y' copy-selection
+# Copy into clipboard
+bind C-c choose-buffer "run \"tmux save-buffer -b '%%' - | xsel -i -b\""
+# Paste from clipboard
+bind C-v run "xsel -o -b | tmux load-buffer - && tmux paste-buffer"
 
 
 # ui stuff
@@ -101,3 +79,21 @@ tm_session_name="#[fg=brightred,bold]$tm_icon #S"
 
 set -g status-left $tm_session_name
 set -g status-right $tm_date' '$tm_host
+#set -g status-right '#{battery_icon} #{battery_percentage} #{battery_remain} $tm_date $tm_host'
+
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-battery'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-pain-control'
+
+# Battery icons
+set -g @batt_charged_icon "✓"
+set -g @batt_charging_icon "⚡"
+set -g @batt_attached_icon ""
+
+# Pain resize parameter
+set-option -g @pane_resize "10"
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'

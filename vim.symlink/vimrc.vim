@@ -235,9 +235,6 @@ autocmd BufReadPost *
 " Remember info about open buffers on close
 set viminfo^=%
 
-" set clipboard to system default
-set clipboard=unnamedplus
-
 
 """"""""""""""""""""""""""""""
 " => Status line
