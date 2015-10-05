@@ -8,6 +8,9 @@ if [ $? -ne 0 ]; then
     return -1
 fi
 
+sudo apt-get install -y git > /dev/null 2>&1
+git clone https://github.com/x4121/dotfiles $HOME/.dotfiles
+
 echo 'Adding PPAs'
 # oracle java
 sudo apt-add-repository -y ppa:webupd8team/java > /dev/null 2>&1
@@ -34,22 +37,26 @@ sudo apt-get update > /dev/null
 echo 'Installing basics'
 sudo apt-get install -y\
     exuberant-ctags\
-    git\
+    fish\
     gnome-keyring-query\
     guake\
     htop\
+    mercurial\
     tmux\
     todo-indicator\
     tree\
     vim-gnome\
-    wmctrl\
-    zsh
+    wmctrl > /dev/null
+
+curl -L github.com/oh-my-fish/oh-my-fish/raw/master/bin/install | fish
+omf theme agnoster
+omf install apt
 
 echo 'Installing st'
 sudo apt-get install -y\
     libxft-dev\
     libfontconfig1-dev\
-    libxext-dev
+    libxext-dev > /dev/null
 git clone https://github.com/x4121/st $HOME/st_tmp > /dev/null
 pushd $HOME/st_tmp > /dev/null
 make && sudo make install
@@ -70,7 +77,7 @@ sudo apt-get install -y\
     libqt4-dev\
     libgcrypt20-dev\
     libmicrohttpd-dev\
-    libqjson-dev
+    libqjson-dev > /dev/null
 git clone https://github.com/x4121/keepassx $HOME/keepassx_tmp > /dev/null
 mkdir $HOME/keepassx_tmp/build
 pushd $HOME/keepassx_tmp/build > /dev/null
@@ -90,8 +97,10 @@ if [ ! -d "$HOME/.fonts" ]; then
     mkdir $HOME/.fonts
 fi
 
-echo 'Setting zsh as default shell'
-chsh -s $(grep /zsh$ /etc/shells | tail -1)
+pushd $HOME/.dotfiles > /dev/null
+
+echo 'Setting fish as default shell'
+chsh -s $(grep /fish$ /etc/shells | tail -1)
 
 echo 'Initializing submodule(s)'
 git submodule update --init --recursive
@@ -110,4 +119,9 @@ dconf write /org/gnome/terminal/legacy/profiles:/:$profile/use-system-font "fals
 
 gnome-terminal-colors-solarized/install.sh -s dark -p Default
 
-sh ./symlinks.sh	
+echo 'Creating symlinks'
+sh ./symlinks.sh > /dev/null
+
+popd > /dev/null
+
+vim +PluginInstall +qall
