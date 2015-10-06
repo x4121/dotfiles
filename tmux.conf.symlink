@@ -1,6 +1,9 @@
 # automatically renumber windows
 set -g renumber-windows on
 
+# reload config
+bind R source-file ~/.tmux.conf \; display-message "Config reloaded..."
+
 # unbind default prefix and set it to ctrl + a
 unbind C-b
 set -g prefix C-a
@@ -77,9 +80,9 @@ tm_date="#[fg=yellow] %R %d %b"
 tm_host="#[fg=brightred]#h"
 tm_session_name="#[fg=brightred,bold]$tm_icon #S"
 
-set -g status-left $tm_session_name
+set -g status-left $tm_session_name' '
 set -g status-right $tm_date' '$tm_host
-#set -g status-right '#{battery_icon} #{battery_percentage} #{battery_remain} $tm_date $tm_host'
+#set -g status-right '#{battery_icon} #{battery_percentage} #{battery_remain} '$tm_date' '$tm_host
 
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
