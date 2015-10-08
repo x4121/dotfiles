@@ -6,3 +6,7 @@
     user = x4121
 [push]
     default = simple
+[url "git@github.com:x4121/"] 
+    insteadof = my:
+[url "git+ssh://x4121@git.launchpad.net/"]
+    insteadof = lp:

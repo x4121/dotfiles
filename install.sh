@@ -39,6 +39,7 @@ sudo apt-get install -y\
     exuberant-ctags\
     fish\
     gnome-keyring-query\
+    golang\
     guake\
     htop\
     mercurial\
@@ -74,6 +75,7 @@ rm -rf $HOME/st_tmp
 
 #echo 'Installing keepassx'
 sudo apt-get install -y\
+    cmake\
     libqt4-dev\
     libgcrypt20-dev\
     libmicrohttpd-dev\

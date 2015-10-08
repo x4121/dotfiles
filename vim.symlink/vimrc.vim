@@ -1,6 +1,11 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim needs a POSIX-Compliant shell. Fish is not.
+if $SHELL =~ 'bin/fish'
+  set shell=/bin/sh
+endif
+
 " Sets how many lines of history VIM has to remember
 set history=700
 
