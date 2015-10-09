@@ -18,8 +18,6 @@ sudo apt-add-repository -y ppa:webupd8team/java > /dev/null 2>&1
 sudo apt-add-repository -y ppa:webupd8team/sublime-text-3 > /dev/null 2>&1
 # gnome-keyring-query
 sudo apt-add-repository -y ppa:wiktel/ppa > /dev/null 2>&1
-# todo-indicator
-sudo add-apt-repository -y ppa:nilarimogard/webupd8 > /dev/null 2>&1
 # own ppa
 sudo add-apt-repository -y ppa:x4121/x4121 > /dev/null 2>&1
 # sbt
@@ -43,8 +41,8 @@ sudo apt-get install -y\
     guake\
     htop\
     mercurial\
+    taskwarrior\
     tmux\
-    todo-indicator\
     tree\
     vim-gnome\
     wmctrl > /dev/null
