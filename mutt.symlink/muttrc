@@ -1,0 +1,29 @@
+# base settings
+set realname = "Armin Grodon"
+set charset  = "utf-8"
+
+# folder settings
+set header_cache     = ~/.mutt/cache/headers
+set message_cachedir = ~/.mutt/cache/bodies
+set certificate_file = ~/.mutt/certificates
+
+# key bindings
+bind index G imap-fetch-mail
+bind editor <space> noop
+bind editor <Tab> complete-query
+bind pager k  previous-line
+bind pager j  next-line
+bind pager gg top
+bind pager G  bottom
+bind pager [ previous-unread
+bind pager ] next-unread
+bind index,pager s flag-message
+
+# imap settings
+set move = no
+set imap_keepalive = 900
+
+# load external settings
+source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc
+source ~/.mutt/gpg.rc
+source ~/.mutt/local.default

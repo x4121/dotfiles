@@ -1,3 +1,4 @@
 vim.symlink/bundle
 mutt.symlink/cache
+mutt.symlink/local.default
 tmux.symlink/plugins/

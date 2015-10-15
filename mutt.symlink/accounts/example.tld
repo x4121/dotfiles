@@ -1,0 +1,17 @@
+set from           = "user@example.tld"
+set hostname       = "example.tld"
+set imap_user      = "$from"
+set imap_pass      = `gnome-keyring-query get mail.example.tld`
+
+set folder         = "imaps://imap.example.tld"
+set spoolfile     = "+INBOX"
+set mbox          = "+archive"
+set postponed     = "+drafts"
+set trash         = "+trash"
+#set any_label    = "+any_label"
+
+#set ssl_starttls  = yes
+#set ssl_force_tls = yes
+
+set smtp_url       = "smtps://$from@smtp.example.tld/"
+set smtp_pass      = "$imap_pass"

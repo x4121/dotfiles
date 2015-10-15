@@ -1,0 +1,17 @@
+set from          = "armin@onpage.org"
+set hostname      = "onpage.org"
+set imap_user     = "$from"
+set imap_pass     = `gnome-keyring-query get onpage-mail`
+
+set folder        = "imaps://imap.gmail.com"
+set spoolfile     = "+INBOX"
+set mbox          = "+archive"
+set postponed     = "+drafts"
+set trash         = "+trash"
+#set any_label    = "+any_label"
+
+set ssl_starttls  = yes
+set ssl_force_tls = yes
+
+set smtp_url      = "smtps://$from@smtp.gmail.com/"
+set smtp_pass     = "$imap_pass"

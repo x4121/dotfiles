@@ -1,0 +1,11 @@
+# edit and save as local.default
+#
+
+# folder hooks
+folder-hook 'example.tld' 'source ~/.mutt/accounts/example.tld'
+
+# account macros
+macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/accounts/example.tld<enter><change-folder>!<enter>'
+
+# default account
+source ~/.mutt/accounts/example.tld
