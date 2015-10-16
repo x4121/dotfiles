@@ -37,7 +37,6 @@ sudo apt-get install -y\
     exuberant-ctags\
     fish\
     gnome-keyring-query\
-    golang\
     guake\
     htop\
     mercurial\
@@ -87,9 +86,12 @@ rm -rf $HOME/keepassx_tmp
 
 #echo 'Installing additional software'
 #sudo apt-get install -y\
+#    build-essential\
+#    golang\
 #    oracle-java7-installer\
 #    oracle-java8-installer\
 #    oracle-java8-set-default\
+#    sbt\
 #    scudcloud\
 #    sublime-text-installer
 
