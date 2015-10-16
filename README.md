@@ -2,24 +2,26 @@
 My dotfiles
 
 ## Contents
-* terminal colors
-* powerline fonts
-* zsh config
-* vim config
-* tmux config
-* mutt config (unfinished)
+* fish with omf (unfinished)
+* vim
+* tmux
+* mutt (unfinished)
+* taskwarrior
 * XCompose bindings (unfinished)
+* powerline fonts
+* solarized colors for most tools
 
 ## Install
-1. `git clone https://github.com/x4121/dotfiles ~/.dotfiles`
-1. `cd ~/.dotfiles`
-1. `./install.sh`
-1. `vim +PluginInstall +qall`
+`curl -L https://raw.githubusercontent.com/x4121/dotfiles/master/install.sh | sh`
+
+## Warning
+* This project is currently only tested against the most recent Ubuntu release (if even!)
+* The install script will overwrite files, read the install.sh if you want to know which.
+* Use at your own risk!
 
 ## TODO
 * test!
-* better install script (single executable without dependencies)
 * move git projects in ppa
-* mutt config
-* maybe leave zsh for fish
-* todo.txt
+* better sync for taskwarrior and keepassx
+* create symlinks for files in .config (fish, oh-my-fish, autostart)
+* maybe add compiz/dconf settings
