@@ -5,11 +5,12 @@ set rtp+=~/.vim/bundle/Vundle/
 call vundle#begin()
 
 " let vundle manage itself
-Plugin 'gmarik/Vundle'
+Plugin 'VundleVim/Vundle.vim'
 
 " plugins
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'blindFS/vim-taskwarrior'
 Plugin 'bling/vim-airline'
 Plugin 'ervandew/supertab'
 Plugin 'jlanzarotta/bufexplorer'
