@@ -10,6 +10,7 @@ Plugin 'VundleVim/Vundle.vim'
 " plugins
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'aliva/vim-fish'
 Plugin 'blindFS/vim-taskwarrior'
 Plugin 'bling/vim-airline'
 Plugin 'ervandew/supertab'
