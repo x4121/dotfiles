@@ -1,22 +1,15 @@
 #!/bin/bash
 
-fish --version > /dev/null 2>&1
-if [ $? -eq 0 ]; then
-    curl -L github.com/oh-my-fish/oh-my-fish/raw/master/bin/install | fish
-    omf theme agnoster
-    omf install apt
-fi
-
 if [ "$DISPLAY" != "" ]; then
     echo 'Installing st'
     sudo apt-get install -y\
         libxft-dev\
         libfontconfig1-dev\
-        libxext-dev > /dev/null
-    git clone https://github.com/x4121/st $HOME/st_tmp > /dev/null
-    pushd $HOME/st_tmp > /dev/null
+        libxext-dev >&- 2>&-
+    git clone https://github.com/x4121/st $HOME/st_tmp >&- 2>&-
+    pushd $HOME/st_tmp >&- 2>&-
     make && sudo make install
-    popd > /dev/null
+    popd >&- 2>&-
     rm -rf $HOME/st_tmp
 
     echo 'Installing keepassx'
@@ -25,28 +18,43 @@ if [ "$DISPLAY" != "" ]; then
         libqt4-dev\
         libgcrypt20-dev\
         libmicrohttpd-dev\
-        libqjson-dev > /dev/null
-    git clone https://github.com/x4121/keepassx $HOME/keepassx_tmp > /dev/null
+        libqjson-dev >&- 2>&-
+    git clone https://github.com/x4121/keepassx $HOME/keepassx_tmp >&- 2>&-
     mkdir $HOME/keepassx_tmp/build
-    pushd $HOME/keepassx_tmp/build > /dev/null
+    pushd $HOME/keepassx_tmp/build >&- 2>&-
     cmake .. && make -j4 && sudo make install
-    popd > /dev/null
+    popd >&- 2>&-
     rm -rf $HOME/keepassx_tmp
 
     #echo 'Installing mutt'
-    #sudo apt-get install -y autoconf libslang2-dev libiconv-hook-dev libssl-dev > /dev/null
-    #git clone https://github.com/karelzak/mutt-kz $HOME/mutt-kz_tmp > /dev/null
-    #pushd $HOME/mutt-kz_tmp > /dev/null
+    #sudo apt-get install -y autoconf libslang2-dev libiconv-hook-dev libssl-dev >&- 2>&-
+    #git clone https://github.com/karelzak/mutt-kz $HOME/mutt-kz_tmp >&- 2>&-
+    #pushd $HOME/mutt-kz_tmp >&- 2>&-
     #./prepare --with-slang --enable-imap --enable-pop --with-ssl
     #make && sudo make install
-    #popd > /dev/null
+    #popd >&- 2>&-
     #rm -rf $HOME/mutt-kz_tmp
+
+    fish --version >&- 2>&-
+    if [ $? -eq 0 ]; then
+        curl -L github.com/oh-my-fish/oh-my-fish/raw/master/bin/install | fish
+        omf theme agnoster
+        omf install apt
+    fi
+fi
+
+if ! [ -z ${I_DEV+x} ]; then
+    echo 'Adding current user to group docker'
+    sudo adduser $USER docker >&- 2>&-
+
+    echo 'Installing jenv'
+    git clone https://github.com/gcuisinier/jenv.git $HOME/.jenv
 fi
 
 echo 'Setting fish as default shell'
 chsh -s $(grep /fish$ /etc/shells | tail -1)
 
-pushd $HOME/.dotfiles > /dev/null
+pushd $HOME/.dotfiles >&- 2>&-
 
 echo 'Initializing submodule(s)'
 git submodule update --init --recursive
@@ -69,8 +77,8 @@ if [ "$DISPLAY" != "" ]; then
 fi
 
 echo 'Creating symlinks'
-sh ./symlinks.sh > /dev/null
+sh ./symlinks.sh >&- 2>&-
 
-popd > /dev/null
+popd >&- 2>&-
 
 vim +PluginInstall +qall
