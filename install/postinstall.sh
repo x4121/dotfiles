@@ -44,9 +44,6 @@ if [ "$DISPLAY" != "" ]; then
 fi
 
 if ! [ -z ${I_DEV+x} ]; then
-    echo 'Adding current user to group docker'
-    sudo adduser $USER docker >&- 2>&-
-
     echo 'Installing jenv'
     git clone https://github.com/gcuisinier/jenv.git $HOME/.jenv
 fi
@@ -82,3 +79,4 @@ sh ./symlinks.sh >&- 2>&-
 popd >&- 2>&-
 
 vim +PluginInstall +qall
+rm -f $HOME/.vim_mru_files
