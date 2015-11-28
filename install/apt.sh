@@ -85,8 +85,10 @@ if [ "$DISPLAY" != "" ]; then
             automake\
             build-essential\
             cmake\
+            emacs\
             golang\
             gradle\
+            jq\
             maven\
             oracle-java7-installer\
             oracle-java8-installer\
