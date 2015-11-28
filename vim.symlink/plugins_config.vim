@@ -97,3 +97,16 @@ let g:syntastic_ignore = ['\m\c\.h$', '\m\.sbt$']
 " Scala has fsc and scalac checkers--running both is pretty redundant and
 " slow. An explicit `:SyntasticCheck scalac` can always run the other.
 let g:syntastic_scala_checkers = ['fsc']
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-fish
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set up :make to use fish for syntax checking.
+compiler fish
+
+" Set this to have long lines wrap inside comments.
+setlocal textwidth=79
+
+" Enable folding of block structures in fish.
+setlocal foldmethod=expr
