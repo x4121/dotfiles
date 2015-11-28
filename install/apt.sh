@@ -40,11 +40,13 @@ if [ "$DISPLAY" != "" ]; then
     SW="$SW\
         compizconfig-settings-manager\
         compiz-plugins-extra\
+        dconf-tools\
         gnome-keyring-query\
         gnome-tweak-tool\
         google-chrome-stable\
         guake\
         mutt\
+        owncloud-client\
         scudcloud\
         tmux\
         unity-tweak-tool\
@@ -74,16 +76,15 @@ if [ "$DISPLAY" != "" ]; then
         # gradle
         sudo apt-add-repository -y ppa:cwchien/gradle >&- 2>&-
         # docker
-        sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 \
-            --recv-keys 58118E89F3A912897C070ADBF76221572C52609D >&- 2>&-
-        echo "deb https://apt.dockerproject.org/repo $CODENAME main" \
-            | sudo tee -a /etc/apt/sources.list.d/docker.list >&- 2>&-
+        curl -sSL https://get.docker.com/gpg \
+            | sudo apt-key add - >&- 2>&-
+        curl -sSL https://get.docker.com/ | sh >&- 2>&-
+        sudo usermod -aG docker $USER >&- 2>&-
 
         SW="$SW\
             automake\
             build-essential\
             cmake\
-            docker-engine\
             golang\
             gradle\
             maven\
