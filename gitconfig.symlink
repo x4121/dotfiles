@@ -10,3 +10,5 @@
     insteadof = my:
 [url "git+ssh://x4121@git.launchpad.net/"]
     insteadof = lp:
+[url "https://github.com/"]
+    insteadof = gh:
