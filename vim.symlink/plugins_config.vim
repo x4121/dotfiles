@@ -110,3 +110,16 @@ setlocal textwidth=79
 
 " Enable folding of block structures in fish.
 setlocal foldmethod=expr
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-orgmode
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Map for pdfpc
+map <localleader>pb :OrgExportToBeamerPDF<cr>:!pdfpc %:r.pdf<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => tagbar
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Map for tagbar
+nmap <F8> :TagbarToggle<cr>

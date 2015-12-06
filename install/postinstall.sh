@@ -78,5 +78,9 @@ sh ./symlinks.sh >&- 2>&-
 
 popd >&- 2>&-
 
+echo 'Installing Vim-Plugins'
 vim +PluginInstall +qall
 rm -f $HOME/.vim_mru_files
+
+echo 'Installing Tmux-Plugins'
+sh $HOME/.tmux/plugins/tpm/bin/install_plugins
