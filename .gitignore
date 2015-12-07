@@ -1,4 +1,5 @@
-vim.symlink/bundle
-mutt.symlink/cache
-mutt.symlink/local.default
-tmux.symlink/plugins/
+/vim.symlink/bundle
+/vim.symlink/spell/
+/mutt.symlink/cache
+/mutt.symlink/local.default
+/tmux.symlink/plugins/
