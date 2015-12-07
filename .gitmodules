@@ -1,9 +1,6 @@
 [submodule "powerline_fonts"]
 	path = powerline_fonts
 	url = https://github.com/powerline/fonts
-[submodule "vim.symlink/bundle/Vundle"]
-	path = vim.symlink/bundle/Vundle
-	url = https://github.com/gmarik/Vundle
 [submodule "mutt.symlink/mutt-colors-solarized"]
 	path = mutt.symlink/mutt-colors-solarized
 	url = https://github.com/altercation/mutt-colors-solarized
@@ -13,3 +10,6 @@
 [submodule "tmux.symlink/plugins/tpm"]
 	path = tmux.symlink/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "vim.symlink/bundle/Vundle.vim"]
+	path = vim.symlink/bundle/Vundle.vim
+	url = https://github.com/VundleVim/Vundle.vim

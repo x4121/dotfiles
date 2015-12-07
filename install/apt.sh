@@ -47,7 +47,9 @@ if [ "$DISPLAY" != "" ]; then
         guake\
         mutt\
         owncloud-client\
+        python3-setuptools\
         scudcloud\
+        socat\
         tmux\
         unity-tweak-tool\
         wmctrl"

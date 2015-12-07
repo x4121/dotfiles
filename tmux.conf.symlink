@@ -40,63 +40,15 @@ bind C-c choose-buffer "run \"tmux save-buffer -b '%%' - | xsel -i -b\""
 bind C-v run "xsel -o -b | tmux load-buffer - && tmux paste-buffer"
 
 
-# ui stuff
-tm_icon="⧜"
-tm_color_active=yellow
-tm_color_inactive=brightblue
-
-set -g status-left-length 32
-set -g status-right-length 150
-
-# default statusbar colors
-# set-option -g status-bg colour0
-set-option -g status-fg yellow
-set-option -g status-bg black
-set-option -g status-attr default
-
-# default window title colors
-set-window-option -g window-status-fg brightblue
-set-window-option -g window-status-bg default
-set -g window-status-format "#I:#W"
-
-# active window title colors
-set-window-option -g window-status-current-fg brightred
-set-window-option -g window-status-current-bg default
-set-window-option -g window-status-current-format "#[bold]#I:#W"
-
-# pane border
-set-option -g pane-border-fg black
-set-option -g pane-active-border-fg black
-
-# message text
-set-option -g message-bg black
-set-option -g message-fg brightred
-
-# pane number display
-set-option -g display-panes-active-colour blue
-set-option -g display-panes-colour brightred
-
-# clock
-set-window-option -g clock-mode-colour green
-
-tm_date="#[fg=yellow] %R %d %b"
-tm_host="#[fg=brightred]#h"
-tm_session_name="#[fg=brightred,bold]$tm_icon #S"
-
-set -g status-left $tm_session_name' '
-#set -g status-right $tm_date' '$tm_host
-set -g status-right '#{battery_icon} #{battery_percentage} #{battery_remain} '$tm_date' '$tm_host
+# powerline
+source "/usr/local/lib/python3.4/dist-packages/powerline/bindings/tmux/powerline.conf"
 
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
-set -g @plugin 'tmux-plugins/tmux-battery'
+# set -g @plugin 'tmux-plugins/tmux-battery'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-pain-control'
 
-# Battery icons
-set -g @batt_charged_icon "✓"
-set -g @batt_charging_icon "⚡"
-set -g @batt_attached_icon ""
 
 # Pain resize parameter
 set-option -g @pane_resize "10"

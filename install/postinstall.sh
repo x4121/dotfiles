@@ -78,6 +78,10 @@ sh ./symlinks.sh >&- 2>&-
 
 popd >&- 2>&-
 
+echo 'Installing Powerline'
+sudo easy_install3 pip
+sudo pip install powerline-status
+
 echo 'Installing Vim-Plugins'
 vim +PluginInstall +qall
 rm -f $HOME/.vim_mru_files
