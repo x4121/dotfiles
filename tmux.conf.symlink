@@ -84,8 +84,8 @@ tm_host="#[fg=brightred]#h"
 tm_session_name="#[fg=brightred,bold]$tm_icon #S"
 
 set -g status-left $tm_session_name' '
-set -g status-right $tm_date' '$tm_host
-#set -g status-right '#{battery_icon} #{battery_percentage} #{battery_remain} '$tm_date' '$tm_host
+#set -g status-right $tm_date' '$tm_host
+set -g status-right '#{battery_icon} #{battery_percentage} #{battery_remain} '$tm_date' '$tm_host
 
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
