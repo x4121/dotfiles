@@ -47,6 +47,7 @@ if [ "$DISPLAY" != "" ]; then
         guake\
         mutt\
         owncloud-client\
+        pdf-presenter-console\
         python3-setuptools\
         scudcloud\
         socat\
