@@ -49,3 +49,5 @@ include "%L"
 
 <Multi_key> <n> <i> <o>         : U2717 # ballot x
 <Multi_key> <N> <I> <O>         : U2717 # ballot x
+
+<Multi_key> <colon> <j>         : U1F602 # 😂
