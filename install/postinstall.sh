@@ -61,6 +61,14 @@ if [ "$DISPLAY" != "" ]; then
     mkdir -p $HOME/.fonts
     source powerline_fonts/install.sh
 
+    echo 'Installing Powerline'
+    sudo easy_install3 pip
+    sudo pip install powerline-status
+
+    if ! [ -z ${I_DEV+x} ]; then
+        sudo easy_install uncommitted
+    fi
+
     echo 'Setting font and color in gnome-terminal (as fallback)'
     profile=$(dconf read /org/gnome/terminal/legacy/profiles:/default | tr -d "'")
     if [ "$profile" = "" ]; then
@@ -77,10 +85,6 @@ echo 'Creating symlinks'
 sh ./symlinks.sh >&- 2>&-
 
 popd >&- 2>&-
-
-echo 'Installing Powerline'
-sudo easy_install3 pip
-sudo pip install powerline-status
 
 echo 'Installing Vim-Plugins'
 vim +PluginInstall +qall

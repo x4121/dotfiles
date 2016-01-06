@@ -1,0 +1,44 @@
+(require 'package)
+  (push '("marmalade" . "http://marmalade-repo.org/packages/")
+                package-archives )
+  (push '("melpa" . "http://melpa.milkbox.net/packages/")
+                package-archives)
+  (package-initialize)
+
+(evil-mode 1)
+(require 'evil-leader)
+(setq evil-leader/in-all-states t)
+(evil-leader/set-leader ",")
+(evil-mode nil)
+(global-evil-leader-mode 1)
+(evil-mode 1)
+
+(require 'powerline)
+(powerline-default-theme)
+(require 'powerline-evil)
+
+(require 'color-theme-sanityinc-solarized)
+(color-theme-sanityinc-solarized--define-theme dark)
+
+(menu-bar-mode -1)
+(toggle-scroll-bar -1)
+(tool-bar-mode -1)
+
+(setq org-latex-pdf-process
+      '("pdflatex -interaction nonstopmode -output-directory %o %f" 
+	"bibtex %b"
+	"pdflatex -interaction nonstopmode -output-directory %o %f" 
+	"pdflatex -interaction nonstopmode -output-directory %o %f"))
+
+(require 'org-ref)
+(require 'org-ref-latex)
+(require 'org-ref-pdf)
+(require 'org-ref-url-utils)
+(require 'ox-latex)
+
+(add-to-list 'org-latex-classes
+             '("ieee"
+               "\\documentclass[11pt,conference]{IEEEtran}"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))

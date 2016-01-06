@@ -12,11 +12,14 @@ echo 'Adding PPAs'
 # own ppa
 sudo apt-add-repository -y ppa:x4121/x4121 >&- 2>&-
 
-SW="exuberant-ctags\
+SW="apt-transport-tor\
+    ecryptfs-utils\
+    exuberant-ctags\
     fish\
     gpgv2\
     htop\
     mercurial\
+    subversion\
     taskwarrior\
     tree\
     vim-gnome"
@@ -45,13 +48,16 @@ if [ "$DISPLAY" != "" ]; then
         gnome-tweak-tool\
         google-chrome-stable\
         guake\
+        mr\
         mutt\
         owncloud-client\
         python3-setuptools\
+        samba\
         scudcloud\
         socat\
         tmux\
         unity-tweak-tool\
+        virtualbox\
         wmctrl"
 
     if ! [ -z ${I_HOME+x} ]; then
@@ -97,7 +103,8 @@ if [ "$DISPLAY" != "" ]; then
             oracle-java8-set-default\
             sbt\
             sublime-text-installer\
-            texlive-full"
+            texlive-full\
+            vagrant"
     fi
 fi
 
