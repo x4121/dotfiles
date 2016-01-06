@@ -51,6 +51,7 @@ if [ "$DISPLAY" != "" ]; then
         mr\
         mutt\
         owncloud-client\
+        pdf-presenter-console\
         python3-setuptools\
         samba\
         scudcloud\

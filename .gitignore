@@ -2,4 +2,6 @@
 /vim.symlink/spell/
 /mutt.symlink/cache
 /mutt.symlink/local.default
+/mutt.symlink/accounts/*
+!/mutt.symlink/accounts/example.tld
 /tmux.symlink/plugins/
