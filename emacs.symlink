@@ -1,9 +1,24 @@
 (require 'package)
-  (push '("marmalade" . "http://marmalade-repo.org/packages/")
-                package-archives )
-  (push '("melpa" . "http://melpa.milkbox.net/packages/")
-                package-archives)
-  (package-initialize)
+(push '("marmalade" . "http://marmalade-repo.org/packages/")
+    package-archives )
+(push '("melpa" . "http://melpa.milkbox.net/packages/")
+    package-archives)
+
+(setq package-list '(evil-org
+                     evil-surround
+                     powerline
+                     powerline-evil
+                     color-theme-sanityinc-solarized
+                     org-ref))
+
+(package-initialize)
+
+(unless package-archive-contents
+  (package-refresh-contents))
+
+(dolist (package package-list)
+  (unless (package-installed-p package)
+    (package-install package)))
 
 (evil-mode 1)
 (require 'evil-leader)
@@ -12,6 +27,8 @@
 (evil-mode nil)
 (global-evil-leader-mode 1)
 (evil-mode 1)
+(require 'evil-surround)
+(global-evil-surround-mode 1)
 
 (require 'powerline)
 (powerline-default-theme)
