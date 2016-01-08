@@ -34,13 +34,6 @@ if [ "$DISPLAY" != "" ]; then
     #make && sudo make install
     #popd >&- 2>&-
     #rm -rf $HOME/mutt-kz_tmp
-
-    fish --version >&- 2>&-
-    if [ $? -eq 0 ]; then
-        curl -L github.com/oh-my-fish/oh-my-fish/raw/master/bin/install | fish
-        omf theme agnoster
-        omf install apt
-    fi
 fi
 
 if ! [ -z ${I_DEV+x} ]; then

@@ -53,6 +53,7 @@ if [ "$DISPLAY" != "" ]; then
         owncloud-client\
         pdf-presenter-console\
         python3-setuptools\
+        rofi\
         samba\
         scudcloud\
         socat\
