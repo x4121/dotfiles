@@ -1,0 +1,7 @@
+(if
+  (begin
+    (is (application_name) "Teamviewer")
+    (is (window_name) "TeamViewer")
+  )
+  (begin (minimize))
+)
