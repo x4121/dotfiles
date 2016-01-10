@@ -44,6 +44,7 @@ if [ "$DISPLAY" != "" ]; then
         compizconfig-settings-manager\
         compiz-plugins-extra\
         dconf-tools\
+        devilspie\
         gnome-keyring-query\
         gnome-tweak-tool\
         google-chrome-stable\
