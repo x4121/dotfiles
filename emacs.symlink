@@ -59,3 +59,11 @@
                ("\\section{%s}" . "\\section*{%s}")
                ("\\subsection{%s}" . "\\subsection*{%s}")
                ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
+
+(setq inhibit-startup-message t)
+(setq truncate-lines nil)
+(fset 'yes-or-no-p 'y-or-n-p)
+(setq line-number-mode t)
+(setq column-number-mode t)
+(when (fboundp 'toggle-scroll-bar)
+  (toggle-scroll-bar -1))
