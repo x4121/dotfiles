@@ -60,6 +60,13 @@
                ("\\subsection{%s}" . "\\subsection*{%s}")
                ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
 
+(setq org-latex-listings 'listings)
+(setq org-latex-listings-options
+    '(("frame" "lines")
+      ("basicstyle" "\\footnotesize\\ttfamily")
+      ("numbers" "left")
+      ("numberstyle" "\\tiny")))
+
 (setq inhibit-startup-message t)
 (setq truncate-lines nil)
 (fset 'yes-or-no-p 'y-or-n-p)
