@@ -15,8 +15,9 @@ function ga
 end
 
 function __fish.ga.pull
-    for l in (ls $target) $others
-        pushd $target/$l
+    for l in $target"/"(ls $target) $others
+        echo $l
+        pushd $l
         git pull
         popd
     end
