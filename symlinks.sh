@@ -14,6 +14,7 @@ done
 linkables=$( find symlinks -type f )
 for file in $linkables ; do
     target="$HOME/$( echo $file | sed "s/symlinks\///" )"
+    echo "creating symlink for $target"
     mkdir -p $( dirname $target )
     rm -rf $target >&- 2>&-
     ln -s $DOTFILES/$file $target
