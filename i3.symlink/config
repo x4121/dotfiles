@@ -123,8 +123,8 @@ mode "resize" {
     # Pressing up will shrink the window’s height.
     # Pressing down will grow the window’s height.
     bindsym h resize shrink width 10 px or 10 ppt
-    bindsym j resize grow height 10 px or 10 ppt
-    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym j resize shrink height 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
     bindsym l resize grow width 10 px or 10 ppt
 
     # back to normal: Enter or Escape
@@ -136,7 +136,7 @@ bindsym $mod+r mode "resize"
 
 set $mode_system System (1) lock, (e) logout, (r) reboot, (s) shutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3lock, mode "default"
+    bindsym l exec --no-startup-id i3lock-img, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym s exec --no-startup-id systemctl poweroff, mode "default"
@@ -150,7 +150,10 @@ bindsym $mod+Shift+e mode "$mode_system"
 mode "togglegaps" {
 	bindsym 1 mode "default", gaps inner all set 12
 	bindsym 2 mode "default", gaps inner all set 0
-	bindsym Escape mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 bindsym $mod+g mode "togglegaps"
@@ -179,10 +182,4 @@ bar {
 }
 
 # autostart
-exec --no-startup-id dropbox start -i
-exec --no-startup-id rofi -key-ssh F9 -key-window F10
-exec --no-startup-id gnome-keyring-daemon --start --components=ssh,gpg
-exec --no-startup-id owncloud
-exec --no-startup-id keepass --keyring keepassx --minimized $HOME/Dropbox/01_General/Database.kdbx
-exec --no-startup-id scudcloud --minimized=True
-exec --no-startup-id devilspie
+exec --no-startup-id $HOME/.i3/startup

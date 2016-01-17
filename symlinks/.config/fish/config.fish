@@ -26,3 +26,8 @@ set -x LESS_TERMCAP_se (printf "\033[0m") # end standout-mode
 set -x LESS_TERMCAP_so (printf "\033[38;5;246m") # begin standout-mode - info box
 set -x LESS_TERMCAP_ue (printf "\033[0m") # end underline
 set -x LESS_TERMCAP_us (printf "\033[04;38;5;146m") # begin underline
+
+# gnome-keyring
+set -l keyring_env (gnome-keyring-daemon -s)
+set -l keyring_set (echo $keyring_env |  sed -e 's/^\(.*\)/set -x \\1/' -e 's/=/ /' -e 's/\(.*\)$/\1;/')
+eval $keyring_set

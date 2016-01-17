@@ -10,30 +10,30 @@ general {
 order += "volume master"
 order += "disk /"
 order += "wireless _first_"
-order += "ethernet eth0"
+order += "ethernet enp0s25"
 order += "cpu_usage"
-order += "battery 1"
+order += "battery 0"
 order += "tztime local"
 
 volume master {
   format = "♪: %volume"
-  format_muted = "♪: muted (%volume)"
+  format_muted = "♪: mute"
   device = "default"
   mixer = "Master"
   mixer_idx = 0
 }
 
 disk "/" {
-  format = "/ %free"
+  format = "%free (%percentage_free)"
 }
 
 wireless _first_ {
-  format_up = "W: (%quality at %essid) %ip"
+  format_up = "W: %ip (%quality at %essid)"
   format_down = "W: down"
 
 }
-ethernet eth0 {
-  format_up = "E: %ip"
+ethernet enp0s25 {
+  format_up = "E: %ip (%speed)"
   format_down = "E: down"
 }
 
@@ -41,10 +41,10 @@ cpu_usage {
   format = "CPU %usage "
 }
 
-battery 1 {
+battery 0 {
   format = "%status %percentage %remaining"
 }
 
 tztime local {
-  format = "%Y-%m-%d %l:%M:%S %p"
+  format = "%a %d.%m.%Y %l:%M:%S %p"
 }

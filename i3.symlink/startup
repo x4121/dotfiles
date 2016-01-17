@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# background
+feh --bg-scale ~/Pictures/Wallpapers/tie-fighter.jpg
+
+# autostart
+#gnome-settings-daemon &
+dex /etc/xdg/autostart/at-spi-dbus-bus.desktop
+dex /etc/xdg/autostart/gnome-settings-daemon.desktop
+dex /etc/xdg/autostart/gnome-keyring-pkcs11.desktop
+dex /etc/xdg/autostart/gnome-keyring-secrets.desktop
+dex /etc/xdg/autostart/gnome-keyring-ssh.desktop
+dex /etc/xdg/autostart/polkit-gnome-authentication-agent-1.desktop
+dex /etc/xdg/autostart/pulseaudio.desktop
+dex /etc/xdg/autostart/nm-applet.desktop
+xautolock-img &
+export $(gnome-keyring-daemon -s)
+
+dex $HOME/.config/autostart/dropbox.desktop
+dex $HOME/.config/autostart/ownCloud.desktop
+rofi -key-ssh F9 -key-window F10 &
+dex $HOME/.config/autostart/keepassx.desktop
+scudcloud --minimized=True &
+devilspie &
+
+rm -rf "$HOME/.cache/chromium"
+rm -rf "$HOME/.cache/google-chrome"
+rm -rf "$HOME/.thumbnails"
