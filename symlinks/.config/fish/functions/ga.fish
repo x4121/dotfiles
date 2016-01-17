@@ -1,5 +1,5 @@
-set target ~/workspace
-set others ~/.dotfiles
+set -l target ~/workspace
+set -l others ~/.dotfiles
 
 function ga
     if count $argv > /dev/null
@@ -16,18 +16,27 @@ end
 
 function __fish.ga.pull
     for l in $target"/"(ls $target) $others
-        echo $l
         pushd $l
-        git pull
+        if set -l out (git status ^ /dev/null)
+            echo $l
+            echo $out | grep -ioe " branch [^ ]*" | head -1 | sed "s/h /h: /"
+            git pull
+        end
         popd
     end
 end
 
 function __fish.ga.status
-    uncommitted $target
-    for l in $others
+    for l in $target"/"(ls $target) $others
         pushd $l
-        git status
+        if set -l out (git status ^ /dev/null)
+            echo $l
+            echo $out | grep -ioe " branch [^ ]*" | head -1 | sed "s/h /h: /"
+            tput setaf 1
+            echo $out | grep -ioe " Untracked files\| Changes not staged" | head -1
+            tput sgr0
+            echo $out | grep -ioe " nothing to commit" | head -1
+        end
         popd
     end
 end
