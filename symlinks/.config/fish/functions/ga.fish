@@ -1,4 +1,6 @@
 set target ~/workspace
+set others ~/.dotfiles
+
 function ga
     if count $argv > /dev/null
         switch $argv
@@ -13,8 +15,9 @@ function ga
 end
 
 function __fish.ga.pull
-    for l in (ls $target)
-        pushd $target/$l
+    for l in $target"/"(ls $target) $others
+        echo $l
+        pushd $l
         git pull
         popd
     end
@@ -22,6 +25,9 @@ end
 
 function __fish.ga.status
     uncommitted $target
+    for l in $others
+        uncommitted $l
+    end
 end
 
 # completion
