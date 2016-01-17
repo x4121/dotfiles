@@ -26,7 +26,9 @@ end
 function __fish.ga.status
     uncommitted $target
     for l in $others
-        uncommitted $l
+        pushd $l
+        git status
+        popd
     end
 end
 
