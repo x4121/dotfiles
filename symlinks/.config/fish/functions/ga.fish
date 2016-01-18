@@ -1,5 +1,5 @@
-set -l target ~/workspace
-set -l others ~/.dotfiles
+set -x target ~/workspace
+set -x others ~/.dotfiles
 
 function ga
     if count $argv > /dev/null
