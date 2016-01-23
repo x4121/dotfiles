@@ -1,0 +1,37 @@
+#!/bin/sh
+
+libglib2.0-dev
+libxinerama-dev
+libpango1.0-dev
+libstartup-notification0-dev
+git clone https://github.com/DaveDavenport/rofi
+
+libxcb-keysyms1-dev
+libxcb-icccm4-dev
+libyajl-dev
+libxcb-dri3-dev
+libxkbcommon-dev
+libxkbcommon-x11-dev
+libxcb-cursor-dev
+libxcb-xinerama0-dev
+git clone https://www.github.com/Airblader/i3
+
+i3status
+xbacklight
+git clone https://github.com/eBrnd/i3lock-color
+feh
+scrot
+
+libxcb
+libev-dev
+libcairo2-dev
+libpam0g-dev
+libxcb-util-dev
+libxcb-dpms0-dev
+
+xautolock
+dex
+chromium-browser
+zathura
+
+(slim)
