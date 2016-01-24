@@ -38,6 +38,7 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 " non github
 Plugin 'taglist.vim'
+Plugin 'listmaps.vim'
 
 Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 
