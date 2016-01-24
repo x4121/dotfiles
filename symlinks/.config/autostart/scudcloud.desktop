@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=scudcloud --minimized=True
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=ScudCloud
+Name=ScudCloud
+Comment[en_US]=
+Comment=

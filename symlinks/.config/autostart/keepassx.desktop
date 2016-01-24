@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Exec=keepassx --keyring keepassx --minimized
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+X-GNOME-Autostart-Delay=30
+Name[en]=KeePassX
+Name=KeePassX
+Comment[en]=
+Comment=
