@@ -14,6 +14,9 @@ end
 set PATH $HOME/.jenv/bin $PATH
 eval jenv init - > /dev/null 2>&1
 
+# thefuck
+eval (thefuck --alias | tr '\n' ';') > /dev/null 2>&1
+
 # powerline
 set fish_function_path $fish_function_path "/usr/local/lib/python3.4/dist-packages/powerline/bindings/fish"
 powerline-setup
