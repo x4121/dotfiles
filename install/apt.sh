@@ -41,6 +41,7 @@ if [ "$DISPLAY" != "" ]; then
         | sudo tee -a /etc/apt/sources.list.d/owncloud-client.list >&- 2>&-
 
     SW="$SW\
+        chromium-browser\
         compizconfig-settings-manager\
         compiz-plugins-extra\
         dconf-tools\

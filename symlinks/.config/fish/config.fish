@@ -14,9 +14,6 @@ end
 set PATH $HOME/.jenv/bin $PATH
 eval jenv init - > /dev/null 2>&1
 
-# thefuck
-eval (thefuck --alias | tr '\n' ';') > /dev/null 2>&1
-
 # powerline
 set fish_function_path $fish_function_path "/usr/local/lib/python3.4/dist-packages/powerline/bindings/fish"
 powerline-setup
@@ -31,6 +28,4 @@ set -x LESS_TERMCAP_ue (printf "\033[0m") # end underline
 set -x LESS_TERMCAP_us (printf "\033[04;38;5;146m") # begin underline
 
 # gnome-keyring
-set -l keyring_env (gnome-keyring-daemon -s)
-set -l keyring_set (echo $keyring_env |  sed -e 's/^\(.*\)/set -x \\1/' -e 's/=/ /' -e 's/\(.*\)$/\1;/')
-eval $keyring_set
+eval (echo (gnome-keyring-daemon -s) | sed -e 's/^\(.*\)/set -x \\1/' -e 's/=/ /' -e 's/\(.*\)$/\1;/')

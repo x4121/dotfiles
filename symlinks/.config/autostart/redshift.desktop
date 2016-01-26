@@ -2,7 +2,7 @@
 Type=Application
 Categories=Utility;
 Comment=Color temperature adjustment tool
-Exec=redshift -t 6500:3500 -g 0.8 -r
+Exec=redshift -t 6500:3500
 StartupNotify=true
 Icon=redshift
 Hidden=false
