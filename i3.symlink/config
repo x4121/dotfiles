@@ -136,9 +136,9 @@ bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 
 # screenshot
-bindsym 0xff61 exec --no-startup-id scrot -m "$HOME/Pictures/%F_%s.png"
-bindsym --release Shift+0xff61 exec scrot -ms "$HOME/Pictures/%F_%s.png"
-bindsym --release $mod+0xff61 exec scrot -u "$HOME/Pictures/%F_%s.png"
+bindsym 0xff61 exec --no-startup-id scrot -m "$HOME/Pictures/%F_%s.png" && notify-send "Screenshot saved in $HOME/Pictures"
+bindsym --release Shift+0xff61 exec scrot -ms "$HOME/Pictures/%F_%s.png" && notify-send "Screenshot saved in $HOME/Pictures"
+bindsym --release $mod+0xff61 exec scrot -u "$HOME/Pictures/%F_%s.png" && notify-send "Screenshot saved in $HOME/Pictures"
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
