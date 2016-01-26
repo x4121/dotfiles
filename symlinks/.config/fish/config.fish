@@ -10,6 +10,9 @@ switch $TERM
         end
 end
 
+# remove greeting message
+set -e fish_greeting
+
 # jenv
 set PATH $HOME/.jenv/bin $PATH
 eval jenv init - > /dev/null 2>&1
