@@ -200,7 +200,6 @@ bindsym XF86LaunchA exec --no-startup-id touchtoggle
 # finds out, if available)
 bar {
     status_command      i3status -c ~/.i3/statusconfig
-# TODO: i3blocks
     height 18
     position            top
     workspace_buttons   yes

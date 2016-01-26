@@ -17,6 +17,7 @@ libxcb-xinerama0-dev
 git clone https://www.github.com/Airblader/i3
 
 i3status
+i3blocks
 xbacklight
 git clone https://github.com/eBrnd/i3lock-color
 feh
