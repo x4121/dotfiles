@@ -55,6 +55,7 @@ if [ "$DISPLAY" != "" ]; then
         pdf-presenter-console\
         python3-setuptools\
         rofi\
+        rxvt-unicode-256color\
         samba\
         scudcloud\
         socat\

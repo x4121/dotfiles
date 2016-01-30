@@ -10,6 +10,9 @@ switch $TERM
         end
 end
 
+# dircolors
+eval (dircolors -c ~/.dircolors | sed 's/>&\/dev\/null$//')
+
 # jenv
 set PATH $HOME/.jenv/bin $PATH
 eval jenv init - > /dev/null 2>&1
