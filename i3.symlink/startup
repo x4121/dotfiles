@@ -18,9 +18,9 @@ export $(gnome-keyring-daemon -s)
 
 dex $HOME/.config/autostart/dropbox.desktop
 dex $HOME/.config/autostart/ownCloud.desktop
-rofi -key-ssh F9 -key-window F10 &
 dex $HOME/.config/autostart/keepassx.desktop
-scudcloud --minimized=True &
+dex $HOME/.config/autostart/scudcloud.desktop
+dex $HOME/.config/autostart/redshift.desktop
 devilspie &
 
 rm -rf "$HOME/.cache/chromium"

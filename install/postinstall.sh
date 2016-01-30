@@ -4,8 +4,7 @@ if [ "$DISPLAY" != "" ]; then
     echo 'Installing st'
     sudo apt-get install -y\
         libxft-dev\
-        libfontconfig1-dev\
-        libxext-dev >&- 2>&-
+        libfontconfig1-dev >&- 2>&-
     git clone https://github.com/x4121/st $HOME/st_tmp >&- 2>&-
     pushd $HOME/st_tmp >&- 2>&-
     make && sudo make install
@@ -14,7 +13,6 @@ if [ "$DISPLAY" != "" ]; then
 
     echo 'Installing keepassx'
     sudo apt-get install -y\
-        cmake\
         libqt4-dev\
         libgcrypt20-dev\
         libmicrohttpd-dev\
@@ -39,6 +37,9 @@ fi
 if ! [ -z ${I_DEV+x} ]; then
     echo 'Installing jenv'
     git clone https://github.com/gcuisinier/jenv.git $HOME/.jenv
+    mkdir $HOME/.config/fish/functions
+    ln -s $HOME/.jenv/fish/export.fish $HOME/.config/fish/functions/export.fish
+    ln -s $HOME/.jenv/fish/jenv.fish $HOME/.config/fish/functions/jenv.fish
 fi
 
 echo 'Setting fish as default shell'
