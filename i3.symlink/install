@@ -23,6 +23,10 @@ git clone https://github.com/eBrnd/i3lock-color
 feh
 scrot
 
+https://github.com/jhawthorn/meh.git
+libgif-dev
+libjpeg-dev
+
 libxcb
 libev-dev
 libcairo2-dev

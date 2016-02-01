@@ -33,7 +33,7 @@ include "%L"
 <Multi_key> <A> <A>                     : U2200 # for all (∀)
 
 <Multi_key> <asciicircum> <asciicircum> : U2227 # conjunction (∧)
-<Multi_key> <v> <v> 	  		        : U2227 # disjunction (∨)
+<Multi_key> <v> <v> 	  		        : U2228 # disjunction (∨)
 
 <Multi_key> <s> <u> 	                : U222A # set union ∪
 <Multi_key> <s> <i> 	                : U2229 # set intersection ∩
