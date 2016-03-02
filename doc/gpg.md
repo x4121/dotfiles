@@ -34,6 +34,7 @@
 
 ## Archive secret key on paper (needs `paperkey` and `dmtx-utils`)
 Save:
+
     #!/bin/bash
     gpg --export-secret-key you@domain.tld | paperkey --output-type raw | split -b 1500 - key-
 
@@ -44,6 +45,7 @@ Print and savely store
 
 Restore:
 Scan and name as in the export, download your public key
+
     #!/bin/bash
     for K in key-*; do
         dmtxread
