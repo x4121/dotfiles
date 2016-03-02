@@ -13,12 +13,14 @@ echo 'Adding PPAs'
 sudo apt-add-repository -y ppa:x4121/x4121 >&- 2>&-
 
 SW="apt-transport-tor\
+    dmtx-utils\
     ecryptfs-utils\
     exuberant-ctags\
     fish\
     gpgv2\
     htop\
     mercurial\
+    paperkey\
     subversion\
     taskwarrior\
     tree\

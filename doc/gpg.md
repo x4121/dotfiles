@@ -59,6 +59,7 @@ Scan and name as in the export, download your public key
 * subkey revocation
 * master key revocation
 * gpg.conf
+* signing new with old key
 
 ## Sources
 * https://alexcabal.com/creating-the-perfect-gpg-keypair/
