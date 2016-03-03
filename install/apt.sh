@@ -17,7 +17,7 @@ SW="apt-transport-tor\
     ecryptfs-utils\
     exuberant-ctags\
     fish\
-    gpgv2\
+    gnupg2\
     htop\
     mercurial\
     paperkey\
