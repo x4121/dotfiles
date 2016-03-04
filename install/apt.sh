@@ -21,6 +21,7 @@ SW="apt-transport-tor\
     htop\
     mercurial\
     paperkey\
+    parcimonie\
     subversion\
     taskwarrior\
     tree\

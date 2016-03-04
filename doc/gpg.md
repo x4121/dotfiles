@@ -32,6 +32,13 @@
 1. `gpg --import \<you@domain.tld\>.public.gpg-key \<you@domain.tld\>.private.gpg-key`
 1. `gpg --edit-key`
 
+## Extend key
+`gpg --edit-key you@domain.tld`
+
+`expire`
+
+`save`
+
 ## Archive secret key on paper (needs `paperkey` and `dmtx-utils`)
 Save:
 
