@@ -64,7 +64,9 @@ if [ "$DISPLAY" != "" ]; then
         socat\
         tmux\
         unity-tweak-tool\
+        urlview\
         virtualbox\
+        w3m\
         wmctrl"
 
     if ! [ -z ${I_HOME+x} ]; then

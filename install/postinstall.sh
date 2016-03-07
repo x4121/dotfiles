@@ -23,15 +23,6 @@ if [ "$DISPLAY" != "" ]; then
     cmake .. && make -j4 && sudo make install
     popd >&- 2>&-
     rm -rf $HOME/keepassx_tmp
-
-    #echo 'Installing mutt'
-    #sudo apt-get install -y autoconf libslang2-dev libiconv-hook-dev libssl-dev >&- 2>&-
-    #git clone https://github.com/karelzak/mutt-kz $HOME/mutt-kz_tmp >&- 2>&-
-    #pushd $HOME/mutt-kz_tmp >&- 2>&-
-    #./prepare --with-slang --enable-imap --enable-pop --with-ssl
-    #make && sudo make install
-    #popd >&- 2>&-
-    #rm -rf $HOME/mutt-kz_tmp
 fi
 
 if ! [ -z ${I_DEV+x} ]; then
