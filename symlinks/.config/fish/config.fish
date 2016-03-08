@@ -20,10 +20,6 @@ set -e fish_greeting
 set PATH $HOME/.jenv/bin $PATH
 eval jenv init - > /dev/null 2>&1
 
-# powerline
-set fish_function_path $fish_function_path "/usr/local/lib/python3.4/dist-packages/powerline/bindings/fish"
-powerline-setup
-
 # solarized man pages
 set -x LESS_TERMCAP_mb (printf "\033[01;31m") # begin blinking
 set -x LESS_TERMCAP_md (printf "\033[01;38;5;74m") # begin bold
