@@ -6,7 +6,7 @@
 
    `setpref SHA512 SHA384 SHA256 SHA224 AES256 AES192 AES CAST5 ZLIB BZIP2 ZIP Uncompressed`
 
-   `addkey` 'sign only' with maximum key size
+   `addkey` 'sign only' with maximum key size and lower expiration date
 
    `save`
 
@@ -17,15 +17,16 @@
 1. Put everything in a save storage
 
 ## Put key in use (on same machine)
-1. `gpg --export-secret-subkeys you@domain.tld > subkeys`
+1. Copy `\<you@domain.tld\>.subkey.gpg-key` from your save storage
 1. `gpg --delete-secret-key you@domain.tld`
-1. `gpg --import subkeys`
-1. `shred --remove subkeys`
+1. `gpg --import \<you@domain.tld\>.subkey.gpg-key`
+1. `shred --remove \<you@domain.tld\>.subkey.gpg-key`
 1. `gpg --list-secret-keys` should list first key as `sec#`
 
 ## Put key in use (on other machine)
+1. Copy `\<you@domain.tld\>.subkey.gpg-key` and `\<you@domain.tld\>.public.gpg-key`  from your save storage
 1. `gpg --import \<you@domain.tld\>.public.gpg-key \<you@domain.tld\>.subkey.gpg-key`
-1. `shred --remove \<you@domain.tld\>.subkey.gpg-key`
+1. `shred --remove \<you@domain.tld\>.subkey.gpg-key \<you@domain.tld\>.public.gpg-key`
 1. `gpg --list-secret-keys` should list first key as `sec#`
 
 ## Revoke subkey
@@ -35,11 +36,14 @@
 ## Extend key
 `gpg --edit-key you@domain.tld`
 
-`expire`
+`expire` set new date
 
 `save`
 
 ## Archive secret key on paper (needs `paperkey` and `dmtx-utils`)
+This needs `paperkey` and `dmtx-utils` installed.
+This also needs your secret key (`\<you@domain.tld\>`) in your gpg keyring.
+
 Save:
 
     #!/bin/bash
@@ -48,7 +52,10 @@ Save:
     for K in key-*; do
         dmtxwrite -e 8 $K > $K.png
     done
+
 Print and savely store
+
+`shred --remove key*`
 
 Restore:
 Scan and name as in the export, download your public key
@@ -65,8 +72,6 @@ Scan and name as in the export, download your public key
 ## TODO
 * subkey revocation
 * master key revocation
-* gpg.conf
-* signing new with old key
 
 ## Sources
 * https://alexcabal.com/creating-the-perfect-gpg-keypair/
