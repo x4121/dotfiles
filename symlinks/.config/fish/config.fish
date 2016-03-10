@@ -16,6 +16,9 @@ eval (dircolors -c ~/.dircolors | sed 's/>&\/dev\/null$//')
 # remove greeting message
 set -e fish_greeting
 
+# Vim is the standard text editor.
+set -x EDITOR vim
+
 # jenv
 set PATH $HOME/.jenv/bin $PATH
 eval jenv init - > /dev/null 2>&1
@@ -31,3 +34,6 @@ set -x LESS_TERMCAP_us (printf "\033[04;38;5;146m") # begin underline
 
 # gnome-keyring
 eval (echo (gnome-keyring-daemon -s) | sed -e 's/^\(.*\)/set -x \\1/' -e 's/=/ /' -e 's/\(.*\)$/\1;/')
+
+# terminal colors
+. colors.fish
