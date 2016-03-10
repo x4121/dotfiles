@@ -7,7 +7,7 @@ set -x fish_color_end 268bd2
 set -x fish_color_error cb4b16
 set -x fish_color_escape cyan
 set -x fish_color_history_current cyan
-set -x fish_color_host \x2do\x1ecyan
+set -x fish_color_host cyan
 set -x fish_color_match cyan
 set -x fish_color_normal normal
 set -x fish_color_operator cyan
