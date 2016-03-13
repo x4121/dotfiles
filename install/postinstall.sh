@@ -31,6 +31,12 @@ if ! [ -z ${I_DEV+x} ]; then
     mkdir $HOME/.config/fish/functions
     ln -s $HOME/.jenv/fish/export.fish $HOME/.config/fish/functions/export.fish
     ln -s $HOME/.jenv/fish/jenv.fish $HOME/.config/fish/functions/jenv.fish
+
+    echo 'Installing node, npm and grunt'
+    curl -sL https://deb.nodesource.com/setup_4.x | bash -
+    sudo apt-get install -y nodejs
+    sudo npm update -g npm
+    sudo npm install -g grunt-cli
 fi
 
 echo 'Setting fish as default shell'
