@@ -4,7 +4,7 @@ function task
         __task.sync
     end
 
-    __task.exec
+    command task $argv
 
     # sync if something changed
     __task.sync > /dev/null ^ /dev/null
@@ -13,10 +13,6 @@ end
 function __task.sync
     set -g __task_last_sync (date +%s)
     command task sync
-end
-
-function __task.exec
-    command task $argv
 end
 
 function __task.needs_sync
