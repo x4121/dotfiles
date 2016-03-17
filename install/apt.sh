@@ -22,6 +22,7 @@ SW="apt-transport-tor\
     mercurial\
     paperkey\
     parcimonie\
+    ranger\
     subversion\
     taskwarrior\
     tree\
