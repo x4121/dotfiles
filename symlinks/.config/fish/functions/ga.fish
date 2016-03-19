@@ -4,8 +4,8 @@ set -x others ~/.dotfiles
 function ga
     if count $argv > /dev/null
         switch $argv
-        case 'p'
-            __fish.ga.pull
+        case 'f'
+            __fish.ga.fetch
         case 's'
             __fish.ga.status
         end
@@ -14,13 +14,13 @@ function ga
     end
 end
 
-function __fish.ga.pull
+function __fish.ga.fetch
     for l in $target"/"(ls $target) $others
         pushd $l
         if set -l out (git status ^ /dev/null)
             echo $l
             echo $out | grep -ioe " branch [^ ]*" | head -1 | sed "s/h /h: /"
-            git pull
+            git fetch --all
         end
         popd
     end
@@ -33,7 +33,7 @@ function __fish.ga.status
             echo $l
             echo $out | grep -ioe " branch [^ ]*" | head -1 | sed "s/h /h: /"
             tput setaf 1
-            echo $out | grep -ioe " Untracked files\| Changes not staged" | head -1
+            echo $out | grep -ioe " Untracked files\| Changes not staged\| Your branch is behind\| Your branch is ahead" | head -1
             tput sgr0
             echo $out | grep -ioe " nothing to commit" | head -1
         end
@@ -44,12 +44,12 @@ end
 # completion
 function __fish.ga.no_subcommand --description 'Test if ga has yet to be given the subcommand'
     for i in (commandline -opc)
-        if contains -- $i p s
+        if contains -- $i f s
             return 1
         end
     end
     return 0
 end
 
-complete -f -n '__fish.ga.no_subcommand' -c ga -a 'p' --description "pull"
+complete -f -n '__fish.ga.no_subcommand' -c ga -a 'f' --description "fetch"
 complete -f -n '__fish.ga.no_subcommand' -c ga -a 's' --description "status"
