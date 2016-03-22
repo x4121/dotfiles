@@ -62,9 +62,9 @@ Scan and name as in the export, download your public key
 
     #!/bin/bash
     for K in key-*; do
-        dmtxread
+        dmtxread $K > $K.txt
     done
-    cat key-*.png.txt > key.txt
+    cat key-*.txt > key.txt
     paperkey --pubring public.gpg --secrets key.txt --input-type raw --output secret.gpg
     gpg --import secret.gpg
     shred --remove secret.gpg key*
