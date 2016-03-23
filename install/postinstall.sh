@@ -33,7 +33,7 @@ if ! [ -z ${I_DEV+x} ]; then
     ln -s $HOME/.jenv/fish/jenv.fish $HOME/.config/fish/functions/jenv.fish
 
     echo 'Installing node, npm and grunt'
-    curl -sL https://deb.nodesource.com/setup_4.x | bash -
+    curl -sL https://deb.nodesource.com/setup_4.x | sudo bash -
     sudo apt-get install -y nodejs
     sudo npm update -g npm
     sudo npm install -g grunt-cli
