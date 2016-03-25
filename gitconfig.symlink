@@ -12,3 +12,6 @@
     insteadof = lp:
 [url "https://github.com/"]
     insteadof = gh:
+[ga]
+    workspace = $HOME/workspace
+    others = $HOME/.dotfiles
