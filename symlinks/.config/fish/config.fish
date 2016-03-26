@@ -11,13 +11,16 @@ switch $TERM
 end
 
 # dircolors
-eval (dircolors -c ~/.dircolors | sed 's/>&\/dev\/null$//')
+eval (dircolors -c $HOME/.dircolors | sed 's/>&\/dev\/null$//')
 
 # remove greeting message
 set -e fish_greeting
 
 # Vim is the standard text editor.
 set -x EDITOR vim
+
+# pass config
+set -x PASSWORD_STORE_DIR $HOME/ownCloud/pass
 
 # jenv
 set PATH $HOME/.jenv/bin $PATH
