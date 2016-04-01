@@ -21,10 +21,10 @@ SW="apt-transport-tor\
     htop\
     mercurial\
     paperkey\
-    parcimonie\
     ranger\
     subversion\
     taskwarrior\
+    torsocks\
     tree\
     vim-gnome"
 

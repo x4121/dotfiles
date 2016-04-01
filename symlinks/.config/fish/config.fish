@@ -27,6 +27,9 @@ set -x PASSWORD_STORE_KEY "0x86797D349DDE272E 0x762DA66161B64188"
 set PATH $HOME/.jenv/bin $PATH
 eval jenv init - > /dev/null 2>&1
 
+# aliases
+alias gpg gpg2
+
 # solarized man pages
 set -x LESS_TERMCAP_mb (printf "\033[01;31m") # begin blinking
 set -x LESS_TERMCAP_md (printf "\033[01;38;5;74m") # begin bold

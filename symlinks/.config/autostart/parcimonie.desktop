@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Categories=Utility;
+Comment=Refresh your GnuPG keyring without disclosing your whole contact list to the world
+Exec=parcimonie.sh
+StartupNotify=true
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=Parcimonie
