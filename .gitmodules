@@ -13,3 +13,6 @@
 [submodule "vim.symlink/bundle/Vundle.vim"]
 	path = vim.symlink/bundle/Vundle.vim
 	url = https://github.com/VundleVim/Vundle.vim
+[submodule "pass-server-node"]
+	path = pass-server-node
+	url = https://github.com/cpoppema/pass-server-node

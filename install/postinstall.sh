@@ -11,18 +11,11 @@ if [ "$DISPLAY" != "" ]; then
     popd >&- 2>&-
     rm -rf $HOME/st_tmp
 
-    echo 'Installing keepassx'
-    sudo apt-get install -y\
-        libqt4-dev\
-        libgcrypt20-dev\
-        libmicrohttpd-dev\
-        libqjson-dev >&- 2>&-
-    git clone https://github.com/x4121/keepassx $HOME/keepassx_tmp >&- 2>&-
-    mkdir $HOME/keepassx_tmp/build
-    pushd $HOME/keepassx_tmp/build >&- 2>&-
-    cmake .. && make -j4 && sudo make install
-    popd >&- 2>&-
-    rm -rf $HOME/keepassx_tmp
+    echo 'Installing node, npm and grunt'
+    curl -sL https://deb.nodesource.com/setup_4.x | sudo bash -
+    sudo apt-get install -y nodejs
+    sudo npm update -g npm
+    sudo npm install -g grunt-cli
 fi
 
 if ! [ -z ${I_DEV+x} ]; then
@@ -31,12 +24,6 @@ if ! [ -z ${I_DEV+x} ]; then
     mkdir $HOME/.config/fish/functions
     ln -s $HOME/.jenv/fish/export.fish $HOME/.config/fish/functions/export.fish
     ln -s $HOME/.jenv/fish/jenv.fish $HOME/.config/fish/functions/jenv.fish
-
-    echo 'Installing node, npm and grunt'
-    curl -sL https://deb.nodesource.com/setup_4.x | sudo bash -
-    sudo apt-get install -y nodejs
-    sudo npm update -g npm
-    sudo npm install -g grunt-cli
 fi
 
 echo 'Setting fish as default shell'
@@ -48,6 +35,19 @@ echo 'Initializing submodule(s)'
 git submodule update --init --recursive
 
 if [ "$DISPLAY" != "" ]; then
+    echo 'Installing qtpass'
+    git clone https://github.com/IJHack/qtpass $HOME/qtpass_tmp >&- 2>&-
+    pushd $HOME/qtpass_tmp >&- 2>&-
+    qmake && make && sudo make install
+    popd >&- 2>&-
+    rm -rf $HOME/qtpass_tmp
+
+    echo 'Installing pass-server-node'
+    pushd $HOME/.dotfiles/node-server-node >&- 2>&-
+    npm install
+    npm config set pass-server-node:port 8088
+    popd >&- 2>&-
+
     echo 'Installing powerline fonts'
     mkdir -p $HOME/.fonts
     source powerline_fonts/install.sh
