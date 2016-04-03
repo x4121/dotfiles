@@ -2,7 +2,7 @@
 Type=Application
 Categories=Utility;
 Comment=Refresh your GnuPG keyring without disclosing your whole contact list to the world
-Exec=parcimonie.sh
+Exec=GNUPG_BINARY=gpg2 parcimonie.sh
 StartupNotify=true
 Hidden=false
 NoDisplay=false
