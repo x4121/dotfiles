@@ -19,9 +19,6 @@ set -e fish_greeting
 # Vim is the standard text editor.
 set -x EDITOR vim
 
-# pass config
-set -x PASSWORD_STORE_DIR $HOME/ownCloud/pass
-
 # jenv
 set PATH $HOME/.jenv/bin $PATH
 eval jenv init - > /dev/null 2>&1

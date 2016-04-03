@@ -2,7 +2,7 @@
 Type=Application
 Categories=Utility;
 Comment=pass-server-node is a read-only portal to 'pass'
-Exec=sh -c "cd $HOME/.dotfiles/pass-server-node; npm --password_store_dir=$HOME/ownCloud/pass/www start"
+Exec=sh -c "cd $HOME/.dotfiles/pass-server-node; npm --password_store_dir=$HOME/.password-store/www start"
 StartupNotify=true
 Hidden=false
 NoDisplay=false
