@@ -21,7 +21,6 @@ set -x EDITOR vim
 
 # pass config
 set -x PASSWORD_STORE_DIR $HOME/ownCloud/pass
-set -x PASSWORD_STORE_KEY "0x86797D349DDE272E 0x762DA66161B64188"
 
 # jenv
 set PATH $HOME/.jenv/bin $PATH

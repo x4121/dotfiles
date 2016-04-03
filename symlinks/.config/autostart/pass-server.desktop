@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Categories=Utility;
+Comment=pass-server-node is a read-only portal to 'pass'
+Exec=npm --password_store_dir=$HOME/ownCloud/pass/www start
+StartupNotify=true
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=pass-server-node
