@@ -28,4 +28,5 @@ My dotfiles
 
 ## Other stuff
 [Dell C1660 installation](doc/Dell_C1660.md)
+
 [GnuPG key generation guide](doc/gpg.md)
