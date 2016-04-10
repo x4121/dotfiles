@@ -14,4 +14,4 @@
     insteadof = gh:
 [ga]
     workspace = $HOME/workspace
-    others = $HOME/.dotfiles
+    others = $HOME/.dotfiles, $HOME/.password-store
