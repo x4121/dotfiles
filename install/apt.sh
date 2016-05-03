@@ -50,6 +50,7 @@ if [ "$DISPLAY" != "" ]; then
         compiz-plugins-extra\
         dconf-tools\
         devilspie\
+        gawk\
         gnome-keyring-query\
         gnome-tweak-tool\
         google-chrome-stable\
@@ -69,11 +70,11 @@ if [ "$DISPLAY" != "" ]; then
         urlview\
         virtualbox\
         w3m\
-        wmctrl"
+        wmctrl\
+        xdotool"
 
     if ! [ -z ${I_HOME+x} ]; then
         SW="$SW\
-            eiskaltdcpp-qt\
             gimp\
             inkscape\
             nautilus-dropbox\

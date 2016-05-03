@@ -48,6 +48,13 @@ if [ "$DISPLAY" != "" ]; then
     npm config set pass-server-node:port 8088
     popd >&- 2>&-
 
+    echo 'Installing rofi-pass'
+    git clone https://github.com/carnager/rofi-pass $HOME/rofi-pass_tmp >&- 2>&-
+    pushd $HOME/rofi-pass_tmp >&- 2>&-
+    sudo make install
+    popd >&- 2>&-
+    rm -rf $HOME/rofi-pass_tmp
+
     echo 'Installing powerline fonts'
     mkdir -p $HOME/.fonts
     source powerline_fonts/install.sh
