@@ -14,10 +14,7 @@ bind C-a send-prefix
 bind-key a send-prefix
 
 # enable mouse
-setw -g mode-mouse on
-set -g mouse-select-pane on
-set -g mouse-resize-pane on
-set -g mouse-select-window on
+set-option -g mouse on
 
 # act like vim
 setw -g mode-keys vi
