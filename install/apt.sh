@@ -86,8 +86,6 @@ if [ "$DISPLAY" != "" ]; then
     if ! [ -z ${I_DEV+x} ]; then
         # oracle java
         sudo apt-add-repository -y ppa:webupd8team/java >&- 2>&-
-        # sublime
-        sudo apt-add-repository -y ppa:webupd8team/sublime-text-3 >&- 2>&-
         # sbt
         sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 \
             --recv 642AC823 >&- 2>&-
@@ -114,7 +112,6 @@ if [ "$DISPLAY" != "" ]; then
             oracle-java8-installer\
             oracle-java8-set-default\
             sbt\
-            sublime-text-installer\
             texlive-full\
             vagrant"
     fi
