@@ -48,3 +48,4 @@ include "%L"
 
 <Multi_key> <colon> <j>                 : U1F602 # (😂)
 <Multi_key> <colon> <s>                 : U1F648 # (🙈)
+<Multi_key> <colon> <n>                 : U1F913 # (🤓)
