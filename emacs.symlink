@@ -40,13 +40,13 @@
 (menu-bar-mode -1)
 (toggle-scroll-bar -1)
 (tool-bar-mode -1)
-(setq org-latex-pdf-process 
-   "latexmk -pdflatex='lualatex -shell-escape -interaction nonstopmode' -pdf -f  %f")
-; (setq org-latex-pdf-process
-;       '("pdflatex -interaction nonstopmode -output-directory %o %f" 
-; 	"bibtex %b"
-; 	"pdflatex -interaction nonstopmode -output-directory %o %f" 
-; 	"pdflatex -interaction nonstopmode -output-directory %o %f"))
+;(setq org-latex-pdf-process 
+;   "latexmk -pdflatex='lualatex -shell-escape -interaction nonstopmode' -pdf -f  %f")
+ (setq org-latex-pdf-process
+       '("pdflatex -interaction nonstopmode -output-directory %o %f" 
+ 	"bibtex %b"
+ 	"pdflatex -interaction nonstopmode -output-directory %o %f" 
+ 	"pdflatex -interaction nonstopmode -output-directory %o %f"))
 
 (require 'org-ref)
 (require 'org-ref-latex)
