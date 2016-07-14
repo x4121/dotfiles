@@ -8,6 +8,8 @@
     default = simple
 [url "git@github.com:x4121/"] 
     insteadof = my:
+[url "git@github.com:onpage-org/"]
+    insteadof = op:
 [url "git+ssh://x4121@git.launchpad.net/"]
     insteadof = lp:
 [url "https://github.com/"]
