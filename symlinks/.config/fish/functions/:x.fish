@@ -1,0 +1,4 @@
+function :q
+    exit
+end
+
