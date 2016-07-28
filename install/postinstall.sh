@@ -30,7 +30,8 @@ $HOME/.config/fish/functions
     ln -s $HOME/.jenv/fish/jenv.fish $HOME/.config/fish/functions/jenv.fish
 
     echo 'Installing rbenv'
-    sudo apt-get install -y libreadline-dev >&- 2>&-
+    sudo apt-get install -y \
+        libreadline-dev libssl-dev >&- 2>&-
     git clone https://github.com/rbenv/rbenv.git $HOME/.rbenv
     git clone https://github.com/rbenv/ruby-build.git \
         $HOME/.rbenv/plugins/ruby-build
