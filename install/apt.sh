@@ -39,9 +39,9 @@ if [ "$DISPLAY" != "" ]; then
     # scudcloud
     sudo apt-add-repository -y ppa:rael-gc/scudcloud >&- 2>&-
     # owncloud
-    sudo apt-key adv --keyserver keyserver.ubuntu.com \
-        --recv-keys 977C43A8BA684223 >&- 2>&-
-    echo "deb http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Ubuntu_15.04/ /" \
+    wget -q -O - http://download.opensuse.org/repositories/isv:ownCloud:desktop/Ubuntu_16.04/Release.key \
+        | sudo apt-key add - >&- 2>&-
+    echo "deb http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Ubuntu_16.04/ /" \
         | sudo tee -a /etc/apt/sources.list.d/owncloud-client.list >&- 2>&-
 
     SW="$SW\
