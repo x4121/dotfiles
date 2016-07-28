@@ -21,7 +21,10 @@ set -x EDITOR vim
 
 # jenv
 set PATH $HOME/.jenv/bin $PATH
-eval jenv init - > /dev/null 2>&1
+
+# rbenv
+set PATH $HOME/.rbenv/{bin,shims} $PATH
+rbenv rehash > /dev/null ^&1
 
 # aliases
 alias gpg gpg2

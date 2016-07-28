@@ -24,6 +24,12 @@ if ! [ -z ${I_DEV+x} ]; then
     mkdir $HOME/.config/fish/functions
     ln -s $HOME/.jenv/fish/export.fish $HOME/.config/fish/functions/export.fish
     ln -s $HOME/.jenv/fish/jenv.fish $HOME/.config/fish/functions/jenv.fish
+
+    echo 'Installing rbenv'
+    sudo apt-get install -y libreadline-dev >&- 2>&-
+    git clone https://github.com/rbenv/rbenv.git $HOME/.rbenv
+    git clone https://github.com/rbenv/ruby-build.git \
+        $HOME/.rbenv/plugins/ruby-build
 fi
 
 echo 'Setting fish as default shell'
