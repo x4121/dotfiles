@@ -21,7 +21,11 @@ fi
 if ! [ -z ${I_DEV+x} ]; then
     echo 'Installing jenv'
     git clone https://github.com/gcuisinier/jenv.git $HOME/.jenv
-    mkdir $HOME/.config/fish/functions
+    mkdir -p t clone https://github.com/gcuisinier/jenv.git $HOME/.jenv
+    mkdir -p $HOME/.config/fish/functions
+    ln -s $HOME/.jenv/fish/export.fish $HOME/.config/fish/functions/export.fish
+    ln -s $HOME/.jenv/fish/jenv.fish $HOME/.config/fish/functions/jenv.fish
+$HOME/.config/fish/functions
     ln -s $HOME/.jenv/fish/export.fish $HOME/.config/fish/functions/export.fish
     ln -s $HOME/.jenv/fish/jenv.fish $HOME/.config/fish/functions/jenv.fish
 
@@ -41,19 +45,6 @@ echo 'Initializing submodule(s)'
 git submodule update --init --recursive
 
 if [ "$DISPLAY" != "" ]; then
-    echo 'Installing qtpass'
-    git clone https://github.com/IJHack/qtpass $HOME/qtpass_tmp >&- 2>&-
-    pushd $HOME/qtpass_tmp >&- 2>&-
-    qmake && make && sudo make install
-    popd >&- 2>&-
-    rm -rf $HOME/qtpass_tmp
-
-    echo 'Installing pass-server-node'
-    pushd $HOME/.dotfiles/node-server-node >&- 2>&-
-    npm install
-    npm config set pass-server-node:port 8088
-    popd >&- 2>&-
-
     echo 'Installing rofi-pass'
     git clone https://github.com/carnager/rofi-pass $HOME/rofi-pass_tmp >&- 2>&-
     pushd $HOME/rofi-pass_tmp >&- 2>&-
@@ -70,7 +61,7 @@ if [ "$DISPLAY" != "" ]; then
     sudo pip install powerline-status
 
     if ! [ -z ${I_DEV+x} ]; then
-        sudo easy_install uncommitted
+        sudo easy_install3 uncommitted
     fi
 
     echo 'Setting font and color in gnome-terminal (as fallback)'
