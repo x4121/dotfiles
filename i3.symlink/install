@@ -14,12 +14,15 @@ libxkbcommon-dev
 libxkbcommon-x11-dev
 libxcb-cursor-dev
 libxcb-xinerama0-dev
+libev-dev
 git clone https://www.github.com/Airblader/i3
 
 i3status
 i3blocks
 xbacklight
-git clone https://github.com/eBrnd/i3lock-color
+libxcb-dpms0-dev
+libpam0g-dev
+git clone https://github.com/Arcaena/i3lock-color
 feh
 scrot
 
