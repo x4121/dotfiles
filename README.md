@@ -30,3 +30,5 @@ My dotfiles
 [Dell C1660 installation](doc/Dell_C1660.md)
 
 [GnuPG key generation guide](doc/gpg.md)
+
+[Trackpad deactivation guide](doc/trackpad.md)
