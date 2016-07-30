@@ -2,10 +2,10 @@
 My dotfiles
 
 ## Contents
-* fish shell config
-* vim config
+* fish-shell config
+* vim config and plugins/Vundle
 * config for this other editor (emacs)
-* tmux config
+* tmux config and plugins
 * URxvt config
 * mutt config (unfinished)
 * taskwarrior config
@@ -15,12 +15,13 @@ My dotfiles
 * solarized colors for most tools
 * devilspie scripts
 * i3 config (unfinished/testing)
+* GnomeShell extensions
 
 ## Install
 `curl -L https://raw.githubusercontent.com/x4121/dotfiles/master/install.sh | sh`
 
 ## Warning
-* This project is currently only tested against the most recent Ubuntu release (if even!)
+* This project is currently only tested against the most recent Ubuntu-Gnome release (if even!)
 * The install script will overwrite files,
   read the [install.sh](install.sh) and
   [symlinks.sh](symlinks.sh) if you want to know which.

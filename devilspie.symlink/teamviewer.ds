@@ -1,8 +1,0 @@
-(if
-  (or
-    (is (application_name) "Teamviewer")
-    (is (window_name) "TeamViewer")
-    (is (window_name) "Computers & Contacts")
-  )
-  (close)
-)

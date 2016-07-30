@@ -20,6 +20,3 @@ fi
 if [ -d "$HOME/.bin" ] ; then
     PATH="$HOME/.bin:$PATH"
 fi
-
-# enable xcompose in gnome apps
-export GTK_IM_MODULE="xim"

@@ -1,28 +1,13 @@
 #!/bin/bash
 
-# get dist codename
-. /etc/os-release
-if [[ $ID = ubuntu ]]; then
-    CODENAME=`grep VERSION= /etc/os-release | tr -d '()"' | cut -d ' ' -f 2 | awk '{print "ubuntu-" tolower($0)}'`
-elif [[ $ID = debian ]]; then
-    CODENAME=`grep VERSION= /etc/os-release | tr -d '()"' | cut -d ' ' -f 2 | awk '{print "debian-" tolower($0)}'`
-fi
-
-echo 'Adding PPAs'
-# own ppa
-sudo apt-add-repository -y ppa:x4121/x4121 >&- 2>&-
-
 SW="apt-transport-tor\
-    dmtx-utils\
     ecryptfs-utils\
     exuberant-ctags\
     fish\
     gnupg2\
     htop\
     mercurial\
-    paperkey\
     ranger\
-    subversion\
     taskwarrior\
     torsocks\
     tree\
@@ -30,12 +15,7 @@ SW="apt-transport-tor\
 
 if [ "$DISPLAY" != "" ]; then
     # gnome-keyring-query
-    sudo apt-add-repository -y ppa:wiktel/ppa >&- 2>&-
-    # google chrome
-    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub \
-        | sudo apt-key add - >&- 2>&-
-    echo "deb http://dl.google.com/linux/chrome/deb/ stable main" \
-        | sudo tee -a /etc/apt/sources.list.d/google.list >&- 2>&-
+    #sudo apt-add-repository -y ppa:wiktel/ppa >&- 2>&-
     # scudcloud
     sudo apt-add-repository -y ppa:rael-gc/scudcloud >&- 2>&-
     # owncloud
@@ -43,17 +23,16 @@ if [ "$DISPLAY" != "" ]; then
         | sudo apt-key add - >&- 2>&-
     echo "deb http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Ubuntu_16.04/ /" \
         | sudo tee -a /etc/apt/sources.list.d/owncloud-client.list >&- 2>&-
+    # f.lux
+    sudo add-apt-repository ppa:nathan-renniewaldock/flux >&- 2>&-
 
     SW="$SW\
         chromium-browser\
-        compizconfig-settings-manager\
-        compiz-plugins-extra\
         dconf-tools\
         devilspie\
+        fluxgui\
         gawk\
-        gnome-keyring-query\
         gnome-tweak-tool\
-        google-chrome-stable\
         guake\
         mr\
         mutt\
@@ -66,7 +45,6 @@ if [ "$DISPLAY" != "" ]; then
         scudcloud\
         socat\
         tmux\
-        unity-tweak-tool\
         urlview\
         virtualbox\
         w3m\
@@ -108,9 +86,9 @@ if [ "$DISPLAY" != "" ]; then
             gradle\
             jq\
             maven\
+            openjdk-8-jdk\
             oracle-java7-installer\
             oracle-java8-installer\
-            oracle-java8-set-default\
             sbt\
             texlive-full\
             vagrant"
