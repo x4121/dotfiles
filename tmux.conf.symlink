@@ -1,5 +1,5 @@
 # set term
-set -g default-terminal "st-256color"
+set -g default-terminal "rxvt-unicode-256color"
 
 # automatically renumber windows
 set -g renumber-windows on
@@ -20,7 +20,7 @@ set-option -g mouse on
 setw -g mode-keys vi
 
 # toggle fullscreen
-bind -n F11 run "wmctrl -r :ACTIVE: -b toggle,fullscreen"
+#bind -n F11 run "wmctrl -r :ACTIVE: -b toggle,fullscreen"
 
 # synchronize all panes in a window
 bind y setw synchronize-panes
