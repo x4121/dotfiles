@@ -48,6 +48,7 @@ if [ "$DISPLAY" != "" ]; then
         urlview\
         virtualbox\
         w3m\
+        wmctrl\
         xdotool"
 
     if ! [ -z ${I_HOME+x} ]; then
