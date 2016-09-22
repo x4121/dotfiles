@@ -48,3 +48,4 @@ include "%L"
 <Multi_key> <colon> <j>                 : "😂" U1F602 #joy emoji
 <Multi_key> <colon> <s>                 : "🙈" U1F648 #see no evil emoji
 <Multi_key> <colon> <n>                 : "🤓" U1F913 # nerd emoji
+<Multi_key> <colon> <d>                 : "ಠ_ಠ" # look of disapproval

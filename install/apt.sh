@@ -4,6 +4,7 @@ SW="apt-transport-tor\
     ecryptfs-utils\
     exuberant-ctags\
     fish\
+    fonts-lohit-knda\
     gnupg2\
     htop\
     mercurial\
