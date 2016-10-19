@@ -67,6 +67,7 @@
       ("basicstyle" "\\footnotesize\\ttfamily")
       ("numbers" "left")
       ("numberstyle" "\\tiny")))
+(setq org-export-allow-bind-keywords "t")
 
 (setq inhibit-startup-message t)
 (setq truncate-lines nil)
