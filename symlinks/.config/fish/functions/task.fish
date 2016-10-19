@@ -4,10 +4,14 @@ function task
         __task.sync
     end
 
-    command task $argv
+    if test $status -eq 0
+        command task $argv
 
-    # sync if something changed
-    __task.sync > /dev/null ^ /dev/null
+        # sync if something changed
+        __task.sync > /dev/null ^ /dev/null
+    else
+        set -e __task_last_sync
+    end
 end
 
 function __task.sync
