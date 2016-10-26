@@ -112,6 +112,10 @@ setlocal foldmethod=expr
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Map for pdfpc
 map <localleader>pb :OrgExportToBeamerPDF<cr>:!pdfpc %:r.pdf<cr>
+" Map for org-latex-export-to-pdf
+map <leader>xp :! emacs % -q --load %:p:h/emacs.init --batch -f org-latex-export-to-pdf --kill<cr><cr>
+" Map for org-beamer-export-to-pdf
+map <leader>xb :! emacs % -q --load %:p:h/emacs.init --batch -f org-beamer-export-to-pdf --kill<cr><cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => tagbar
