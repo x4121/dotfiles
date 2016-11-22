@@ -18,14 +18,14 @@ if [ "$DISPLAY" != "" ]; then
     # gnome-keyring-query
     #sudo apt-add-repository -y ppa:wiktel/ppa >&- 2>&-
     # scudcloud
-    sudo apt-add-repository -y ppa:rael-gc/scudcloud >&- 2>&-
+    #sudo apt-add-repository -y ppa:rael-gc/scudcloud >&- 2>&-
     # owncloud
     wget -q -O - http://download.opensuse.org/repositories/isv:ownCloud:desktop/Ubuntu_16.04/Release.key \
         | sudo apt-key add - >&- 2>&-
     echo "deb http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Ubuntu_16.04/ /" \
         | sudo tee -a /etc/apt/sources.list.d/owncloud-client.list >&- 2>&-
     # f.lux
-    sudo add-apt-repository ppa:nathan-renniewaldock/flux >&- 2>&-
+    sudo add-apt-repository -y ppa:nathan-renniewaldock/flux >&- 2>&-
 
     SW="$SW\
         chromium-browser\
@@ -33,17 +33,16 @@ if [ "$DISPLAY" != "" ]; then
         devilspie\
         fluxgui\
         gawk\
-        gnome-tweak-tool\
         guake\
         mr\
         mutt\
         owncloud-client\
+        pass\
         pdf-presenter-console\
         python3-setuptools\
         rofi\
         rxvt-unicode-256color\
         samba\
-        scudcloud\
         socat\
         tmux\
         urlview\
@@ -51,6 +50,22 @@ if [ "$DISPLAY" != "" ]; then
         w3m\
         wmctrl\
         xdotool"
+
+    if [ "$DESKTOP_SESSION" = "gnome" ]; then
+        # arc-theme
+        wget -q -O - http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_15.04/Release.key \
+            | sudo apt-key add - >&- 2>&-
+        echo "deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /" \
+            | sudo tee -a /etc/apt/sources.list.d/arc-theme.list >&- 2>&-
+        # numix-icon-theme
+        sudo add-apt-repository -y ppa:numix/ppa >&- 2>&-
+
+        SW="$SW\
+            arc-theme\
+            gnome-tweak-tool\
+            numix-icon-theme-circle
+            "
+    fi
 
     if ! [ -z ${I_HOME+x} ]; then
         SW="$SW\
@@ -65,6 +80,10 @@ if [ "$DISPLAY" != "" ]; then
     if ! [ -z ${I_DEV+x} ]; then
         # oracle java
         sudo apt-add-repository -y ppa:webupd8team/java >&- 2>&-
+        echo debconf shared/accepted-oracle-license-v1-1 select true | \
+              sudo debconf-set-selections
+        echo debconf shared/accepted-oracle-license-v1-1 seen true | \
+              sudo debconf-set-selections
         # sbt
         sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 \
             --recv 642AC823 >&- 2>&-
@@ -73,23 +92,26 @@ if [ "$DISPLAY" != "" ]; then
         # gradle
         sudo apt-add-repository -y ppa:cwchien/gradle >&- 2>&-
         # docker
-        curl -sSL https://get.docker.com/gpg \
-            | sudo apt-key add - >&- 2>&-
-        curl -sSL https://get.docker.com/ | sh >&- 2>&-
-        sudo usermod -aG docker $USER >&- 2>&-
+        sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 \
+            --recv-keys 58118E89F3A912897C070ADBF76221572C52609D - >&- 2>&-
+        echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" \
+            | sudo tee -a /etc/apt/sources.list.d/docker.list >&- 2>&-
 
         SW="$SW\
+            autoconf\
             automake\
             build-essential\
             cmake\
+            docker-engine\
             emacs\
             golang\
             gradle\
             jq\
+            libtool\
             maven\
             openjdk-8-jdk\
             oracle-java7-installer\
-            oracle-java8-installer\
+            oracle-java8-set-default\
             sbt\
             texlive-full\
             vagrant"

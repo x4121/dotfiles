@@ -58,27 +58,27 @@ if [ "$DISPLAY" != "" ]; then
     dconf write /org/gnome/terminal/legacy/profiles:/:$profile/font "'Source Code Pro for Powerline Medium 12'"
     dconf write /org/gnome/terminal/legacy/profiles:/:$profile/use-system-font "false"
 
-    gnome-terminal-colors-solarized/install.sh -s dark -p Default
+    gnome-terminal-colors-solarized/install.sh -s dark -p Default --skip-dircolors
 fi
 
 if [ "$DESKTOP_SESSION" = "gnome" ]; then
     SHELL_VER="3.18"
-    gnomeshell-install="$HOME/.dotfiles/bin.symlink/gnomeshell-extension-manage \
+    gnomeshell_install="$HOME/.dotfiles/bin.symlink/gnomeshell-extension-manage \
         --install --version $SHELL_VER --extension-id"
     # media player indicator
-    $gnomeshell-install 55
+    $gnomeshell_install 55
     # dash to dock
-    $gnomeshell-install 307
+    $gnomeshell_install 307
     # hide legacy tray
-    $gnomeshell-install 967
+    $gnomeshell_install 967
     # topicons plus
-    $gnomeshell-install 1031
+    $gnomeshell_install 1031
     # no topleft hot corner
-    $gnomeshell-install 118
+    $gnomeshell_install 118
     # notification alert
-    $gnomeshell-install 258
+    $gnomeshell_install 258
     # openweather
-    $gnomeshell-install 750
+    $gnomeshell_install 750
 
 fi
 

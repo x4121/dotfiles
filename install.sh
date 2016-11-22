@@ -8,7 +8,7 @@ if [ $? -ne 0 ]; then
     return -1
 fi
 
-sudo apt-get install -y git > /dev/null 2>&1
+sudo apt-get install -y git apt-transport-https > /dev/null 2>&1
 git clone https://github.com/x4121/dotfiles $HOME/.dotfiles
 
 case $(hostname -s) in
