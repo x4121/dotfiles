@@ -13,3 +13,6 @@
 [submodule "vim.symlink/bundle/Vundle.vim"]
 	path = vim.symlink/bundle/Vundle.vim
 	url = https://github.com/VundleVim/Vundle.vim
+[submodule "dircolors-solarized"]
+	path = dircolors-solarized
+	url = gh:seebi/dircolors-solarized
