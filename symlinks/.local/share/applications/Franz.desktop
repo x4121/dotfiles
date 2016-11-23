@@ -1,0 +1,9 @@
+[Desktop Entry]
+Terminal=false
+Type=Application
+Categories=Network;Chat;
+Name=Franz
+Comment=Franz is a free messaging app
+Keywords=slack;chat;instant-messaging;facebook;gmail;whatsapp;
+Exec=/opt/franz/Franz
+Icon=/opt/franz/resources/app.asar.unpacked/assets/franz.svg
