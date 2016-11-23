@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <gconf>
-	<entry name="colortemp" mtime="1479561050" type="string">
+	<entry name="colortemp" mtime="1479890188" type="string">
 		<stringvalue>3400</stringvalue>
 	</entry>
 	<entry name="longitude" mtime="1469921777" type="string">
