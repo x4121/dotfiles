@@ -107,6 +107,7 @@ if [ "$DISPLAY" != "" ]; then
             golang\
             gradle\
             jq\
+            knockd\
             libtool\
             maven\
             openjdk-8-jdk\

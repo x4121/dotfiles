@@ -19,6 +19,9 @@ if ! [ -z ${I_DEV+x} ]; then
     git clone https://github.com/rbenv/rbenv.git $HOME/.rbenv
     git clone https://github.com/rbenv/ruby-build.git \
         $HOME/.rbenv/plugins/ruby-build
+
+    echo 'Installing Hammer-CLI'
+    sudo gem install hammer_cli hammer_cli_foreman
 fi
 
 echo 'Setting fish as default shell'
