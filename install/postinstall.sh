@@ -50,6 +50,14 @@ if [ "$DISPLAY" != "" ]; then
     sudo easy_install3 pip
     sudo pip install powerline-status
 
+    echo 'Install Franz'
+    sudo mkdir -p /opt/franz
+    sudo wget -O /opt/franz/Franz.tgz \
+        https://github.com/meetfranz/franz-app/releases/download/4.0.4/Franz-linux-x64-4.0.4.tgz \
+        2>&-
+    sudo tar xzf /opt/franz/Franz.tgz -C /opt/franz
+    sudo rm /opt/franz/Franz.tgz
+
     if ! [ -z ${I_DEV+x} ]; then
         sudo easy_install3 uncommitted
     fi
