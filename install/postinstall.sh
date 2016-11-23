@@ -22,6 +22,8 @@ if ! [ -z ${I_DEV+x} ]; then
 
     echo 'Installing Hammer-CLI'
     sudo gem install hammer_cli hammer_cli_foreman
+    sudo mkdir /var/log/hammer
+    sudo chown $USER:$USER /var/log/hammer
 fi
 
 echo 'Setting fish as default shell'
