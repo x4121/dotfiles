@@ -15,4 +15,4 @@
 	url = https://github.com/VundleVim/Vundle.vim
 [submodule "dircolors-solarized"]
 	path = dircolors-solarized
-	url = gh:seebi/dircolors-solarized
+	url = https://github.com/seebi/dircolors-solarized
