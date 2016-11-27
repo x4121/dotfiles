@@ -4,7 +4,6 @@
     (matches (window_name) "^.*-.Evolution")
   )
   (begin
-    (set_workspace 2)
     (geometry "960x1053+960+27")
   )
 )

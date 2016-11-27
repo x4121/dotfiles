@@ -4,5 +4,6 @@ Vestion=1.0
 Name=Franz
 Comment=Franz startup script
 Exec=/opt/franz/Franz
+X-GNOME-Autostart-enabled=true
 StartupNotify=false
 Terminal=false

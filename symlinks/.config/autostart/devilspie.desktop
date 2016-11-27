@@ -2,5 +2,4 @@
 Type=Application
 Name=Devilspie
 X-GNOME-Autostart-enabled=true
-Exec=timeout 6 devilspie
-
+Exec=devilspie
