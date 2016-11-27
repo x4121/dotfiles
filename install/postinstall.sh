@@ -103,3 +103,18 @@ popd >&- 2>&-
 echo 'Installing Vim-Plugins'
 vim +PluginInstall +qall
 rm -f $HOME/.vim_mru_files
+
+echo 'Making Vim the default editor'
+mimeapps=$HOME/.local/share/applications/mimeapps.list
+mimehead="[Default Applications]"
+if [ ! -f "$mimeapps" ]; then
+    rm -rf $mimeapps
+    touch $mimeapps
+fi
+if grep -vq "$mimehead" "$mimeapps"; then
+    echo $mimehead > $mimeapps
+fi
+cat /usr/share/applications/default.list \
+    | grep gedit\.desktop \
+    | sed 's/gedit\.desktop/vim.desktop/' \
+    >> $mimeapps
