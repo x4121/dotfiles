@@ -1,0 +1,9 @@
+{
+    "name": "Solarized dark for vim",
+    "groups": {
+        "webdevicons": {
+            "fg": "solarized:base1",
+            "bg": "solarized:base02"
+        }
+    }
+}

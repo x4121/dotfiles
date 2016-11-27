@@ -1,6 +1,3 @@
-[submodule "powerline_fonts"]
-	path = powerline_fonts
-	url = https://github.com/powerline/fonts
 [submodule "mutt.symlink/mutt-colors-solarized"]
 	path = mutt.symlink/mutt-colors-solarized
 	url = https://github.com/altercation/mutt-colors-solarized

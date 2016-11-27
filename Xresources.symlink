@@ -1,15 +1,15 @@
 ! ------------------------------------------------------------------------------
 ! ROFI settings
 ! ------------------------------------------------------------------------------
-rofi.color-enabled: true
-rofi.color-window: #002b36, #002b36, #073642
-rofi.color-normal: #002b36, #93a1a1, #073642, #2aa198, #eee8d5
-rofi.color-active: #002b36, #268bd2, #073642, #268bd2, #eee8d5
-rofi.color-urgent: #002b37, #d33682, #073642, #d33682, #eee8d5
-rofi.monitor: -5
-rofi.terminal: urxvt -e tmux 
-rofi.ssh-command: {terminal} new -d '{ssh-client} {host}'\; attach\;
-rofi.run-shell-command: {terminal} new -d '{cmd}'\; attach\;
+rofi.color-enabled:         true
+rofi.color-window:          #002b36, #002b36, #073642
+rofi.color-normal:          #002b36, #93a1a1, #073642, #2aa198, #eee8d5
+rofi.color-active:          #002b36, #268bd2, #073642, #268bd2, #eee8d5
+rofi.color-urgent:          #002b37, #d33682, #073642, #d33682, #eee8d5
+rofi.monitor:               -5
+rofi.terminal:              urxvt -e tmux
+rofi.ssh-command:           {terminal} new -d '{ssh-client} {host}'\; attach\;
+rofi.run-shell-command:     {terminal} new -d '{cmd}'\; attach\;
 
 
 ! ------------------------------------------------------------------------------
@@ -36,12 +36,12 @@ URxvt.lineSpace:            0
 
 ! Fonts
 URxvt.allow_bold:           true
-URxvt.intensityStyles: false
-URxvt*font:                 xft:Source Code Pro for Powerline, Medium:pixelsize=10:antialias=true:hinting=true
-URxvt*boldFont:             xft:Source Code Pro for Powerline, Bold:pixelsize=10:antialias=true:hinting=true
+URxvt.intensityStyles:      false
+URxvt*font:                 xft:SauceCodePro Nerd Font, Medium:pixelsize=10:antialias=true:hinting=true
+URxvt*boldFont:             xft:SauceCodePro Nerd Font, Bold:pixelsize=10:antialias=true:hinting=true
 
 ! Fix font space
-URxvt*letterSpace: -1
+URxvt*letterSpace:          -2
 
 ! Scrollbar
 URxvt.scrollStyle:          rxvt
@@ -61,41 +61,41 @@ URxvt.cursorUnderline:      false
 URxvt.pointerBlank:         true
 
 !!Source http://github.com/altercation/solarized
-*background: #002b36
-*foreground: #657b83
-*fadeColor: #002b36
-*cursorColor: #93a1a1
-*pointerColorBackground: #586e75
-*pointerColorForeground: #93a1a1
+*background:                #002b36
+*foreground:                #657b83
+*fadeColor:                 #002b36
+*cursorColor:               #93a1a1
+*pointerColorBackground:    #586e75
+*pointerColorForeground:    #93a1a1
 
 !! black dark/light
-*color0: #073642
-*color8: #002b36
+*color0:                    #073642
+*color8:                    #002b36
 
 !! red dark/light
-*color1: #dc322f
-*color9: #cb4b16
+*color1:                    #dc322f
+*color9:                    #cb4b16
 
 !! green dark/light
-*color2: #859900
-*color10: #586e75
+*color2:                    #859900
+*color10:                   #586e75
 
 !! yellow dark/light
-*color3: #b58900
-*color11: #657b83
+*color3:                    #b58900
+*color11:                   #657b83
 
 !! blue dark/light
-*color4: #268bd2
-*color12: #839496
+*color4:                    #268bd2
+*color12:                   #839496
 
 !! magenta dark/light
-*color5: #d33682
-*color13: #6c71c4
+*color5:                    #d33682
+*color13:                   #6c71c4
 
 !! cyan dark/light
-*color6: #2aa198
-*color14: #93a1a1
+*color6:                    #2aa198
+*color14:                   #93a1a1
 
 !! white dark/light
-*color7: #eee8d5
-*color15: #fdf6e3
+*color7:                    #eee8d5
+*color15:                   #fdf6e3

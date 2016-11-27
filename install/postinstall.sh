@@ -42,9 +42,19 @@ if [ "$DISPLAY" != "" ]; then
     popd >&- 2>&-
     rm -rf $HOME/rofi-pass_tmp
 
-    echo 'Installing powerline fonts'
-    mkdir -p $HOME/.fonts
-    source powerline_fonts/install.sh
+    echo 'Installing nerd-fonts'
+    fontUrl="https://github.com/ryanoasis/nerd-fonts/raw/0.9.0/patched-fonts/SourceCodePro"
+    mkdir -p $HOME/.local/share/fonts
+    pushd $HOME/.local/share/fonts >&- 2>&-
+    OLDIFS=$IFS; IFS=','
+    for i in Medium,%20Medium Regular,"" Bold,%20Bold; do
+        set -- $i
+        curl -fLo "SauceCodeProNerd $1.ttf" \
+            "$fontUrl/$1/complete/Sauce%20Code%20Pro$2%20Nerd%20Font%20Complete%20Mono.ttf" \
+            2>&-
+    done
+    IFS=$OLDIFS
+    popd >&- 2>&-
 
     echo 'Installing Powerline'
     sudo easy_install3 pip
@@ -68,7 +78,7 @@ if [ "$DISPLAY" != "" ]; then
         profile=$(dconf list /org/gnome/terminal/legacy/profiles:/ | tr -d ":/")
     fi
     dconf write /org/gnome/terminal/legacy/profiles:/:$profile/visible-name "'Default'"
-    dconf write /org/gnome/terminal/legacy/profiles:/:$profile/font "'Source Code Pro for Powerline Medium 12'"
+    dconf write /org/gnome/terminal/legacy/profiles:/:$profile/font "'SauceCodePro Nerd Font Medium 12'"
     dconf write /org/gnome/terminal/legacy/profiles:/:$profile/use-system-font "false"
 
     gnome-terminal-colors-solarized/install.sh -s dark -p Default --skip-dircolors

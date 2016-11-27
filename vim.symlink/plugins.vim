@@ -17,7 +17,6 @@ Plugin 'derekwyatt/vim-scala'
 Plugin 'ervandew/supertab'
 Plugin 'fatih/vim-go'
 Plugin 'jceb/vim-orgmode'
-" Plugin 'jceb/vim-orgmode'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'junegunn/goyo.vim'
 Plugin 'kien/ctrlp.vim'
@@ -41,6 +40,8 @@ Plugin 'taglist.vim'
 Plugin 'listmaps.vim'
 
 Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+Plugin 'ryanoasis/vim-devicons'
 
 call vundle#end()
 filetype plugin indent on
