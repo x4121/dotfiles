@@ -5,3 +5,4 @@
 /mutt.symlink/accounts/*
 !/mutt.symlink/accounts/example.tld
 /tmux.symlink/plugins/
+/taskwarrior/taskd.conf

@@ -1,0 +1,5 @@
+taskd.credentials=$org\/$user\/$key
+taskd.certificate=\/path\/to\/user.cert.pem
+taskd.key=\/path\/to\/user.key.pem
+taskd.ca=\/path\/to\/ca.cert.pem
+taskd.server=$host:$port
