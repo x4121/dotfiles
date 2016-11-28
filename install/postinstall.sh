@@ -124,7 +124,7 @@ fi
 if grep -vq "$mimehead" "$mimeapps"; then
     echo $mimehead > $mimeapps
 fi
-cat /usr/share/applications/default.list \
+cat /usr/share/applications/defaults.list \
     | grep gedit\.desktop \
     | sed 's/gedit\.desktop/vim.desktop/' \
     >> $mimeapps
