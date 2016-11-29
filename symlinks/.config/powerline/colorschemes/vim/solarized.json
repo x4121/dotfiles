@@ -5,5 +5,19 @@
             "fg": "solarized:base1",
             "bg": "solarized:base02"
         }
+    },
+    "mode_translations": {
+        "i": {
+            "groups": {
+                "webdevicons": {
+                    "fg": "solarized:base2",
+                    "bg": "solarized:base01"
+                },
+                "virtcol_current_gradient": {
+                    "bg": "solarized:base3",
+                    "fg": "solarized:green"
+                }
+            }
+        }
     }
 }
