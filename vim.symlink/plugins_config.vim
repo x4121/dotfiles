@@ -95,6 +95,15 @@ let g:syntastic_scala_checkers = ['fsc']
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => ensime-vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Typechecking after writing
+autocmd BufWritePost *.scala silent :EnTypeCheck
+
+" Easy Type Inspection
+nnoremap <localleader>t :EnTypeCheck<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-fish
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set up :make to use fish for syntax checking.
