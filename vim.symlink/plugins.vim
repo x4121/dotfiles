@@ -27,6 +27,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
+Plugin 'severin-lemaignan/vim-minimap'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-commentary'
@@ -44,6 +45,7 @@ Plugin 'listmaps.vim'
 
 Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 
+" load devicons last
 Plugin 'ryanoasis/vim-devicons'
 
 call vundle#end()
