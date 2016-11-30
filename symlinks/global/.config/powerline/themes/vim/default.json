@@ -78,19 +78,18 @@
                 "exclude_modes": ["nc"],
                 "priority": 60,
                 "before": "[",
-                    "after": "]"
+                "after": "]"
             },
             {
                 "function": "file_type",
                 "exclude_modes": ["nc"],
-                "priority": 30,
-                "after": " "
+                "priority": 30
             },
             {
                 "function": "vim_devicons.powerline.segments.webdevicons",
                 "priority": 40,
                 "draw_soft_divider": false,
-                "after": " "
+                "before": " "
             },
             {
                 "function": "line_percent",
