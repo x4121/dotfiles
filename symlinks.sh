@@ -13,7 +13,7 @@ for file in $linkables ; do
     ln -s $DOTFILES/$file $target
 done
 
-linkables=$( find symlinks/{global,$USER} -type f )
+linkables=$( find symlinks/{global,$USER} -type f -o -type l )
 for file in $linkables ; do
     target="$HOME/$( echo $file | sed "s/symlinks\/[^\/]*\///" )"
     echo "creating symlink for $target"
