@@ -4,6 +4,7 @@
     (is (window_name) "Franz")
   ) 
   (begin 
+    (set_viewport 1)
     (geometry "960x1053+0+27")
   )
 )

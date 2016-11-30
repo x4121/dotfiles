@@ -2,8 +2,10 @@
 
 DOTFILES=$HOME/.dotfiles
 
+pushd $DOTFILES >&- 2>&-
+
 echo 'creating symlinks'
-linkables=$( find $DOTFILES -maxdepth 1 -name "*.symlink" -exec basename {} \; )
+linkables=$( find . -maxdepth 1 -name "*.symlink" -exec basename {} \; )
 for file in $linkables ; do
     target="$HOME/.$( basename $file ".symlink" )"
     echo "creating symlink for $target"
@@ -11,11 +13,13 @@ for file in $linkables ; do
     ln -s $DOTFILES/$file $target
 done
 
-linkables=$( find symlinks -type f )
+linkables=$( find symlinks/{global,$USER} -type f )
 for file in $linkables ; do
-    target="$HOME/$( echo $file | sed "s/symlinks\///" )"
+    target="$HOME/$( echo $file | sed "s/symlinks\/[^\/]*\///" )"
     echo "creating symlink for $target"
     mkdir -p $( dirname $target )
     rm -rf $target >&- 2>&-
     ln -s $DOTFILES/$file $target
 done
+
+popd >&- 2>&-
