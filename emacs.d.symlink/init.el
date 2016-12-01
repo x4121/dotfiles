@@ -9,7 +9,9 @@
                      powerline
                      powerline-evil
                      color-theme-sanityinc-solarized
-                     org-ref))
+                     org-ref
+                     sbt-mode
+                     scala-mode))
 
 (package-initialize)
 
@@ -69,10 +71,21 @@
       ("numberstyle" "\\tiny")))
 (setq org-export-allow-bind-keywords "t")
 
-(setq inhibit-startup-message t)
-(setq truncate-lines nil)
+(setq 
+  inhibit-startup-message t
+  create-lockfiles nil
+  make-backup-files nil
+  truncate-lines nil
+  line-number-mode t
+  column-number-mode t
+  scroll-error-top-bottom t
+  show-paren-delay 0.5
+  use-package-always-ensure t
+  sentence-end-double-space nil)
+(setq-default
+  indent-tabs-mode nil
+  tab-with 4
+  c-base-offset 4)
 (fset 'yes-or-no-p 'y-or-n-p)
-(setq line-number-mode t)
-(setq column-number-mode t)
 (when (fboundp 'toggle-scroll-bar)
   (toggle-scroll-bar -1))
