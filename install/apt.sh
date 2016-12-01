@@ -111,9 +111,10 @@ if [ "$DISPLAY" != "" ]; then
             libtool\
             maven\
             openjdk-8-jdk\
-            oracle-java7-installer\
+            oracle-java9-installer\
             oracle-java8-set-default\
             sbt\
+            shellcheck\
             texlive-full\
             vagrant"
     fi

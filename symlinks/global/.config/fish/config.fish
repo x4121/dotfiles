@@ -1,15 +1,3 @@
-# fix delete in st
-switch $TERM
-    case 'st-*'
-        tput smkx
-        function st_smkx --on-event fish_postexec
-            tput smkx
-        end
-        function st_rmkx --on-event fish_preexec
-            tput rmkx
-        end
-end
-
 # dircolors
 eval (dircolors -c $HOME/.dircolors | sed 's/>&\/dev\/null$//')
 

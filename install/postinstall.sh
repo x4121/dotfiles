@@ -20,10 +20,8 @@ if ! [ -z ${I_DEV+x} ]; then
     git clone https://github.com/rbenv/ruby-build.git \
         $HOME/.rbenv/plugins/ruby-build
 
-    echo 'Installing Hammer-CLI'
-    sudo gem install hammer_cli hammer_cli_foreman
-    sudo mkdir /var/log/hammer
-    sudo chown $USER:$USER /var/log/hammer
+    echo 'Installing gems'
+    sudo gem install gem-shut-the-fuck-up bundler
 fi
 
 echo 'Setting fish as default shell'
