@@ -100,8 +100,12 @@ let g:syntastic_scala_checkers = ['fsc']
 " Typechecking after writing
 autocmd BufWritePost *.scala silent :EnTypeCheck
 
-" Easy Type Inspection
-nnoremap <localleader>t :EnTypeCheck<CR>
+au FileType scala nnoremap <silent> K :EnType<cr>
+
+au FileType scala nnoremap <leader>r :EnRename<cr>
+au FileType scala nnoremap <leader>i :EnAddImport<cr>
+au FileType scala nnoremap <leader>I :EnSuggestImport<cr>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-fish
@@ -122,12 +126,12 @@ setlocal foldmethod=expr
 " Map for pdfpc
 map <localleader>pb :OrgExportToBeamerPDF<cr>:!pdfpc %:r.pdf<cr>
 " Map for org-latex-export-to-pdf
-map <leader>xp :! emacs % -q --load %:p:h/emacs.init --batch -f org-latex-export-to-pdf --kill<cr><cr>
+au FileType org map <leader>xp :! emacs % -q --load %:p:h/emacs.init --batch -f org-latex-export-to-pdf --kill<cr><cr>
 " Map for org-beamer-export-to-pdf
-map <leader>xb :! emacs % -q --load %:p:h/emacs.init --batch -f org-beamer-export-to-pdf --kill<cr><cr>
+au FileType org map <leader>xb :! emacs % -q --load %:p:h/emacs.init --batch -f org-beamer-export-to-pdf --kill<cr><cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => tagbar
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Map for tagbar
-nmap <F8> :TagbarToggle<cr>
+nmap <silent><leader>tt :TagbarToggle<cr>
