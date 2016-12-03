@@ -55,7 +55,7 @@ if [ "$DISPLAY" != "" ]; then
     popd >&- 2>&-
 
     echo 'Installing Powerline'
-    sudo easy_install3 pip
+    sudo easy_install pip
     sudo pip install powerline-status
 
     echo 'Install Franz'
@@ -67,7 +67,7 @@ if [ "$DISPLAY" != "" ]; then
     sudo rm /opt/franz/Franz.tgz
 
     if ! [ -z ${I_DEV+x} ]; then
-        sudo easy_install3 uncommitted
+        sudo easy_install uncommitted
     fi
 
     echo 'Setting font and color in gnome-terminal (as fallback)'

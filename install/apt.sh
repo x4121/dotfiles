@@ -12,7 +12,7 @@ SW="apt-transport-tor\
     taskwarrior\
     torsocks\
     tree\
-    vim-gnome"
+    vim-gnome-py2"
 
 if [ "$DISPLAY" != "" ]; then
     # gnome-keyring-query
@@ -36,7 +36,7 @@ if [ "$DISPLAY" != "" ]; then
         owncloud-client\
         pass\
         pdf-presenter-console\
-        python3-setuptools\
+        python2-setuptools\
         redshift\
         rofi\
         rxvt-unicode-256color\
