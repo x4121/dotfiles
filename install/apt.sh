@@ -17,8 +17,6 @@ SW="apt-transport-tor\
 if [ "$DISPLAY" != "" ]; then
     # gnome-keyring-query
     #sudo apt-add-repository -y ppa:wiktel/ppa >&- 2>&-
-    # scudcloud
-    #sudo apt-add-repository -y ppa:rael-gc/scudcloud >&- 2>&-
     # owncloud
     wget -q -O - http://download.opensuse.org/repositories/isv:ownCloud:desktop/Ubuntu_16.04/Release.key \
         | sudo apt-key add - >&- 2>&-
