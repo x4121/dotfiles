@@ -24,14 +24,11 @@ if [ "$DISPLAY" != "" ]; then
         | sudo apt-key add - >&- 2>&-
     echo "deb http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Ubuntu_16.04/ /" \
         | sudo tee -a /etc/apt/sources.list.d/owncloud-client.list >&- 2>&-
-    # f.lux
-    sudo add-apt-repository -y ppa:nathan-renniewaldock/flux >&- 2>&-
 
     SW="$SW\
         chromium-browser\
         dconf-tools\
         devilspie\
-        fluxgui\
         gawk\
         guake\
         mr\
@@ -40,6 +37,7 @@ if [ "$DISPLAY" != "" ]; then
         pass\
         pdf-presenter-console\
         python3-setuptools\
+        redshift\
         rofi\
         rxvt-unicode-256color\
         samba\

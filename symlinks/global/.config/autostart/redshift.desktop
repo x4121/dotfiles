@@ -1,7 +1,5 @@
 [Desktop Entry]
-Icon=fluxgui
 Type=Application
-Name=f.lux indicator applet
+Name=redshift
 X-GNOME-Autostart-enabled=true
-Exec=fluxgui
-
+Exec=redshift -t 6500:3500 -l 48.2:11.5
