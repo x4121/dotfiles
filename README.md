@@ -4,7 +4,7 @@ My dotfiles
 ## Contents
 * fish-shell config
 * vim config and plugins/Vundle
-* config for this other editor (emacs)
+* config and plugins for this other editor (emacs)
 * tmux config and plugins
 * URxvt config
 * mutt config (unfinished)
@@ -16,6 +16,7 @@ My dotfiles
 * devilspie scripts
 * i3 config (unfinished/testing)
 * GnomeShell extensions
+* sbt config and plugins
 
 ## Install
 `curl -L https://raw.githubusercontent.com/x4121/dotfiles/master/install.sh | sh`
