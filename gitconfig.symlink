@@ -1,7 +1,7 @@
 # gitconfig
 [user]
     name = Armin Grodon
-    email = armin.grodon@googlemail.com
+    email = me@armingrodon.de
 [github]
     user = x4121
 [push]
