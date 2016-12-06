@@ -139,6 +139,10 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
+" Set background transparency
+hi Normal ctermbg=none
+hi NonText ctermbg=none
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
