@@ -39,6 +39,7 @@ if [ "$DISPLAY" != "" ]; then
         rofi\
         rxvt-unicode-256color\
         samba\
+        secret-tool\
         socat\
         tmux\
         urlview\
