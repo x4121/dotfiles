@@ -1,0 +1,5 @@
+/cache
+/local.default
+/accounts/*
+!/accounts/example.tld
+!/accounts/example.tld.sig

@@ -2,6 +2,7 @@ set from           = "user@example.tld"
 set hostname       = "example.tld"
 set imap_user      = "$from"
 set imap_pass      = `gnome-keyring-query get mail.example.tld`
+set signature      = "./example.tld.sig"
 
 set folder         = "imaps://imap.example.tld"
 set spoolfile     = "+INBOX"
