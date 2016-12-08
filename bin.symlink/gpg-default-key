@@ -1,0 +1,8 @@
+#!/bin/bash
+default_key=$(grep -Po "(?<=^default-key ).*" "$HOME/.gnupg/gpg.conf")
+
+if [[ -n ${default_key// } ]]; then
+    echo "$default_key"
+else
+    exit 1
+fi
