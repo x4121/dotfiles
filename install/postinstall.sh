@@ -97,7 +97,7 @@ if [ "$DESKTOP_SESSION" = "gnome" ]; then
     # no topleft hot corner
     $gnomeshell_install 118
     # notification alert
-    $gnomeshell_install 258
+    #$gnomeshell_install 258
     # openweather
     $gnomeshell_install 750
 

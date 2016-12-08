@@ -296,6 +296,7 @@ map <leader>std :setlocal spell<cr>:setlocal spell spelllang=de_de<cr>
 map <leader>ste :setlocal spell<cr>:setlocal spell spelllang=en_us<cr>
 
 " Shortcuts using <leader>
+" next, previous, add, delete, suggest, autocorrect
 map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
