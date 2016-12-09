@@ -13,7 +13,7 @@ rofi.run-shell-command:     {terminal} new -d '{cmd}'\; attach\;
 
 
 ! ------------------------------------------------------------------------------
-! URxvt settings
+! Xft settings
 ! ------------------------------------------------------------------------------
 Xft.dpi:                    96
 Xft.antialias:              false
@@ -37,11 +37,11 @@ URxvt.lineSpace:            0
 ! Fonts
 URxvt.allow_bold:           true
 URxvt.intensityStyles:      false
-URxvt*font:                 xft:SauceCodePro Nerd Font, Medium:pixelsize=10:antialias=true:hinting=true
-URxvt*boldFont:             xft:SauceCodePro Nerd Font, Bold:pixelsize=10:antialias=true:hinting=true
+URxvt.font:                 xft:SauceCodePro Nerd Font, Medium:pixelsize=10:antialias=true:hinting=true
+URxvt.boldFont:             xft:SauceCodePro Nerd Font, Bold:pixelsize=10:antialias=true:hinting=true
 
 ! Fix font space
-URxvt*letterSpace:          -2
+URxvt.letterSpace:          -2
 
 ! Scrollbar
 URxvt.scrollStyle:          rxvt
@@ -54,12 +54,26 @@ URxvt.urlLauncher:          chromium-browser
 
 ! Cursor
 URxvt.cursorBlink:          true
-URxvt.cursorColor:          #657b83
 URxvt.cursorUnderline:      false
 
 ! Pointer
 URxvt.pointerBlank:         true
 
+
+! ------------------------------------------------------------------------------
+! stjerm settings
+! ------------------------------------------------------------------------------
+stjerm.key: f12
+stjerm.autohide: false
+stjerm.font: SauceCodePro Nerd Font, Medium 11
+stjerm.opacity: 90
+stjerm.width: 100%
+stjerm.emulation: xterm-256color
+
+
+! ------------------------------------------------------------------------------
+! Terminal colors
+! ------------------------------------------------------------------------------
 !!Source http://github.com/altercation/solarized
 *background:                #002b36
 *foreground:                #657b83

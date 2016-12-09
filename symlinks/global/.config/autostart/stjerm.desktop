@@ -1,10 +1,7 @@
 [Desktop Entry]
 Type=Application
-Exec=guake
+Exec=stjermstart
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true
-Name[en_US]=Guake Terminal
-Name=Guake Terminal
-Comment[en_US]=
-Comment=
+Name=stjerm

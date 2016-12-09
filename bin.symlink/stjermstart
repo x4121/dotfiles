@@ -1,0 +1,2 @@
+#!/bin/sh
+stjerm -sh $(which tmux) -2

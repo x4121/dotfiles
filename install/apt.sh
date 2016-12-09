@@ -28,10 +28,10 @@ if [ "$DISPLAY" != "" ]; then
         dconf-tools\
         devilspie\
         gawk\
-        guake\
         mr\
         mutt\
         owncloud-client\
+        libsecret-tools\
         pass\
         pdf-presenter-console\
         python2-setuptools\
@@ -39,8 +39,8 @@ if [ "$DISPLAY" != "" ]; then
         rofi\
         rxvt-unicode-256color\
         samba\
-        libsecret-tools\
         socat\
+        stjerm\
         tmux\
         urlview\
         virtualbox\
