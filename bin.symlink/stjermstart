@@ -1,2 +1,2 @@
 #!/bin/sh
-stjerm -sh $(which tmux) -2
+stjerm -sh "$HOME/.bin/tmux256"
