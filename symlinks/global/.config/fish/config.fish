@@ -14,6 +14,9 @@ set PATH $HOME/.jenv/bin $PATH
 set PATH $HOME/.rbenv/{bin,shims} $PATH
 rbenv rehash > /dev/null ^&1
 
+# cabal
+set PATH $HOME/.cabal/bin $PATH
+
 # aliases
 alias gpg gpg2
 

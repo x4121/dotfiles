@@ -14,7 +14,7 @@ SW="apt-transport-tor\
     tree\
     vim-gnome-py2"
 
-if [ "$DISPLAY" != "" ]; then
+if [[ $DISPLAY != "" ]]; then
     # gnome-keyring-query
     #sudo apt-add-repository -y ppa:wiktel/ppa >&- 2>&-
     # owncloud
@@ -40,7 +40,6 @@ if [ "$DISPLAY" != "" ]; then
         rxvt-unicode-256color\
         samba\
         socat\
-        stjerm\
         tmux\
         urlview\
         virtualbox\
@@ -48,7 +47,7 @@ if [ "$DISPLAY" != "" ]; then
         wmctrl\
         xdotool"
 
-    if [ "$DESKTOP_SESSION" = "gnome" ]; then
+    if [[ $DESKTOP_SESSION = gnome ]]; then
         # arc-theme
         wget -q -O - http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_15.04/Release.key \
             | sudo apt-key add - >&- 2>&-
@@ -64,7 +63,7 @@ if [ "$DISPLAY" != "" ]; then
             "
     fi
 
-    if ! [ -z ${I_HOME+x} ]; then
+    if ! [[ -z ${I_HOME+x} ]]; then
         SW="$SW\
             gimp\
             inkscape\
@@ -74,7 +73,7 @@ if [ "$DISPLAY" != "" ]; then
             vlc"
     fi
 
-    if ! [ -z ${I_DEV+x} ]; then
+    if ! [[ -z ${I_DEV+x} ]]; then
         # oracle java
         sudo apt-add-repository -y ppa:webupd8team/java >&- 2>&-
         echo debconf shared/accepted-oracle-license-v1-1 select true | \
@@ -98,6 +97,7 @@ if [ "$DISPLAY" != "" ]; then
             autoconf\
             automake\
             build-essential\
+            cabal-install\
             cmake\
             docker-engine\
             emacs\
@@ -111,7 +111,6 @@ if [ "$DISPLAY" != "" ]; then
             oracle-java9-installer\
             oracle-java8-set-default\
             sbt\
-            shellcheck\
             texlive-full\
             vagrant"
     fi
@@ -122,4 +121,5 @@ sudo apt-get update >&- 2>&-
 sudo apt-get upgrade -y >&- 2>&-
 
 echo 'Installing software'
-sudo apt-get install -y `echo ${SW}` >&- 2>&-
+# shellcheck disable=2086
+sudo apt-get install -y $SW >&- 2>&-

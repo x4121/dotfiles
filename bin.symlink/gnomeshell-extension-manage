@@ -72,7 +72,7 @@ done
 # create temporary files
 TMP_DESC=$(mktemp -t ext-XXXXXXXX.txt)
 TMP_ZIP=$(mktemp -t ext-XXXXXXXX.zip)
-rm ${TMP_DESC} ${TMP_ZIP}
+rm "${TMP_DESC}" "${TMP_ZIP}"
 
 # get extension description
 wget --quiet --header='Accept-Encoding:none' -O "${TMP_DESC}" "${GNOME_SITE}/extension-info/?pk=${EXTENSION_ID}&shell_version=${GNOME_VERSION}"
@@ -83,14 +83,8 @@ EXTENSION_URL=$(grep "\"${GNOME_VERSION}\"" "${TMP_DESC}" | sed 's/^.*download_u
 # get extension name
 EXTENSION_NAME=$(sed 's/^.*name[\": ]*\([^\"]*\).*$/\1/' "${TMP_DESC}")
 
-# get extension description
-EXTENSION_DESCR=$(sed 's/^.*description[\": ]*\([^\"]*\).*$/\1/' "${TMP_DESC}")
-
 # get extension UUID
 EXTENSION_UUID=$(sed 's/^.*uuid[\": ]*\([^\"]*\).*$/\1/' "${TMP_DESC}")
-
-# check if page not found
-NOT_FOUND=$( grep "404 - Page not Found" "${TMP_DESC}")
 
 # if ID not known
 if [ ! -s "${TMP_DESC}" ];
@@ -113,15 +107,15 @@ then
     wget --quiet --header='Accept-Encoding:none' -O "${TMP_ZIP}" "${GNOME_SITE}${EXTENSION_URL}"
 
     # unzip extension to installation folder
-    ${INSTALL_SUDO} mkdir -p ${EXTENSION_PATH}/${EXTENSION_UUID}
-    ${INSTALL_SUDO} unzip -oq "${TMP_ZIP}" -d ${EXTENSION_PATH}/${EXTENSION_UUID}
-    ${INSTALL_SUDO} chmod +r ${EXTENSION_PATH}/${EXTENSION_UUID}/*
+    "${INSTALL_SUDO}" mkdir -p "${EXTENSION_PATH}/${EXTENSION_UUID}"
+    "${INSTALL_SUDO}" unzip -oq "${TMP_ZIP}" -d "${EXTENSION_PATH}/${EXTENSION_UUID}"
+    "${INSTALL_SUDO}" chmod +r "${EXTENSION_PATH}/${EXTENSION_UUID}/*"
 
     # list enabled extensions
     EXTENSION_LIST=$(gsettings get org.gnome.shell enabled-extensions | sed 's/^.\(.*\).$/\1/')
 
     # if extension not already enabled, declare it
-    EXTENSION_ENABLED=$(echo ${EXTENSION_LIST} | grep ${EXTENSION_UUID})
+    EXTENSION_ENABLED=$(echo "${EXTENSION_LIST}" | grep "${EXTENSION_UUID}")
     [ "$EXTENSION_ENABLED" = "" ] && gsettings set org.gnome.shell enabled-extensions "[${EXTENSION_LIST},'${EXTENSION_UUID}']"
 
     # success message
@@ -142,4 +136,4 @@ else
 fi
 
 # remove temporary files
-rm -f ${TMP_DESC} ${TMP_ZIP}
+rm -f "${TMP_DESC}" "${TMP_ZIP}"

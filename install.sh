@@ -3,13 +3,13 @@
 echo 'Installing dotfiles'
 
 apt > /dev/null 2>&1
-if [ $? -ne 0 ]; then
+if apt --version > /dev/null 2>&-; then
     echo 'Cannot run apt'
-    return -1
+    return 1
 fi
 
 sudo apt-get install -y git apt-transport-https > /dev/null 2>&1
-git clone https://github.com/x4121/dotfiles $HOME/.dotfiles
+git clone https://github.com/x4121/dotfiles "$HOME/.dotfiles"
 
 case $(hostname -s) in
     kiste)
@@ -22,5 +22,5 @@ case $(hostname -s) in
         ;;
 esac
 
-$HOME/.dotfiles/install/apt.sh
-$HOME/.dotfiles/install/postinstall.sh
+"$HOME/.dotfiles/install/apt.sh"
+"$HOME/.dotfiles/install/postinstall.sh"
