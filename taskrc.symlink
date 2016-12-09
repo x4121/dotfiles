@@ -21,3 +21,7 @@ weekstart=Monday
 uda.priority.values=H,M,,L
 
 include ~/.dotfiles/taskwarrior/taskd.conf
+uda.relativeRecurDue.type=duration
+uda.relativeRecurDue.label=Rel. Rec. Due
+uda.relativeRecurWait.type=duration
+uda.relativeRecurWait.label=Rel. Rec. Wait
