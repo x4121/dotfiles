@@ -24,6 +24,7 @@ if ! [[ -z ${I_DEV+x} ]]; then
     sudo gem install gem-shut-the-fuck-up bundler
 
     echo 'Installing shellcheck'
+    cabal update
     cabal install ShellCheck
 fi
 
