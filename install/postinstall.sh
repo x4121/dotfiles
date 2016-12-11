@@ -128,6 +128,9 @@ echo 'Installing Vim-Plugins'
 vim +PluginInstall +qall
 rm -f "$HOME/.vim_mru_files"
 
+echo 'Installing tmux plugins'
+"$HOME/.tmux/plugins/tpm/bin/install_plugins"
+
 echo 'Making Vim the default editor'
 mimeapps=$HOME/.local/share/applications/mimeapps.list
 mimehead="[Default Applications]"

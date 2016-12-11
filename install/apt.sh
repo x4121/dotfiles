@@ -28,7 +28,6 @@ if [[ $DISPLAY != "" ]]; then
         dconf-tools\
         devilspie\
         gawk\
-        mr\
         mutt\
         owncloud-client\
         libsecret-tools\
@@ -45,6 +44,7 @@ if [[ $DISPLAY != "" ]]; then
         virtualbox\
         w3m\
         wmctrl\
+        xcape\
         xdotool"
 
     if [[ $DESKTOP_SESSION = gnome ]]; then

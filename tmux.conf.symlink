@@ -1,5 +1,5 @@
 # set term
-set -g default-terminal "rxvt-unicode-256color"
+set -g default-terminal "screen-256color"
 
 # automatically renumber windows
 set -g renumber-windows on
@@ -7,11 +7,11 @@ set -g renumber-windows on
 # reload config
 bind R source-file ~/.tmux.conf \; display-message "Config reloaded..."
 
-# unbind default prefix and set it to ctrl + a
+# unbind default prefix and set it to Ctrl_L
+# (xcape maps Ctrl_L to Shift_L+F12)
 unbind C-b
-set -g prefix C-a
-bind C-a send-prefix
-bind-key a send-prefix
+set -g prefix S-F12
+bind S-F12 send-prefix
 
 # enable mouse
 set-option -g mouse on
@@ -31,10 +31,8 @@ bind -r C-l select-window -t :+
 # copy/paste with clipboard
 bind-key -t vi-copy 'v' begin-selection
 bind-key -t vi-copy 'y' copy-selection
-# Copy into clipboard
-bind C-c choose-buffer "run \"tmux save-buffer -b '%%' - | xsel -i -b\""
 # Paste from clipboard
-bind C-v run "xsel -o -b | tmux load-buffer - && tmux paste-buffer"
+bind v run "xsel -o -b | tmux load-buffer - && tmux paste-buffer"
 
 
 # powerline
@@ -43,12 +41,20 @@ source "/usr/local/lib/python3.5/dist-packages/powerline/bindings/tmux/powerline
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
 # set -g @plugin 'tmux-plugins/tmux-battery'
-set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-continuum'
+set -g @plugin 'tmux-plugins/tmux-copycat'
+set -g @plugin 'tmux-plugins/tmux-open'
 set -g @plugin 'tmux-plugins/tmux-pain-control'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-yank'
 
 
 # Pain resize parameter
 set-option -g @pane_resize "10"
+
+# Automatic session restore
+set -g @continuum-restore 'on'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
