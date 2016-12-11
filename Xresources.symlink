@@ -68,6 +68,10 @@ stjerm.autohide: false
 stjerm.font: SauceCodePro Nerd Font, Medium 11
 stjerm.opacity: 90
 stjerm.width: 100%
+stjerm.height: 385
+stjerm.allowbold: false
+stjerm.bell: false
+stjerm.showtab: never
 stjerm.emulation: xterm-256color
 
 

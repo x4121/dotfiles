@@ -1,2 +1,3 @@
 #!/bin/sh
+TERM=xterm-256color
 tmux -2 new-session -A -s stjerm
