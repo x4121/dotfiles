@@ -6,27 +6,30 @@ My dotfiles
 * vim config and plugins/Vundle
 * config and plugins for this other editor (emacs)
 * tmux config and plugins
-* URxvt config
+* URxvt/stjerm config
 * mutt config (unfinished)
 * taskwarrior config
 * rofi config
 * XCompose bindings
 * powerline config with patched fonts
 * solarized colors for most tools
-* devilspie scripts
+* autostart/devilspie scripts
 * i3 config (unfinished/testing)
 * GnomeShell extensions
 * sbt config and plugins
+* auxiliary scripts/tools
 
 ## Install
-`curl -L https://raw.githubusercontent.com/x4121/dotfiles/master/install.sh | sh`
+`curl -L https://bootstrap.armingrodon.de/dotfiles | sh`
 
 ## Warning
-* This project is currently only tested against the most recent Ubuntu-Gnome release (if even!)
+* This project is currently only tested against the most recent\* Ubuntu-Gnome release (if even!)
 * The install script will overwrite files,
   read the [install.sh](install.sh) and
   [symlinks.sh](symlinks.sh) if you want to know which.
 * Use at your own risk!
+
+\* or somewhat recent
 
 ## Other stuff
 [Dell C1660 installation](doc/Dell_C1660.md)
