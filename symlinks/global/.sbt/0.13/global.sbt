@@ -1,1 +1,1 @@
-scalacOptions ++= Seq("-Xmax-classfile-name", "78")
+scalacOptions ++= Seq("-Xmax-classfile-name", "128")
