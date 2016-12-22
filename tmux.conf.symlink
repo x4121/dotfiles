@@ -23,14 +23,11 @@ setw -g mode-keys vi
 bind -n F11 run "wmctrl -r :ACTIVE: -b toggle,fullscreen"
 
 # synchronize all panes in a window
-bind y setw synchronize-panes
+bind C-y setw synchronize-panes
 
 bind -r C-h select-window -t :-
 bind -r C-l select-window -t :+
 
-# copy/paste with clipboard
-bind-key -t vi-copy 'v' begin-selection
-bind-key -t vi-copy 'y' copy-selection
 # Paste from clipboard
 bind v run "xsel -o -b | tmux load-buffer - && tmux paste-buffer"
 
