@@ -1,4 +1,14 @@
 {
+    "dividers": {
+        "left": {
+            "hard": " ",
+            "soft": "│"
+        },
+        "right": {
+            "hard": " ",
+            "soft": " │"
+        }
+    },
     "segments": {
         "left": [
             {
@@ -88,6 +98,7 @@
             {
                 "function": "vim_devicons.powerline.segments.webdevicons",
                 "priority": 40,
+                "exclude_modes": ["nc"],
                 "draw_soft_divider": false,
                 "before": " "
             },

@@ -1,0 +1,21 @@
+{
+	"groups": {
+		"window:current": {
+            "fg": "solarized:base3", 
+            "bg": "solarized:green"
+        },
+		"window_name": {
+            "fg": "solarized:base3",
+            "bg": "solarized:green",
+            "attrs": ["bold"]
+        },
+        "session": {
+            "fg": "solarized:base3", 
+            "bg": "solarized:green"
+        },
+        "hostname": {
+            "fg": "solarized:base3", 
+            "bg": "solarized:green"
+        }
+	}
+}

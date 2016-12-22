@@ -1,6 +1,50 @@
 {
     "name": "Solarized dark for vim",
     "groups": {
+        "bufnr": {
+            "fg": "solarized:base3",
+            "bg": "solarized:green"
+        },
+        "branch": {
+            "fg": "solarized:base3",
+            "bg": "solarized:green"
+        },
+        "branch:divider": {
+            "fg": "solarized:base3",
+            "bg": "solarized:green"
+        },
+        "file_scheme": {
+            "fg": "solarized:base3",
+            "bg": "solarized:green"
+        },
+        "file_directory": {
+            "fg": "solarized:base3",
+            "bg": "solarized:green"
+        },
+        "file_name": {
+            "fg": "solarized:base3",
+            "bg": "solarized:green"
+        },
+        "file_vcs_status": {
+            "fg": "solarized:red",
+            "bg": "solarized:green"
+        },
+        "file_vcs_status_M": {
+            "fg": "solarized:orange",
+            "bg": "solarized:green"
+        },
+        "file_vcs_status_A": {
+            "fg": "solarized:base3",
+            "bg": "solarized:green"
+        },
+        "readonly_indicator": {
+            "fg": "solarized:red",
+            "bg": "solarized:green"
+        },
+        "modified_indicator": {
+            "fg": "solarized:orange",
+            "bg": "solarized:green"
+        },
         "webdevicons": {
             "fg": "solarized:base1",
             "bg": "solarized:base02"
@@ -16,6 +60,41 @@
                 "virtcol_current_gradient": {
                     "bg": "solarized:base3",
                     "fg": "solarized:green"
+                },
+                "branch": {
+                    "fg": "solarized:base3",
+                    "bg": "solarized:green"
+                },
+                "branch:divider": {
+                    "fg": "solarized:base3",
+                    "bg": "solarized:green"
+                },
+                "file_directory": {
+                    "fg": "solarized:base3",
+                    "bg": "solarized:green"
+                },
+                "file_name": {
+                    "fg": "solarized:base3",
+                    "bg": "solarized:green"
+                },
+                "file_vcs_status": {
+                    "fg": "solarized:red",
+                    "bg": "solarized:green"
+                },
+                "file_vcs_status_M": {
+                    "fg": "solarized:orange",
+                    "bg": "solarized:green"
+                },
+                "file_vcs_status_A": {
+                    "fg": "solarized:base3",
+                    "bg": "solarized:green"
+                },
+                "modified_indicator": {
+                    "fg": "solarized:orange",
+                    "bg": "solarized:green"
+                },
+                "background": {
+                    "bg": "solarized:base02"
                 }
             }
         }

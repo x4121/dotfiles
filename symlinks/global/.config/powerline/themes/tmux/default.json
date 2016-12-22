@@ -1,17 +1,31 @@
 {
+    "dividers": {
+        "left": {
+            "hard": " ",
+            "soft": "│ "
+        },
+        "right": {
+            "hard": " ",
+            "soft": " │"
+        }
+    },
+    "segment_data": {
+        "powerline.segments.common.net.hostname": {
+            "before": ""
+        }
+    },
     "segments": {
         "right": [
             {
-                "function": "powerline.segments.common.sys.system_load",
-                "priority": 50
-            },
-            {
-                "function": "powerline.segments.common.time.date"
+                "function": "powerline.segments.common.time.date",
+                "args": {
+                    "format": ""
+                }
             },
             {
                 "function": "powerline.segments.common.time.date",
                 "args": {
-                    "format": "%H:%M",
+                    "format": "%Y-%m-%d %H:%M",
                     "istime": true
                 }
             },
