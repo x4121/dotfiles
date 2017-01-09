@@ -55,7 +55,8 @@
             },
             {
                 "function": "modified_indicator",
-                "before": " "
+                "before": " ",
+                "draw_soft_divider": false
             },
             {
                 "exclude_modes": ["nc"],
@@ -106,7 +107,8 @@
                 "function": "line_percent",
                 "priority": 50,
                 "width": 4,
-                "align": "r"
+                "align": "r",
+                "gradient": false
             },
             {
                 "function": "csv_col_current",
@@ -129,7 +131,8 @@
                 "priority": 20,
                 "before": ":",
                 "width": 3,
-                "align": "l"
+                "align": "l",
+                "gradient": false
             }
         ]
     }

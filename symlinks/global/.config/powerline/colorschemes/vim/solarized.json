@@ -3,51 +3,59 @@
     "groups": {
         "bufnr": {
             "fg": "solarized:base3",
-            "bg": "solarized:green"
+            "bg": "solarized:blue"
         },
         "branch": {
             "fg": "solarized:base3",
-            "bg": "solarized:green"
+            "bg": "solarized:blue"
         },
         "branch:divider": {
             "fg": "solarized:base3",
-            "bg": "solarized:green"
+            "bg": "solarized:blue"
         },
         "file_scheme": {
             "fg": "solarized:base3",
-            "bg": "solarized:green"
+            "bg": "solarized:blue"
         },
         "file_directory": {
             "fg": "solarized:base3",
-            "bg": "solarized:green"
+            "bg": "solarized:blue"
         },
         "file_name": {
             "fg": "solarized:base3",
-            "bg": "solarized:green"
+            "bg": "solarized:blue"
         },
         "file_vcs_status": {
             "fg": "solarized:red",
-            "bg": "solarized:green"
+            "bg": "solarized:base02"
         },
         "file_vcs_status_M": {
-            "fg": "solarized:orange",
-            "bg": "solarized:green"
+            "fg": "solarized:yellow",
+            "bg": "solarized:base02"
         },
         "file_vcs_status_A": {
             "fg": "solarized:base3",
-            "bg": "solarized:green"
+            "bg": "solarized:base02"
         },
         "readonly_indicator": {
             "fg": "solarized:red",
-            "bg": "solarized:green"
+            "bg": "solarized:base02"
         },
         "modified_indicator": {
-            "fg": "solarized:orange",
-            "bg": "solarized:green"
+            "fg": "solarized:yellow",
+            "bg": "solarized:base02"
         },
         "webdevicons": {
             "fg": "solarized:base1",
             "bg": "solarized:base02"
+        },
+        "line_percent_gradient": {
+            "fg": "solarized:base1",
+            "bg": "solarized:base02"
+        },
+        "virtcol_current_gradient": {
+            "fg": "solarized:base03",
+            "bg": "solarized:base2"
         }
     },
     "mode_translations": {
@@ -57,41 +65,45 @@
                     "fg": "solarized:base2",
                     "bg": "solarized:base01"
                 },
+                "line_percent_gradient": {
+                    "fg": "solarized:base2",
+                    "bg": "solarized:base01"
+                },
                 "virtcol_current_gradient": {
-                    "bg": "solarized:base3",
-                    "fg": "solarized:green"
+                    "fg": "solarized:base03",
+                    "bg": "solarized:base3"
                 },
                 "branch": {
                     "fg": "solarized:base3",
-                    "bg": "solarized:green"
+                    "bg": "solarized:blue"
                 },
                 "branch:divider": {
                     "fg": "solarized:base3",
-                    "bg": "solarized:green"
+                    "bg": "solarized:blue"
                 },
                 "file_directory": {
                     "fg": "solarized:base3",
-                    "bg": "solarized:green"
+                    "bg": "solarized:blue"
                 },
                 "file_name": {
                     "fg": "solarized:base3",
-                    "bg": "solarized:green"
+                    "bg": "solarized:blue"
                 },
                 "file_vcs_status": {
                     "fg": "solarized:red",
-                    "bg": "solarized:green"
+                    "bg": "solarized:blue"
                 },
                 "file_vcs_status_M": {
-                    "fg": "solarized:orange",
-                    "bg": "solarized:green"
+                    "fg": "solarized:yellow",
+                    "bg": "solarized:base02"
                 },
                 "file_vcs_status_A": {
                     "fg": "solarized:base3",
-                    "bg": "solarized:green"
+                    "bg": "solarized:base02"
                 },
                 "modified_indicator": {
-                    "fg": "solarized:orange",
-                    "bg": "solarized:green"
+                    "fg": "solarized:yellow",
+                    "bg": "solarized:base02"
                 },
                 "background": {
                     "bg": "solarized:base02"

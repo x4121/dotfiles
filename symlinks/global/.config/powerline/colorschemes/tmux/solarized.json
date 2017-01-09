@@ -11,11 +11,11 @@
         },
         "session": {
             "fg": "solarized:base3", 
-            "bg": "solarized:green"
+            "bg": "solarized:blue"
         },
         "hostname": {
             "fg": "solarized:base3", 
-            "bg": "solarized:green"
+            "bg": "solarized:blue"
         }
 	}
 }
