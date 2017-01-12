@@ -50,7 +50,7 @@ function apt-purge
 end
 
 function apt-clean
-    sudo apt-get autoremove
+    sudo apt-get -y autoremove
     and sudo apt-get autoclean
 end
 
