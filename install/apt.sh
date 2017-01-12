@@ -23,6 +23,7 @@ if [[ $DISPLAY != "" ]]; then
 
     SW="$SW\
         chromium-browser\
+        cmus\
         dconf-tools\
         devilspie\
         gawk\
