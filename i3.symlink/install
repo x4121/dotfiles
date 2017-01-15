@@ -22,7 +22,7 @@ i3blocks
 xbacklight
 libxcb-dpms0-dev
 libpam0g-dev
-git clone https://github.com/Arcaena/i3lock-color
+git clone https://github.com/chrjguill/i3lock-color
 feh
 scrot
 

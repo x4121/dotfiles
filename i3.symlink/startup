@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # background
 feh --bg-scale ~/Pictures/Wallpapers/tie-fighter.jpg
@@ -16,12 +16,11 @@ dex /etc/xdg/autostart/nm-applet.desktop
 xautolock-img &
 export $(gnome-keyring-daemon -s)
 
-dex $HOME/.config/autostart/dropbox.desktop
-dex $HOME/.config/autostart/ownCloud.desktop
-dex $HOME/.config/autostart/keepassx.desktop
-dex $HOME/.config/autostart/scudcloud.desktop
-dex $HOME/.config/autostart/redshift.desktop
-devilspie &
+autodir="$HOME/.config/autostart/"
+for autostart in "$autodir"*; do
+    [[ -e $autostart ]] || break
+    dex "$autostart"
+done
 
 rm -rf "$HOME/.cache/chromium"
 rm -rf "$HOME/.cache/google-chrome"
