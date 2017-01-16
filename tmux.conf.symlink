@@ -18,6 +18,7 @@ set-option -g mouse on
 
 # act like vim
 setw -g mode-keys vi
+bind-key -t vi-copy 'v' begin-selection
 
 # toggle fullscreen
 bind -n F11 run "wmctrl -r :ACTIVE: -b toggle,fullscreen"
