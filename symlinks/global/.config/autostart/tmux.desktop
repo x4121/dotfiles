@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Exec=tmux new-session -d -s tmux
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=tmux-session
