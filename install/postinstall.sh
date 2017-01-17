@@ -130,6 +130,12 @@ rm -f "$HOME/.vim_mru_files"
 
 echo 'Installing tmux plugins'
 "$HOME/.tmux/plugins/tpm/bin/install_plugins"
+PRUNE="$HOME/.tmux/resurrect && ls -A1t | tail -n +12 | xargs -r rm"
+CRON="0 * * * * cd $PRUNE"
+crontab -l 2>/dev/null \
+    | fgrep -i -v "$PRUNE" \
+    | { cat; echo "$CRON"; } \
+    | crontab -
 
 echo 'Making Vim the default editor'
 mimeapps=$HOME/.local/share/applications/mimeapps.list
