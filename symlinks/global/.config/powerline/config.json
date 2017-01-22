@@ -22,10 +22,6 @@
                 "powerline.matchers.vim.plugin.gundo.gundo": "plugin_gundo",
                 "powerline.matchers.vim.plugin.gundo.gundo_preview": "plugin_gundo-preview"
             }
-        },
-        "wm": {
-            "colorscheme": "solarized",
-            "theme": "default"
         }
     }
 }

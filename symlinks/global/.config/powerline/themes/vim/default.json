@@ -1,14 +1,4 @@
 {
-    "dividers": {
-        "left": {
-            "hard": " ",
-            "soft": "│"
-        },
-        "right": {
-            "hard": " ",
-            "soft": " │"
-        }
-    },
     "segments": {
         "left": [
             {
@@ -50,22 +40,22 @@
             },
             {
                 "function": "file_vcs_status",
-                "before": " ",
                 "draw_soft_divider": false
             },
             {
                 "function": "modified_indicator",
-                "before": " ",
                 "draw_soft_divider": false
             },
             {
                 "exclude_modes": ["nc"],
                 "function": "powerline.segments.vim.plugin.syntastic.syntastic",
+                "before": " ",
                 "priority": 50
             },
             {
                 "exclude_modes": ["nc"],
                 "function": "powerline.segments.vim.plugin.tagbar.current_tag",
+                "before": " ",
                 "draw_soft_divider": false,
                 "priority": 50
             },
@@ -80,6 +70,7 @@
         "right": [
             {
                 "function": "file_encoding",
+                "draw_soft_divider": false,
                 "exclude_modes": ["nc"],
                 "priority": 50
             },
@@ -93,8 +84,10 @@
             },
             {
                 "function": "file_type",
+                "draw_soft_divider": false,
                 "exclude_modes": ["nc"],
-                "priority": 30
+                "priority": 30,
+                "before": " "
             },
             {
                 "function": "vim_devicons.powerline.segments.webdevicons",
@@ -108,30 +101,6 @@
                 "priority": 50,
                 "width": 4,
                 "align": "r",
-                "gradient": false
-            },
-            {
-                "function": "csv_col_current",
-                "priority": 30
-            },
-            {
-                "type": "string",
-                "name": "line_current_symbol",
-                "highlight_groups": ["line_current_symbol", "line_current"]
-            },
-            {
-                "function": "line_current",
-                "draw_soft_divider": false,
-                "width": 3,
-                "align": "r"
-            },
-            {
-                "function": "virtcol_current",
-                "draw_soft_divider": false,
-                "priority": 20,
-                "before": ":",
-                "width": 3,
-                "align": "l",
                 "gradient": false
             }
         ]

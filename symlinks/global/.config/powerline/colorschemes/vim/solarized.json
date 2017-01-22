@@ -53,25 +53,33 @@
             "fg": "solarized:base1",
             "bg": "solarized:base02"
         },
-        "virtcol_current_gradient": {
-            "fg": "solarized:base03",
-            "bg": "solarized:base2"
+        "single_tab": {
+            "fg": "solarized:base1",
+            "bg": "solarized:base02"
+        },
+        "many_tabs": {
+            "fg": "solarized:base1",
+            "bg": "solarized:base02"
         }
     },
     "mode_translations": {
         "i": {
             "groups": {
-                "webdevicons": {
-                    "fg": "solarized:base2",
-                    "bg": "solarized:base01"
+                "file_encoding": {
+                    "fg": "solarized:base1",
+                    "bg": "solarized:base02"
+                },
+                "file_format": {
+                    "fg": "solarized:base1",
+                    "bg": "solarized:base02"
+                },
+                "file_type": {
+                    "fg": "solarized:base1",
+                    "bg": "solarized:base02"
                 },
                 "line_percent_gradient": {
-                    "fg": "solarized:base2",
-                    "bg": "solarized:base01"
-                },
-                "virtcol_current_gradient": {
-                    "fg": "solarized:base03",
-                    "bg": "solarized:base3"
+                    "fg": "solarized:base1",
+                    "bg": "solarized:base02"
                 },
                 "branch": {
                     "fg": "solarized:base3",
