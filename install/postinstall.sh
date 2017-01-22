@@ -135,6 +135,10 @@ fi
 echo 'Creating symlinks'
 sh ./symlinks.sh >&- 2>&-
 
+echo 'Installing fzf'
+git clone https://github.com/junegunn/fzf "$HOME/.fzf"
+"$HOME/.fzf/install --all"
+
 popd >&- 2>&-
 
 echo 'Installing Vim-Plugins'
