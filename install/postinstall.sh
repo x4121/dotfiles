@@ -21,12 +21,25 @@ if ! [[ -z ${I_DEV+x} ]]; then
         "$HOME/.rbenv/plugins/ruby-build"
 
     echo 'Installing gems'
-    sudo gem install gem-shut-the-fuck-up bundler
+    sudo gem install gem-shut-the-fuck-up bundler git-amnesia
 
     echo 'Installing shellcheck'
     cabal update
     cabal install ShellCheck
 fi
+
+echo 'Installing git-lfs'
+tmp="$(mktemp -d)"
+pushd "$tmp" >&- 2>&-
+curl -fLo "lfs.tgz" \
+    "https://github.com/git-lfs/git-lfs/releases/download/v1.5.5/git-lfs-linux-amd64-1.5.5.tar.gz" \
+    2>&-
+tar xzf "lfs.tgz" --strip-components 1
+sudo mkdir -p /usr/local/bin
+sudo install git-lfs /usr/local/bin/git-lfs
+git lfs install
+popd >&- 2>&-
+rm -rf "$tmp"
 
 echo 'Setting fish as default shell'
 chsh -s "$(grep /fish$ /etc/shells | tail -1)"
