@@ -1,7 +1,7 @@
 # gitconfig
 [user]
     name = Armin Grodon
-    email = me@armingrodon.de
+    email = armin@onpage.org
 [github]
     user = x4121
 [push]
@@ -9,6 +9,8 @@
 [status]
     branch = true
     short = true
+[gpg]
+    program = gpg2
 [commit]
     gpgSign = true
 [alias]
