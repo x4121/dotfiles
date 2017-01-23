@@ -142,7 +142,9 @@ git clone https://github.com/junegunn/fzf "$HOME/.fzf"
 popd >&- 2>&-
 
 echo 'Installing Vim-Plugins'
-vim +PluginInstall +qall
+curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+vim +PlugInstall +qall
 rm -f "$HOME/.vim_mru_files"
 
 echo 'Installing tmux plugins'

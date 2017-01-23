@@ -7,9 +7,6 @@
 [submodule "tmux.symlink/plugins/tpm"]
 	path = tmux.symlink/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
-[submodule "vim.symlink/bundle/Vundle.vim"]
-	path = vim.symlink/bundle/Vundle.vim
-	url = https://github.com/VundleVim/Vundle.vim
 [submodule "dircolors-solarized"]
 	path = dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized
