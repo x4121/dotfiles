@@ -5,8 +5,8 @@ Plug 'dag/vim-fish'
 Plug 'blindFS/vim-taskwarrior'
 Plug 'derekwyatt/vim-sbt'
 Plug 'derekwyatt/vim-scala'
-Plug 'ensime/ensime-sbt', { 'for': 'scala' }
-Plug 'ensime/ensime-server', { 'for': 'scala' }
+Plug 'ensime/ensime-sbt', { 'branch': '2.0', 'for': 'scala' }
+Plug 'ensime/ensime-server', { 'branch': '2.0', 'for': 'scala' }
 Plug 'ensime/ensime-vim', { 'for': 'scala' }
 Plug 'ervandew/supertab'
 Plug 'fatih/vim-go'
