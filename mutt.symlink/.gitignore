@@ -1,5 +1,7 @@
 /cache
 /local.default
 /accounts/*
+/aliases
+/mailboxes
 !/accounts/example.tld
 !/accounts/example.tld.sig

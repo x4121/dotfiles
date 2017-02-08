@@ -1,0 +1,95 @@
+[general]
+accounts = armingrodon.de, gmail.com, onpage.org
+pythonfile = ~/.offlineimap.py
+ui = ttyui
+
+[mbnames]
+enabled = yes
+filename = ~/.mutt/mailboxes
+header = "mailboxes "
+peritem = "+%(accountname)s/%(foldername)s"
+sep = " "
+footer = "\n"
+
+[Account armingrodon.de]
+localrepository = armingrodon.de-Local
+remoterepository = armingrodon.de-Remote
+status_backend = sqlite
+postsynchook = notmuch new
+
+[Account gmail.com]
+localrepository = gmail.com-Local
+remoterepository = gmail.com-Remote
+status_backend = sqlite
+postsynchook = notmuch new
+
+[Account onpage.org]
+localrepository = onpage.org-Local
+remoterepository = onpage.org-Remote
+status_backend = sqlite
+postsynchook = notmuch new
+
+[Repository armingrodon.de-Local]
+type = Maildir
+localfolders = ~/Mail/armingrodon.de
+nametrans = lambda foldername: re.sub('sent', 'Gesendete Objekte',
+    re.sub('trash', 'Papierkorb',
+    re.sub('draft', 'Entw&APw-rfe',
+    foldername)))
+
+[Repository gmail.com-Local]
+type = Maildir
+localfolders = ~/Mail/gmail.com
+nametrans = lambda foldername: re.sub('sent', '[Google Mail].Sent Mail',
+    re.sub('draft', '[Google Mail].Drafts',
+    re.sub('trash', '[Google Mail].Trash',
+    foldername)))
+
+[Repository onpage.org-Local]
+type = Maildir
+localfolders = ~/Mail/onpage.org
+nametrans = lambda foldername: re.sub('sent', '[Gmail].Sent Mail',
+    re.sub('draft', '[Gmail].Drafts',
+    re.sub('trash', '[Gmail].Trash',
+    foldername)))
+
+[Repository armingrodon.de-Remote]
+type = IMAP
+ssl = yes
+remotehost = imap.1und1.de
+remoteuser = me@armingrodon.de
+remotepasseval = get_password("mail", "armingrodon")
+nametrans = lambda foldername: re.sub('Gesendete Objekte', 'sent',
+    re.sub('Papierkorb', 'trash',
+    re.sub('Entw&APw-rfe', 'draft',
+    foldername)))
+folderfilter = lambda folder: not re.search('(^Spam$|^Archiv)', folder)
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+[Repository gmail.com-Remote]
+type = IMAP
+ssl = yes
+remotehost = imap.gmail.com
+remoteuser = armin.grodon@gmail.com
+remotepasseval = get_password("mail", "gmail")
+auth_mechanisms = PLAIN, LOGIN
+nametrans = lambda foldername: re.sub('.*Sent.*', 'sent',
+    re.sub('.*Drafts', 'draft',
+    re.sub('.*Trash', 'trash',
+    foldername)))
+folderfilter = lambda folder: re.search('(^INBOX|Sent Mail$|Drafts$|Trash$)', folder)
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+[Repository onpage.org-Remote]
+type = IMAP
+ssl = yes
+remotehost = imap.gmail.com
+remoteuser = armin@onpage.org
+remotepasseval = get_password("mail", "onpage")
+auth_mechanisms = PLAIN, LOGIN
+nametrans = lambda foldername: re.sub('.*Sent.*', 'sent',
+    re.sub('.*Drafts', 'draft',
+    re.sub('.*Trash', 'trash',
+    foldername)))
+folderfilter = lambda folder: re.search('(^INBOX|Sent Mail$|Drafts$|Trash$)', folder)
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt

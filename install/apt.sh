@@ -27,9 +27,13 @@ if [[ $DISPLAY != "" ]]; then
         dconf-tools\
         devilspie\
         gawk\
-        mutt\
-        owncloud-client\
         libsecret-tools\
+        msmtp\
+        mutt-patched\
+        notmuch\
+        notmuch-mutt\
+        offlineimap\
+        owncloud-client\
         pass\
         pdf-presenter-console\
         python2-setuptools\

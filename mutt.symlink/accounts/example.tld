@@ -1,18 +1,10 @@
-set from           = "user@example.tld"
-set hostname       = "example.tld"
-set imap_user      = "$from"
-set imap_pass      = `secret-tool lookup mail example.tld`
-set signature      = "./example.tld.sig"
+# vim: ft=muttrc:
+set from      = "user@example.tld"
+set signature = "~/.mutt/accounts/example.tld.sig"
+# unset signature
 
-set folder         = "imaps://imap.example.tld"
-set spoolfile     = "+INBOX"
-set mbox          = "+archive"
-set postponed     = "+drafts"
-set trash         = "+trash"
-#set any_label    = "+any_label"
-
-#set ssl_starttls  = yes
-#set ssl_force_tls = yes
-
-set smtp_url       = "smtps://$from@smtp.example.tld/"
-set smtp_pass      = "$imap_pass"
+set folder    = "~/Mail/example.tld"
+set spoolfile = "+INBOX"
+set record    = "+sent"
+set postponed = "+draft"
+set trash     = "+trash"

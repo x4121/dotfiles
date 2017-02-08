@@ -1,15 +1,15 @@
+# vim: ft=muttrc:
 # edit and save as local.default
-#
-set my_default = "example.tld"
-# set my_f3 = "email.com"
 
-# folder hooks
-folder-hook '$my_default' 'source ~/.mutt/accounts/$my_default'
-# folder-hook '$my_f3' 'source ~/.mutt/accounts/$my_f3'
+set my_default = "example.tld"
+# set my_2 = "email.com"
+
+# offlineimap mailboxes
+source ~/.mutt/mailboxes
 
 # account macros
-macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/accounts/$my_default<enter><change-folder>!<enter>'
-# macro index <f3> '<sync-mailbox><enter-command>source ~/.mutt/accounts/$my_f3<enter><change-folder>!<enter>'
+macro index '<esc>1' '<sync-mailbox><refresh><enter-command>source ~/.mutt/accounts/$my_default<enter><change-folder>!<enter>'
+# macro index '<esc>2' '<sync-mailbox><refresh><enter-command>source ~/.mutt/accounts/$my_2<enter><change-folder>!<enter>'
 
 # default account
 source ~/.mutt/accounts/$my_default

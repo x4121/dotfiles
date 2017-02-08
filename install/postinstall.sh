@@ -156,6 +156,15 @@ crontab -l 2>/dev/null \
     | { cat; echo "$CRON"; } \
     | crontab -
 
+echo 'Setting up mail sync'
+mkdir "$HOME/Mail"
+SYNC="$HOME/.bin/mailsync.sh"
+CRON="*/5 * * * * $SYNC"
+crontab -l 2>/dev/null \
+    | fgrep -i -v "$SYNC" \
+    | { cat; echo "$CRON"; } \
+    | crontab -
+
 echo 'Making Vim the default editor'
 mimeapps=$HOME/.local/share/applications/mimeapps.list
 mimehead="[Default Applications]"

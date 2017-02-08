@@ -3,11 +3,11 @@ My dotfiles
 
 ## Contents
 * fish-shell config
-* vim config and plugins/Vundle
+* vim config and plugins
 * config and plugins for this other editor (emacs)
 * tmux config and plugins
 * URxvt/stjerm config
-* mutt config (unfinished)
+* mutt config (with offlineimap and msmtp)
 * taskwarrior config
 * rofi config
 * XCompose bindings

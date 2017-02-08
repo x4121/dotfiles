@@ -1,36 +1,103 @@
 # base settings
 set realname = "Armin Grodon"
 set charset  = "utf-8"
+set sort     = threads
+set sort_aux = reverse-last-date-received
+set sort_re                                     # reverse sort
+set quit                                        # don't ask on quit
+set nomove                                      # don't ask on move
+set delete                                      # don't ask on delete
+set delete_untag                                # untag msgs when deleting
+unset beep
+unset beep_new
+unset confirmappend
+unset mark_old                                  # don't mark msgs on hover
 
-# folder settings
+# pager options
+set pager_index_lines = 10
+set pager_context     = 5
+set pager_stop                                  # don't open next mail
+set menu_scroll
+set smart_wrap
+set tilde                                       # pad bottom lines
+unset markers                                   # no markers
+
+# compose options
+                 # start in insert mode after headers
+set editor     = "vim -c 'execute \"normal gg}j\"' -c start"
+set edit_headers                                # show headers in vim
+set fast_reply                                  # skip dialog
+set include                                     # include message in reply
+unset reply_self                                # always reply to others
+set sig_on_top                                  # keep sig above reply
+set attribution = "\nOn %d, %n wrote:"          # newline before attribution
+set copy                                        # keep copy on send
+set text_flowed                                 # don't mess up replies
+
+# cache settings
 set header_cache     = ~/.mutt/cache/headers
-set message_cachedir = ~/.mutt/cache/bodies
-set certificate_file = ~/.mutt/certificates
 
-# key bindings
-bind index G imap-fetch-mail
-bind editor <space> noop
-bind editor <Tab> complete-query
+# address book / aliases
+set display_filter = "~/.mutt/addalias ~/.mutt/aliases"
+set alias_file     = "~/.mutt/aliases"
+set reverse_alias
+source $alias_file
+
+# notmuch search hotkey
+macro index \CT \
+     "<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt -r --prompt search<enter>\
+     <change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter>" \
+     "notmuch: search mail"
+
+# sidebar
+set sidebar_width = 30
+set sidebar_visible = yes
+color sidebar_new yellow default
+bind index,pager \CP sidebar-prev
+bind index,pager \CN sidebar-next
+bind index,pager \CO sidebar-open
+bind index B bounce-message
+macro index,pager b '<enter-command>toggle sidebar_visible<enter><redraw-screen>'
+set status_format       = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?($
+# )"" # just fix syntax highlighting
+
+# vim-like key bindings
 bind pager k  previous-line
 bind pager j  next-line
 bind pager gg top
+bind index gg first-entry
 bind pager G  bottom
+bind index G  last-entry
 bind pager [ previous-unread
 bind pager ] next-unread
 bind index,pager s flag-message
+bind index,pager <Up> noop
+bind index,pager <Down> noop
 
-# imap settings
-set move = no
-set imap_keepalive = 30
-set mail_check = 120
-set timeout = 30
-set imap_check_subscribed
-set imap_idle
+# vim-like scrolloff
+macro index K '<previous-entry><current-middle>'
+macro index J '<next-entry><current-middle>'
+macro index k '<previous-undeleted><current-middle>'
+macro index j '<next-undeleted><current-middle>'
+macro index d '<delete-message><current-middle>'
+macro index u '<undelete-message><current-middle>'
+macro index D '<delete-pattern><current-middle>'
+macro index U '<undelete-pattern><current-middle>'
+
+# mailbox settings
+set mbox_type        = Maildir                                      # maildir format
+set folder           = ~/Mail                                       # use local folder
+set sendmail         = msmtp                                        # msmtp to send
+set use_from         = yes                                          # autodetect from
+set mail_check       = 0                                            # never check mail automatically
+set envelope_from    = yes                                          # reply with same account
+set reverse_name     = yes                                          # reply with same account
+set reverse_realname = no                                           # still use name from config
 
 # gpg settings
-set pgp_use_gpg_agent=yes
+set pgp_use_gpg_agent = yes
 
-# load external settings
+## load external settings
 source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc
 source ~/.mutt/gpg.rc
 source ~/.mutt/local.default
