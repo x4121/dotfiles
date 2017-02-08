@@ -1,0 +1,20 @@
+[database]
+path=/home/onpage/Mail
+
+[user]
+name=Armin Grodon
+primary_email=armin@onpage.org
+other_email=armin.grodon@gmail.com;me@armingrodon.de;
+
+[new]
+tags=unread;inbox;
+ignore=
+
+[search]
+exclude_tags=deleted;spam;
+
+[maildir]
+synchronize_flags=true
+
+[crypto]
+gpg_path=gpg
