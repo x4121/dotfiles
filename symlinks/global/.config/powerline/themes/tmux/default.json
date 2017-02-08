@@ -7,10 +7,22 @@
     "segments": {
         "right": [
             {
+                "function": "powerline.segments.common.custom.slack"
+            },
+            {
+                "function": "powerline.segments.common.custom.mail",
+                "args": {
+                    "maildirs": [
+                        "$HOME/Mail/armingrodon.de/INBOX/new",
+                        "$HOME/Mail/gmail.com/INBOX/new",
+                        "$HOME/Mail/onpage.org/INBOX/new"
+                    ]
+                }
+            },
+            {
                 "function": "powerline.segments.common.time.date",
                 "args": {
-                    "format": "%Y-%m-%d %H:%M",
-                    "istime": true
+                    "format": "%Y-%m-%d %H:%M"
                 }
             },
             {
