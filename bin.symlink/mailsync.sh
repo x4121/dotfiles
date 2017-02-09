@@ -25,4 +25,9 @@ if ps "$pid" &>/dev/null; then
     exit 1
 fi
 
-offlineimap -o -u quiet & monitor $!
+if host google.com >/dev/null; then
+    offlineimap -o -u quiet & monitor $!
+else
+    echo "No internet connection. Exiting..."
+    exit 0
+fi
