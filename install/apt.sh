@@ -35,6 +35,7 @@ if [[ $DISPLAY != "" ]]; then
         offlineimap\
         owncloud-client\
         pass\
+        pdfposter\
         pdf-presenter-console\
         python2-setuptools\
         redshift\
