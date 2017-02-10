@@ -44,7 +44,7 @@ set alias_file     = "~/.mutt/aliases"
 set reverse_alias
 source $alias_file
 
-macro index \CT \
+macro index \Ct \
      "<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt -r --prompt search<enter>\
      <change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter>" \
      "notmuch: search mail"
@@ -52,6 +52,14 @@ macro index \CT \
 macro attach I \
         "<enter-command>unset wait_key<enter><pipe-entry>gcalcli import<enter>" \
         "import ics in gcalcli"
+
+macro index \Cr \
+    "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" \
+    "mark all messages as read"
+
+macro index O \
+    "<shell-escape>offlineimap -o<enter>" \
+    "run offlineimap to sync all mail"
 
 # sidebar
 set sidebar_width = 30
