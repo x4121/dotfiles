@@ -1,1 +1,5 @@
+# vim: ft=muttrc:
 auto_view text/html
+auto_view text/calendar
+auto_view application/ics
+alternative_order text/plain text/html text/* application/*

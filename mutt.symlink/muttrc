@@ -21,6 +21,7 @@ set menu_scroll
 set smart_wrap
 set tilde                                       # pad bottom lines
 unset markers                                   # no markers
+set mailcap_path      = ~/.mutt/mailcap
 
 # compose options
                  # start in insert mode after headers
@@ -43,11 +44,14 @@ set alias_file     = "~/.mutt/aliases"
 set reverse_alias
 source $alias_file
 
-# notmuch search hotkey
 macro index \CT \
      "<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt -r --prompt search<enter>\
      <change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter>" \
      "notmuch: search mail"
+
+macro attach I \
+        "<enter-command>unset wait_key<enter><pipe-entry>gcalcli import<enter>" \
+        "import ics in gcalcli"
 
 # sidebar
 set sidebar_width = 30
@@ -87,7 +91,7 @@ macro index U '<undelete-pattern><current-middle>'
 # mailbox settings
 set mbox_type        = Maildir                                      # maildir format
 set folder           = ~/Mail                                       # use local folder
-set sendmail         = msmtp                                        # msmtp to send
+set sendmail         = "~/.mutt/proofread.zsh /usr/bin/msmtp"       # proofread before send
 set use_from         = yes                                          # autodetect from
 set mail_check       = 0                                            # never check mail automatically
 set envelope_from    = yes                                          # reply with same account

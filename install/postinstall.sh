@@ -50,6 +50,9 @@ echo 'Initializing submodule(s)'
 git submodule update --init --recursive
 
 if [[ $DISPLAY != "" ]]; then
+    echo 'Installing pip'
+    sudo easy_install pip
+
     echo 'Installing stjerm'
     tmp="$(mktemp -d)"
     git clone https://github.com/stjerm/stjerm "$tmp" >&- 2>&-
@@ -84,8 +87,11 @@ if [[ $DISPLAY != "" ]]; then
     popd >&- 2>&-
 
     echo 'Installing Powerline'
-    sudo easy_install pip
     sudo pip install powerline-status
+
+    echo 'Installing mutt dependencies'
+    sudo pip install mutt_ics vobject
+    sudo pip install gcalcli
 
     echo 'Install Franz'
     sudo mkdir -p /opt/franz
@@ -158,7 +164,7 @@ crontab -l 2>/dev/null \
 
 echo 'Setting up mail sync'
 mkdir "$HOME/Mail"
-SYNC="$HOME/.bin/mailsync.sh"
+SYNC="users | grep $USER >/dev/null && $HOME/.bin/mailsync.sh"
 CRON="*/5 * * * * $SYNC"
 crontab -l 2>/dev/null \
     | fgrep -i -v "$SYNC" \

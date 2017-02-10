@@ -28,11 +28,13 @@ if [[ $DISPLAY != "" ]]; then
         devilspie\
         gawk\
         libsecret-tools\
-        msmtp\
         mutt-patched\
-        notmuch\
-        notmuch-mutt\
-        offlineimap\
+            msmtp\
+            notmuch\
+            notmuch-mutt\
+            offlineimap\
+            urlview\
+            w3m\
         owncloud-client\
         pass\
         pdfposter\
@@ -44,11 +46,9 @@ if [[ $DISPLAY != "" ]]; then
         samba\
         socat\
         tmux\
-        urlview\
+            wmctrl\
+            xcape\
         virtualbox\
-        w3m\
-        wmctrl\
-        xcape\
         xdotool"
 
     if [[ $DESKTOP_SESSION = gnome ]]; then

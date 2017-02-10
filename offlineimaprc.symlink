@@ -1,6 +1,6 @@
 [general]
 accounts = armingrodon.de, gmail.com, onpage.org
-pythonfile = ~/.offlineimap.py
+pythonfile = ~/.mutt/offlineimap.py
 ui = ttyui
 
 [mbnames]
