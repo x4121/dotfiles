@@ -165,7 +165,7 @@ crontab -l 2>/dev/null \
 echo 'Setting up mail sync'
 mkdir "$HOME/Mail"
 SYNC="users | grep $USER >/dev/null && $HOME/.bin/mailsync.sh"
-CRON="*/5 * * * * $SYNC"
+CRON="*/15 * * * * $SYNC"
 crontab -l 2>/dev/null \
     | fgrep -i -v "$SYNC" \
     | { cat; echo "$CRON"; } \

@@ -58,7 +58,7 @@ macro index \Cr \
     "mark all messages as read"
 
 macro index O \
-    "<shell-escape>offlineimap -o<enter>" \
+    "<shell-escape>offlineimap -o -u quiet<enter>" \
     "run offlineimap to sync all mail"
 
 # sidebar
