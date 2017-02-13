@@ -33,8 +33,8 @@ include-images: false
 # characters can be escaped in the same way (see man ascii to get their code)
 feeds: 
   - name: fefe
-    url: https://blog.fefe.de/rss.xml
-    target: maildir:///home/armin/Mail/armingrodon.de/Feeds.Fefe
+    url: https://blog.fefe.de/rss.xml?html
+    target: maildir:///home/armin/Mail/armingrodon.de/RSS.Fefe
 # It is also possible to reuse the same string in the target parameter:
 # target-refix: &target "imap://user:pass@host/rss."
 # feeds:
