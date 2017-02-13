@@ -34,7 +34,7 @@ include-images: false
 feeds: 
   - name: fefe
     url: https://blog.fefe.de/rss.xml
-    target: maildir:///home/onpage/Mail/armingrodon.de/Feeds.Fefe
+    target: maildir:///home/armin/Mail/armingrodon.de/Feeds.Fefe
 # It is also possible to reuse the same string in the target parameter:
 # target-refix: &target "imap://user:pass@host/rss."
 # feeds:
