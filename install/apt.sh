@@ -29,12 +29,14 @@ if [[ $DISPLAY != "" ]]; then
         gawk\
         libsecret-tools\
         mutt-patched\
+            feed2imap\
             msmtp\
             notmuch\
             notmuch-mutt\
             offlineimap\
             urlview\
             w3m\
+            zsh\
         owncloud-client\
         pass\
         pdfposter\
