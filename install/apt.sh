@@ -30,7 +30,6 @@ if [[ $DISPLAY != "" ]]; then
         gawk\
         libsecret-tools\
         mutt-patched\
-            feed2imap\
             msmtp\
             notmuch\
             notmuch-mutt\
@@ -38,6 +37,7 @@ if [[ $DISPLAY != "" ]]; then
             urlview\
             w3m\
             zsh\
+        newsbeuter\
         owncloud-client\
         pass\
         pdfposter\
