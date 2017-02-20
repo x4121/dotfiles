@@ -2,17 +2,18 @@
 
 SW="apt-transport-tor\
     ecryptfs-utils\
-    exuberant-ctags\
     fish\
     fonts-lohit-knda\
     gnupg2\
     htop\
     mercurial\
     ranger\
+        highlight\
     taskwarrior\
     torsocks\
     tree\
-    vim-gnome-py2"
+    vim-gnome-py2\
+        exuberant-ctags"
 
 if [[ $DISPLAY != "" ]]; then
     # owncloud
@@ -92,21 +93,21 @@ if [[ $DISPLAY != "" ]]; then
             | sudo tee -a /etc/apt/sources.list.d/docker.list >&- 2>&-
 
         SW="$SW\
-            autoconf\
-            automake\
             build-essential\
+                autoconf\
+                automake\
+                cmake\
+                libtool\
             cabal-install\
-            cmake\
             docker-engine\
             emacs\
             golang\
             jq\
             knockd\
-            libtool\
-            maven\
-            openjdk-8-jdk\
-            openjdk-9-jdk\
             sbt\
+                maven\
+                openjdk-8-jdk\
+                openjdk-9-jdk\
             texlive-full\
             vagrant"
     fi
