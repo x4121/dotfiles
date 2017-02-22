@@ -1,0 +1,39 @@
+# feeds
+auto-reload yes
+reload-time 120
+reload-threads 4
+download-retries 3
+download-timeout 10
+
+# navigation + keybindings
+goto-next-feed no
+unbind-key DOWN
+bind-key j down
+unbind-key UP
+bind-key k up
+unbind-key C
+unbind-key ^R
+bind-key ^R mark-all-feeds-read
+unbind-key u
+unbind-key ^B
+bind-key ^B show-urls
+
+# theoldreader
+urls-source "oldreader"
+oldreader-login "me@armingrodon.de"
+oldreader-passwordeval "pass show www/theoldreader.com/me@armingrodon.de"
+oldreader-show-special-feeds no
+oldreader-min-items 100
+
+# colors
+color background white default
+color info yellow black
+color listnormal green default
+color listfocus black yellow
+color listnormal_unread cyan default
+color listfocus_unread black yellow
+highlight article "^Feed: .*$" yellow default
+highlight article "^Title: .*$" blue default bold
+highlight article "^(Author|Link|Date): .*$" green default
+highlight article "^\[[0-9]+\]:.*$" green default
+highlight article "https?://[^ ]+" red default bold
