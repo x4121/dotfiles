@@ -5,7 +5,7 @@ eval (dircolors -c $HOME/.dircolors | sed 's/>&\/dev\/null$//')
 set -e fish_greeting
 
 # Map Control_L to Shift_L + F12 (for tmux prefix)
-pgrep xcape > /dev/null; or xcape -e 'Control_L=Shift_L|F12'
+pgrep -u $USER xcape > /dev/null; or xcape -e 'Control_L=Shift_L|F12'
 
 # Vim is the standard text editor.
 set -x EDITOR vim
