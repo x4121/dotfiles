@@ -4,6 +4,7 @@ reload-time 120
 reload-threads 4
 download-retries 3
 download-timeout 10
+browser chromium-browser
 
 # navigation + keybindings
 goto-next-feed no

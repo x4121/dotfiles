@@ -61,6 +61,10 @@ macro index O \
     "<enter-command>unset wait_key<enter><shell-escape>echo 'syncing maildir...'; offlineimap -o -u quiet<enter>" \
     "run offlineimap to sync all mail"
 
+# general
+bind index S save-message
+bind index B bounce-message
+
 # sidebar
 set sidebar_width = 30
 set sidebar_visible = yes
@@ -68,7 +72,6 @@ color sidebar_new yellow default
 bind index,pager \CP sidebar-prev
 bind index,pager \CN sidebar-next
 bind index,pager \CO sidebar-open
-bind index B bounce-message
 macro index,pager b '<enter-command>toggle sidebar_visible<enter><redraw-screen>'
 set status_format       = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?($
 # )"" # just fix syntax highlighting
