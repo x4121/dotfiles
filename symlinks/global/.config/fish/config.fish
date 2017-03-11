@@ -34,6 +34,3 @@ set -x LESS_TERMCAP_us (printf "\033[04;38;5;146m") # begin underline
 
 # gnome-keyring
 eval (echo (gnome-keyring-daemon -s) | sed -e 's/^\(.*\)/set -x \\1/' -e 's/=/ /' -e 's/\(.*\)$/\1;/')
-
-# terminal colors
-. colors.fish
