@@ -1,16 +1,33 @@
-#!/bin/sh
+#!/bin/bash
 
 MESSAGE=$(cat)
+ALIASES="$HOME/.mutt/aliases"
 
-NEWALIAS=$(echo "${MESSAGE}" \
-    | grep ^"From: " \
-    | sed s/[\,\"\']//g \
-    | awk '{$1=""; if (NF == 3) {print "alias" $0;} else if (NF == 2) {print "alias" $0 $0;} else if (NF > 3) {print "alias", tolower($(NF-1))"-"tolower($2) $0;}}')
+FROM=$(echo "$MESSAGE" \
+    | grep '^From: ' \
+    | sed s/[\,\'\"]//g)
 
-MAIL=$(echo "${NEWALIAS##* }" | sed s/[\<\>]//g)
+MAIL=$(echo "${FROM##* }" | sed s/[\<\>]//g)
 
-if grep -FLq "$MAIL" "$HOME/.mutt/aliases"; then
-    echo "$NEWALIAS" >> "$HOME/.mutt/aliases"
+IFS=' ' read -r -a ARR <<< "$FROM"
+
+if ! grep -m 1 -Fq "$MAIL" "$ALIASES"; then
+    if (( ${#ARR[@]} == 2 )); then
+        #From: <address>
+        #alias address <address>
+        echo "alias $MAIL <$MAIL>" >> "$ALIASES"
+    elif (( ${#ARR[@]} == 3 )); then
+        #From: name <address>
+        #alias name <address>
+        echo "alias ${ARR[1],,} <$MAIL>" >> "$ALIASES"
+    elif (( ${#ARR[@]} > 3 )); then
+        #From: forename .. surname <address>
+        #alias forename-surname forename .. surname <address>
+        unset "ARR[0]"
+        unset "ARR[-1]"
+        NAME="${ARR[-1]}-${ARR[1]}"
+        echo "alias ${NAME,,} ${ARR[*]} <$MAIL>" >> "$ALIASES"
+    fi
 fi
 
-echo "${MESSAGE}"
+echo "$MESSAGE"
