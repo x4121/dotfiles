@@ -100,6 +100,13 @@ set novisualbell
 set t_vb=
 set tm=500
 
+" unmap F1 help page
+nmap <F1> <nop>
+imap <F1> <nop>
+
+" unmap ex mode
+nnoremap Q <nop>
+
 " Add a bit extra margin to the left
 set foldcolumn=1
 
@@ -260,9 +267,6 @@ set viminfo^=%
 """"""""""""""""""""""""""""""
 " Always show the status line
 set laststatus=2
-
-" Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
