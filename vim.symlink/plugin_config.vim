@@ -4,23 +4,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""
-" => bufExplorer plugin
-""""""""""""""""""""""""""""""
-let g:bufExplorerDefaultHelp=0
-let g:bufExplorerShowRelativePath=1
-let g:bufExplorerFindActive=1
-let g:bufExplorerSortBy='name'
-map <leader>o :BufExplorer<cr>
-
-
-""""""""""""""""""""""""""""""
-" => MRU plugin
-""""""""""""""""""""""""""""""
-let MRU_Max_Entries = 50
-map <leader>f :MRU<CR>
-
-
-""""""""""""""""""""""""""""""
 " => YankRing
 """"""""""""""""""""""""""""""
 if has("win16") || has("win32")
@@ -123,8 +106,21 @@ au FileType org map <leader>xp :! emacs % -q --load %:p:h/emacs.init --batch -f 
 " Map for org-beamer-export-to-pdf
 au FileType org map <leader>xb :! emacs % -q --load %:p:h/emacs.init --batch -f org-beamer-export-to-pdf --kill<cr><cr>
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => tagbar
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Map for tagbar
 nmap <silent><leader>tt :TagbarToggle<cr>
+
+
+""""""""""""""""""""""""""""""
+" => fzf
+""""""""""""""""""""""""""""""
+map <leader>gf :GFiles<cr>
+map <leader>gs :GFiles?<cr>
+map <leader>gc :Commits<cr>
+map <leader>gb :BCommits<cr>
+map <c-f> :Files<cr>
+map <c-b> :Buffers<cr>
+map <c-m> :History<cr>

@@ -11,7 +11,6 @@ Plug 'ensime/ensime-vim', { 'for': 'scala' }
 Plug 'ervandew/supertab'
 Plug 'fatih/vim-go'
 Plug 'jceb/vim-orgmode'
-Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
@@ -32,7 +31,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'yegappan/mru'
 Plug 'Yggdroot/indentLine'
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 " non github
