@@ -8,6 +8,7 @@ Plug 'derekwyatt/vim-scala'
 Plug 'ensime/ensime-sbt', { 'branch': '2.0', 'for': 'scala' }
 Plug 'ensime/ensime-server', { 'branch': '2.0', 'for': 'scala' }
 Plug 'ensime/ensime-vim', { 'for': 'scala' }
+Plug 'elixir-lang/vim-elixir'
 Plug 'ervandew/supertab'
 Plug 'fatih/vim-go'
 Plug 'jceb/vim-orgmode'
