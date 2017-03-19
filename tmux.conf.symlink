@@ -30,6 +30,13 @@ bind -r C-l select-window -t :+
 bind v run "xsel -o -b | tmux load-buffer - && tmux paste-buffer"
 
 
+# Display activity in windows
+setw -g monitor-activity on
+
+# Start counting at 1
+set -g base-index 1
+set -g pane-base-index 1
+
 # powerline
 source "/usr/local/lib/python3.5/dist-packages/powerline/bindings/tmux/powerline.conf"
 
