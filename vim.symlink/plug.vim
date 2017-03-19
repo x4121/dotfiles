@@ -18,7 +18,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'majutsushi/tagbar'
 Plug 'Raimondi/delimitMate'
 Plug 'rodjek/vim-puppet'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind', 'NERDTreeFromBookmark'] }
 Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
 "Plug 'Shougo/neocomplete.vim'
 Plug 'terryma/vim-multiple-cursors'
@@ -32,7 +32,7 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'Yggdroot/indentLine'
-Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle', 'NERDTreeFind', 'NERDTreeFromBookmark'] }
 " non github
 Plug 'taglist.vim'
 Plug 'listmaps.vim'
