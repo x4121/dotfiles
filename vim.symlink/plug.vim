@@ -21,7 +21,6 @@ Plug 'rodjek/vim-puppet'
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind', 'NERDTreeFromBookmark'] }
 Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
 "Plug 'Shougo/neocomplete.vim'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-capslock'
