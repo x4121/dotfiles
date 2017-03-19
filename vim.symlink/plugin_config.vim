@@ -142,3 +142,10 @@ command! -bang -nargs=* Rg
   \   'rg --column --line-number --no-heading --fixed-strings'
   \     .' --ignore-case --hidden --follow --glob "!.git/*"'
   \     .' --color "always" '.shellescape(<q-args>), 1, <bang>0)
+
+
+""""""""""""""""""""""""""""""
+" => easymotion
+""""""""""""""""""""""""""""""
+nmap <leader>/ <Plug>(easymotion-sn)
+let g:EasyMotion_smartcase = 1
