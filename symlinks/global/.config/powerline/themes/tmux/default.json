@@ -5,6 +5,14 @@
         }
     },
     "segments": {
+        "left": [
+            {
+                "function": "powerline.segments.tmux.attached_clients",
+                "args": {
+                    "minimum": 2
+                }
+            }
+        ],
         "right": [
             {
                 "function": "powerline.segments.common.custom.slack"

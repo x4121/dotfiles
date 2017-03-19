@@ -1,21 +1,25 @@
 {
-	"groups": {
-		"window:current": {
-            "fg": "solarized:base3", 
+    "groups": {
+        "window:current": {
+            "fg": "solarized:base3",
             "bg": "solarized:green"
         },
-		"window_name": {
+        "window_name": {
             "fg": "solarized:base3",
             "bg": "solarized:green",
             "attrs": ["bold"]
         },
         "session": {
-            "fg": "solarized:base3", 
+            "fg": "solarized:base3",
             "bg": "solarized:blue"
         },
         "hostname": {
-            "fg": "solarized:base3", 
+            "fg": "solarized:base3",
+            "bg": "solarized:blue"
+        },
+        "attached_clients": {
+            "fg": "solarized:base3",
             "bg": "solarized:blue"
         }
-	}
+    }
 }
