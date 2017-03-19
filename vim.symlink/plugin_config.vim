@@ -112,10 +112,33 @@ nmap <silent><leader>tt :TagbarToggle<cr>
 """"""""""""""""""""""""""""""
 " => fzf
 """"""""""""""""""""""""""""""
-map <leader>gf :GFiles<cr>
-map <leader>gs :GFiles?<cr>
-map <leader>gc :Commits<cr>
-map <leader>gb :BCommits<cr>
-map <c-f> :Files<cr>
-map <c-b> :Buffers<cr>
-map <c-m> :History<cr>
+nmap <leader>gf :GFiles<cr>
+nmap <leader>gs :GFiles?<cr>
+nmap <leader>gc :Commits<cr>
+nmap <leader>gb :BCommits<cr>
+nmap <c-f> :Files<cr>
+nmap <c-b> :Buffers<cr>
+nmap <c-m> :History<cr>
+nmap <c-s> :Rg 
+map <cr> <cr>
+
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" Search content with ripgrep
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --fixed-strings'
+  \     .' --ignore-case --hidden --follow --glob "!.git/*"'
+  \     .' --color "always" '.shellescape(<q-args>), 1, <bang>0)
