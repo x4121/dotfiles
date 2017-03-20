@@ -21,7 +21,7 @@ if ! [[ -z ${I_DEV+x} ]]; then
         "$HOME/.rbenv/plugins/ruby-build"
 
     echo 'Installing gems'
-    sudo gem install gem-shut-the-fuck-up bundler git-amnesia
+    sudo gem install gem-shut-the-fuck-up bundler git-amnesia git-rc rubocop
 
     echo 'Installing shellcheck'
     cabal update
