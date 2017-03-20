@@ -6,6 +6,8 @@
     user = x4121
 [push]
     default = simple
+[pull]
+    ff = only
 [status]
     branch = true
     short = true
