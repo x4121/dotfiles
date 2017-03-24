@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 
-file=/tmp/mutt_pager_index_lines
 oldconf=$1
+pid=$(pidof mutt | cut -d' ' -f1)
+file="/tmp/mutt_${pid}_pager_index_lines"
 
 if [[ -f $file ]]; then
-    conf=$(cat $file)
+    conf=$(cat "$file")
     echo "set pager_index_lines=$conf"
-    rm $file
+    rm "$file"
 else
-    echo $oldconf > $file
+    echo "$oldconf" > "$file"
     echo "set pager_index_lines=0"
 fi
