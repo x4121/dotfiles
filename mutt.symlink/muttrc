@@ -22,6 +22,9 @@ set smart_wrap
 set tilde                                       # pad bottom lines
 unset markers                                   # no markers
 set mailcap_path      = ~/.mutt/mailcap
+macro pager z \
+    "<enter-command>source '~/.mutt/pager_toggle $pager_index_lines |'<return>" \
+    "toggle pager fullscreen"
 
 # compose options
                  # start in insert mode after headers

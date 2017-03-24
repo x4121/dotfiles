@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+file=/tmp/mutt_pager_index_lines
+oldconf=$1
+
+if [[ -f $file ]]; then
+    conf=$(cat $file)
+    echo "set pager_index_lines=$conf"
+    rm $file
+else
+    echo $oldconf > $file
+    echo "set pager_index_lines=0"
+fi
