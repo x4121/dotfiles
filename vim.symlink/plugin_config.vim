@@ -149,3 +149,13 @@ command! -bang -nargs=* Rg
 """"""""""""""""""""""""""""""
 nmap <leader>/ <Plug>(easymotion-sn)
 let g:EasyMotion_smartcase = 1
+
+
+""""""""""""""""""""""""""""""
+" => UltiSnips
+""""""""""""""""""""""""""""""
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsListSnippets = "<F1>"
+let g:UltiSnipsEditSplit = "vertical"
