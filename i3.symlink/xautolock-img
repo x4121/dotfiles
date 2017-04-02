@@ -1,7 +1,7 @@
 #!/bin/sh
 
 exec xautolock -detectsleep \
-    -time 3 -locker "$HOME/.i3/i3lock-img" \
+    -time 3 -locker "i3lock-img" \
     -corners -+00 \
     -cornerdelay 5 \
     -cornerredelay 10 \

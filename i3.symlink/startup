@@ -13,7 +13,7 @@ dex /etc/xdg/autostart/gnome-keyring-ssh.desktop
 dex /etc/xdg/autostart/polkit-gnome-authentication-agent-1.desktop
 dex /etc/xdg/autostart/pulseaudio.desktop
 dex /etc/xdg/autostart/nm-applet.desktop
-xautolock-img &
+"$HOME/.i3/xautolock-img" &
 export $(gnome-keyring-daemon -s)
 
 autodir="$HOME/.config/autostart/"

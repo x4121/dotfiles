@@ -1,5 +1,3 @@
-#!/bin/sh
-
 libglib2.0-dev
 libxinerama-dev
 libpango1.0-dev
