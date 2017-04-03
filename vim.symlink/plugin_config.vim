@@ -38,12 +38,17 @@ au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Goyo
+" => Goyo & Limelight
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:goyo_width=100
 let g:goyo_margin_top = 2
 let g:goyo_margin_bottom = 2
 nnoremap <silent> <leader>z :Goyo<cr>
+
+" solarized base1
+let g:limelight_conceal_ctermfg = 245
+let g:limelight_conceal_guifg = '#93a1a1'
+nnoremap <silent> <leader>l :Limelight!!<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

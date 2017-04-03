@@ -53,6 +53,7 @@ Plug 'honza/vim-snippets'
 "" UI
 Plug 'altercation/vim-colors-solarized'
 Plug 'junegunn/goyo.vim' " distraction free typing
+Plug 'junegunn/limelight.vim' " distraction free typing
 Plug 'Yggdroot/indentLine'
 
 "" Misc
