@@ -164,3 +164,13 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:UltiSnipsListSnippets = "<F1>"
 let g:UltiSnipsEditSplit = "vertical"
+
+
+""""""""""""""""""""""""""""""
+" => Dispatch
+""""""""""""""""""""""""""""""
+nmap <leader>dm :Make<cr>
+nmap <leader>dd :Dispatch<cr>
+nmap <leader>d  :Dispatch
+nmap <leader>ds :Start
+nmap <leader>df :Focus
