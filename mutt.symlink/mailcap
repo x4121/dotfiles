@@ -1,4 +1,5 @@
 # mailcap - MIME configuration file
+text/html; x-www-browser %s; needsterminal;
 text/html; w3m -I %{charset} -T text/html; copiousoutput;
 text/calendar; mutt-ics; copiousoutput;
 application/ics; mutt-ics; copiousoutput;
