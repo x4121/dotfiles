@@ -37,6 +37,7 @@ set so=7
 
 " Avoid garbled characters in Chinese language windows OS
 let $LANG='en'
+let $LC_ALL='en_US.UTF-8'
 set langmenu=en
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
