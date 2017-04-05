@@ -25,7 +25,7 @@ set diffopt+=vertical
 let g:NERDTreeWinPos = "left"
 let g:NERDTreeMinimalUI = 1
 map <leader>nn :NERDTreeToggle<cr>
-map <leader>nb :NERDTreeFromBookmark 
+map <leader>nb :NERDTreeFromBookmark<space>
 map <leader>nf :NERDTreeFind<cr>
 
 
@@ -125,7 +125,7 @@ nmap <leader>gb :BCommits<cr>
 nmap <c-f> :Files<cr>
 nmap <c-b> :Buffers<cr>
 nmap <c-m> :History<cr>
-nmap <c-s> :Rg 
+nmap <c-s> :Rg<space>
 map <cr> <cr>
 
 let g:fzf_colors =

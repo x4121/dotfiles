@@ -231,8 +231,8 @@ map <leader>ba :1,1000 bd!<cr>
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext 
+map <leader>tm :tabmove<space>
+map <leader>t<leader> :tabnext<space>
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
