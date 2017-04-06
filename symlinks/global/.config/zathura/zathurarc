@@ -47,13 +47,17 @@ map [fullscreen] d     navigate next
 # prev page
 map [normal]     u     navigate previous
 map [fullscreen] u     navigate previous
+# quit
+map [normal]     <C-w> quit
+map [fullscreen] <C-w> quit
 # recolor as solarized dark
 map [normal]     c     set recolor
 map [fullscreen] c     set recolor
 # toggle statusbar/filename
 map [normal]     b     toggle_statusbar
 map [fullscreen] b     toggle_statusbar
-# toggle "book mode"
+# toggle "book mode" (2 pages horizontal)
 map [normal]     h     toggle_page_mode 2
 map [fullscreen] h     toggle_page_mode 2
+# toggle fullscreen
 map              <F11> toggle_fullscreen
