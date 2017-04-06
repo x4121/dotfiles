@@ -1,10 +1,6 @@
 {
     "name": "Solarized dark for vim",
     "groups": {
-        "bufnr": {
-            "fg": "solarized:base3",
-            "bg": "solarized:blue"
-        },
         "branch": {
             "fg": "solarized:base3",
             "bg": "solarized:blue"
@@ -50,14 +46,6 @@
             "bg": "solarized:base02"
         },
         "line_percent_gradient": {
-            "fg": "solarized:base1",
-            "bg": "solarized:base02"
-        },
-        "single_tab": {
-            "fg": "solarized:base1",
-            "bg": "solarized:base02"
-        },
-        "many_tabs": {
             "fg": "solarized:base1",
             "bg": "solarized:base02"
         }
