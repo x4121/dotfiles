@@ -17,6 +17,7 @@ My dotfiles
 * i3 config (unfinished/testing)
 * GnomeShell extensions
 * sbt config and plugins
+* zathura config
 * auxiliary scripts/tools
 
 ## Install
