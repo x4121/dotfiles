@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Categories=Utility;
+Comment=Remove idle cursor image from screen
+Exec=unclutter
+StartupNotify=true
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=Unclutter

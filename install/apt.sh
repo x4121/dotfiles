@@ -51,6 +51,7 @@ if [[ $DISPLAY != "" ]]; then
         tmux\
             wmctrl\
             xcape\
+        unclutter\
         virtualbox\
         xdotool"
 
