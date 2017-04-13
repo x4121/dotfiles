@@ -45,11 +45,32 @@ let g:goyo_margin_top = 2
 let g:goyo_margin_bottom = 2
 nnoremap <silent> <leader>z :Goyo<cr>
 
+function! s:goyo_enter()
+  silent !tmux set status off
+  silent !tmux resize-pane -Z
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  Limelight
+  IndentLinesDisable
+endfunction
+
+function! s:goyo_leave()
+  silent !tmux set status on
+  silent !tmux resize-pane -Z
+  set showmode
+  set showcmd
+  set scrolloff=7
+  Limelight!
+  IndentLinesEnable
+endfunction
+
 " solarized base01
 let g:limelight_conceal_ctermfg = 240
 let g:limelight_conceal_guifg = '#585858'
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
