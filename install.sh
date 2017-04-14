@@ -21,5 +21,6 @@ case $(hostname -s) in
         ;;
 esac
 
-"$HOME/.dotfiles/install/apt.sh"
-"$HOME/.dotfiles/install/postinstall.sh"
+if . "$HOME/.dotfiles/install/apt.sh"; then
+    "$HOME/.dotfiles/install/postinstall.sh"
+fi

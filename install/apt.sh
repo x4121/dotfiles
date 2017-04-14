@@ -79,12 +79,12 @@ if [[ $DISPLAY != "" ]]; then
 
     if ! [[ -z ${I_DEV+x} ]]; then
         # sbt
-        sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 \
+        sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 \
             --recv 642AC823 >&- 2>&-
         echo "deb https://dl.bintray.com/sbt/debian /" \
             | sudo tee -a /etc/apt/sources.list.d/sbt.list >&- 2>&-
         # docker
-        sudo apt-key adv --keyserver hkp://keyservers.ubuntu.com:80 \
+        sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 \
             --recv-keys 58118E89F3A912897C070ADBF76221572C52609D >&- 2>&-
         echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" \
             | sudo tee -a /etc/apt/sources.list.d/docker.list >&- 2>&-
@@ -113,7 +113,11 @@ if [[ $DISPLAY != "" ]]; then
 fi
 
 echo 'Updating/upgrading system'
-sudo apt update >&- 2>&-
+if ! sudo apt update; then
+    echo 'Something failed (maybe a keyserver was down)'
+    echo 'Stopping'
+    return 1
+fi
 sudo apt upgrade -y >&- 2>&-
 
 echo 'Installing software'
