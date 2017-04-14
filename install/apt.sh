@@ -48,6 +48,7 @@ if [[ $DISPLAY != "" ]]; then
         rxvt-unicode-256color\
         samba\
         socat\
+        stjerm\
         tmux\
             wmctrl\
             xcape\
@@ -83,9 +84,9 @@ if [[ $DISPLAY != "" ]]; then
         echo "deb https://dl.bintray.com/sbt/debian /" \
             | sudo tee -a /etc/apt/sources.list.d/sbt.list >&- 2>&-
         # docker
-        sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 \
+        sudo apt-key adv --keyserver hkp://keyservers.ubuntu.com:80 \
             --recv-keys 58118E89F3A912897C070ADBF76221572C52609D >&- 2>&-
-        echo "deb https://apt.dockerproject.org/repo ubuntu-yakkety main" \
+        echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" \
             | sudo tee -a /etc/apt/sources.list.d/docker.list >&- 2>&-
 
         SW="$SW\
@@ -98,6 +99,10 @@ if [[ $DISPLAY != "" ]]; then
             emacs\
             jq\
             knockd\
+            npm\
+                node-grunt-cli\
+            rbenv\
+                ruby-build\
             sbt\
                 maven\
                 openjdk-8-jdk\

@@ -1,27 +1,18 @@
 #!/bin/bash
 
 if ! [[ -z ${I_DEV+x} ]]; then
-    echo 'Installing node, npm and grunt'
-    curl -sL https://deb.nodesource.com/setup_4.x | sudo bash - >&- 2>&-
-    sudo apt-get install -y nodejs
-    sudo npm update -g npm
-    sudo npm install -g grunt-cli
-
     echo 'Installing jenv'
-    git clone https://github.com/gcuisinier/jenv.git "$HOME/.jenv"
+    git clone https://github.com/gcuisinier/jenv.git \
+        "$HOME/.jenv" >&- 2>&-
     mkdir -p "$HOME/.config/fish/functions"
-    ln -s "$HOME/.jenv/fish/export.fish" "$HOME/.config/fish/functions/export.fish"
-    ln -s "$HOME/.jenv/fish/jenv.fish" "$HOME/.config/fish/functions/jenv.fish"
-
-    echo 'Installing rbenv'
-    sudo apt-get install -y \
-        libreadline-dev libssl-dev >&- 2>&-
-    git clone https://github.com/rbenv/rbenv.git "$HOME/.rbenv"
-    git clone https://github.com/rbenv/ruby-build.git \
-        "$HOME/.rbenv/plugins/ruby-build"
+    ln -s "$HOME/.jenv/fish/export.fish" \
+        "$HOME/.config/fish/functions/export.fish" >&- 2>&-
+    ln -s "$HOME/.jenv/fish/jenv.fish" \
+        "$HOME/.config/fish/functions/jenv.fish" &>- 2>&-
 
     echo 'Installing gems'
-    sudo gem install gem-shut-the-fuck-up bundler git-amnesia git-rc rubocop
+    sudo gem install \
+        gem-shut-the-fuck-up bundler git-amnesia git-rc rubocop >&- 2>&-
 fi
 
 echo 'Installing git-lfs'
@@ -38,25 +29,25 @@ popd >&- 2>&-
 rm -rf "$tmp"
 
 echo 'Setting fish as default shell'
-chsh -s "$(grep /fish$ /etc/shells | tail -1)"
+sudo chsh -s "$(grep /fish$ /etc/shells | tail -1)" "$USER"
 
 pushd "$HOME/.dotfiles" >&- 2>&-
 
 echo 'Initializing submodule(s)'
-git submodule update --init --recursive
+git submodule update --init --recursive >&- 2>&-
 
 if [[ $DISPLAY != "" ]]; then
     echo 'Installing pip'
-    sudo easy_install pip
+    sudo easy_install pip >&- 2>&-
 
     echo 'Installing stjerm'
     tmp="$(mktemp -d)"
     git clone https://github.com/stjerm/stjerm "$tmp" >&- 2>&-
     pushd "$tmp" >&- 2>&-
-    ./autogen.sh
-    ./configure
-    make
-    sudo make install
+    ./autogen.sh >&- 2>&-
+    ./configure >&- 2>&-
+    make >&- 2>&-
+    sudo make install >&- 2>&-
     popd >&- 2>&-
     rm -rf "$tmp"
 
@@ -97,10 +88,6 @@ if [[ $DISPLAY != "" ]]; then
     sudo tar xzf /opt/franz/Franz.tgz -C /opt/franz
     sudo rm /opt/franz/Franz.tgz
 
-    if ! [[ -z ${I_DEV+x} ]]; then
-        sudo easy_install uncommitted
-    fi
-
     echo 'Setting font and color in gnome-terminal (as fallback)'
     profile=$(dconf read /org/gnome/terminal/legacy/profiles:/default | tr -d "'")
     if [[ $profile = "" ]]; then
@@ -137,17 +124,12 @@ fi
 echo 'Creating symlinks'
 sh ./symlinks.sh >&- 2>&-
 
-echo 'Installing fzf'
-git clone https://github.com/junegunn/fzf "$HOME/.fzf"
-"$HOME/.fzf/install --all"
-
 popd >&- 2>&-
 
 echo 'Installing Vim-Plugins'
 curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim +PlugInstall +qall
-rm -f "$HOME/.vim_mru_files"
 
 echo 'Installing tmux plugins'
 "$HOME/.tmux/plugins/tpm/bin/install_plugins"
