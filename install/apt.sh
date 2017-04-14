@@ -17,9 +17,9 @@ SW="apt-transport-tor\
 
 if [[ $DISPLAY != "" ]]; then
     # owncloud
-    wget -q -O - http://download.opensuse.org/repositories/isv:ownCloud:desktop/Ubuntu_16.04/Release.key \
+    wget -q -O - https://download.opensuse.org/repositories/isv:ownCloud:desktop/Ubuntu_16.10/Release.key \
         | sudo apt-key add - >&- 2>&-
-    echo "deb http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Ubuntu_16.04/ /" \
+    echo "deb https://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Ubuntu_16.10/ /" \
         | sudo tee -a /etc/apt/sources.list.d/owncloud-client.list >&- 2>&-
 
     SW="$SW\
@@ -56,11 +56,6 @@ if [[ $DISPLAY != "" ]]; then
         xdotool"
 
     if [[ $DESKTOP_SESSION = gnome ]]; then
-        # arc-theme # remove in 16.10
-        wget -q -O - http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_15.04/Release.key \
-            | sudo apt-key add - >&- 2>&-
-        echo "deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /" \
-            | sudo tee -a /etc/apt/sources.list.d/arc-theme.list >&- 2>&-
         # numix-icon-theme
         sudo add-apt-repository -y ppa:numix/ppa >&- 2>&-
 
@@ -90,7 +85,7 @@ if [[ $DISPLAY != "" ]]; then
         # docker
         sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 \
             --recv-keys 58118E89F3A912897C070ADBF76221572C52609D - >&- 2>&-
-        echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" \
+        echo "deb https://apt.dockerproject.org/repo ubuntu-yakkety main" \
             | sudo tee -a /etc/apt/sources.list.d/docker.list >&- 2>&-
 
         SW="$SW\
@@ -108,7 +103,6 @@ if [[ $DISPLAY != "" ]]; then
             sbt\
                 maven\
                 openjdk-8-jdk\
-                openjdk-9-jdk\
             texlive-full\
             vagrant"
     fi
