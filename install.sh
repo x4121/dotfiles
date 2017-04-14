@@ -7,7 +7,7 @@ if ! apt --version > /dev/null 2>&-; then
     return 1
 fi
 
-apt install -y git apt-transport-https > /dev/null 2>&1
+sudo apt install -y git apt-transport-https > /dev/null 2>&1
 git clone https://github.com/x4121/dotfiles "$HOME/.dotfiles"
 
 case $(hostname -s) in

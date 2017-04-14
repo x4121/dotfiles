@@ -2,7 +2,7 @@
 
 if ! [[ -z ${I_DEV+x} ]]; then
     echo 'Installing node, npm and grunt'
-    curl -sL https://deb.nodesource.com/setup_4.x | sudo bash -
+    curl -sL https://deb.nodesource.com/setup_4.x | sudo bash - >&- 2>&-
     sudo apt-get install -y nodejs
     sudo npm update -g npm
     sudo npm install -g grunt-cli
@@ -22,10 +22,6 @@ if ! [[ -z ${I_DEV+x} ]]; then
 
     echo 'Installing gems'
     sudo gem install gem-shut-the-fuck-up bundler git-amnesia git-rc rubocop
-
-    echo 'Installing shellcheck'
-    cabal update
-    cabal install ShellCheck
 fi
 
 echo 'Installing git-lfs'
@@ -118,7 +114,7 @@ if [[ $DISPLAY != "" ]]; then
 fi
 
 if [[ $DESKTOP_SESSION = gnome ]]; then
-    SHELL_VER="3.18"
+    SHELL_VER="3.24"
     gnomeshell_install="$HOME/.dotfiles/bin.symlink/gnomeshell-extension-manage \
         --install --version $SHELL_VER --extension-id"
     # media player indicator

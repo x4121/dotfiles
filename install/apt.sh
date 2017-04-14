@@ -21,13 +21,6 @@ if [[ $DISPLAY != "" ]]; then
         | sudo apt-key add - >&- 2>&-
     echo "deb http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Ubuntu_16.10/ /" \
         | sudo tee -a /etc/apt/sources.list.d/owncloud-client.list >&- 2>&-
-    # virtualbox
-    # wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- \
-    #     | sudo apt-key add - >&- 2>&-
-    # wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- \
-    #     | sudo apt-key add - >&- 2>&-
-    # echo "deb http://download.virtualbox.org/virtualbox/debian zesty contrib" \
-    #     | sudo tee -a /etc/apt/sources.list.d/virtualbox.list >&- 2>&-
 
     SW="$SW\
         chromium-browser\
@@ -101,24 +94,23 @@ if [[ $DISPLAY != "" ]]; then
                 automake\
                 cmake\
                 libtool\
-            cabal-install\
             docker-engine\
             emacs\
-            golang\
             jq\
             knockd\
             sbt\
                 maven\
                 openjdk-8-jdk\
+            shellcheck\
             texlive-full\
             vagrant"
     fi
 fi
 
 echo 'Updating/upgrading system'
-sudo apt-get update >&- 2>&-
-sudo apt-get upgrade -y >&- 2>&-
+sudo apt update >&- 2>&-
+sudo apt upgrade -y >&- 2>&-
 
 echo 'Installing software'
 # shellcheck disable=2086
-sudo apt-get install -y $SW >&- 2>&-
+sudo apt install -y $SW >&- 2>&-
