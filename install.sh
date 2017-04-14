@@ -2,13 +2,12 @@
 
 echo 'Installing dotfiles'
 
-apt > /dev/null 2>&1
-if apt --version > /dev/null 2>&-; then
+if ! apt --version > /dev/null 2>&-; then
     echo 'Cannot run apt'
     return 1
 fi
 
-sudo apt-get install -y git apt-transport-https > /dev/null 2>&1
+apt install -y git apt-transport-https > /dev/null 2>&1
 git clone https://github.com/x4121/dotfiles "$HOME/.dotfiles"
 
 case $(hostname -s) in

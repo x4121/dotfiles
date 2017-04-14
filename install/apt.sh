@@ -12,15 +12,22 @@ SW="apt-transport-tor\
     taskwarrior\
     torsocks\
     tree\
-    vim-gnome-py2\
+    vim-gtk3\
         exuberant-ctags"
 
 if [[ $DISPLAY != "" ]]; then
     # owncloud
-    wget -q -O - https://download.opensuse.org/repositories/isv:ownCloud:desktop/Ubuntu_16.10/Release.key \
+    wget -q -O - http://download.opensuse.org/repositories/isv:ownCloud:desktop/Ubuntu_16.10/Release.key \
         | sudo apt-key add - >&- 2>&-
-    echo "deb https://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Ubuntu_16.10/ /" \
+    echo "deb http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Ubuntu_16.10/ /" \
         | sudo tee -a /etc/apt/sources.list.d/owncloud-client.list >&- 2>&-
+    # virtualbox
+    # wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- \
+    #     | sudo apt-key add - >&- 2>&-
+    # wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- \
+    #     | sudo apt-key add - >&- 2>&-
+    # echo "deb http://download.virtualbox.org/virtualbox/debian zesty contrib" \
+    #     | sudo tee -a /etc/apt/sources.list.d/virtualbox.list >&- 2>&-
 
     SW="$SW\
         chromium-browser\
@@ -29,7 +36,7 @@ if [[ $DISPLAY != "" ]]; then
         devilspie\
         gawk\
         libsecret-tools\
-        mutt-patched\
+        mutt\
             msmtp\
             notmuch\
             notmuch-mutt\
@@ -42,7 +49,7 @@ if [[ $DISPLAY != "" ]]; then
         pass\
         pdfposter\
         pdf-presenter-console\
-        python2-setuptools\
+        python-setuptools\
         redshift\
         rofi\
         rxvt-unicode-256color\
@@ -84,7 +91,7 @@ if [[ $DISPLAY != "" ]]; then
             | sudo tee -a /etc/apt/sources.list.d/sbt.list >&- 2>&-
         # docker
         sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 \
-            --recv-keys 58118E89F3A912897C070ADBF76221572C52609D - >&- 2>&-
+            --recv-keys 58118E89F3A912897C070ADBF76221572C52609D >&- 2>&-
         echo "deb https://apt.dockerproject.org/repo ubuntu-yakkety main" \
             | sudo tee -a /etc/apt/sources.list.d/docker.list >&- 2>&-
 
