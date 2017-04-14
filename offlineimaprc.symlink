@@ -58,7 +58,7 @@ type = IMAP
 ssl = yes
 remotehost = imap.1und1.de
 remoteuser = me@armingrodon.de
-remotepasseval = get_password("mail", "armingrodon")
+remotepasseval = get_password("email/me@armingrodon.de")
 nametrans = lambda foldername: re.sub('Gesendete Objekte', 'sent',
     re.sub('Papierkorb', 'trash',
     re.sub('Entw&APw-rfe', 'draft',
@@ -71,7 +71,7 @@ type = IMAP
 ssl = yes
 remotehost = imap.gmail.com
 remoteuser = armin.grodon@gmail.com
-remotepasseval = get_password("mail", "gmail")
+remotepasseval = get_password("email/armin.grodon@googlemail.com")
 auth_mechanisms = PLAIN, LOGIN
 nametrans = lambda foldername: re.sub('.*Sent.*', 'sent',
     re.sub('.*Drafts', 'draft',
@@ -85,7 +85,7 @@ type = IMAP
 ssl = yes
 remotehost = imap.gmail.com
 remoteuser = armin@onpage.org
-remotepasseval = get_password("mail", "onpage")
+remotepasseval = get_password("email/armin@onpage.org")
 auth_mechanisms = PLAIN, LOGIN
 nametrans = lambda foldername: re.sub('.*Sent.*', 'sent',
     re.sub('.*Drafts', 'draft',

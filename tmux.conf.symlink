@@ -38,7 +38,7 @@ set -g base-index 1
 set -g pane-base-index 1
 
 # powerline
-source "/usr/local/lib/python3.5/dist-packages/powerline/bindings/tmux/powerline.conf"
+source "/usr/local/lib/python2.7/dist-packages/powerline/bindings/tmux/powerline.conf"
 
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'

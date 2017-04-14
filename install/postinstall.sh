@@ -28,28 +28,11 @@ git lfs install
 popd >&- 2>&-
 rm -rf "$tmp"
 
-echo 'Setting fish as default shell'
-sudo chsh -s "$(grep /fish$ /etc/shells | tail -1)" "$USER"
-
 pushd "$HOME/.dotfiles" >&- 2>&-
-
-echo 'Initializing submodule(s)'
-git submodule update --init --recursive >&- 2>&-
 
 if [[ $DISPLAY != "" ]]; then
     echo 'Installing pip'
     sudo easy_install pip >&- 2>&-
-
-    echo 'Installing stjerm'
-    tmp="$(mktemp -d)"
-    git clone https://github.com/stjerm/stjerm "$tmp" >&- 2>&-
-    pushd "$tmp" >&- 2>&-
-    ./autogen.sh >&- 2>&-
-    ./configure >&- 2>&-
-    make >&- 2>&-
-    sudo make install >&- 2>&-
-    popd >&- 2>&-
-    rm -rf "$tmp"
 
     echo 'Installing rofi-pass'
     tmp="$(mktemp -d)"
@@ -101,15 +84,12 @@ if [[ $DISPLAY != "" ]]; then
 fi
 
 if [[ $DESKTOP_SESSION = gnome ]]; then
-    SHELL_VER="3.24"
     gnomeshell_install="$HOME/.dotfiles/bin.symlink/gnomeshell-extension-manage \
-        --install --version $SHELL_VER --extension-id"
+        --install --extension-id"
     # media player indicator
     $gnomeshell_install 55
     # dash to dock
     $gnomeshell_install 307
-    # hide legacy tray
-    $gnomeshell_install 967
     # topicons plus
     $gnomeshell_install 1031
     # no topleft hot corner
@@ -122,7 +102,7 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
 fi
 
 echo 'Creating symlinks'
-sh ./symlinks.sh >&- 2>&-
+bash ./symlinks.sh >&- 2>&-
 
 popd >&- 2>&-
 
@@ -130,6 +110,9 @@ echo 'Installing Vim-Plugins'
 curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim +PlugInstall +qall
+
+echo 'Setting fish as default shell'
+sudo chsh -s "$(grep /fish$ /etc/shells | tail -1)" "$USER"
 
 echo 'Installing tmux plugins'
 "$HOME/.tmux/plugins/tpm/bin/install_plugins"

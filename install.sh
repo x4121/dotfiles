@@ -8,7 +8,7 @@ if ! apt --version > /dev/null 2>&-; then
 fi
 
 sudo apt install -y git apt-transport-https > /dev/null 2>&1
-git clone https://github.com/x4121/dotfiles "$HOME/.dotfiles"
+#git clone --recursive https://github.com/x4121/dotfiles "$HOME/.dotfiles"
 
 case $(hostname -s) in
     kiste)
@@ -21,6 +21,6 @@ case $(hostname -s) in
         ;;
 esac
 
-if . "$HOME/.dotfiles/install/apt.sh"; then
-    "$HOME/.dotfiles/install/postinstall.sh"
-fi
+#if . "$HOME/.dotfiles/install/apt.sh"; then
+    . "$HOME/.dotfiles/install/postinstall.sh"
+#fi
