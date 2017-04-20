@@ -72,13 +72,9 @@ if [[ $DISPLAY != "" ]]; then
     sudo rm /opt/franz/Franz.tgz
 
     echo 'Setting font and color in gnome-terminal (as fallback)'
-    profile=$(dconf read /org/gnome/terminal/legacy/profiles:/default | tr -d "'")
-    if [[ $profile = "" ]]; then
-        profile=$(dconf list /org/gnome/terminal/legacy/profiles:/ | tr -d ":/")
-    fi
-    dconf write "/org/gnome/terminal/legacy/profiles:/:$profile/visible-name" "'Default'"
-    dconf write "/org/gnome/terminal/legacy/profiles:/:$profile/font" "'SauceCodePro Nerd Font Medium 12'"
-    dconf write "/org/gnome/terminal/legacy/profiles:/:$profile/use-system-font" "false"
+    gsettings set org.gnome.Terminal.Legacy.Profile:/:0 visible-name "'Default'"
+    gsettings set org.gnome.Terminal.Legacy.Profile:/:0 font "'SauceCodePro Nerd Font Medium 12'"
+    gsettings set org.gnome.Terminal.Legacy.Profile:/:0 use-system-font "false"
 
     gnome-terminal-colors-solarized/install.sh -s dark -p Default --skip-dircolors
 
@@ -88,6 +84,7 @@ if [[ $DISPLAY != "" ]]; then
 fi
 
 if [[ $DESKTOP_SESSION = gnome ]]; then
+    echo 'Installing gnome-shell extensions'
     gnomeshell_install="$HOME/.dotfiles/bin.symlink/gnomeshell-extension-manage \
         --install --extension-id"
     # media player indicator
@@ -102,6 +99,97 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
     #$gnomeshell_install 258
     # openweather
     $gnomeshell_install 750
+
+    echo 'Configuring gnome-shell extensions'
+    ext_home="$HOME/.local/share/gnome-shell/extensions"
+    schema_dir=/usr/share/glib-2.0/schemas/
+    sudo cp \
+        "$ext_home/dash-to-dock@micxgx.gmail.com/schemas/org.gnome.shell.extensions.dash-to-dock.gschema.xml" \
+        "$ext_home/mediaplayer@patapon.info/schemas/org.gnome.shell.extensions.mediaplayer.gschema.xml" \
+        "$ext_home/openweather-extension@jenslody.de/schemas/org.gnome.shell.extensions.openweather.gschema.xml" \
+        "$ext_home/TopIcons@phocean.net/schemas/org.gnome.shell.extensions.topicons.gschema.xml" \
+        $schema_dir
+    sudo glib-compile-schemas $schema_dir
+    # dash to dock
+    gsettings set org.gnome.shell.extensions.dash-to-dock \
+        custom-theme-customize-running-dots true
+    gsettings set org.gnome.shell.extensions.dash-to-dock \
+        custom-theme-running-dots true
+    gsettings set org.gnome.shell.extensions.dash-to-dock \
+        custom-theme-shrink true
+    gsettings set org.gnome.shell.extensions.dash-to-dock \
+        dash-max-icon-size 32
+    gsettings set org.gnome.shell.extensions.dash-to-dock \
+        extend-height true
+    gsettings set org.gnome.shell.extensions.dash-to-dock \
+        show-show-apps-button false
+    # topicons plus
+    gsettings set org.gnome.shell.extensions.topicons \
+        icon-opacity 250
+    gsettings set org.gnome.shell.extensions.topicons \
+        icon-size 19
+    gsettings set org.gnome.shell.extensions.topicons \
+        icon-spacing 9
+    # openweather
+    gsettings set org.gnome.shell.extensions.openweather \
+        pressure-unit 'hPa'
+    gsettings set org.gnome.shell.extensions.openweather \
+        unit 'celsius'
+    gsettings set org.gnome.shell.extensions.openweather \
+        wind-speed-unit 'kph'
+    gsettings set org.gnome.shell.extensions.openweather \
+        city '48.1371079,11.5753822>München, OB, Bayern, Deutschland >-1'
+    # theme
+    gsettings set org.gnome.shell.extensions.user-theme \
+        name 'Arc-Dark'
+    # enable extensions
+    gsettings set org.gnome.shell enabled-extensions \
+        "['alternate-tab@gnome-shell-extensions.gcampax.github.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'dash-to-dock@micxgx.gmail.com', 'openweather-extension@jenslody.de', 'TopIcons@phocean.net', 'nohotcorner@azuri.free.fr']"
+
+    echo 'Setting keyboard shortcuts'
+    gsettings set org.gnome.desktop.input-sources \
+        xkb-options "['compose:caps']"
+    gsettings set org.gnome.desktop.wm.keybindings \
+        switch-input-source "[]"
+    gsettings set org.gnome.desktop.wm.keybindings \
+        switch-input-source-backward "[]"
+    kb_sch='org.gnome.settings-daemon.plugins.media-keys.custom-keybinding'
+    kb_dir='/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings'
+    gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
+        "['$kb_dir/custom0/', '$kb_dir/custom1/', '$kb_dir/custom2/', '$kb_dir/custom3/', '$kb_dir/custom4/', '$kb_dir/custom5/']"
+    gsettings set $kb_sch:$kb_dir/custom0/ name 'Nautilus'
+    gsettings set $kb_sch:$kb_dir/custom0/ command 'nautilus'
+    gsettings set $kb_sch:$kb_dir/custom0/ binding '<Super>e'
+    gsettings set $kb_sch:$kb_dir/custom1/ name 'Rofi run'
+    gsettings set $kb_sch:$kb_dir/custom1/ command 'rofi -show run'
+    gsettings set $kb_sch:$kb_dir/custom1/ binding '<Super>space'
+    gsettings set $kb_sch:$kb_dir/custom2/ name 'Rofi window'
+    gsettings set $kb_sch:$kb_dir/custom2/ command 'rofi -show window'
+    gsettings set $kb_sch:$kb_dir/custom2/ binding 'F10'
+    gsettings set $kb_sch:$kb_dir/custom3/ name 'Rofi ssh'
+    gsettings set $kb_sch:$kb_dir/custom3/ command 'rofi -show ssh'
+    gsettings set $kb_sch:$kb_dir/custom3/ binding 'F9'
+    gsettings set $kb_sch:$kb_dir/custom4/ name 'Rofi pass'
+    gsettings set $kb_sch:$kb_dir/custom4/ command 'rofi-pass --last-used'
+    gsettings set $kb_sch:$kb_dir/custom4/ binding 'F8'
+    gsettings set $kb_sch:$kb_dir/custom5/ name 'Tmux'
+    gsettings set $kb_sch:$kb_dir/custom5/ \
+        command 'urxvt -e tmux new-session -A -s tmux'
+    gsettings set $kb_sch:$kb_dir/custom5/ binding '<Super>Return'
+
+    echo 'Additional settings'
+    gsettings set org.gnome.desktop.wm.preferences \
+        button-layout "appmenu:minimize,maximize,close"
+    gsettings set org.gnome.desktop.interface \
+        clock-show-date true
+    gsettings set org.gnome.desktop.interface \
+        gtk-theme 'Arc-Dark'
+    gsettings set org.gnome.desktop.interface \
+        icon-theme 'Numix-Circle'
+    gsettings set org.gnome.settings-daemon.plugins.color \
+        night-light-enabled true
+    gsettings set org.gnome.shell.window-switcher \
+        current-workspace-only false
 
 fi
 
