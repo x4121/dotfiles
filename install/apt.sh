@@ -43,7 +43,6 @@ if [[ $DISPLAY != "" ]]; then
         pdfposter\
         pdf-presenter-console\
         python-setuptools\
-        redshift\
         rofi\
         rxvt-unicode-256color\
         samba\
