@@ -1,60 +1,61 @@
 #!/bin/bash
+set -e
 
 if ! [[ -z ${I_DEV+x} ]]; then
     echo 'Installing jenv'
     git clone https://github.com/gcuisinier/jenv.git \
-        "$HOME/.jenv" >&- 2>&-
+        "$HOME/.jenv" >/dev/null
     mkdir -p "$HOME/.config/fish/functions"
     ln -s "$HOME/.jenv/fish/export.fish" \
-        "$HOME/.config/fish/functions/export.fish" >&- 2>&-
+        "$HOME/.config/fish/functions/export.fish" >/dev/null
     ln -s "$HOME/.jenv/fish/jenv.fish" \
-        "$HOME/.config/fish/functions/jenv.fish" &>- 2>&-
+        "$HOME/.config/fish/functions/jenv.fish" >/dev/null
 
     echo 'Installing gems'
     sudo gem install \
-        gem-shut-the-fuck-up bundler git-amnesia git-rc rubocop >&- 2>&-
+        gem-shut-the-fuck-up bundler git-amnesia git-rc >/dev/null
 fi
 
 echo 'Installing git-lfs'
 tmp="$(mktemp -d)"
-pushd "$tmp" >&- 2>&-
+pushd "$tmp" >/dev/null
 curl -fLo "lfs.tgz" \
     "https://github.com/git-lfs/git-lfs/releases/download/v1.5.5/git-lfs-linux-amd64-1.5.5.tar.gz" \
-    2>&-
+    2>/dev/null
 tar xzf "lfs.tgz" --strip-components 1
 sudo mkdir -p /usr/local/bin
 sudo install git-lfs /usr/local/bin/git-lfs
 git lfs install
-popd >&- 2>&-
+popd >/dev/null
 rm -rf "$tmp"
 
-pushd "$HOME/.dotfiles" >&- 2>&-
+pushd "$HOME/.dotfiles" >/dev/null
 
 if [[ $DISPLAY != "" ]]; then
     echo 'Installing pip'
-    sudo easy_install pip >&- 2>&-
+    sudo easy_install pip >/dev/null
 
     echo 'Installing rofi-pass'
     tmp="$(mktemp -d)"
-    git clone https://github.com/carnager/rofi-pass "$tmp" >&- 2>&-
-    pushd "$tmp" >&- 2>&-
+    git clone https://github.com/carnager/rofi-pass "$tmp" >/dev/null
+    pushd "$tmp" >/dev/null
     sudo make install
-    popd >&- 2>&-
+    popd >/dev/null
     rm -rf "$tmp"
 
     echo 'Installing nerd-fonts'
     fontUrl="https://github.com/ryanoasis/nerd-fonts/raw/0.9.0/patched-fonts/SourceCodePro"
     mkdir -p "$HOME/.local/share/fonts"
-    pushd "$HOME/.local/share/fonts" >&- 2>&-
+    pushd "$HOME/.local/share/fonts" >/dev/null
     OLDIFS=$IFS; IFS=','
     for i in Medium,%20Medium Regular,"" Bold,%20Bold; do
         set -- $i
         curl -fLo "SauceCodeProNerd $1.ttf" \
             "$fontUrl/$1/complete/Sauce%20Code%20Pro$2%20Nerd%20Font%20Complete%20Mono.ttf" \
-            2>&-
+            2>/dev/null
     done
     IFS=$OLDIFS
-    popd >&- 2>&-
+    popd >/dev/null
 
     echo 'Installing Powerline'
     sudo pip install powerline-status
@@ -67,16 +68,9 @@ if [[ $DISPLAY != "" ]]; then
     sudo mkdir -p /opt/franz
     sudo wget -O /opt/franz/Franz.tgz \
         https://github.com/meetfranz/franz-app/releases/download/4.0.4/Franz-linux-x64-4.0.4.tgz \
-        2>&-
+        2>/dev/null
     sudo tar xzf /opt/franz/Franz.tgz -C /opt/franz
     sudo rm /opt/franz/Franz.tgz
-
-    echo 'Setting font and color in gnome-terminal (as fallback)'
-    gsettings set org.gnome.Terminal.Legacy.Profile:/:0 visible-name "'Default'"
-    gsettings set org.gnome.Terminal.Legacy.Profile:/:0 font "'SauceCodePro Nerd Font Medium 12'"
-    gsettings set org.gnome.Terminal.Legacy.Profile:/:0 use-system-font "false"
-
-    gnome-terminal-colors-solarized/install.sh -s dark -p Default --skip-dircolors
 
     echo 'Setting chromium as default browser'
     sudo update-alternatives --set gnome-www-browser "$(which chromium-browser)"
@@ -194,9 +188,9 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
 fi
 
 echo 'Creating symlinks'
-bash ./symlinks.sh >&- 2>&-
+bash ./symlinks.sh >/dev/null
 
-popd >&- 2>&-
+popd >/dev/null
 
 echo 'Installing Vim-Plugins'
 curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \

@@ -1,17 +1,20 @@
 #!/bin/bash
+set -e
 
 echo 'Installing dotfiles'
 
-if ! apt --version > /dev/null 2>&-; then
+if ! apt --version > /dev/null 2>&1; then
     echo 'Cannot run apt'
     return 1
 fi
 
 sudo apt install -y git apt-transport-https > /dev/null 2>&1
-#git clone --recursive https://github.com/x4121/dotfiles "$HOME/.dotfiles"
+git clone --recursive https://github.com/x4121/dotfiles "$HOME/.dotfiles"
 
 case $(hostname -s) in
     kiste)
+        ;&
+    reisekoffer)
         export I_HOME=1
         export I_DEV=1
         ;;
@@ -21,6 +24,5 @@ case $(hostname -s) in
         ;;
 esac
 
-#if . "$HOME/.dotfiles/install/apt.sh"; then
-    . "$HOME/.dotfiles/install/postinstall.sh"
-#fi
+. "$HOME/.dotfiles/install/apt.sh"
+. "$HOME/.dotfiles/install/postinstall.sh"
