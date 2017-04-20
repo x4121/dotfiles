@@ -118,6 +118,9 @@ vim +PlugInstall +qall
 echo 'Setting fish as default shell'
 sudo chsh -s "$(grep /fish$ /etc/shells | tail -1)" "$USER"
 
+echo 'Setting urxvt as default terminal'
+sudo update-alternatives --set x-terminal-emulator "$(which urxvt)"
+
 echo 'Installing tmux plugins'
 "$HOME/.tmux/plugins/tpm/bin/install_plugins"
 
