@@ -79,8 +79,8 @@ if [[ $DISPLAY != "" ]]; then
     gnome-terminal-colors-solarized/install.sh -s dark -p Default --skip-dircolors
 
     echo 'Setting chromium as default browser'
-    sudo update-alternatives --set gnome-www-browser $(which chromium-browser)
-    sudo update-alternatives --set x-www-browser $(which chromium-browser)
+    sudo update-alternatives --set gnome-www-browser "$(which chromium-browser)"
+    sudo update-alternatives --set x-www-browser "$(which chromium-browser)"
 fi
 
 if [[ $DESKTOP_SESSION = gnome ]]; then
