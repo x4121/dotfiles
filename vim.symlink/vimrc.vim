@@ -117,12 +117,6 @@ set relativenumber
 autocmd InsertEnter * :set relativenumber!
 autocmd InsertLeave * :set relativenumber!
 
-" Disable arrow keys in normal mode
-map <Left> <NOP>
-map <Down> <NOP>
-map <Up> <NOP>
-map <Right> <NOP>
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

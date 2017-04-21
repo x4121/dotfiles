@@ -65,6 +65,7 @@ Plug 'tpope/vim-sleuth' " auto adjust indentation
 Plug 'tpope/vim-repeat' " extend repeat command
 Plug 'tpope/vim-surround' " add/change/delete quotes/parens/..
 Plug 'tpope/vim-dispatch' " asynchronous test/build
+Plug 'takac/vim-hardtime'
 
 "" load last in this order!
 Plug 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
