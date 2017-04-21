@@ -142,7 +142,7 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
 
     echo 'Setting keyboard shortcuts'
     gsettings set org.gnome.desktop.input-sources \
-        xkb-options "['compose:caps']"
+        xkb-options "['caps:ctrl_modifier', 'compose:ralt']"
     gsettings set org.gnome.desktop.wm.keybindings \
         switch-input-source "[]"
     gsettings set org.gnome.desktop.wm.keybindings \
