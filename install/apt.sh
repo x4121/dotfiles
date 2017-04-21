@@ -8,6 +8,7 @@ SW="apt-transport-tor\
     gnupg2\
     htop\
     mercurial\
+    net-tools\
     ranger\
         highlight\
     taskwarrior\
