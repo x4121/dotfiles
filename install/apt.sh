@@ -10,6 +10,7 @@ SW="apt-transport-tor\
     mercurial\
     net-tools\
     ranger\
+        caca-utils\
         highlight\
     taskwarrior\
     torsocks\
@@ -48,7 +49,8 @@ if [[ $DISPLAY != "" ]]; then
             wmctrl\
             xcape\
         virtualbox\
-        xdotool"
+        xdotool
+        zathura"
 
     if [[ $DESKTOP_SESSION = gnome ]]; then
         # numix-icon-theme

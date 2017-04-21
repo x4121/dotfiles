@@ -18,6 +18,7 @@ My dotfiles
 * GnomeShell extensions
 * sbt config and plugins
 * zathura config
+* ranger config
 * auxiliary scripts/tools
 
 ## Install

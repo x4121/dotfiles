@@ -38,12 +38,12 @@ Plug 'matchit.zip' " extended matching for '%'
 Plug 'tpope/vim-endwise' " auto close block-statements
 Plug 'Raimondi/delimitMate' " auto close quotes/parens/..
 Plug 'tpope/vim-commentary' " add/remove comments
-Plug 'tpope/vim-dispatch' " asynchronous test/build
 
 "" Search
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'francoiscabrol/ranger.vim'
 
 "" Completion
 Plug 'ervandew/supertab'
@@ -64,6 +64,7 @@ Plug 'tpope/vim-capslock' " software capslock
 Plug 'tpope/vim-sleuth' " auto adjust indentation
 Plug 'tpope/vim-repeat' " extend repeat command
 Plug 'tpope/vim-surround' " add/change/delete quotes/parens/..
+Plug 'tpope/vim-dispatch' " asynchronous test/build
 
 "" load last in this order!
 Plug 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}

@@ -206,6 +206,9 @@ sudo update-alternatives --set x-terminal-emulator "$(which urxvt)"
 echo 'Installing tmux plugins'
 "$HOME/.tmux/plugins/tpm/bin/install_plugins"
 
+echo 'Setting up ranger'
+ranger --copy-config=scope
+
 echo 'Setting up mail sync'
 mkdir "$HOME/Mail"
 SYNC="users | grep $USER >/dev/null && $HOME/.bin/mailsync.sh"
@@ -227,4 +230,11 @@ if grep -vq "$mimehead" "$mimeapps"; then
 fi
 grep gedit\.desktop "/usr/share/applications/defaults.list" \
     | sed 's/gedit\.desktop/vim.desktop/' \
+    >> "$mimeapps"
+
+
+echo 'Making zathura the default pdf viewer'
+mimeapps=$HOME/.local/share/applications/mimeapps.list
+grep evince\.desktop "/usr/share/applications/defaults.list" \
+    | sed 's/evince\.desktop/zathura.desktop/' \
     >> "$mimeapps"
