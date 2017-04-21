@@ -36,7 +36,7 @@ function fish_prompt
   if not test $last_status -eq 0
     set fish_prompt_status (set_color $fish_color_error)
   end
-  if [ $USER != "armin" -a $USER != "onpage" ]
+  if [ $USER != "adg" -a $USER != "onpage" ]
     printf '%s%s@%s%s%s ' \
       $__fish_prompt_user $USER \
       $__fish_prompt_normal \
