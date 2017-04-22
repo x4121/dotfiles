@@ -37,8 +37,8 @@ setw -g monitor-activity on
 set -g base-index 1
 set -g pane-base-index 1
 
-# powerline
-source "/usr/local/lib/python2.7/dist-packages/powerline/bindings/tmux/powerline.conf"
+# airline
+if-shell "test -f ~/.tmux/tmuxline.conf" "source ~/.tmux/tmuxline.conf"
 
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
@@ -49,6 +49,11 @@ set -g @plugin 'tmux-plugins/tmux-pain-control'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-yank'
 set -g @plugin 'x4121/tmux-slack-counter'
+
+# Mail counter
+set -g @maildir_counters '~/Mail/armingrodon.de/INBOX/new|~/Mail/gmail.com/INBOX/new|~/Mail/onpage.org/INBOX/new'
+
+set -g @slack_update_delay '1 minute'
 
 # Pain resize parameter
 set-option -g @pane_resize "10"

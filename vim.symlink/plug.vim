@@ -33,7 +33,7 @@ Plug 'tpope/vim-markdown'
 Plug 'rodjek/vim-puppet'
 " etc
 Plug 'majutsushi/tagbar' " show tags like nerdtree
-Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
+Plug 'scrooloose/syntastic'
 Plug 'matchit.zip' " extended matching for '%'
 Plug 'tpope/vim-endwise' " auto close block-statements
 Plug 'Raimondi/delimitMate' " auto close quotes/parens/..
@@ -51,10 +51,13 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 "" UI
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'altercation/vim-colors-solarized'
 Plug 'junegunn/goyo.vim' " distraction free typing
 Plug 'junegunn/limelight.vim' " distraction free typing
 Plug 'Yggdroot/indentLine'
+Plug 'edkolev/tmuxline.vim'
 
 "" Misc
 Plug 'taglist.vim'
@@ -68,7 +71,6 @@ Plug 'tpope/vim-dispatch' " asynchronous test/build
 Plug 'takac/vim-hardtime'
 
 "" load last in this order!
-Plug 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plug 'ryanoasis/vim-devicons'
 
 filetype plugin indent on

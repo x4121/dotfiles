@@ -205,3 +205,41 @@ let g:hardtime_default_on = 1
 let g:list_of_disabled_keys = ["<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
 let g:hardtime_ignore_buffer_patterns = ["NERD.*"]
 let g:hardtime_ignore_quickfix = 1
+
+
+""""""""""""""""""""""""""""""
+" => Airline
+""""""""""""""""""""""""""""""
+" disable distractive symbols
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_powerline_fonts = 1
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.linenr = ''
+let g:airline_symbols.maxlinenr = ''
+
+" simpler line/column numbering
+let g:airline_section_z = airline#section#create_right(['%l/%L:%v'])
+" disable unnecessary stuff
+let g:airline#extensions#hunks#non_zero_only = 1
+let g:airline#extensions#tagbar#enabled = 0
+
+" disable for tpm
+" to generate tmuxline.conf run
+"   `vim +'Tmuxline airline' +'TmuxlineSnapshot! ~/.tmux/tmuxline.conf' +qall`
+let g:airline#extensions#tmuxline#enabled = 0
+let g:tmuxline_powerline_separators = 0
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'win'  : '#I#F│#W',
+      \'cwin' : '#I#F│#W',
+      \'x'    : ' #{maildir_counter_1}/#{maildir_counter_2}/#{maildir_counter_3}',
+      \'y'    : '%Y-%m-%d %H:%M',
+      \'z'    : '#h',
+      \'options': {
+      \  'status-justify': 'left'}
+      \}

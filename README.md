@@ -11,7 +11,6 @@ My dotfiles
 * taskwarrior config
 * rofi config
 * XCompose bindings
-* powerline config with patched fonts
 * solarized colors for most tools
 * autostart/devilspie scripts
 * i3 config (unfinished/testing)
