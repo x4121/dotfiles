@@ -116,7 +116,7 @@ set reverse_realname = no                                           # still use 
 set pgp_use_gpg_agent = yes
 
 ## load external settings
-source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc
+source ~/.mutt/gruvbox-256.muttrc
 source ~/.mutt/gpg.rc
 source ~/.mutt/local.default
 source ~/.mutt/auto_views

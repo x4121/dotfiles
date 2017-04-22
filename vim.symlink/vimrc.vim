@@ -125,10 +125,7 @@ syntax enable
 set t_Co=256
 set background=dark
 
-try
-    colorscheme solarized
-catch
-endtry
+colorscheme gruvbox
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -371,7 +368,7 @@ set guioptions-=R
 set guioptions-=l
 set guioptions-=L
 
-let g:colors_name="solarized"
+let g:colors_name="gruvbox"
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

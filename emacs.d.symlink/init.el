@@ -8,7 +8,7 @@
                      evil-surround
                      powerline
                      powerline-evil
-                     color-theme-sanityinc-solarized
+                     gruvbox-theme
                      org-ref
                      sbt-mode
                      scala-mode))
@@ -36,19 +36,19 @@
 (powerline-default-theme)
 (require 'powerline-evil)
 
-(require 'color-theme-sanityinc-solarized)
-(color-theme-sanityinc-solarized--define-theme dark)
+(require 'gruvbox-theme)
+(load-theme 'gruvbox t)
 
 (menu-bar-mode -1)
 (toggle-scroll-bar -1)
 (tool-bar-mode -1)
-;(setq org-latex-pdf-process 
+;(setq org-latex-pdf-process
 ;   "latexmk -pdflatex='lualatex -shell-escape -interaction nonstopmode' -pdf -f  %f")
  (setq org-latex-pdf-process
-       '("pdflatex -interaction nonstopmode -output-directory %o %f" 
- 	"bibtex %b"
- 	"pdflatex -interaction nonstopmode -output-directory %o %f" 
- 	"pdflatex -interaction nonstopmode -output-directory %o %f"))
+       '("pdflatex -interaction nonstopmode -output-directory %o %f"
+         "bibtex %b"
+         "pdflatex -interaction nonstopmode -output-directory %o %f"
+         "pdflatex -interaction nonstopmode -output-directory %o %f"))
 
 (require 'org-ref)
 (require 'org-ref-latex)
@@ -71,7 +71,7 @@
       ("numberstyle" "\\tiny")))
 (setq org-export-allow-bind-keywords "t")
 
-(setq 
+(setq
   inhibit-startup-message t
   create-lockfiles nil
   make-backup-files nil

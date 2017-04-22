@@ -65,7 +65,6 @@ function! s:goyo_leave()
   IndentLinesEnable
 endfunction
 
-" solarized base01
 let g:limelight_conceal_ctermfg = 240
 let g:limelight_conceal_guifg = '#585858'
 
@@ -210,6 +209,7 @@ let g:hardtime_ignore_quickfix = 1
 """"""""""""""""""""""""""""""
 " => Airline
 """"""""""""""""""""""""""""""
+let g:airline_theme='base16'
 " disable distractive symbols
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}

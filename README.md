@@ -11,7 +11,7 @@ My dotfiles
 * taskwarrior config
 * rofi config
 * XCompose bindings
-* solarized colors for most tools
+* gruvbox colors for most tools
 * autostart/devilspie scripts
 * i3 config (unfinished/testing)
 * GnomeShell extensions

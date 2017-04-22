@@ -1,6 +1,3 @@
-# dircolors
-eval (dircolors -c $HOME/.dircolors | sed 's/>&\/dev\/null$//')
-
 # remove greeting message
 set -e fish_greeting
 

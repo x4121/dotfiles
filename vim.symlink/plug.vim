@@ -53,7 +53,7 @@ Plug 'honza/vim-snippets'
 "" UI
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
 Plug 'junegunn/goyo.vim' " distraction free typing
 Plug 'junegunn/limelight.vim' " distraction free typing
 Plug 'Yggdroot/indentLine'

@@ -2,10 +2,10 @@
 ! ROFI settings
 ! ------------------------------------------------------------------------------
 rofi.color-enabled:         true
-rofi.color-window:          #002b36, #002b36, #073642
-rofi.color-normal:          #002b36, #93a1a1, #073642, #2aa198, #eee8d5
-rofi.color-active:          #002b36, #268bd2, #073642, #268bd2, #eee8d5
-rofi.color-urgent:          #002b37, #d33682, #073642, #d33682, #eee8d5
+rofi.color-window:          #282828, #a89984, #a89984
+rofi.color-normal:          #282828, #ebdbb2, #32302f, #665c54, #fbf1c7
+rofi.color-active:          #d79921, #282828, #d79921, #fabd2f, #282828
+rofi.color-urgent:          #cc241d, #282828, #cc241d, #fb4934, #282828
 rofi.monitor:               -5
 rofi.terminal:              urxvt -e tmux
 rofi.ssh-command:           {terminal} new -d '{ssh-client} {host}'\; attach\;
@@ -37,8 +37,8 @@ URxvt.lineSpace:            0
 ! Fonts
 URxvt.allow_bold:           true
 URxvt.intensityStyles:      false
-URxvt.font:                 xft:SauceCodePro Nerd Font, Medium:pixelsize=10:antialias=true:hinting=true
-URxvt.boldFont:             xft:SauceCodePro Nerd Font, Bold:pixelsize=10:antialias=true:hinting=true
+URxvt.font:                 xft:SauceCodePro Nerd Font:pixelsize=16:antialias=true:hinting=true
+URxvt.boldFont:             xft:SauceCodePro Nerd Font:style=Bold:pixelsize=16:antialias=true:hinting=true
 
 ! Fix font space
 URxvt.letterSpace:          -2
@@ -74,46 +74,31 @@ stjerm.bell: false
 stjerm.showtab: never
 stjerm.emulation: xterm-256color
 
-
-! ------------------------------------------------------------------------------
-! Terminal colors
-! ------------------------------------------------------------------------------
-!!Source http://github.com/altercation/solarized
-*background:                #002b36
-*foreground:                #657b83
-*fadeColor:                 #002b36
-*cursorColor:               #93a1a1
-*pointerColorBackground:    #586e75
-*pointerColorForeground:    #93a1a1
-
-!! black dark/light
-*color0:                    #073642
-*color8:                    #002b36
-
-!! red dark/light
-*color1:                    #dc322f
-*color9:                    #cb4b16
-
-!! green dark/light
-*color2:                    #859900
-*color10:                   #586e75
-
-!! yellow dark/light
-*color3:                    #b58900
-*color11:                   #657b83
-
-!! blue dark/light
-*color4:                    #268bd2
-*color12:                   #839496
-
-!! magenta dark/light
-*color5:                    #d33682
-*color13:                   #6c71c4
-
-!! cyan dark/light
-*color6:                    #2aa198
-*color14:                   #93a1a1
-
-!! white dark/light
-*color7:                    #eee8d5
-*color15:                   #fdf6e3
+! hard contrast: *background: #1d2021
+*background: #282828
+! soft contrast: *background: #32302f
+*foreground: #ebdbb2
+! Black + DarkGrey
+*color0:  #282828
+*color8:  #928374
+! DarkRed + Red
+*color1:  #cc241d
+*color9:  #fb4934
+! DarkGreen + Green
+*color2:  #98971a
+*color10: #b8bb26
+! DarkYellow + Yellow
+*color3:  #d79921
+*color11: #fabd2f
+! DarkBlue + Blue
+*color4:  #458588
+*color12: #83a598
+! DarkMagenta + Magenta
+*color5:  #b16286
+*color13: #d3869b
+! DarkCyan + Cyan
+*color6:  #689d6a
+*color14: #8ec07c
+! LightGrey + White
+*color7:  #a89984
+*color15: #ebdbb2

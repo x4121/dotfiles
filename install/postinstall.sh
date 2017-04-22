@@ -181,6 +181,10 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
         night-light-enabled true
     gsettings set org.gnome.shell.window-switcher \
         current-workspace-only false
+    gsettings set org.gnome.desktop.background picture-uri \
+        'file:///usr/share/backgrounds/ubuntu-gnome/sochi_krasnaya_polyana_mountains_by_alexander_lyubavin.jpg'
+    gsettings set org.gnome.desktop.screensaver picture-uri \
+        'file:///usr/share/backgrounds/ubuntu-gnome/sochi_krasnaya_polyana_mountains_by_alexander_lyubavin.jpg'
 
 fi
 
