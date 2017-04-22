@@ -234,7 +234,7 @@ let g:airline#extensions#tagbar#enabled = 0
 let g:airline#extensions#tmuxline#enabled = 0
 let g:tmuxline_powerline_separators = 0
 let g:tmuxline_preset = {
-      \'a'    : '#S',
+      \'a'    : '#S#{?client_prefix,^, }',
       \'win'  : '#I#F│#W',
       \'cwin' : '#I#F│#W',
       \'x'    : ' #{maildir_counter_1}/#{maildir_counter_2}/#{maildir_counter_3}',
