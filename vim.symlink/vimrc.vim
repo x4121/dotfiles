@@ -125,11 +125,14 @@ syntax enable
 set t_Co=256
 set background=dark
 
-colorscheme gruvbox
+try
+  colorscheme gruvbox
+catch
+endtry
 
 " Set extra options when running in GUI mode
 if has("gui_running")
-    set guioptions-=T
+  set guioptions-=T
     set guioptions-=e
     set guifont=SauceCodePro\ Nerd\ Font\ Medium\ 11
 endif

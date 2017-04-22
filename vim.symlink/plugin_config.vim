@@ -108,7 +108,10 @@ au FileType scala nnoremap <leader>I :EnSuggestImport<cr>
 " => vim-fish
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set up :make to use fish for syntax checking.
-compiler fish
+try
+  compiler fish
+catch
+endtry
 
 " Set this to have long lines wrap inside comments.
 setlocal textwidth=79
@@ -223,7 +226,10 @@ let g:airline_symbols.linenr = ''
 let g:airline_symbols.maxlinenr = ''
 
 " simpler line/column numbering
-let g:airline_section_z = airline#section#create_right(['%l/%L:%v'])
+try
+    let g:airline_section_z = airline#section#create_right(['%l/%L:%v'])
+catch
+endtry
 " disable unnecessary stuff
 let g:airline#extensions#hunks#non_zero_only = 1
 let g:airline#extensions#tagbar#enabled = 0
