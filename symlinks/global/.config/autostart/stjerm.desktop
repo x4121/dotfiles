@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Exec=stjermstart
-Hidden=false
-NoDisplay=false
-X-GNOME-Autostart-enabled=true
-Name=stjerm

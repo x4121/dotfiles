@@ -165,7 +165,7 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
     gsettings set $kb_sch:$kb_dir/custom4/ binding 'F8'
     gsettings set $kb_sch:$kb_dir/custom5/ name 'Tmux'
     gsettings set $kb_sch:$kb_dir/custom5/ \
-        command 'urxvt -e tmux new-session -A -s tmux'
+        command "konsole -e 'tmux new-session -A -s tmux'"
     gsettings set $kb_sch:$kb_dir/custom5/ binding '<Super>Return'
 
     echo 'Additional settings'
@@ -205,8 +205,8 @@ tmux source-file ~/.tmux.conf
 echo 'Setting fish as default shell'
 sudo chsh -s "$(grep /fish$ /etc/shells | tail -1)" "$USER"
 
-echo 'Setting urxvt as default terminal'
-sudo update-alternatives --set x-terminal-emulator "$(which urxvt)"
+echo 'Setting Konsole as default terminal'
+sudo update-alternatives --set x-terminal-emulator "$(which konsole)"
 
 echo 'Installing tmux plugins'
 "$HOME/.tmux/plugins/tpm/bin/install_plugins"

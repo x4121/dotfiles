@@ -25,6 +25,7 @@ if [[ $DISPLAY != "" ]]; then
         dconf-tools\
         devilspie\
         gawk\
+        konsole\
         libsecret-tools\
         mutt\
             msmtp\
@@ -41,15 +42,13 @@ if [[ $DISPLAY != "" ]]; then
         pdf-presenter-console\
         python-setuptools\
         rofi\
-        rxvt-unicode-256color\
         samba\
         socat\
-        stjerm\
         tmux\
-            wmctrl\
             xcape\
         virtualbox\
-        xdotool
+        xdotool\
+        yakuake\
         zathura"
 
     if [[ $DESKTOP_SESSION = gnome ]]; then

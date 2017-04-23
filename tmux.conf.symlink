@@ -16,18 +16,11 @@ set-option -g mouse on
 # act like vim
 setw -g mode-keys vi
 
-# toggle fullscreen
-bind -n F11 run "wmctrl -r :ACTIVE: -b toggle,fullscreen"
-
 # synchronize all panes in a window
 bind C-y setw synchronize-panes
 
 bind -r C-h select-window -t :-
 bind -r C-l select-window -t :+
-
-# Paste from clipboard
-bind v run "xsel -o -b | tmux load-buffer - && tmux paste-buffer"
-
 
 # Display activity in windows
 setw -g monitor-activity on
