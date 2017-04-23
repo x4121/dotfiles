@@ -14,6 +14,17 @@ if ! [[ -z ${I_DEV+x} ]]; then
     echo 'Installing gems'
     sudo gem install \
         gem-shut-the-fuck-up bundler git-amnesia git-rc >/dev/null
+
+    echo 'Installing docker-compose'
+    tmp="$(mktemp)"
+    curl -L \
+        "https://github.com/docker/compose/releases/download/1.12.0/docker-compose-$( \
+        uname -s)-$(uname -m)" \
+        > "$tmp" 2>/dev/null
+    sudo mkdir -p /usr/local/bin
+    sudo mv "$tmp" /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+    sudo adduser "$USER" docker
 fi
 
 echo 'Installing git-lfs'
@@ -236,7 +247,6 @@ fi
 grep gedit\.desktop "/usr/share/applications/defaults.list" \
     | sed 's/gedit\.desktop/vim.desktop/' \
     >> "$mimeapps"
-
 
 echo 'Making zathura the default pdf viewer'
 mimeapps=$HOME/.local/share/applications/mimeapps.list
