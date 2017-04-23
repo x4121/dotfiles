@@ -14,3 +14,6 @@ TrimTrailingSpacesInSelectedText=true
 [Scrolling]
 HistoryMode=0
 ScrollBarPosition=2
+
+[Terminal Features]
+BlinkingTextEnabled=false

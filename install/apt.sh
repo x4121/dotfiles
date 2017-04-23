@@ -10,6 +10,7 @@ SW="apt-transport-tor\
     mercurial\
     net-tools\
     ranger\
+        atool\
         caca-utils\
         highlight\
     taskwarrior\
