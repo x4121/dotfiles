@@ -46,6 +46,6 @@ toggle-session-monitor-silence=Ctrl+Shift+I
 view-full-screen=F11
 
 [Window]
-Height=40
+Height=35
 ShowTabBar=false
 Width=100
