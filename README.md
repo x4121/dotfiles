@@ -6,7 +6,7 @@ My dotfiles
 * vim config and plugins
 * config and plugins for this other editor (emacs)
 * tmux config and plugins
-* URxvt/stjerm config
+* Konsole/Yakuake config
 * mutt config (with offlineimap and msmtp)
 * taskwarrior config
 * rofi config
