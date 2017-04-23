@@ -9,10 +9,11 @@ ShowAppNameOnTitleBar=false
 ShowMenuBarByDefault=false
 
 [MainWindow]
-Height 1080=480
-State=AAAA/wAAAAD9AAAAAAAAAoAAAAHHAAAABAAAAAQAAAAIAAAACPwAAAAA
+Height 1080=663
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAAAAA5EAAAKXAAAABAAAAAQAAAAIAAAACPwAAAAA
 ToolBarsMovable=Disabled
-Width 1920=640
+Width 1920=913
 
 [TabBar]
 TabBarVisibility=AlwaysHideTabBar
