@@ -8,37 +8,37 @@ set guioptions ""
 
 ## colors
 # pager
-set default-bg              "#002b36"
-set default-fg              "#839496"
+set default-bg              "#282828"
+set default-fg              "#ebdbb2"
 # input
-set inputbar-bg             "#002b36"
-set inputbar-fg             "#839496"
+set inputbar-bg             "#282828"
+set inputbar-fg             "#ebdbb2"
 # statusbar/filename
-set statusbar-bg            "#073642"
-set statusbar-fg            "#839496"
+set statusbar-bg            "#3c3836"
+set statusbar-fg            "#ebdbb2"
 # notifications
-set notification-bg         "#073642"
-set notification-fg         "#839496"
-set notification-error-bg   "#073642"
-set notification-error-fg   "#cb4b16"
-set notification-warning-bg "#073642"
-set notification-warning-fg "#b58900"
+set notification-bg         "#3c3836"
+set notification-fg         "#ebdbb2"
+set notification-error-bg   "#3c3836"
+set notification-error-fg   "#fe8019"
+set notification-warning-bg "#3c3836"
+set notification-warning-fg "#fabd2f"
 # command/file completion
-set completion-bg           "#073642"
-set completion-fg           "#839496"
-set completion-highlight-bg "#073642"
-set completion-highlight-fg "#268bd2"
+set completion-bg           "#3c3836"
+set completion-fg           "#ebdbb2"
+set completion-highlight-bg "#3c3836"
+set completion-highlight-fg "#83a598"
 # search/follow highlight
-set highlight-color         "#b58900"
-set highlight-active-color  "#cb4b16"
+set highlight-color         "#fabd2f"
+set highlight-active-color  "#fe8019"
 # index/toc
-set index-bg                "#073642"
-set index-fg                "#839496"
-set index-active-bg         "#073642"
-set index-active-fg         "#cb4b16"
+set index-bg                "#3c3836"
+set index-fg                "#ebdbb2"
+set index-active-bg         "#3c3836"
+set index-active-fg         "#fe8019"
 # recolor in dark mode
-set recolor-darkcolor       "#839496"
-set recolor-lightcolor      "#002b36"
+set recolor-darkcolor       "#ebdbb2"
+set recolor-lightcolor      "#282828"
 
 ## mappings
 # next page
