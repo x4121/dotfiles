@@ -22,6 +22,10 @@ bind C-y setw synchronize-panes
 bind -r C-h select-window -t :-
 bind -r C-l select-window -t :+
 
+# Paste from clipboard
+bind v run "xsel -o -b | tmux load-buffer - && tmux paste-buffer"
+
+
 # Display activity in windows
 setw -g monitor-activity on
 
