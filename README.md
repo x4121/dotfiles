@@ -21,7 +21,8 @@ My dotfiles
 * auxiliary scripts/tools
 
 ## Install
-`curl -L https://bootstrap.armingrodon.de/dotfiles | bash`
+- `curl -L https://bootstrap.armingrodon.de/dotfiles | bash` or
+- `wget -q -O - https://bootstrap.armingrodon.de/dotfiles | bash`
 
 ## Warning
 * This project is currently only tested against the most recent\* Ubuntu-Gnome release (if even!)
