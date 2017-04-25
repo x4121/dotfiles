@@ -11,18 +11,18 @@
 [status]
     branch = true
     short = true
+[diff]
+    wsErrorHighlight = all
 [gpg]
     program = gpg2
 [commit]
     gpgSign = true
 [alias]
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
-[url "git@github.com:x4121/"] 
+[url "git@github.com:x4121/"]
     insteadof = my:
 [url "git@github.com:onpage-org/"]
     insteadof = op:
-[url "git+ssh://x4121@git.launchpad.net/"]
-    insteadof = lp:
 [url "https://github.com/"]
     insteadof = gh:
 [dir]
@@ -31,7 +31,7 @@
 [amnesia]
     count = 10
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
