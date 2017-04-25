@@ -8,7 +8,8 @@ set __fish_git_prompt_color_upstream_ahead green
 set __fish_git_prompt_color_upstream_behind red
 
 # Status Chars
-set __fish_git_prompt_char_dirtystate '⚡'
+set __fish_git_prompt_char_dirtystate 'X'
+# set __fish_git_prompt_char_dirtystate '⚡'
 set __fish_git_prompt_char_stagedstate '→'
 set __fish_git_prompt_char_untrackedfiles '☡'
 set __fish_git_prompt_char_stashstate '↩'
@@ -45,7 +46,7 @@ function fish_prompt
   printf '%s%s%s%s%s> ' \
     $__fish_prompt_cwd (prompt_pwd) \
     $__fish_prompt_normal (__fish_git_prompt) \
-    $fish_prompt_status 
+    $fish_prompt_status
 
   set_color normal
 end
