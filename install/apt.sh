@@ -5,7 +5,6 @@ SW="apt-transport-tor\
     ecryptfs-utils\
     fish\
     fonts-lohit-knda\
-    gnupg2\
     htop\
     mercurial\
     net-tools\
