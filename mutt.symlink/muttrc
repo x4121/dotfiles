@@ -121,6 +121,8 @@ set reverse_realname = no                     # still use name from config
 
 # gpg settings
 set pgp_use_gpg_agent = yes
+set pgp_encrypt_self  = yes
+set pgp_sign_as       = "`gpg-default-key`"
 
 ## load external settings
 source ~/.mutt/gruvbox-256.muttrc
