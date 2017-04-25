@@ -102,15 +102,18 @@ macro index u '<undelete-message><current-middle>'
 macro index D '<delete-pattern><current-middle>'
 macro index U '<undelete-pattern><current-middle>'
 
+set abort_noattach = yes
+set attach_keyword = "\\<(attach(|ed|ments?)|anhängen|angehängt|anhang|anhänge|hängt an|anbei)\\>"
+
 # mailbox settings
-set mbox_type        = Maildir                                      # maildir format
-set folder           = ~/Mail                                       # use local folder
-set sendmail         = "~/.mutt/proofread.zsh /usr/bin/msmtp"       # proofread before send
-set use_from         = yes                                          # autodetect from
-set mail_check       = 0                                            # never check mail automatically
-set envelope_from    = yes                                          # reply with same account
-set reverse_name     = yes                                          # reply with same account
-set reverse_realname = no                                           # still use name from config
+set mbox_type        = Maildir                # maildir format
+set folder           = ~/Mail                 # use local folder
+set sendmail         = "/usr/bin/msmtp"       # proofread before send
+set use_from         = yes                    # autodetect from
+set mail_check       = 0                      # never check mail automatically
+set envelope_from    = yes                    # reply with same account
+set reverse_name     = yes                    # reply with same account
+set reverse_realname = no                     # still use name from config
 
 # gpg settings
 set pgp_use_gpg_agent = yes

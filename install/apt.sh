@@ -35,7 +35,6 @@ if [[ $DISPLAY != "" ]]; then
             offlineimap\
             urlview\
             w3m\
-            zsh\
         nautilus-owncloud\
         newsbeuter\
         pass\
