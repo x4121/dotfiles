@@ -1,12 +1,12 @@
 [Appearance]
 BoldIntense=false
 ColorScheme=Gruvbox_dark
-Font=SauceCodePro Nerd Font,12,-1,5,50,0,0,0,0,0
+Font=FuraMonoForPowerline Nerd Font,12,-1,5,50,0,0,0,0,0
 
 [General]
 Name=Konsole
 Parent=FALLBACK/
-ShowTerminalSizeHint=true
+ShowTerminalSizeHint=false
 
 [Interaction Options]
 TrimTrailingSpacesInSelectedText=true

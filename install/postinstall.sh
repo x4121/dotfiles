@@ -47,17 +47,21 @@ if [[ $DISPLAY != "" ]]; then
     rm -rf "$tmp"
 
     echo 'Installing nerd-fonts'
-    fontUrl="https://github.com/ryanoasis/nerd-fonts/raw/0.9.0/patched-fonts/SourceCodePro"
+    fontUrl="https://github.com/ryanoasis/nerd-fonts/raw/1.0.0/patched-fonts"
     mkdir -p "$HOME/.local/share/fonts"
     pushd "$HOME/.local/share/fonts" >/dev/null
-    OLDIFS=$IFS; IFS=','
-    for i in Medium,%20Medium Regular,"" Bold,%20Bold; do
-        set -- $i
-        curl -fLo "SauceCodeProNerd $1.ttf" \
-            "$fontUrl/$1/complete/Sauce%20Code%20Pro$2%20Nerd%20Font%20Complete%20Mono.ttf" \
-            2>/dev/null
-    done
-    IFS=$OLDIFS
+    wget -q \
+        "$fontUrl/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete.ttf"
+    wget -q \
+        "$fontUrl/FiraCode/Regular/complete/Fura%20Code%20Regular%20Nerd%20Font%20Complete.otf"
+    wget -q \
+        "$fontUrl/FiraMono/Regular/complete/Fura%20Mono%20Regular%20for%20Powerline%20Nerd%20Font%20Complete.otf"
+    wget -q \
+        "https://github.com/adobe-fonts/source-code-pro/raw/release/OTF/SourceCodePro-Regular.otf"
+    wget -q \
+        "https://github.com/tonsky/FiraCode/raw/master/distr/otf/FiraCode-Regular.otf"
+    wget -q \
+        "https://github.com/mozilla/Fira/raw/master/otf/FiraMono-Regular.otf"
     popd >/dev/null
 
     echo 'Installing mutt dependencies'
