@@ -28,17 +28,9 @@ if ! [[ -z ${I_DEV+x} ]]; then
 fi
 
 echo 'Installing git-lfs'
-tmp="$(mktemp -d)"
-pushd "$tmp" >/dev/null
-curl -fLo "lfs.tgz" \
-    "https://github.com/git-lfs/git-lfs/releases/download/v1.5.5/git-lfs-linux-amd64-1.5.5.tar.gz" \
-    2>/dev/null
-tar xzf "lfs.tgz" --strip-components 1
-sudo mkdir -p /usr/local/bin
-sudo install git-lfs /usr/local/bin/git-lfs
+curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+sudo apt install git-lfs
 git lfs install
-popd >/dev/null
-rm -rf "$tmp"
 
 pushd "$HOME/.dotfiles" >/dev/null
 
