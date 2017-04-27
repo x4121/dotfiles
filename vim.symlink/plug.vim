@@ -69,6 +69,7 @@ Plug 'tpope/vim-repeat' " extend repeat command
 Plug 'tpope/vim-surround' " add/change/delete quotes/parens/..
 Plug 'tpope/vim-dispatch' " asynchronous test/build
 Plug 'takac/vim-hardtime'
+Plug 'vim-scripts/YankRing.vim'
 
 "" load last in this order!
 Plug 'ryanoasis/vim-devicons'
