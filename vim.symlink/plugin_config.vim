@@ -213,7 +213,7 @@ let g:hardtime_ignore_quickfix = 1
 """"""""""""""""""""""""""""""
 " => Airline
 """"""""""""""""""""""""""""""
-let g:airline_theme='base16'
+let g:airline_theme='gruvbox'
 " disable distractive symbols
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}

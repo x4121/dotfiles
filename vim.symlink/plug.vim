@@ -51,9 +51,8 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 "" UI
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
 Plug 'junegunn/goyo.vim' " distraction free typing
 Plug 'junegunn/limelight.vim' " distraction free typing
 Plug 'Yggdroot/indentLine'
