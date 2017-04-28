@@ -125,7 +125,7 @@ set pgp_encrypt_self  = yes
 set pgp_sign_as       = "`gpg-default-key`"
 
 ## load external settings
-source ~/.mutt/gruvbox-256.muttrc
+source ~/.mutt/dark16.muttrc
 source ~/.mutt/gpg.rc
 source ~/.mutt/local.default
 source ~/.mutt/auto_views

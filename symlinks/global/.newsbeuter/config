@@ -28,10 +28,10 @@ oldreader-min-items 100
 
 # colors
 color background white default
-color info yellow black
-color listnormal green default
+color info yellow color237
+color listnormal black default bold
 color listfocus black yellow
-color listnormal_unread cyan default
+color listnormal_unread cyan default bold
 color listfocus_unread black yellow
 highlight article "^Feed: .*$" yellow default
 highlight article "^Title: .*$" blue default bold
