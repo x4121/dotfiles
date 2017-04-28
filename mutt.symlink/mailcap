@@ -1,6 +1,12 @@
 # mailcap - MIME configuration file
+
+# w3m for pager (html only mails), gui-browser for attachments
 text/html; x-www-browser %s; needsterminal;
 text/html; w3m -I %{charset} -T text/html; copiousoutput;
+
 text/calendar; mutt-ics; copiousoutput;
 application/ics; mutt-ics; copiousoutput;
-application/pdf; zathura %s; copiousoutput;
+
+application/pdf; zathura %s; print=zathura %s
+
+image/*; feh %s;
