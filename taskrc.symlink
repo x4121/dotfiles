@@ -13,7 +13,7 @@
 #data.location=~/ownCloud/task
 
 # Color theme (uncomment one to use)
-include /usr/share/taskwarrior/solarized-dark-256.theme
+include ~/.dotfiles/taskwarrior/gruvbox-dark-256.theme
 
 regex=on
 confirmation=off
