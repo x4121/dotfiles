@@ -34,7 +34,7 @@ Plug 'rodjek/vim-puppet'
 " etc
 Plug 'majutsushi/tagbar' " show tags like nerdtree
 Plug 'scrooloose/syntastic'
-Plug 'matchit.zip' " extended matching for '%'
+Plug 'vim-scripts/matchit.zip' " extended matching for '%'
 Plug 'tpope/vim-endwise' " auto close block-statements
 Plug 'Raimondi/delimitMate' " auto close quotes/parens/..
 Plug 'tpope/vim-commentary' " add/remove comments
@@ -59,8 +59,8 @@ Plug 'Yggdroot/indentLine'
 Plug 'edkolev/tmuxline.vim'
 
 "" Misc
-Plug 'taglist.vim'
-Plug 'listmaps.vim' " :Listmaps
+Plug 'vim-scripts/taglist.vim'
+Plug 'vim-scripts/listmaps.vim' " :Listmaps
 Plug 'tpope/vim-speeddating' " increment/decrement on dates
 Plug 'tpope/vim-capslock' " software capslock
 Plug 'tpope/vim-sleuth' " auto adjust indentation
