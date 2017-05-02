@@ -29,6 +29,10 @@ fi
 
 echo 'Installing git-lfs'
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+# begin quickfix
+sudo sed -i 's/zesty/xenial/' /etc/apt/sources.list.d/github_git-lfs.list
+sudo apt update
+# end quickfix
 sudo apt install git-lfs
 git lfs install
 
@@ -205,9 +209,9 @@ curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim +PlugInstall +qall
 
-echo 'Generating Tmuxline'
-vim +'Tmuxline airline' +'TmuxlineSnapshot! ~/.tmux/tmuxline.conf' +qall
-tmux source-file ~/.tmux.conf
+# echo 'Generating Tmuxline'
+# vim +'Tmuxline airline' +'TmuxlineSnapshot! ~/.tmux/tmuxline.conf' +qall
+# tmux source-file ~/.tmux.conf
 
 echo 'Setting fish as default shell'
 sudo chsh -s "$(grep /fish$ /etc/shells | tail -1)" "$USER"
