@@ -149,8 +149,8 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
         "['alternate-tab@gnome-shell-extensions.gcampax.github.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'dash-to-dock@micxgx.gmail.com', 'openweather-extension@jenslody.de', 'TopIcons@phocean.net', 'nohotcorner@azuri.free.fr']"
 
     echo 'Setting keyboard shortcuts'
-    gsettings set org.gnome.desktop.input-sources \
-        xkb-options "['caps:ctrl_modifier', 'compose:ralt']"
+    gsettings set org.gnome.desktop.input-sources xkb-options \
+        "['caps:ctrl_modifier', 'compose:ralt', 'shift:both_capslock_cancel']"
     gsettings set org.gnome.desktop.wm.keybindings \
         switch-input-source "[]"
     gsettings set org.gnome.desktop.wm.keybindings \

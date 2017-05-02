@@ -62,7 +62,6 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'vim-scripts/taglist.vim'
 Plug 'vim-scripts/listmaps.vim' " :Listmaps
 Plug 'tpope/vim-speeddating' " increment/decrement on dates
-Plug 'tpope/vim-capslock' " software capslock
 Plug 'tpope/vim-sleuth' " auto adjust indentation
 Plug 'tpope/vim-repeat' " extend repeat command
 Plug 'tpope/vim-surround' " add/change/delete quotes/parens/..
