@@ -33,7 +33,6 @@ if [[ $DISPLAY != "" ]]; then
         devilspie\
         gawk\
         konsole\
-        libsecret-tools\
         mutt\
             msmtp\
             notmuch\
