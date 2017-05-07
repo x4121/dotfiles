@@ -66,8 +66,8 @@ function! s:goyo_leave()
   IndentLinesEnable
 endfunction
 
-let g:limelight_conceal_ctermfg = 240
-let g:limelight_conceal_guifg = '#585858'
+let g:limelight_conceal_ctermfg = 239
+let g:limelight_conceal_guifg = '#504945'
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
