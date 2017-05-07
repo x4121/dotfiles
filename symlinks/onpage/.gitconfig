@@ -13,8 +13,6 @@
     short = true
 [diff]
     wsErrorHighlight = all
-[gpg]
-    program = gpg2
 [commit]
     gpgSign = true
 [alias]

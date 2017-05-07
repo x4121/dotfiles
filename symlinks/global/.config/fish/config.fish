@@ -13,9 +13,6 @@ set PATH $HOME/.jenv/bin $PATH
 # rbenv
 rbenv rehash > /dev/null ^&1
 
-# aliases
-alias gpg gpg2
-
 # colored man pages
 set -x LESS_TERMCAP_mb (printf '\e[01;31m') # enter blinking mode - red
 set -x LESS_TERMCAP_md (printf '\e[01;35m') # enter double-bright mode - bold, magenta
