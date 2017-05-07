@@ -16,7 +16,8 @@
 [commit]
     gpgSign = true
 [alias]
-    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lol = log --graph --decorate --oneline
+    lola = log --graph --decorate --oneline --all
 [url "git@github.com:x4121/"]
     insteadof = my:
 [url "git@github.com:onpage-org/"]
