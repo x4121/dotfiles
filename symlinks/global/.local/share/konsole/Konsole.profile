@@ -1,7 +1,7 @@
 [Appearance]
 BoldIntense=false
 ColorScheme=Gruvbox_dark
-Font=FuraMonoForPowerline Nerd Font,12,-1,5,50,0,0,0,0,0
+Font=FuraMonoForPowerline Nerd Font,11,-1,5,50,0,0,0,0,0
 
 [General]
 Name=Konsole
