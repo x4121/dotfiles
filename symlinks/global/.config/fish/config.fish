@@ -1,6 +1,3 @@
-# remove greeting message
-set -e fish_greeting
-
 # Map Control_L to Shift_L + F12 (for tmux prefix)
 pgrep -u $USER xcape > /dev/null; or xcape -e 'Control_L=Shift_L|F12'
 
