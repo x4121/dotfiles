@@ -1,4 +1,3 @@
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim plugin configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -25,6 +24,8 @@ set diffopt+=vertical
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:NERDTreeWinPos = "left"
 let g:NERDTreeMinimalUI = 1
+let g:NERDTreeDirArrowExpandable = ''
+let g:NERDTreeDirArrowCollapsible = ''
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark<space>
 map <leader>nf :NERDTreeFind<cr>
@@ -32,7 +33,6 @@ map <leader>nf :NERDTreeFind<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => surround.vim config
-" Annotate strings with gettext http://amix.dk/blog/post/19678
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 vmap Si S(i_<esc>f)
 au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
@@ -225,6 +225,7 @@ let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 let g:airline_symbols.linenr = ''
 let g:airline_symbols.maxlinenr = ''
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 
 " simpler line/column numbering
 try
@@ -250,3 +251,11 @@ let g:tmuxline_preset = {
       \'options': {
       \  'status-justify': 'left'}
       \}
+
+
+""""""""""""""""""""""""""""""
+" => Devicons
+""""""""""""""""""""""""""""""
+let g:webdevicons_conceal_nerdtree_brackets = 0
+let g:WebDevIconsOS = 'Linux'
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
