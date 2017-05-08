@@ -33,10 +33,10 @@ include "%L"
 <Multi_key> <A> <A>                     : "∀" U2200 # for all
 
 <Multi_key> <asciicircum> <asciicircum> : "∧" U2227 # conjunction
-<Multi_key> <v> <v> 	  		        : "∨" U2228 # disjunction
+<Multi_key> <v> <v>                     : "∨" U2228 # disjunction
 
-<Multi_key> <s> <u> 	                : "∪" U222A # set union
-<Multi_key> <s> <i> 	                : "∩" U2229 # set intersection
+<Multi_key> <s> <u>                     : "∪" U222A # set union
+<Multi_key> <s> <i>                     : "∩" U2229 # set intersection
 
 <Multi_key> <q> <e> <d>                 : "∎" U220E # end of proof
 
@@ -50,3 +50,53 @@ include "%L"
 <Multi_key> <colon> <n>                 : "🤓" U1F913 # nerd emoji
 <Multi_key> <colon> <c>                 : "💩" U1F4A9 # pile of poo
 <Multi_key> <colon> <d>                 : "ಠ" U0CA0 # look of disapproval
+
+# Greek letters
+<Multi_key> <G> <A>                     : "Α" U0391 # greek capital letter alpha
+<Multi_key> <G> <a>                     : "α" U03B1 # greek small letter alpha
+<Multi_key> <G> <B>                     : "Β" U0392 # greek capital letter beta
+<Multi_key> <G> <b>                     : "β" U03B2 # greek small letter beta
+<Multi_key> <G> <D>                     : "Δ" U0394 # greek capital letter delta
+<Multi_key> <G> <d>                     : "δ" U03B4 # greek small letter delta
+<Multi_key> <G> <E>                     : "Ε" U0395 # greek capital letter epsilon
+<Multi_key> <G> <e>                     : "ε" U03B5 # greek small letter epsilon
+<Multi_key> <G> <F>                     : "Φ" U03A6 # greek capital letter phi
+<Multi_key> <G> <f>                     : "φ" U03C6 # greek small letter phi
+<Multi_key> <G> <G>                     : "Γ" U0393 # greek capital letter gamma
+<Multi_key> <G> <g>                     : "γ" U03B3 # greek small letter gamma
+<Multi_key> <G> <H>                     : "Η" U0397 # greek capital letter eta
+<Multi_key> <G> <h>                     : "η" U03B7 # greek small letter eta
+<Multi_key> <G> <I>                     : "Ι" U0399 # greek capital letter iota
+<Multi_key> <G> <i>                     : "ι" U03B9 # greek small letter iota
+<Multi_key> <G> <J>                     : "Θ" U0398 # greek capital letter theta
+<Multi_key> <G> <j>                     : "θ" U03B8 # greek small letter theta
+<Multi_key> <G> <K>                     : "Κ" U039A # greek capital letter kappa
+<Multi_key> <G> <k>                     : "κ" U03BA # greek small letter kappa
+<Multi_key> <G> <L>                     : "Λ" U039B # greek capital letter lambda
+<Multi_key> <G> <l>                     : "λ" U03BB # greek small letter lambda
+<Multi_key> <G> <M>                     : "Μ" U039C # greek capital letter mu
+<Multi_key> <G> <m>                     : "μ" U03BC # greek small letter mu
+<Multi_key> <G> <N>                     : "Ν" U039D # greek capital letter nu
+<Multi_key> <G> <n>                     : "ν" U03BD # greek small letter nu
+<Multi_key> <G> <O>                     : "Ο" U039F # greek capital letter omicron
+<Multi_key> <G> <o>                     : "ο" U03BF # greek small letter omicron
+<Multi_key> <G> <P>                     : "Π" U03A0 # greek capital letter pi
+<Multi_key> <G> <p>                     : "π" U03C0 # greek small letter pi
+<Multi_key> <G> <Q>                     : "Χ" U03A7 # greek capital letter chi
+<Multi_key> <G> <q>                     : "χ" U03C7 # greek small letter chi
+<Multi_key> <G> <R>                     : "Ρ" U03A1 # greek capital letter rho
+<Multi_key> <G> <r>                     : "ρ" U03C1 # greek small letter rho
+<Multi_key> <G> <S>                     : "Σ" U03A3 # greek capital letter sigma
+<Multi_key> <G> <s>                     : "σ" U03C3 # greek small letter sigma
+<Multi_key> <G> <T>                     : "Τ" U03A4 # greek capital letter tau
+<Multi_key> <G> <t>                     : "τ" U03C4 # greek small letter tau
+<Multi_key> <G> <U>                     : "Υ" U03A5 # greek capital letter upsilon
+<Multi_key> <G> <u>                     : "υ" U03C5 # greek small letter upsilon
+<Multi_key> <G> <W>                     : "Ω" U03A9 # greek capital letter omega
+<Multi_key> <G> <w>                     : "ω" U03C9 # greek small letter omega
+<Multi_key> <G> <X>                     : "Ξ" U039E # greek capital letter xi
+<Multi_key> <G> <x>                     : "ξ" U03BE # greek small letter xi
+<Multi_key> <G> <Y>                     : "Ψ" U03A8 # greek capital letter psi
+<Multi_key> <G> <y>                     : "ψ" U03C8 # greek small letter psi
+<Multi_key> <G> <Z>                     : "Ζ" U0396 # greek capital letter zeta
+<Multi_key> <G> <z>                     : "ζ" U03B6 # greek small letter zeta
