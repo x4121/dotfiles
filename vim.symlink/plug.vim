@@ -13,9 +13,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle', 'NERDTreeFind', '
 " Scala
 Plug 'derekwyatt/vim-sbt'
 Plug 'derekwyatt/vim-scala'
-Plug 'ensime/ensime-sbt', { 'branch': '2.0', 'for': 'scala' }
-Plug 'ensime/ensime-server', { 'branch': '2.0', 'for': 'scala' }
-Plug 'ensime/ensime-vim', { 'for': 'scala' }
 " Elixir
 Plug 'elixir-lang/vim-elixir'
 " Orgmode
