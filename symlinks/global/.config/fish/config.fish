@@ -10,6 +10,12 @@ set PATH $HOME/.jenv/bin $PATH
 # rbenv
 rbenv rehash > /dev/null ^&1
 
+# abbreviations
+if not set -q __abbr_init
+  set -gx __abbr_init
+  source $HOME/.config/fish/abbr.fish
+end
+
 # colored man pages
 set -x LESS_TERMCAP_mb (printf '\e[01;31m') # enter blinking mode - red
 set -x LESS_TERMCAP_md (printf '\e[01;35m') # enter double-bright mode - bold, magenta
@@ -21,8 +27,3 @@ set -x LESS_TERMCAP_us (printf '\e[04;36m') # enter underline mode - cyan
 
 # gnome-keyring
 eval (echo (gnome-keyring-daemon -s) | sed -e 's/^\(.*\)/set -x \\1/' -e 's/=/ /' -e 's/\(.*\)$/\1;/')
-
-set -l GRUVBOX_SCRIPT ~/.vim/plugged/gruvbox/gruvbox_256palette.sh
-if test -f $GRUVBOX_SCRIPT
-  bash $GRUVBOX_SCRIPT
-end
