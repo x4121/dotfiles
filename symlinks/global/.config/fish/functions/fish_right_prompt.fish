@@ -4,4 +4,5 @@ function fish_right_prompt
   if not test $last_status -eq 0
     echo -n $last_status ''
   end
+  set_color normal
 end
