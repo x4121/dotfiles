@@ -72,14 +72,6 @@ if [[ $DISPLAY != "" ]]; then
     sudo pip install mutt_ics vobject
     sudo pip install gcalcli
 
-    echo 'Install Franz'
-    sudo mkdir -p /opt/franz
-    sudo wget -O /opt/franz/Franz.tgz \
-        https://github.com/meetfranz/franz-app/releases/download/4.0.4/Franz-linux-x64-4.0.4.tgz \
-        2>/dev/null
-    sudo tar xzf /opt/franz/Franz.tgz -C /opt/franz
-    sudo rm /opt/franz/Franz.tgz
-
     echo 'Setting chromium as default browser'
     sudo update-alternatives --set gnome-www-browser "$(which chromium-browser)"
     sudo update-alternatives --set x-www-browser "$(which chromium-browser)"
