@@ -1,0 +1,9 @@
+# vim: ft=muttrc:
+set from      = "me@armingrodon.de"
+unset signature
+
+set folder    = "~/Mail/armingrodon.de"
+set spoolfile = "+INBOX"
+set record    = "+sent"
+set postponed = "+draft"
+set trash     = "+trash"

@@ -1,0 +1,9 @@
+# vim: ft=muttrc:
+set from      = "armin@onpage.org"
+set signature = "~/.mutt/accounts/onpage.org.sig"
+
+set folder    = "~/Mail/onpage.org"
+set spoolfile = "+INBOX"
+set record    = "+sent"
+set postponed = "+draft"
+set trash     = "+trash"

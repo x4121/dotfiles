@@ -1,0 +1,17 @@
+# vim: ft=muttrc:
+set my_default = "armingrodon.de"
+set my_2 = "gmail.com"
+set my_3 = "onpage.org"
+
+alternates ^me@armingrodon.de$ ^armin.grodon@gmail.com$ ^armin@onpage.org$
+
+# offlineimap mailboxes
+source ~/.mutt/mailboxes
+
+# account macros
+macro index '<esc>1' '<sync-mailbox><refresh><enter-command>source ~/.mutt/accounts/$my_default<enter><change-folder>!<enter>'
+macro index '<esc>2' '<sync-mailbox><refresh><enter-command>source ~/.mutt/accounts/$my_2<enter><change-folder>!<enter>'
+macro index '<esc>3' '<sync-mailbox><refresh><enter-command>source ~/.mutt/accounts/$my_3<enter><change-folder>!<enter>'
+
+# default account
+source ~/.mutt/accounts/$my_default
