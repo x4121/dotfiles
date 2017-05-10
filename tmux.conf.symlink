@@ -1,6 +1,3 @@
-# set term
-set -g default-terminal "screen-256color"
-
 # automatically renumber windows
 set -g renumber-windows on
 
@@ -15,15 +12,14 @@ set-option -g mouse on
 
 # act like vim
 setw -g mode-keys vi
+bind-key -T copy-mode-vi 'v' send -X begin-selection
+bind-key -T copy-mode-vi 'r' send -X rectangle-toggle
 
 # synchronize all panes in a window
 bind C-y setw synchronize-panes
 
-bind -r C-h select-window -t :-
-bind -r C-l select-window -t :+
-
 # Paste from clipboard
-bind v run "xsel -o -b | tmux load-buffer - && tmux paste-buffer"
+bind v tmux paste-puffer -b 'system-clipboard'
 
 
 # Display activity in windows
