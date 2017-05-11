@@ -133,8 +133,8 @@ endtry
 " Set extra options when running in GUI mode
 if has("gui_running")
   set guioptions-=T
-    set guioptions-=e
-    set guifont=SauceCodePro\ Nerd\ Font\ Medium\ 11
+  set guioptions-=e
+  set guifont=FuraMonoForPowerline\ Nerd\ Font\ Regular\ 11
 endif
 
 " Set utf8 as standard encoding and en_US as the standard language
