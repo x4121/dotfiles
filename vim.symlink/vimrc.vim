@@ -153,6 +153,9 @@ set list listchars=tab:»\ ,trail:·
 autocmd InsertEnter * :set list!
 autocmd InsertLeave * :set list!
 
+" toggle font between 'fira sans'/'fira code'
+map <leader>t :silent !font_toggle.sh<cr>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
