@@ -5,6 +5,7 @@ abbr ai     sudo apt install -y
 abbr al     apt list --upgradable
 abbr aq     apt search
 abbr ar     sudo apt remove #overrides gnu archive tool
+abbr aar    sudo apt autoremove -y
 abbr as     apt show #overrides gnu assembler
 abbr au     sudo apt update
 
@@ -31,6 +32,7 @@ abbr gla    git lola
 abbr gpl    git pull --prune
 abbr gps    git push
 abbr gs     git status #overrides ghostscript
+abbr gt     git tag
 
 # hub
 abbr h      hub
@@ -45,4 +47,7 @@ abbr tc     task calendar #overrides traffic control
 abbr ts     task sync
 
 # etc
+abbr m      mutt
 abbr r      ranger
+abbr v      vim
+abbr z      zathura
