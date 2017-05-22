@@ -12,7 +12,13 @@ abbr au     sudo apt update
 # folders
 abbr cdc    cd ~/.dotfiles
 abbr cdd    cd ~/Downloads
+abbr cdo    cd ~/ownCloud #overrides Climate Data Operators
 abbr cdw    cd ~/workspace
+
+# docker
+abbr d      docker
+abbr dc     docker-compose #overrides precision calculator
+abbr dp     docker ps #overrides speech-tools
 
 # git
 abbr g      git
