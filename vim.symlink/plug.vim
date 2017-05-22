@@ -28,6 +28,8 @@ Plug 'tpope/vim-ragtag' " html/erb
 Plug 'tpope/vim-markdown'
 " Puppet
 Plug 'rodjek/vim-puppet'
+" Rust
+Plug 'rust-lang/rust.vim'
 " etc
 Plug 'majutsushi/tagbar' " show tags like nerdtree
 Plug 'scrooloose/syntastic'

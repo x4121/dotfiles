@@ -86,9 +86,13 @@ let g:indentLine_faster = 1
 " => syntastic
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_ignore = ['\m\c\.h$', '\m\.sbt$']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
-" Scala has fsc and scalac checkers--running both is pretty redundant and
-" slow. An explicit `:SyntasticCheck scalac` can always run the other.
+let g:syntastic_elixir_checkers = ['elixir']
+let g:syntastic_rust_checkers = ['rustc']
 let g:syntastic_scala_checkers = ['fsc']
 
 
