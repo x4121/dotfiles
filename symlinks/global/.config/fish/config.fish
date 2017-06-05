@@ -8,8 +8,8 @@ set -x EDITOR vim
 set PATH $HOME/.jenv/bin $PATH
 
 # rbenv
-rbenv rehash > /dev/null ^&1
 status --is-interactive; and . (rbenv init -|psub)
+fix_path
 
 # abbreviations
 if not set -q __abbr_init
