@@ -8,7 +8,7 @@ set -x EDITOR vim
 set PATH $HOME/.jenv/bin $PATH
 
 # rbenv
-status --is-interactive; and . (rbenv init -|psub)
+status --is-interactive; and . (rbenv init - | sed 's/setenv/set -gx/' | psub)
 fix_path
 
 # abbreviations
