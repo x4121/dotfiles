@@ -208,6 +208,13 @@ vim +PlugInstall +qall
 echo 'Setting fish as default shell'
 sudo chsh -s "$(grep /fish$ /etc/shells | tail -1)" "$USER"
 
+echo 'Installing omf'
+tmp="$(mktemp)"
+curl -L https://get.oh-my.fish > $tmp
+fish $tmp --noninteractive --yes
+echo "omf install" | fish
+rm -rf $tmp
+
 echo 'Setting Konsole as default terminal'
 sudo update-alternatives --set x-terminal-emulator "$(which konsole)"
 

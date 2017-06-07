@@ -10,6 +10,7 @@ fi
 SW="apt-transport-tor\
     ecryptfs-utils\
     fish\
+        thefuck\
     fonts-lohit-knda\
     htop\
     mercurial\
