@@ -104,7 +104,7 @@ macro index u '<undelete-message><current-middle>'
 macro index D '<delete-pattern><current-middle>'
 macro index U '<undelete-pattern><current-middle>'
 
-set abort_noattach = yes
+set abort_noattach = ask-yes
 set attach_keyword = "\\<(attach(|ed|ments?)|anhängen|angehängt|anhang|anhänge|hängt an|anbei)\\>"
 
 # mailbox settings
