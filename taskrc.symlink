@@ -10,7 +10,7 @@
 # Use the command 'task show' to see all defaults and overrides
 
 # Files
-#data.location=~/ownCloud/task
+data.location=~/ownCloud/task
 
 # Color theme (uncomment one to use)
 include ~/.dotfiles/taskwarrior/gruvbox-dark-256.theme
@@ -20,7 +20,6 @@ confirmation=off
 weekstart=Monday
 uda.priority.values=H,M,,L
 
-include ~/.dotfiles/taskwarrior/taskd.conf
 uda.relativeRecurDue.type=duration
 uda.relativeRecurDue.label=Rel. Rec. Due
 uda.relativeRecurWait.type=duration
