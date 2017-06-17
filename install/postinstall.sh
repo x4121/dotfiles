@@ -11,6 +11,17 @@ if ! [[ -z ${I_DEV+x} ]]; then
     ln -s "$HOME/.jenv/fish/jenv.fish" \
         "$HOME/.config/fish/functions/jenv.fish" >/dev/null
 
+    echo 'Installing rbenv'
+    git clone https://github.com/rbenv/rbenv \
+        "$HOME/.rbenv" >/dev/null
+    pushd "$HOME/.rbenv" >/dev/null
+    src/configure
+    make -C src
+    mkdir -p plugins
+    git clone https://github.com/rbenv/ruby-build.git \
+        plugins/ruby-build
+    popd >/dev/null
+
     echo 'Installing gems'
     sudo gem install \
         gem-shut-the-fuck-up bundler git-amnesia git-rc >/dev/null

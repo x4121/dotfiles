@@ -107,8 +107,6 @@ if [[ $DISPLAY != "" ]]; then
             knockd\
             npm\
                 node-grunt-cli\
-            rbenv\
-                ruby-build\
             sbt\
                 maven\
                 openjdk-8-jdk\
