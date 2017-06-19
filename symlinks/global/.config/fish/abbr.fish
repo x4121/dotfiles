@@ -31,11 +31,11 @@ abbr gco    git checkout
 abbr gcom   git checkout master
 abbr gd     git diff
 abbr gdc    git diff --cached
-abbr gf     git fetch --prune
-abbr gfa    git fetch --prune --all
+abbr gf     git fetch
+abbr gfa    git fetch --all
 abbr gl     git lol
 abbr gla    git lola
-abbr gpl    git pull --prune
+abbr gpl    git pull
 abbr gps    git push
 abbr gs     git status #overrides ghostscript
 abbr gt     git tag

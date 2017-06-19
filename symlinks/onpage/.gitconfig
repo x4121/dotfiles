@@ -8,6 +8,8 @@
     default = simple
 [pull]
     ff = only
+[fetch]
+    prune = true
 [status]
     branch = true
     short = true
@@ -29,8 +31,3 @@
     others = $HOME/.dotfiles:$HOME/.password-store
 [amnesia]
     count = 10
-[filter "lfs"]
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
-    process = git-lfs filter-process
-    required = true
