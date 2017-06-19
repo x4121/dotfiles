@@ -24,7 +24,7 @@ abbr dp     docker ps #overrides speech-tools
 abbr g      git
 abbr ga     git add
 abbr gb     git branch --verbose
-abbr gba    git branch --verbose --all
+abbr gba    git branch --verbose -a
 abbr gc     git commit -m
 abbr gcl    git clone --recursive
 abbr gco    git checkout
