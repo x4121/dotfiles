@@ -2,7 +2,7 @@
 set -e
 
 # own ppa
-if ! ls /etc/apt/sources.list.d | grep x4121 >/dev/null; then
+if ! ls /etc/apt/sources.list.d/x4121* >/dev/null; then
     sudo add-apt-repository -y ppa:x4121/ppa >/dev/null
     sudo add-apt-repository -y ppa:x4121/ripgrep >/dev/null
 fi
@@ -59,7 +59,7 @@ if [[ $DISPLAY != "" ]]; then
 
     if [[ $DESKTOP_SESSION = gnome ]]; then
         # numix-icon-theme
-        if ! ls /etc/apt/sources.list.d | grep numix >/dev/null; then
+        if ! ls /etc/apt/sources.list.d/numix* >/dev/null; then
             sudo add-apt-repository -y ppa:numix/ppa >/dev/null
         fi
 
