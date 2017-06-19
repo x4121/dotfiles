@@ -45,6 +45,14 @@ abbr h      hub
 abbr hcl    hub clone --recursive
 abbr hi     hub issue
 
+# pass
+abbr p      pass
+abbr pc     pass show -c
+abbr pe     pass edit
+abbr pp     pass show
+abbr ppl    pass git pull
+abbr pps    pass git push
+
 # taskwarrior
 abbr t      task
 abbr ta     task add
