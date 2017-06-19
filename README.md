@@ -4,7 +4,6 @@ My dotfiles
 ## Contents
 * fish-shell config
 * vim config and plugins
-* config and plugins for this other editor (emacs)
 * tmux config and plugins
 * Konsole/Yakuake config
 * mutt config (with offlineimap and msmtp)

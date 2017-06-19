@@ -15,8 +15,6 @@ Plug 'derekwyatt/vim-sbt'
 Plug 'derekwyatt/vim-scala'
 " Elixir
 Plug 'elixir-lang/vim-elixir'
-" Orgmode
-Plug 'jceb/vim-orgmode'
 " Ruby/Rails/Jekyll/Web-Stuff
 Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-jdaddy' " json

@@ -45,7 +45,6 @@ if [[ $DISPLAY != "" ]]; then
         newsbeuter\
         pass\
         pdfposter\
-        pdf-presenter-console\
         python-setuptools\
         rofi\
         samba\
@@ -102,7 +101,6 @@ if [[ $DISPLAY != "" ]]; then
                 cmake\
                 libtool\
             docker-engine\
-            emacs\
             jq\
             knockd\
             npm\
@@ -111,7 +109,6 @@ if [[ $DISPLAY != "" ]]; then
                 maven\
                 openjdk-8-jdk\
             shellcheck\
-            texlive-full\
             vagrant"
     fi
 fi
