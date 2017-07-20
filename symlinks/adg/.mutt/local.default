@@ -1,9 +1,9 @@
 # vim: ft=muttrc:
 set my_default = "armingrodon.de"
 set my_2 = "gmail.com"
-set my_3 = "onpage.org"
+set my_3 = "ryte.com"
 
-alternates ^me@armingrodon.de$ ^armin.grodon@gmail.com$ ^armin@onpage.org$
+alternates ^me@armingrodon.de$ ^armin.grodon@gmail.com$ ^a.grodon@ryte.com$
 
 # offlineimap mailboxes
 source ~/.mutt/mailboxes

@@ -1,5 +1,5 @@
 [general]
-accounts = armingrodon.de, gmail.com, onpage.org
+accounts = armingrodon.de, gmail.com, ryte.com
 pythonfile = ~/.mutt/offlineimap.py
 ui = ttyui
 
@@ -23,9 +23,9 @@ remoterepository = gmail.com-Remote
 status_backend = sqlite
 postsynchook = notmuch new
 
-[Account onpage.org]
-localrepository = onpage.org-Local
-remoterepository = onpage.org-Remote
+[Account ryte.com]
+localrepository = ryte.com-Local
+remoterepository = ryte.com-Remote
 status_backend = sqlite
 postsynchook = notmuch new
 
@@ -45,9 +45,9 @@ nametrans = lambda foldername: re.sub('sent', '[Google Mail].Sent Mail',
     re.sub('trash', '[Google Mail].Trash',
     foldername)))
 
-[Repository onpage.org-Local]
+[Repository ryte.com-Local]
 type = Maildir
-localfolders = ~/Mail/onpage.org
+localfolders = ~/Mail/ryte.com
 nametrans = lambda foldername: re.sub('sent', '[Gmail].Sent Mail',
     re.sub('draft', '[Gmail].Drafts',
     re.sub('trash', '[Gmail].Trash',
@@ -80,12 +80,12 @@ nametrans = lambda foldername: re.sub('.*Sent.*', 'sent',
 folderfilter = lambda folder: re.search('(^INBOX|Sent Mail$|Drafts$|Trash$)', folder)
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 
-[Repository onpage.org-Remote]
+[Repository ryte.com-Remote]
 type = IMAP
 ssl = yes
 remotehost = imap.gmail.com
-remoteuser = armin@onpage.org
-remotepasseval = get_password("email/armin@onpage.org")
+remoteuser = a.grodon@ryte.com
+remotepasseval = get_password("email/a.grodon@ryte.com")
 auth_mechanisms = PLAIN, LOGIN
 nametrans = lambda foldername: re.sub('.*Sent.*', 'sent',
     re.sub('.*Drafts', 'draft',
