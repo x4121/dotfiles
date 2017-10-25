@@ -89,9 +89,15 @@ if [[ $DISPLAY != "" ]]; then
 fi
 
 if [[ $DESKTOP_SESSION = gnome ]]; then
+    echo 'Remove Ubuntus ugly gdm config'
+    sudo update-alternatives --set gdm3.css \
+        /usr/share/gnome-shell/themes/gnome-shell.css
+
     echo 'Installing gnome-shell extensions'
     gnomeshell_install="$HOME/.dotfiles/bin.symlink/gnomeshell-extension-manage \
         --install --extension-id"
+    # user themes
+    $gnomeshell_install 19
     # media player indicator
     $gnomeshell_install 55
     # dash to dock

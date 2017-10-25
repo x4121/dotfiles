@@ -64,8 +64,10 @@ if [[ $DISPLAY != "" ]]; then
 
         SW="$SW\
             arc-theme\
+            gnome-session\
             gnome-tweak-tool\
-            numix-icon-theme-circle"
+            numix-icon-theme-circle\
+            ubuntu-gnome-wallpapers-yakkety"
     fi
 
     if ! [[ -z ${I_HOME+x} ]]; then
