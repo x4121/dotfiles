@@ -44,10 +44,8 @@ if [[ $DISPLAY != "" ]]; then
         nautilus-owncloud\
         newsbeuter\
         pass\
-        pdfposter\
         python-setuptools\
         rofi\
-        samba\
         socat\
         tmux\
             xcape\

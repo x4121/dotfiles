@@ -124,8 +124,8 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
     $gnomeshell_install 1031
     # no topleft hot corner
     $gnomeshell_install 118
-    # notification alert
-    #$gnomeshell_install 258
+    # sound io chooser
+    $gnomeshell_install 906
     # openweather
     $gnomeshell_install 750
 
@@ -264,7 +264,7 @@ mkdir "$HOME/Mail"
 SYNC="users | grep $USER >/dev/null && $HOME/.bin/mailsync.sh"
 CRON="*/15 * * * * $SYNC"
 crontab -l 2>/dev/null \
-    | fgrep -i -v "$SYNC" \
+    | grep -Fiv "$SYNC" \
     | { cat; echo "$CRON"; } \
     | crontab -
 
