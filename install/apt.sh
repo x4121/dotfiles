@@ -105,8 +105,6 @@ if [[ $DISPLAY != "" ]]; then
             docker-engine\
             jq\
             knockd\
-            npm\
-                node-grunt-cli\
             sbt\
                 maven\
                 openjdk-8-jdk\

@@ -22,6 +22,24 @@ if ! [[ -z ${I_DEV+x} ]]; then
         plugins/ruby-build
     popd >/dev/null
 
+    echo 'Installing nodejs'
+    curl -sL https://deb.nodesource.com/setup_6.x \
+        | sudo -E bash - >/dev/null 2>&1
+    sudo apt-get install -y nodejs >/dev/null
+
+    echo 'Installing erlang/elixir/phoenix'
+    tmp="$(mktemp)"
+    curl -L \
+        "https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb" \
+        > "$tmp" 2>/dev/null
+    sudo dpkg -i "$tmp" >/dev/null 2>&1
+    rm "$tmp"
+    sudo apt-get update >/dev/null
+    sudo apt-get install -y esl-erlang elixir inotify-tools >/dev/null
+    mix local.hex
+    mix archive.install \
+        https://github.com/phoenixframework/archives/raw/master/phx_new.ez
+
     echo 'Installing gems'
     sudo gem install \
         gem-shut-the-fuck-up bundler git-amnesia git-rc >/dev/null
