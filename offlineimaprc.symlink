@@ -14,19 +14,16 @@ footer = "\n"
 [Account armingrodon.de]
 localrepository = armingrodon.de-Local
 remoterepository = armingrodon.de-Remote
-status_backend = sqlite
 postsynchook = notmuch new
 
 [Account gmail.com]
 localrepository = gmail.com-Local
 remoterepository = gmail.com-Remote
-status_backend = sqlite
 postsynchook = notmuch new
 
 [Account ryte.com]
 localrepository = ryte.com-Local
 remoterepository = ryte.com-Remote
-status_backend = sqlite
 postsynchook = notmuch new
 
 [Repository armingrodon.de-Local]
