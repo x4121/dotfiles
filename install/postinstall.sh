@@ -41,7 +41,7 @@ fi
 echo 'Installing git-lfs'
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 # begin quickfix
-sudo sed -i 's/zesty/xenial/' /etc/apt/sources.list.d/github_git-lfs.list
+sudo sed -i 's/artful/zesty/' /etc/apt/sources.list.d/github_git-lfs.list
 sudo apt update
 # end quickfix
 sudo apt install git-lfs
