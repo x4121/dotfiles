@@ -4,6 +4,9 @@ pgrep -u $USER xcape > /dev/null; or xcape -e 'Control_L=Shift_L|F12'
 # Vim is the standard text editor.
 set -x EDITOR vim
 
+# path
+set PATH $HOME/.bin $PATH
+
 # jenv
 set PATH $HOME/.jenv/bin $PATH
 
