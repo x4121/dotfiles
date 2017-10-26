@@ -20,11 +20,11 @@ My dotfiles
 * auxiliary scripts/tools
 
 ## Install
-- `curl -L https://bootstrap.armingrodon.de/dotfiles | bash` or
-- `wget -q -O - https://bootstrap.armingrodon.de/dotfiles | bash`
+- `curl -L https://armingrodon.de/dot | bash` or
+- `wget -q -O - https://armingrodon.de/dot | bash`
 
 ## Warning
-* This project is currently only tested against the most recent\* Ubuntu-Gnome release (if even!)
+* This project is currently only tested against the most recent\* Ubuntu release (if even!)
 * The install script will overwrite files,
   read the [install.sh](install.sh) and
   [symlinks.sh](symlinks.sh) if you want to know which.
