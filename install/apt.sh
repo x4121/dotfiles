@@ -44,10 +44,8 @@ if [[ $DISPLAY != "" ]]; then
         nautilus-owncloud\
         newsbeuter\
         pass\
-        pdfposter\
         python-setuptools\
         rofi\
-        samba\
         socat\
         tmux\
             xcape\
@@ -64,8 +62,12 @@ if [[ $DISPLAY != "" ]]; then
 
         SW="$SW\
             arc-theme\
+            chrome-gnome-shell\
+            gnome-session\
             gnome-tweak-tool\
-            numix-icon-theme-circle"
+            numix-icon-theme-circle\
+            plymouth-theme-ubuntu-gnome-logo\
+            ubuntu-gnome-wallpapers-yakkety"
     fi
 
     if ! [[ -z ${I_HOME+x} ]]; then
@@ -103,8 +105,6 @@ if [[ $DISPLAY != "" ]]; then
             docker-engine\
             jq\
             knockd\
-            npm\
-                node-grunt-cli\
             sbt\
                 maven\
                 openjdk-8-jdk\

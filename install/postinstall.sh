@@ -22,6 +22,24 @@ if ! [[ -z ${I_DEV+x} ]]; then
         plugins/ruby-build
     popd >/dev/null
 
+    echo 'Installing nodejs'
+    curl -sL https://deb.nodesource.com/setup_6.x \
+        | sudo -E bash - >/dev/null 2>&1
+    sudo apt-get install -y nodejs >/dev/null
+
+    echo 'Installing erlang/elixir/phoenix'
+    tmp="$(mktemp)"
+    curl -L \
+        "https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb" \
+        > "$tmp" 2>/dev/null
+    sudo dpkg -i "$tmp" >/dev/null 2>&1
+    rm "$tmp"
+    sudo apt-get update >/dev/null
+    sudo apt-get install -y esl-erlang elixir inotify-tools >/dev/null
+    mix local.hex
+    mix archive.install \
+        https://github.com/phoenixframework/archives/raw/master/phx_new.ez
+
     echo 'Installing gems'
     sudo gem install \
         gem-shut-the-fuck-up bundler git-amnesia git-rc >/dev/null
@@ -41,7 +59,7 @@ fi
 echo 'Installing git-lfs'
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 # begin quickfix
-sudo sed -i 's/zesty/xenial/' /etc/apt/sources.list.d/github_git-lfs.list
+sudo sed -i 's/artful/zesty/' /etc/apt/sources.list.d/github_git-lfs.list
 sudo apt update
 # end quickfix
 sudo apt install git-lfs
@@ -89,9 +107,30 @@ if [[ $DISPLAY != "" ]]; then
 fi
 
 if [[ $DESKTOP_SESSION = gnome ]]; then
+    echo "Remove Ubuntu's ugly gdm/plymouth config"
+    sudo update-alternatives --set gdm3.css \
+        /usr/share/gnome-shell/themes/gnome-shell.css
+    sudo update-alternatives --set default.plymouth \
+        /usr/share/plymouth/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.plymouth
+
+    echo "Replace Ubuntu's ugly grub theme"
+    grub_themes="/boot/grub/theme"
+    grub_conf="/etc/default/grub"
+    sudo mkdir -p $grub_themes
+    pushd $grub_themes >/dev/null
+    git clone https://github.com/x4121/grub-gruvbox
+    echo "GRUB_THEME=$grub_themes/grub-gruvbox/theme.txt" | \
+        sudo tee -a $grub_conf
+    echo "GRUB_GFXMODE=1920x1080" | \
+        sudo tee -a $grub_conf
+    sudo update-grub >/dev/null
+    popd >/dev/null
+
     echo 'Installing gnome-shell extensions'
     gnomeshell_install="$HOME/.dotfiles/bin.symlink/gnomeshell-extension-manage \
         --install --extension-id"
+    # user themes
+    $gnomeshell_install 19
     # media player indicator
     $gnomeshell_install 55
     # dash to dock
@@ -100,8 +139,8 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
     $gnomeshell_install 1031
     # no topleft hot corner
     $gnomeshell_install 118
-    # notification alert
-    #$gnomeshell_install 258
+    # sound io chooser
+    $gnomeshell_install 906
     # openweather
     $gnomeshell_install 750
 
@@ -240,7 +279,7 @@ mkdir "$HOME/Mail"
 SYNC="users | grep $USER >/dev/null && $HOME/.bin/mailsync.sh"
 CRON="*/15 * * * * $SYNC"
 crontab -l 2>/dev/null \
-    | fgrep -i -v "$SYNC" \
+    | grep -Fiv "$SYNC" \
     | { cat; echo "$CRON"; } \
     | crontab -
 
