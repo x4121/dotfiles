@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Export dbus
-Exec=/home/onpage/.bin/export_dbus.sh
-NoDisplay=false
-X-GNOME-Autostart-enabled=true
