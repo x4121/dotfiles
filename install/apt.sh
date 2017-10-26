@@ -62,9 +62,11 @@ if [[ $DISPLAY != "" ]]; then
 
         SW="$SW\
             arc-theme\
+            chrome-gnome-shell\
             gnome-session\
             gnome-tweak-tool\
             numix-icon-theme-circle\
+            plymouth-theme-ubuntu-gnome-logo\
             ubuntu-gnome-wallpapers-yakkety"
     fi
 
