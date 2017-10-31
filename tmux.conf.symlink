@@ -36,12 +36,11 @@ if-shell "test -f ~/.tmux/tmuxline.conf" \
 
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
-set -g @plugin 'tmux-plugins/tmux-copycat'
 set -g @plugin 'tmux-plugins/tmux-maildir-counter'
-set -g @plugin 'tmux-plugins/tmux-open'
 set -g @plugin 'tmux-plugins/tmux-pain-control'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-yank'
+set -g @plugin 'laktak/extrakto'
 
 # Mail counter
 set -g @maildir_counters '~/Mail/armingrodon.de/INBOX/new|~/Mail/gmail.com/INBOX/new|~/Mail/ryte.com/INBOX/new'
