@@ -41,6 +41,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'francoiscabrol/ranger.vim'
+Plug 'svermeulen/vim-NotableFt'
 
 "" Completion
 Plug 'ervandew/supertab'
