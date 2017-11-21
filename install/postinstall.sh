@@ -54,6 +54,16 @@ if ! [[ -z ${I_DEV+x} ]]; then
     sudo mv "$tmp" /usr/local/bin/docker-compose
     sudo chmod +x /usr/local/bin/docker-compose
     sudo adduser "$USER" docker
+
+    echo 'Installing scalafmt'
+    tmp="$(mktemp -d)"
+    pushd "$tmp" >/dev/null
+    curl -L -o coursier https://git.io/vgvpD 2>/dev/null
+    chmod +x coursier
+    sudo ./coursier bootstrap com.geirsson:scalafmt-cli_2.12:1.3.0 \
+        -o /usr/local/bin/scalafmt --standalone --main org.scalafmt.cli.Cli
+    popd >/dev/null
+    rm -rf "$tmp"
 fi
 
 echo 'Installing git-lfs'

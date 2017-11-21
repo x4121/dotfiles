@@ -85,7 +85,7 @@ let g:indentLine_faster = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => syntastic
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:syntastic_ignore = ['\m\c\.h$', '\m\.sbt$']
+let g:syntastic_ignore_files = ['\m\c\.h$', '\m\.sbt$']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -94,6 +94,22 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_elixir_checkers = ['elixir']
 let g:syntastic_rust_checkers = ['rustc']
 let g:syntastic_scala_checkers = ['fsc']
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => autoformat
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+noremap <F5> :Autoformat<CR>
+
+function! StartNailgunScalaFmt()
+  execute(':silent! !scalafmt_ng 2>/dev/null 1>/dev/null &')
+  execute(':silent! !ng-nailgun ng-alias scalafmt org.scalafmt.cli.Cli')
+  execute(':redraw!')
+endfunction
+
+call StartNailgunScalaFmt()
+let g:formatdef_scalafmt = "'ng-nailgun scalafmt --stdin'"
+let g:formatters_scala = ['scalafmt']
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

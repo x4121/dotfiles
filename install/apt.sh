@@ -107,6 +107,7 @@ if [[ $DISPLAY != "" ]]; then
             knockd\
             sbt\
                 maven\
+                nailgun\
                 openjdk-8-jdk\
             shellcheck\
             vagrant"

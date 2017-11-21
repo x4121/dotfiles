@@ -29,6 +29,7 @@ Plug 'rodjek/vim-puppet'
 " Rust
 Plug 'rust-lang/rust.vim'
 " etc
+Plug 'Chiel92/vim-autoformat', { 'on': ['Autoformat'] }
 Plug 'majutsushi/tagbar' " show tags like nerdtree
 Plug 'scrooloose/syntastic'
 Plug 'vim-scripts/matchit.zip' " extended matching for '%'
