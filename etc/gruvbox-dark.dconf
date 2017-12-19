@@ -1,0 +1,18 @@
+[/]
+foreground-color='#ebebdbdbb2b2'
+visible-name='Gruvbox-dark'
+scrollbar-policy='never'
+palette=['#282828282828', '#cccc24241d1d', '#989897971a1a', '#d7d799992121', '#454585858888', '#b1b162628686', '#68689d9d6a6a', '#a8a899998484', '#929283837474', '#fbfb49493434', '#b8b8bbbb2626', '#fafabdbd2f2f', '#8383a5a59898', '#d3d386869b9b', '#8e8ec0c07c7c', '#ebebdbdbb2b2']
+scroll-on-keystroke=false
+use-system-font=false
+use-transparent-background=true
+use-theme-colors=false
+font='FuraMonoForPowerline Nerd Font 11'
+allow-bold=false
+scrollback-unlimited=false
+use-theme-background=false
+bold-color-same-as-fg=true
+bold-color='#a8a899998484'
+background-color='#282828282828'
+background-transparency-percent=9
+audible-bell=false

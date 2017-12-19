@@ -107,6 +107,10 @@ if [[ $DISPLAY != "" ]]; then
         "https://github.com/mozilla/Fira/raw/master/otf/FiraMono-Regular.otf"
     popd >/dev/null
 
+    echo 'Configuring gnome-shell extensions'
+    dconf load /org/gnome/terminal/legacy/profiles:/:8a9992e6-efb8-40fa-8179-8443a744b599/ \
+        < "$HOME/.dotfiles/etc/gruvbox-dark.dconf"
+
     echo 'Installing mutt dependencies'
     sudo pip install mutt_ics vobject
     sudo pip install gcalcli
