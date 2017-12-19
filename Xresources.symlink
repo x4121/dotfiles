@@ -10,6 +10,8 @@ rofi.monitor:               -5
 rofi.terminal:              x-terminal-emulator -e tmux
 rofi.ssh-command:           {terminal} new -d '{ssh-client} {host}'\; attach\;
 rofi.run-shell-command:     {terminal} new -d '{cmd}'\; attach\;
+rofi.run-command:           fish -c '{cmd}'
+rofi.run-list-command:      'fish -c functions'
 rofi.kb-row-tab:            Shift+F12
 rofi.kb-row-select:         Tab
 
