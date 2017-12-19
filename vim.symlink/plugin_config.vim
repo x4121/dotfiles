@@ -102,12 +102,14 @@ let g:syntastic_scala_checkers = ['fsc']
 noremap <F5> :Autoformat<CR>
 
 function! StartNailgunScalaFmt()
-  execute(':silent! !scalafmt_ng 2>/dev/null 1>/dev/null &')
-  execute(':silent! !ng-nailgun ng-alias scalafmt org.scalafmt.cli.Cli')
+  execute(':silent! !scalafmt_ng >/dev/null 2>/dev/null &')
+  execute(':silent !ng-nailgun ng-alias scalafmt org.scalafmt.cli.Cli')
   execute(':redraw!')
 endfunction
 
-call StartNailgunScalaFmt()
+au FileType scala call StartNailgunScalaFmt()
+" kill scalafmt_ng if no vim process is running
+au VimLeave * :silent! !sh -c "sleep 2 && pidof vim || pidof vi || pkill -f 'scalafmt_ng'" &
 let g:formatdef_scalafmt = "'ng-nailgun scalafmt --stdin'"
 let g:formatters_scala = ['scalafmt']
 
