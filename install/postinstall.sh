@@ -114,6 +114,7 @@ if [[ $DISPLAY != "" ]]; then
     echo 'Installing mutt dependencies'
     sudo pip install mutt_ics vobject
     sudo pip install gcalcli
+    sudo pip install awscli
 
     echo 'Setting chromium as default browser'
     sudo update-alternatives --set gnome-www-browser "$(which chromium-browser)"
