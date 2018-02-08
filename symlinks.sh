@@ -5,12 +5,12 @@ DOTFILES=$HOME/.dotfiles
 pushd "$DOTFILES" >&- 2>&-
 
 echo 'creating symlinks'
-linkables=$( find . -maxdepth 1 -name "*.symlink" -exec basename {} \; )
+linkables=$( find ./symlinks -maxdepth 1 -name "*.symlink" -exec basename {} \; )
 for file in $linkables; do
     target="$HOME/.$( basename "$file" ".symlink" )"
     echo "creating symlink for $target"
     rm -rf "$target" >&- 2>&-
-    ln -s "$DOTFILES/$file" "$target"
+    ln -s "$DOTFILES/symlinks/$file" "$target"
 done
 
 linkables=$( find symlinks/{global,"$USER"} -type f -o -type l )

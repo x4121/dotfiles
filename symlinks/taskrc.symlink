@@ -13,7 +13,7 @@
 data.location=~/ownCloud/task
 
 # Color theme (uncomment one to use)
-include ~/.dotfiles/taskwarrior/gruvbox-dark-256.theme
+include ~/.dotfiles/etc/gruvbox-dark-256.taskwarrior.theme
 
 regex=on
 confirmation=off
