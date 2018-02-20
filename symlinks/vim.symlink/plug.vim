@@ -28,6 +28,9 @@ Plug 'tpope/vim-markdown'
 Plug 'rodjek/vim-puppet'
 " Rust
 Plug 'rust-lang/rust.vim'
+" Hashicorp
+Plug 'HashiVim/vim-packer'
+Plug 'HashiVim/vim-terraform'
 " etc
 Plug 'Chiel92/vim-autoformat', { 'on': ['Autoformat'] }
 Plug 'majutsushi/tagbar' " show tags like nerdtree
