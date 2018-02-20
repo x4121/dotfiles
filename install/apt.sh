@@ -15,6 +15,7 @@ SW="apt-transport-tor\
     htop\
     mercurial\
     net-tools\
+    pwgen\
     ranger\
         atool\
         caca-utils\
