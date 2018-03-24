@@ -109,7 +109,7 @@ endfunction
 
 au FileType scala call StartNailgunScalaFmt()
 " kill scalafmt_ng if no vim process is running
-au VimLeave * :silent! !sh -c "sleep 2 && pidof vim || pidof vi || pkill -f 'scalafmt_ng'" &
+au VimLeave * :silent! !sh -c "sleep 2 && pidof vim || pidof vi || pkill -f 'scalafmt_ng'" >/dev/null &
 let g:formatdef_scalafmt = "'ng-nailgun scalafmt --stdin'"
 let g:formatters_scala = ['scalafmt']
 
