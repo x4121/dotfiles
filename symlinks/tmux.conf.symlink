@@ -20,6 +20,8 @@ bind C-y setw synchronize-panes
 
 # Paste from clipboard
 bind v run "xsel -o -b | tmux load-buffer - && tmux paste-buffer"
+# Paste from buffer
+bind b choose-buffer
 
 
 # Display activity in windows
