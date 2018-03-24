@@ -39,6 +39,7 @@ Plug 'vim-scripts/matchit.zip' " extended matching for '%'
 Plug 'tpope/vim-endwise' " auto close block-statements
 Plug 'Raimondi/delimitMate' " auto close quotes/parens/..
 Plug 'tpope/vim-commentary' " add/remove comments
+Plug 'tpope/vim-dadbod'
 
 "" Search
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
