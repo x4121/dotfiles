@@ -225,8 +225,8 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
     gsettings set $kb_sch:$kb_dir/custom2/ name 'Rofi window'
     gsettings set $kb_sch:$kb_dir/custom2/ command 'rofi -show window'
     gsettings set $kb_sch:$kb_dir/custom2/ binding 'F10'
-    gsettings set $kb_sch:$kb_dir/custom3/ name 'Rofi ssh'
-    gsettings set $kb_sch:$kb_dir/custom3/ command 'rofi -show ssh'
+    gsettings set $kb_sch:$kb_dir/custom3/ name 'Rofi soundboard'
+    gsettings set $kb_sch:$kb_dir/custom3/ command "$HOME/.dotfiles/etc/rofi-soundboard/rofi-soundboard"
     gsettings set $kb_sch:$kb_dir/custom3/ binding 'F9'
     gsettings set $kb_sch:$kb_dir/custom4/ name 'Rofi pass'
     gsettings set $kb_sch:$kb_dir/custom4/ command 'rofi-pass --last-used'

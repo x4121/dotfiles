@@ -13,3 +13,6 @@
 [submodule "etc/fastsar"]
 	path = etc/fastsar
 	url = https://github.com/x4121/fastsar
+[submodule "etc/rofi-soundboard"]
+	path = etc/rofi-soundboard
+	url = https://github.com/x4121/rofi-soundboard
