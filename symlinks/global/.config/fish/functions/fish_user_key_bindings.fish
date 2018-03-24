@@ -6,4 +6,7 @@ function fish_user_key_bindings
 
   # Bind Alt+t to font_toggle
   bind \et font_toggle.sh
+
+  # Bind Alt+s to fzf-sts
+  bind \es $HOME/.dotfiles/etc/fastsar/fastsar
 end
