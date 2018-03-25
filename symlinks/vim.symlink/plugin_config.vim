@@ -86,6 +86,11 @@ let g:indentLine_faster = 1
 " => syntastic
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_ignore_files = ['\m\c\.h$', '\m\.sbt$']
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -95,6 +100,12 @@ let g:syntastic_elixir_checkers = ['elixir']
 let g:syntastic_rust_checkers = ['rustc']
 let g:syntastic_scala_checkers = ['fsc']
 
+nnoremap <leader>ct :SyntasticToggleMode<CR>
+nnoremap <leader>cc :SyntasticCheck<CR>
+nnoremap <leader>cr :SyntasticReset<CR>
+
+nnoremap <leader>n :lnext<CR>
+nnoremap <leader>p :lprevious<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => autoformat
@@ -125,9 +136,6 @@ endtry
 
 " Set this to have long lines wrap inside comments.
 setlocal textwidth=79
-
-" Enable folding of block structures in fish.
-setlocal foldmethod=expr
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
