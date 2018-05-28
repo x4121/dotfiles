@@ -1,4 +1,4 @@
-function ga
+function gall
     set -g __ga_target (git config dir.workspace | envsubst)
     set -g __ga_others (git config dir.others | sed -e 's/:\s*/\n/g' | envsubst)
 
