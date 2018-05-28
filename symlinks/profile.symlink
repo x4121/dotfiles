@@ -22,3 +22,5 @@ if [ -d "$HOME/.bin" ] ; then
 fi
 
 "$HOME/.bin/export_dbus.sh"
+
+export PATH="$HOME/.cargo/bin:$PATH"
