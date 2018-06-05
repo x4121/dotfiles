@@ -5,7 +5,7 @@ My dotfiles
 * fish-shell config
 * vim config and plugins
 * tmux config and plugins
-* Konsole/Yakuake config
+* Alacritty config
 * mutt config (with offlineimap and msmtp)
 * taskwarrior config
 * rofi config

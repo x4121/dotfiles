@@ -29,12 +29,12 @@ SW="apt-transport-tor\
 
 if [[ $DISPLAY != "" ]]; then
     SW="$SW\
+        cargo\
         chromium-browser\
         cmus\
         dconf-tools\
         devilspie\
         gawk\
-        konsole\
         mutt\
             msmtp\
             notmuch\
@@ -52,7 +52,6 @@ if [[ $DISPLAY != "" ]]; then
             xcape\
         virtualbox\
         xdotool\
-        yakuake\
         zathura"
 
     if [[ $DESKTOP_SESSION = gnome ]]; then
@@ -106,6 +105,7 @@ if [[ $DISPLAY != "" ]]; then
             docker-engine\
             jq\
             knockd\
+            rustc\
             sbt\
                 maven\
                 nailgun\

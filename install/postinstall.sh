@@ -119,6 +119,24 @@ if [[ $DISPLAY != "" ]]; then
     echo 'Setting chromium as default browser'
     sudo update-alternatives --set gnome-www-browser "$(which chromium-browser)"
     sudo update-alternatives --set x-www-browser "$(which chromium-browser)"
+
+    echo 'Installing alacritty and tdrop'
+    cargo install \
+        --git https://github.com/jwilm/alacritty
+    sudo cp "$HOME/.cargo/bin/alacritty" /usr/local/bin/.
+    sudo desktop-file-install "$(find "$HOME/.cargo/git" -iname "alacritty.desktop")"
+    sudo update-desktop-database
+    gzip -c "$(find "$HOME/.cargo/git" -iname "alacritty.man")" \
+        | sudo tee /usr/local/share/man/man1/alacritty.1.gz > /dev/null
+    sudo cp "$(find "$HOME/.cargo/git" -iname "alacritty-completions.fish")" \
+        /usr/share/fish/vendor_completions.d/alacritty.fish
+
+    tmp=$(mktemp -d)
+    git clone https://github.com/noctuid/tdrop "$tmp" >/dev/null
+    pushd "$tmp" >/dev/null
+    sudo make install >/dev/null
+    popd >/dev/null
+    rm -rf "$tmp"
 fi
 
 if [[ $DESKTOP_SESSION = gnome ]]; then
@@ -215,7 +233,7 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
     kb_sch='org.gnome.settings-daemon.plugins.media-keys.custom-keybinding'
     kb_dir='/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings'
     gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
-        "['$kb_dir/custom0/', '$kb_dir/custom1/', '$kb_dir/custom2/', '$kb_dir/custom3/', '$kb_dir/custom4/', '$kb_dir/custom5/']"
+        "['$kb_dir/custom0/', '$kb_dir/custom1/', '$kb_dir/custom2/', '$kb_dir/custom3/', '$kb_dir/custom4/', '$kb_dir/custom5/', '$kb_dir/custom6/']"
     gsettings set $kb_sch:$kb_dir/custom0/ name 'Nautilus'
     gsettings set $kb_sch:$kb_dir/custom0/ command 'nautilus'
     gsettings set $kb_sch:$kb_dir/custom0/ binding '<Super>e'
@@ -233,8 +251,13 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
     gsettings set $kb_sch:$kb_dir/custom4/ binding 'F8'
     gsettings set $kb_sch:$kb_dir/custom5/ name 'Tmux'
     gsettings set $kb_sch:$kb_dir/custom5/ \
-        command "konsole -e 'tmux new-session -A -s tmux'"
+        command "alacritty -e tmux new-session -A -s tmux"
     gsettings set $kb_sch:$kb_dir/custom5/ binding '<Super>Return'
+    gsettings set $kb_sch:$kb_dir/custom6/ name 'Dropdown'
+    # shellcheck disable=SC2016
+    gsettings set $kb_sch:$kb_dir/custom6/ \
+        command 'tdrop -m -h 34%% -y 0 -s dropdown -f "--config-file $HOME/.config/alacritty/dropdown.yml" alacritty'
+    gsettings set $kb_sch:$kb_dir/custom6/ binding 'F12'
 
     echo 'Additional settings'
     gsettings set org.gnome.desktop.wm.preferences \
@@ -280,8 +303,8 @@ fish "$tmp" --noninteractive --yes
 echo "omf install" | fish
 rm -rf "$tmp"
 
-echo 'Setting Konsole as default terminal'
-sudo update-alternatives --set x-terminal-emulator "$(which konsole)"
+echo 'Setting alacritty as default terminal'
+sudo update-alternatives --set x-terminal-emulator "$(which alacritty)"
 
 echo 'Installing tmux plugins'
 "$HOME/.tmux/plugins/tpm/bin/install_plugins"
