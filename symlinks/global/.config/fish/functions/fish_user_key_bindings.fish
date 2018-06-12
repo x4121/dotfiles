@@ -5,5 +5,5 @@ function fish_user_key_bindings
   bind \e\e 'thefuck-command-line'
 
   # Bind Alt+s to fzf-sts
-  bind \es $HOME/.dotfiles/etc/fastsar/fastsar
+  bind \es 'eval (fastsar)'
 end
