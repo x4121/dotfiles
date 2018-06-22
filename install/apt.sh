@@ -11,9 +11,7 @@ SW="apt-transport-tor\
     ecryptfs-utils\
     fish\
         thefuck\
-    fonts-lohit-knda\
     htop\
-    mercurial\
     net-tools\
     pwgen\
     ranger\
@@ -32,7 +30,6 @@ if [[ $DISPLAY != "" ]]; then
         cargo\
         chromium-browser\
         cmus\
-        dconf-tools\
         devilspie\
         gawk\
         mutt\
@@ -104,14 +101,12 @@ if [[ $DISPLAY != "" ]]; then
                 libtool\
             docker-engine\
             jq\
-            knockd\
             rustc\
             sbt\
                 maven\
                 nailgun\
                 openjdk-8-jdk\
-            shellcheck\
-            vagrant"
+            shellcheck"
     fi
 fi
 
