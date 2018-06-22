@@ -42,8 +42,8 @@ if [[ $DISPLAY != "" ]]; then
             offlineimap\
             urlview\
             w3m\
-        nautilus-owncloud\
         newsbeuter\
+        nextcloud-client-nautilus\
         pass\
         python-setuptools\
         rofi\

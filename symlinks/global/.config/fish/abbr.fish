@@ -12,7 +12,7 @@ abbr au     sudo apt update
 # folders
 abbr cdc    cd ~/.dotfiles
 abbr cdd    cd ~/Downloads
-abbr cdo    cd ~/ownCloud #overrides Climate Data Operators
+abbr cdn    cd ~/nextcloud
 abbr cdw    cd ~/workspace
 
 # docker

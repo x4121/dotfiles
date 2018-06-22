@@ -10,7 +10,7 @@
 # Use the command 'task show' to see all defaults and overrides
 
 # Files
-data.location=~/ownCloud/task
+data.location=~/nextcloud/task
 
 # Color theme (uncomment one to use)
 include ~/.dotfiles/etc/gruvbox-dark-256.taskwarrior.theme
