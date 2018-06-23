@@ -4,6 +4,8 @@
     email = me@armingrodon.de
 [github]
     user = x4121
+[core]
+    excludesfile = /home/adg/.gitignore_global
 [push]
     default = simple
 [pull]
