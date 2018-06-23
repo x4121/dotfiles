@@ -1,12 +1,3 @@
-[submodule "mutt.symlink/mutt-colors-solarized"]
-	path = mutt.symlink/mutt-colors-solarized
-	url = https://github.com/altercation/mutt-colors-solarized
-[submodule "gnome-terminal-colors-solarized"]
-	path = gnome-terminal-colors-solarized
-	url = https://github.com/Anthony25/gnome-terminal-colors-solarized
-[submodule "tmux.symlink/plugins/tpm"]
-	path = tmux.symlink/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm
 [submodule "dircolors-solarized"]
 	path = dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized
@@ -16,3 +7,9 @@
 [submodule "etc/rofi-soundboard"]
 	path = etc/rofi-soundboard
 	url = https://github.com/x4121/rofi-soundboard
+[submodule "symlinks/mutt.symlink/mutt-colors-solarized"]
+	path = symlinks/mutt.symlink/mutt-colors-solarized
+	url = https://github.com/altercation/mutt-colors-solarized
+[submodule "symlinks/tmux.symlink/plugins/tpm"]
+	path = symlinks/tmux.symlink/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
