@@ -61,7 +61,7 @@ abbr tc     task calendar #overrides traffic control
 abbr ts     task sync
 
 # etc
-abbr m      mutt
+abbr m      neomutt
 abbr r      ranger
 abbr v      vim
 abbr z      zathura
