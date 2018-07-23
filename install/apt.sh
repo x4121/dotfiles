@@ -22,6 +22,7 @@ if [[ $DISPLAY != "" ]]; then
     SW="$SW\
         cargo\
             libfreetype6-dev\
+            libfontconfig1-dev\
             wmctrl\
         chromium-browser\
         cmus\
