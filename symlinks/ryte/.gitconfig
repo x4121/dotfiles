@@ -4,6 +4,8 @@
     email = armin@onpage.org
 [github]
     user = x4121
+[core]
+    excludesfile = /home/ryte/.gitignore_global
 [push]
     default = simple
 [pull]

@@ -45,8 +45,10 @@ include "%L"
 <Multi_key> <i> <o>                     : "✓" U2713 # check mark
 <Multi_key> <n> <i> <o>                 : "✗" U2717 # ballot
 
-<Multi_key> <colon> <j>                 : "😂" U1F602 #joy emoji
-<Multi_key> <colon> <s>                 : "🙈" U1F648 #see no evil emoji
+<Multi_key> <colon> <j>                 : "😂" U1F602 # joy emoji
+<Multi_key> <colon> <l>                 : "😉" U1F602 # wink emoji
+<Multi_key> <colon> <t>                 : "😜" U1F602 # wink emoji
+<Multi_key> <colon> <s>                 : "🙈" U1F648 # see no evil emoji
 <Multi_key> <colon> <n>                 : "🤓" U1F913 # nerd emoji
 <Multi_key> <colon> <c>                 : "💩" U1F4A9 # pile of poo
 <Multi_key> <colon> <d>                 : "ಠ" U0CA0 # look of disapproval

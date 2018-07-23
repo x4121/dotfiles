@@ -36,8 +36,8 @@ if ! [[ -z ${I_DEV+x} ]]; then
     rm "$tmp"
     sudo apt-get update >/dev/null
     sudo apt-get install -y esl-erlang elixir inotify-tools >/dev/null
-    mix local.hex
-    mix archive.install \
+    mix local.hex --force
+    mix archive.install --force \
         https://github.com/phoenixframework/archives/raw/master/phx_new.ez
 
     echo 'Installing gems'
@@ -68,19 +68,12 @@ fi
 
 echo 'Installing git-lfs'
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
-# begin quickfix
-sudo sed -i 's/artful/zesty/' /etc/apt/sources.list.d/github_git-lfs.list
-sudo apt update
-# end quickfix
 sudo apt install git-lfs
 git lfs install
 
 pushd "$HOME/.dotfiles" >/dev/null
 
 if [[ $DISPLAY != "" ]]; then
-    echo 'Installing pip'
-    sudo easy_install pip >/dev/null
-
     echo 'Installing rofi-pass'
     tmp="$(mktemp -d)"
     git clone https://github.com/carnager/rofi-pass "$tmp" >/dev/null
@@ -107,14 +100,13 @@ if [[ $DISPLAY != "" ]]; then
         "https://github.com/mozilla/Fira/raw/master/otf/FiraMono-Regular.otf"
     popd >/dev/null
 
-    echo 'Configuring gnome-shell extensions'
-    dconf load /org/gnome/terminal/legacy/profiles:/:8a9992e6-efb8-40fa-8179-8443a744b599/ \
-        < "$HOME/.dotfiles/etc/gruvbox-dark.dconf"
-
     echo 'Installing mutt dependencies'
     sudo pip install mutt_ics vobject
     sudo pip install gcalcli
     sudo pip install awscli
+
+    echo 'Install rust packages'
+    cargo install ripgrep
 
     echo 'Setting chromium as default browser'
     sudo update-alternatives --set gnome-www-browser "$(which chromium-browser)"
@@ -142,7 +134,7 @@ fi
 if [[ $DESKTOP_SESSION = gnome ]]; then
     echo "Remove Ubuntu's ugly gdm/plymouth config"
     sudo update-alternatives --set gdm3.css \
-        /usr/share/gnome-shell/themes/gnome-shell.css
+        /usr/share/gnome-shell/theme/gnome-shell.css
     sudo update-alternatives --set default.plymouth \
         /usr/share/plymouth/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.plymouth
 
@@ -160,8 +152,8 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
     popd >/dev/null
 
     echo 'Installing gnome-shell extensions'
-    gnomeshell_install="$HOME/.dotfiles/bin.symlink/gnomeshell-extension-manage \
-        --install --extension-id"
+    gnomeshell_install="$HOME/.dotfiles/symlinks/bin.symlink/gnomeshell-extension-manage \
+        --install --version latest --extension-id"
     # user themes
     $gnomeshell_install 19
     # media player indicator
@@ -181,6 +173,7 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
     ext_home="$HOME/.local/share/gnome-shell/extensions"
     schema_dir=/usr/share/glib-2.0/schemas/
     sudo cp \
+        "$ext_home/user-theme@gnome-shell-extensions.gcampax.github.com/schemas/org.gnome.shell.extensions.user-theme.gschema.xml" \
         "$ext_home/dash-to-dock@micxgx.gmail.com/schemas/org.gnome.shell.extensions.dash-to-dock.gschema.xml" \
         "$ext_home/mediaplayer@patapon.info/schemas/org.gnome.shell.extensions.mediaplayer.gschema.xml" \
         "$ext_home/openweather-extension@jenslody.de/schemas/org.gnome.shell.extensions.openweather.gschema.xml" \

@@ -1,12 +1,6 @@
 #!/bin/bash
 set -e
 
-# own ppa
-if ! ls /etc/apt/sources.list.d/x4121* >/dev/null; then
-    sudo add-apt-repository -y ppa:x4121/ppa >/dev/null
-    sudo add-apt-repository -y ppa:x4121/ripgrep >/dev/null
-fi
-
 SW="apt-transport-tor\
     ecryptfs-utils\
     fish\
@@ -18,7 +12,6 @@ SW="apt-transport-tor\
         atool\
         caca-utils\
         highlight\
-    ripgrep\
     taskwarrior\
     torsocks\
     tree\
@@ -28,21 +21,26 @@ SW="apt-transport-tor\
 if [[ $DISPLAY != "" ]]; then
     SW="$SW\
         cargo\
+            libfreetype6-dev\
+            libfontconfig1-dev\
+            wmctrl\
         chromium-browser\
         cmus\
         devilspie\
         gawk\
-        mutt\
+        neomutt\
             msmtp\
             notmuch\
             notmuch-mutt\
             offlineimap\
             urlview\
             w3m\
+        network-manager-openvpn-gnome\
         newsbeuter\
         nextcloud-client-nautilus\
         pass\
         python-setuptools\
+        python-pip\
         rofi\
         socat\
         tmux\
