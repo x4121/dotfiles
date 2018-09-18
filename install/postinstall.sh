@@ -27,6 +27,9 @@ if ! [[ -z ${I_DEV+x} ]]; then
     rbenv install 2.5.1
     rbenv global 2.5.1
 
+    echo 'Installing rust'
+    curl https://sh.rustup.rs -sSf | sh >/dev/null
+
     echo 'Installing nodejs'
     curl -sL https://deb.nodesource.com/setup_6.x \
         | sudo -E bash - >/dev/null 2>&1

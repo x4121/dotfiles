@@ -12,6 +12,9 @@ set PATH $HOME/.rbenv/bin $PATH
 status --is-interactive; and . (rbenv init - | sed 's/setenv/set -gx/' | psub)
 fix_path
 
+# rust
+set PATH $HOME/.cargo/bin $PATH
+
 # abbreviations
 if not set -q __abbr_init
   set -gx __abbr_init
