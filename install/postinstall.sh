@@ -105,23 +105,11 @@ if [[ $DISPLAY != "" ]]; then
     sudo pip install gcalcli
     sudo pip install awscli
 
-    echo 'Install rust packages'
-
     echo 'Setting chromium as default browser'
     sudo update-alternatives --set gnome-www-browser "$(which chromium-browser)"
     sudo update-alternatives --set x-www-browser "$(which chromium-browser)"
 
-    echo 'Installing alacritty and tdrop'
-    cargo install \
-        --git https://github.com/jwilm/alacritty
-    sudo cp "$HOME/.cargo/bin/alacritty" /usr/local/bin/.
-    sudo desktop-file-install "$(find "$HOME/.cargo/git" -iname "alacritty.desktop")"
-    sudo update-desktop-database
-    gzip -c "$(find "$HOME/.cargo/git" -iname "alacritty.man")" \
-        | sudo tee /usr/local/share/man/man1/alacritty.1.gz > /dev/null
-    sudo cp "$(find "$HOME/.cargo/git" -iname "alacritty-completions.fish")" \
-        /usr/share/fish/vendor_completions.d/alacritty.fish
-
+    echo 'Installing tdrop'
     tmp=$(mktemp -d)
     git clone https://github.com/noctuid/tdrop "$tmp" >/dev/null
     pushd "$tmp" >/dev/null
