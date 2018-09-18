@@ -49,8 +49,8 @@ if ! [[ -z ${I_DEV+x} ]]; then
         https://github.com/phoenixframework/archives/raw/master/phx_new.ez
 
     echo 'Installing gems'
-    sudo gem install \
-        gem-shut-the-fuck-up bundler git-amnesia git-rc >/dev/null
+    gem install \
+        gem-shut-the-fuck-up bundler git-amnesia >/dev/null
 
     echo 'Installing docker-compose'
     tmp="$(mktemp)"

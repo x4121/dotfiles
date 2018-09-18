@@ -73,7 +73,6 @@ if [[ $DISPLAY != "" ]]; then
         SW="$SW\
             gimp\
             inkscape\
-            nautilus-dropbox\
             playonlinux\
             steam\
             vlc"
