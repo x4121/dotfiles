@@ -106,7 +106,6 @@ if [[ $DISPLAY != "" ]]; then
     sudo pip install awscli
 
     echo 'Install rust packages'
-    cargo install ripgrep
 
     echo 'Setting chromium as default browser'
     sudo update-alternatives --set gnome-www-browser "$(which chromium-browser)"
