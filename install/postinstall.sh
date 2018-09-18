@@ -21,6 +21,11 @@ if ! [[ -z ${I_DEV+x} ]]; then
     git clone https://github.com/rbenv/ruby-build.git \
         plugins/ruby-build
     popd >/dev/null
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    # dependencies
+    sudo apt-get install -y libssl-dev libreadline-dev >/dev/null
+    rbenv install 2.5.1
+    rbenv global 2.5.1
 
     echo 'Installing nodejs'
     curl -sL https://deb.nodesource.com/setup_6.x \
