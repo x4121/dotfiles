@@ -276,7 +276,13 @@ echo "omf install" | fish
 rm -rf "$tmp"
 
 echo 'Setting alacritty as default terminal'
-sudo update-alternatives --set x-terminal-emulator "$(which alacritty)"
+# sudo update-alternatives --set x-terminal-emulator "$(which alacritty)"
+sudo update-alternatives --install \
+    /etc/alternatives/x-terminal-emulator \
+    x-terminal-emulator \
+    "$(which alacritty)" \
+    1000
+sudo ln -sf /etc/alternatives/x-terminal-emulator /usr/bin/x-terminal-emulator
 
 echo 'Installing tmux plugins'
 "$HOME/.tmux/plugins/tpm/bin/install_plugins"
