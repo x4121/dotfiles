@@ -130,19 +130,6 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
     sudo update-alternatives --set default.plymouth \
         /usr/share/plymouth/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.plymouth
 
-    echo "Replace Ubuntu's ugly grub theme"
-    grub_themes="/boot/grub/theme"
-    grub_conf="/etc/default/grub"
-    sudo mkdir -p $grub_themes
-    pushd $grub_themes >/dev/null
-    git clone https://github.com/x4121/grub-gruvbox
-    echo "GRUB_THEME=$grub_themes/grub-gruvbox/theme.txt" | \
-        sudo tee -a $grub_conf
-    echo "GRUB_GFXMODE=1920x1080" | \
-        sudo tee -a $grub_conf
-    sudo update-grub >/dev/null
-    popd >/dev/null
-
     echo 'Installing gnome-shell extensions'
     gnomeshell_install="$HOME/.dotfiles/symlinks/bin.symlink/gnomeshell-extension-manage \
         --install --version latest --extension-id"
