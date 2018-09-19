@@ -248,9 +248,9 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
     gsettings set org.gnome.shell.window-switcher \
         current-workspace-only false
     gsettings set org.gnome.desktop.background picture-uri \
-        'file:///usr/share/backgrounds/ubuntu-gnome/sochi_krasnaya_polyana_mountains_by_alexander_lyubavin.jpg'
+        "file:///$HOME/Nextcloud/sync/background.jpg"
     gsettings set org.gnome.desktop.screensaver picture-uri \
-        'file:///usr/share/backgrounds/ubuntu-gnome/sochi_krasnaya_polyana_mountains_by_alexander_lyubavin.jpg'
+        "file:///$HOME/Nextcloud/sync/lockscreen.jpg"
 
 fi
 

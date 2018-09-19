@@ -65,8 +65,7 @@ if [[ $DISPLAY != "" ]]; then
             gnome-session\
             gnome-tweak-tool\
             numix-icon-theme-circle\
-            plymouth-theme-ubuntu-gnome-logo\
-            ubuntu-gnome-wallpapers-yakkety"
+            plymouth-theme-ubuntu-gnome-logo"
     fi
 
     if ! [[ -z ${I_HOME+x} ]]; then
