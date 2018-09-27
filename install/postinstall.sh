@@ -43,7 +43,7 @@ if ! [[ -z ${I_DEV+x} ]]; then
     echo 'Installing docker-compose'
     tmp="$(mktemp)"
     curl -L \
-        "https://github.com/docker/compose/releases/download/1.12.0/docker-compose-$( \
+        "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$( \
         uname -s)-$(uname -m)" \
         > "$tmp" 2>/dev/null
     sudo mkdir -p /usr/local/bin
