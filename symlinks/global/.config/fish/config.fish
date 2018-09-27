@@ -4,13 +4,8 @@ pgrep -u $USER xcape > /dev/null; or xcape -e 'Control_L=Shift_L|F12'
 # Vim is the standard text editor.
 set -x EDITOR vim
 
-# jenv
-set PATH $HOME/.jenv/bin $PATH
-
-# rbenv
-set PATH $HOME/.rbenv/bin $PATH
-status --is-interactive; and . (rbenv init - | sed 's/setenv/set -gx/' | psub)
-fix_path
+# asdf
+source $HOME/.asdf/asdf.fish
 
 # rust
 set PATH $HOME/.cargo/bin $PATH

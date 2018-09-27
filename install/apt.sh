@@ -100,7 +100,9 @@ if [[ $DISPLAY != "" ]]; then
                 cmake\
                 libtool\
             docker-engine\
+            inotify-tools\
             jq\
+            libwxgtk3.0-dev\
             rustc\
             sbt\
                 maven\

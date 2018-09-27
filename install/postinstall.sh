@@ -2,30 +2,26 @@
 set -e
 
 if ! [[ -z ${I_DEV+x} ]]; then
-    echo 'Installing jenv'
-    git clone https://github.com/gcuisinier/jenv.git \
-        "$HOME/.jenv" >/dev/null
-    mkdir -p "$HOME/.config/fish/functions"
-    ln -s "$HOME/.jenv/fish/export.fish" \
-        "$HOME/.config/fish/functions/export.fish" >/dev/null
-    ln -s "$HOME/.jenv/fish/jenv.fish" \
-        "$HOME/.config/fish/functions/jenv.fish" >/dev/null
+    echo 'Installing asdf'
+    git clone https://github.com/asdf-vm/asdf.git \
+        "$HOME/.asdf" --branch v0.5.1 >/dev/null
+    mkdir -p "$HOME/.config/fish/completions"
+    cp "$HOME/.asdf/completions/asdf.fish" "$HOME/.config/fish/completions"
 
-    echo 'Installing rbenv'
-    git clone https://github.com/rbenv/rbenv \
-        "$HOME/.rbenv" >/dev/null
-    pushd "$HOME/.rbenv" >/dev/null
-    src/configure
-    make -C src
-    mkdir -p plugins
-    git clone https://github.com/rbenv/ruby-build.git \
-        plugins/ruby-build
-    popd >/dev/null
-    export PATH="$HOME/.rbenv/bin:$PATH"
-    # dependencies
-    sudo apt-get install -y libssl-dev libreadline-dev >/dev/null
-    rbenv install 2.5.1
-    rbenv global 2.5.1
+    # shellcheck disable=SC1090
+    source "$HOME/.asdf/asdf.fish"
+    asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
+    asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
+    asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby
+    asdf plugin-add java https://github.com/skotchpine/asdf-java
+    asdf plugin-add node https://github.com/asdf-vm/asdf-nodejs
+
+    asdf install erlang 21.0.5
+    asdf global erlang 21.0.5
+    asdf install elixir 1.7.2-otp-21
+    asdf global elixir 1.7.2-otp-21
+    asdf install ruby 2.5.1
+    asdf global ruby 2.5.1
 
     echo 'Installing rust'
     curl https://sh.rustup.rs -sSf | sh >/dev/null
@@ -35,15 +31,7 @@ if ! [[ -z ${I_DEV+x} ]]; then
         | sudo -E bash - >/dev/null 2>&1
     sudo apt-get install -y nodejs >/dev/null
 
-    echo 'Installing erlang/elixir/phoenix'
-    tmp="$(mktemp)"
-    curl -L \
-        "https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb" \
-        > "$tmp" 2>/dev/null
-    sudo dpkg -i "$tmp" >/dev/null 2>&1
-    rm "$tmp"
-    sudo apt-get update >/dev/null
-    sudo apt-get install -y esl-erlang elixir inotify-tools >/dev/null
+    echo 'Installing phoenix'
     mix local.hex --force
     mix archive.install --force \
         https://github.com/phoenixframework/archives/raw/master/phx_new.ez
