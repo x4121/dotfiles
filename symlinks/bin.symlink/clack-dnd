@@ -1,0 +1,46 @@
+#!/bin/bash
+set -e
+
+# shellcheck source=/home/adg/.bin/clack
+source "$(which clack)" --source
+
+api_url="$(_clack_base_url)dnd"
+
+function info {
+    curl -s \
+        -H "$(_clack_header_auth)" \
+        "$api_url.info"
+}
+
+function snooze {
+    curl -s \
+        -H "$(_clack_header_auth)" \
+        --data-urlencode "num_minutes=$1" \
+        "$api_url.setSnooze"
+}
+
+function stop {
+    curl -s \
+        -X POST \
+        -H "$(_clack_header_auth)" \
+        "$api_url.endDnd"
+}
+
+if [[ $# -lt 1 ]]; then
+    info
+else
+case $1 in
+    info|status)
+        info
+        ;;
+    stop)
+        stop
+        ;;
+    start|snooze)
+        snooze "${2:-10}"
+        ;;
+    *)
+        echo unknown option!
+        ;;
+esac
+fi
