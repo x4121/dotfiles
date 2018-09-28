@@ -100,6 +100,8 @@ let g:syntastic_elixir_checkers = ['elixir']
 let g:syntastic_rust_checkers = ['rustc']
 let g:syntastic_scala_checkers = ['fsc']
 
+let g:syntastic_sh_shellcheck_args="-x"
+
 nnoremap <leader>ct :SyntasticToggleMode<CR>
 nnoremap <leader>cc :SyntasticCheck<CR>
 nnoremap <leader>cr :SyntasticReset<CR>
