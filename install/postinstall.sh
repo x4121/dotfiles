@@ -14,7 +14,7 @@ if ! [[ -z ${I_DEV+x} ]]; then
     asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
     asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby
     asdf plugin-add java https://github.com/skotchpine/asdf-java
-    asdf plugin-add node https://github.com/asdf-vm/asdf-nodejs
+    asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs
 
     asdf install erlang 21.0.5
     asdf global erlang 21.0.5
@@ -22,17 +22,15 @@ if ! [[ -z ${I_DEV+x} ]]; then
     asdf global elixir 1.7.2-otp-21
     asdf install ruby 2.5.1
     asdf global ruby 2.5.1
+    asdf install nodejs 10.11.0
+    asdf global nodejs 10.11.0
 
     echo 'Installing rust'
     curl https://sh.rustup.rs -sSf | sh >/dev/null
 
-    echo 'Installing nodejs'
-    curl -sL https://deb.nodesource.com/setup_6.x \
-        | sudo -E bash - >/dev/null 2>&1
-    sudo apt-get install -y nodejs >/dev/null
-
     echo 'Installing phoenix'
     mix local.hex --force
+    mix local.rebar --force
     mix archive.install --force \
         https://github.com/phoenixframework/archives/raw/master/phx_new.ez
 
