@@ -102,6 +102,8 @@ let g:syntastic_scala_checkers = ['fsc']
 
 let g:syntastic_sh_shellcheck_args="-x"
 
+let g:syntastic_enable_elixir_checker=1
+
 nnoremap <leader>ct :SyntasticToggleMode<CR>
 nnoremap <leader>cc :SyntasticCheck<CR>
 nnoremap <leader>cr :SyntasticReset<CR>
