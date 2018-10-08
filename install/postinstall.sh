@@ -194,7 +194,7 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
     kb_sch='org.gnome.settings-daemon.plugins.media-keys.custom-keybinding'
     kb_dir='/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings'
     gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
-        "['$kb_dir/custom0/', '$kb_dir/custom1/', '$kb_dir/custom2/', '$kb_dir/custom3/', '$kb_dir/custom4/', '$kb_dir/custom5/', '$kb_dir/custom6/']"
+        "['$kb_dir/custom0/', '$kb_dir/custom1/', '$kb_dir/custom2/', '$kb_dir/custom3/', '$kb_dir/custom4/', '$kb_dir/custom5/', '$kb_dir/custom6/', '$kb_dir/custom7/']"
     gsettings set $kb_sch:$kb_dir/custom0/ name 'Nautilus'
     gsettings set $kb_sch:$kb_dir/custom0/ command 'nautilus'
     gsettings set $kb_sch:$kb_dir/custom0/ binding '<Super>e'
@@ -219,6 +219,9 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
     gsettings set $kb_sch:$kb_dir/custom6/ \
         command 'tdrop -m -h 34%% -y 0 -s dropdown -f "--config-file $HOME/.config/alacritty/dropdown.yml" alacritty'
     gsettings set $kb_sch:$kb_dir/custom6/ binding 'F12'
+    gsettings set $kb_sch:$kb_dir/custom7/ name 'dnd-toggle'
+    gsettings set $kb_sch:$kb_dir/custom7/ command 'dnd-toggle'
+    gsettings set $kb_sch:$kb_dir/custom7/ binding '<Super>z'
 
     echo 'Additional settings'
     gsettings set org.gnome.desktop.wm.preferences \
