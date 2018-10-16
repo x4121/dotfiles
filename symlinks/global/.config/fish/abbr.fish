@@ -12,7 +12,7 @@ abbr au     sudo apt update
 # folders
 abbr cdc    cd ~/.dotfiles
 abbr cdd    cd ~/Downloads
-abbr cdn    cd ~/nextcloud
+abbr cdn    cd ~/Nextcloud
 abbr cdw    cd ~/workspace
 
 # docker
