@@ -241,6 +241,8 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
     gsettings set org.gnome.desktop.screensaver picture-uri \
         "file:///$HOME/Nextcloud/sync/lockscreen.jpg"
 
+    echo 'Force disabling Wayland'
+    sudo sed -i 's/^#\(WaylandEnable=false\)/\1/' /etc/gdm3/custom.conf
 fi
 
 echo 'Creating symlinks'
