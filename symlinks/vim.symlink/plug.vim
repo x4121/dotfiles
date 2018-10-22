@@ -71,6 +71,7 @@ Plug 'tpope/vim-surround' " add/change/delete quotes/parens/..
 Plug 'tpope/vim-dispatch' " asynchronous test/build
 Plug 'takac/vim-hardtime'
 Plug 'vim-scripts/YankRing.vim'
+Plug 'tmux-plugins/vim-tmux-focus-events' " enable 'FocusGained' in tmux
 
 "" load last in this order!
 Plug 'ryanoasis/vim-devicons'
