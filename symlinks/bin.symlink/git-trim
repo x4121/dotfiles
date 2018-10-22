@@ -3,6 +3,9 @@
 BEGIN {
     while ("git branch -vv" | getline)
         if (/: gone]/) {
-            system("git branch -d " $1)
+            if (ARGV[1] ~ "^f")
+                system("git branch -d " $1)
+            else
+                system("git branch -D " $1)
         }
 }
