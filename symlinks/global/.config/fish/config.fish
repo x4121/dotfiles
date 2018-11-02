@@ -4,6 +4,8 @@ pgrep -u $USER xcape > /dev/null; or xcape -e 'Control_L=Shift_L|F12'
 # Vim is the standard text editor.
 set -x EDITOR vim
 
+set -x BAT_THEME gruvbox-dark
+
 # asdf
 source $HOME/.asdf/asdf.fish
 
