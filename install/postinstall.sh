@@ -3,13 +3,16 @@ set -e
 
 if ! [[ -z ${I_DEV+x} ]]; then
     echo 'Installing asdf'
+
+    sudo apt-get install -y \
+        libssl-dev libncurses5-dev libreadline-dev zlib1g-dev >/dev/null
     git clone https://github.com/asdf-vm/asdf.git \
         "$HOME/.asdf" --branch v0.5.1 >/dev/null
     mkdir -p "$HOME/.config/fish/completions"
     cp "$HOME/.asdf/completions/asdf.fish" "$HOME/.config/fish/completions"
 
     # shellcheck disable=SC1090
-    source "$HOME/.asdf/asdf.fish"
+    source "$HOME/.asdf/asdf.sh"
     asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
     asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
     asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby
@@ -267,6 +270,19 @@ tmp="$(mktemp)"
 curl -L https://get.oh-my.fish > "$tmp"
 fish "$tmp" --noninteractive --yes
 echo "omf install" | fish
+rm -rf "$tmp"
+
+echo 'Installing alacritty'
+sudo apt-get install -y \
+    pkg-config freetype6-dev libfontconfig1-dev >/dev/null
+tmp="$(mktemp -d)"
+git clone https://github.com/jwilm/alacritty "$tmp" >/dev/null
+(
+cd "$tmp"
+cargo install deb-install
+cargo deb --install
+sudo dpkg -i target/debian/alacritty_*_amd64.deb
+)
 rm -rf "$tmp"
 
 echo 'Setting alacritty as default terminal'
