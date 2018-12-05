@@ -27,8 +27,11 @@ SW="apt-transport-tor\
         exuberant-ctags"
 
 if [[ $DISPLAY != "" ]]; then
+    if ! ls /etc/apt/sources.list.d/nextcloud-devs* >/dev/null; then
+        sudo add-apt-repository -y ppa:nextcloud-devs/client >/dev/null
+    fi
+
     SW="$SW\
-        alacritty\
         chromium-browser\
         cmus\
         gawk\
@@ -50,6 +53,7 @@ if [[ $DISPLAY != "" ]]; then
         tmux\
             xcape\
         virtualbox\
+        wmctrl\
         xdotool\
         zathura"
 
