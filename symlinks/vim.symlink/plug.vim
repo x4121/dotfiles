@@ -15,13 +15,9 @@ Plug 'derekwyatt/vim-sbt'
 Plug 'derekwyatt/vim-scala'
 " Elixir
 Plug 'elixir-lang/vim-elixir'
-" Ruby/Rails/Jekyll/Web-Stuff
+" Web-Stuff
 Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-jdaddy' " json
-Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-liquid' " liquid/jekyll
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rake'
 Plug 'tpope/vim-ragtag' " html/erb
 Plug 'tpope/vim-markdown'
 " Puppet
@@ -29,7 +25,6 @@ Plug 'rodjek/vim-puppet'
 " Rust
 Plug 'rust-lang/rust.vim'
 " Hashicorp
-Plug 'HashiVim/vim-packer'
 Plug 'HashiVim/vim-terraform'
 " etc
 Plug 'Chiel92/vim-autoformat', { 'on': ['Autoformat'] }
@@ -56,8 +51,6 @@ Plug 'honza/vim-snippets'
 "" UI
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
-Plug 'junegunn/goyo.vim' " distraction free typing
-Plug 'junegunn/limelight.vim' " distraction free typing
 Plug 'Yggdroot/indentLine'
 Plug 'edkolev/tmuxline.vim'
 
