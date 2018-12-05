@@ -31,7 +31,6 @@ if [[ $DISPLAY != "" ]]; then
         alacritty\
         chromium-browser\
         cmus\
-        devilspie\
         gawk\
         neomutt\
             msmtp\

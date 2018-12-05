@@ -32,10 +32,13 @@ abbr gco    git checkout
 abbr gcom   git checkout master
 abbr gd     git diff
 abbr gdc    git diff --cached
+abbr gdt    git difftool
 abbr gf     git fetch
 abbr gfa    git fetch --all
 abbr gl     git lol
 abbr gla    git lola
+abbr gm     git merge #overrides graphicsmagick
+abbr gmt    git mergetool #overrides gmt
 abbr gpl    git pull
 abbr gps    git push
 abbr gs     git status #overrides ghostscript
