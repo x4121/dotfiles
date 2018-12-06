@@ -38,8 +38,10 @@ abbr gl     git lol
 abbr gla    git lola
 abbr gpl    git pull
 abbr gps    git push
+abbr gpf    git push --force-with-lease
 abbr gs     git status #overrides ghostscript
 abbr gt     git tag
+abbr gx     git trim
 
 # hub
 abbr h      hub
