@@ -21,7 +21,7 @@ function gall
 end
 
 function __fish.ga.fetch
-    for l in $__ga_target"/"(ls $__ga_target) $__ga_others
+    for l in (find $__ga_target -mindepth 1 -maxdepth 1 -type d) $__ga_others
         pushd $l
         if set -l out (git status -s ^ /dev/null)
             set branch (echo $out | grep -ioe "##.*" | sed -E 's/^## ([^.]*).*/\1/')
@@ -35,7 +35,7 @@ function __fish.ga.fetch
 end
 
 function __fish.ga.status
-    for l in $__ga_target"/"(ls $__ga_target) $__ga_others
+    for l in (find $__ga_target -mindepth 1 -maxdepth 1 -type d) $__ga_others
         pushd $l
         if git status -s > /dev/null ^ /dev/null
             set dir (__fish.ga.dirname $l)
