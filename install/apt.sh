@@ -34,7 +34,6 @@ if [[ $DISPLAY != "" ]]; then
     SW="$SW\
         chromium-browser\
         cmus\
-        devilspie\
         gawk\
         neomutt\
             msmtp\

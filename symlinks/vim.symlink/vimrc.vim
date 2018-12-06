@@ -302,6 +302,10 @@ map <leader>q :e ~/buffer<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
+"
+" If doing a diff. Upon writing changes to file, automatically update the
+" differences
+autocmd BufWritePost * if &diff == 1 | diffupdate | endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

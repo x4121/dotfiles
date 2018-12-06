@@ -39,41 +39,6 @@ au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Goyo & Limelight
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:goyo_width=100
-let g:goyo_margin_top = 2
-let g:goyo_margin_bottom = 2
-nnoremap <silent> <leader>z :Goyo<cr>
-
-function! s:goyo_enter()
-  silent !tmux set status off
-  silent !tmux resize-pane -Z
-  set noshowmode
-  set noshowcmd
-  set scrolloff=999
-  Limelight
-  IndentLinesDisable
-endfunction
-
-function! s:goyo_leave()
-  silent !tmux set status on
-  silent !tmux resize-pane -Z
-  set showmode
-  set showcmd
-  set scrolloff=7
-  Limelight!
-  IndentLinesEnable
-endfunction
-
-let g:limelight_conceal_ctermfg = 239
-let g:limelight_conceal_guifg = '#504945'
-
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => indent highlight
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:indentLine_color_term = 239

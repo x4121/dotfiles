@@ -17,6 +17,17 @@
     short = true
 [diff]
     wsErrorHighlight = all
+    tool = vimdiff
+[difftool]
+    prompt = false
+    trustExitCode = true
+[difftool "vimdiff"]
+    cmd = vimdiff \"$LOCAL\" \"$REMOTE\"
+[merge]
+    tool = vimdiff
+[mergetool]
+    prompt = false
+    conflictstyle = diff3
 [commit]
     gpgSign = true
 [alias]
@@ -25,8 +36,6 @@
     save = !sh -c 'export PREV=$(git symbolic-ref HEAD|cut -d/ -f3-) && git checkout -b "$1" && git commit -am "$1" && git checkout "$PREV"' -
 [url "git@github.com:x4121/"]
     insteadof = my:
-[url "git@github.com:onpage-org/"]
-    insteadof = op:
 [url "https://github.com/"]
     insteadof = gh:
 [dir]
