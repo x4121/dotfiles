@@ -13,3 +13,6 @@
 [submodule "symlinks/tmux.symlink/plugins/tpm"]
 	path = symlinks/tmux.symlink/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "etc/ryte-tools"]
+	path = etc/ryte-tools
+	url = git@github.com:onpage-org/tools
