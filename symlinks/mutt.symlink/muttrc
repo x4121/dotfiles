@@ -67,6 +67,7 @@ macro index O \
 # general
 bind index S save-message
 bind index B bounce-message
+bind index,pager A group-reply
 
 # sidebar
 set sidebar_visible = yes
