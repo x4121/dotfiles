@@ -43,6 +43,7 @@ abbr gpl    git pull
 abbr gps    git push
 abbr gpf    git push --force-with-lease
 abbr gs     git status #overrides ghostscript
+abbr gsu    git submodule update
 abbr gt     git tag
 abbr gx     git trim
 
