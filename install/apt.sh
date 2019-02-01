@@ -36,10 +36,10 @@ if [[ $DISPLAY != "" ]]; then
         cmus\
         gawk\
         neomutt\
+            isync\
             msmtp\
             notmuch\
             notmuch-mutt\
-            offlineimap\
             urlview\
             w3m\
         network-manager-openvpn-gnome\

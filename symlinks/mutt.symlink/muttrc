@@ -61,8 +61,8 @@ macro index \Cr \
     "mark all messages as read"
 
 macro index O \
-    "<enter-command>unset wait_key<enter><shell-escape>echo 'syncing maildir...'; offlineimap -o -u quiet<enter>" \
-    "run offlineimap to sync all mail"
+    "<enter-command>unset wait_key<enter><shell-escape>echo 'syncing maildir...'; mbsync -a<enter>" \
+    "run mbsync to sync all mail"
 
 # general
 bind index S save-message

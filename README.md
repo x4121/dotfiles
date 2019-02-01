@@ -6,7 +6,7 @@ My dotfiles
 * vim config and plugins
 * tmux config and plugins
 * Alacritty config
-* mutt config (with offlineimap and msmtp)
+* mutt config (with mbsync and msmtp)
 * taskwarrior config
 * rofi config
 * XCompose bindings

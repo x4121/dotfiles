@@ -259,10 +259,6 @@ curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim +PlugInstall +qall
 
-# echo 'Generating Tmuxline'
-# vim +'Tmuxline airline' +'TmuxlineSnapshot! ~/.tmux/tmuxline.conf' +qall
-# tmux source-file ~/.tmux.conf
-
 echo 'Setting fish as default shell'
 sudo chsh -s "$(grep /fish$ /etc/shells | tail -1)" "$USER"
 
@@ -303,15 +299,6 @@ echo 'Installing tmux plugins'
 echo 'Setting up ranger'
 ranger --copy-config=scope
 
-echo 'Setting up mail sync'
-mkdir "$HOME/Mail"
-SYNC="users | grep $USER >/dev/null && $HOME/.bin/mailsync.sh"
-CRON="*/15 * * * * $SYNC"
-crontab -l 2>/dev/null \
-    | grep -Fiv "$SYNC" \
-    | { cat; echo "$CRON"; } \
-    | crontab -
-
 echo 'Making Vim the default editor'
 mimeapps=$HOME/.local/share/applications/mimeapps.list
 mimehead="[Default Applications]"
@@ -325,6 +312,13 @@ fi
 grep gedit\.desktop "/usr/share/applications/defaults.list" \
     | sed 's/gedit\.desktop/vim.desktop/' \
     >> "$mimeapps"
+
+echo 'Enabling mail sync'
+mkdir -p "$HOME/Mail/armingrodon.de"
+mkdir -p "$HOME/Mail/gmail.com"
+mkdir -p "$HOME/Mail/ryte.com"
+systemctl --user enable mbsync.timer
+systemctl --user start mbsync.timer
 
 echo 'Making zathura the default pdf viewer'
 mimeapps=$HOME/.local/share/applications/mimeapps.list

@@ -1,0 +1,137 @@
+#######################################
+# me@armingrodon.de
+#######################################
+IMAPAccount armingrodon.de
+Host imap.1und1.de
+User me@armingrodon.de
+PassCmd "pass show home/email/me@armingrodon.de"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore armingrodon-remote
+Account armingrodon.de
+
+MaildirStore armingrodon-local
+Subfolders Verbatim
+Flatten .
+Path ~/Mail/armingrodon.de/
+Inbox ~/Mail/armingrodon.de/INBOX
+
+Channel sync-armingrodon-default
+Master :armingrodon-remote:
+Slave :armingrodon-local:
+Patterns "INBOX*"
+Create Slave
+
+Channel sync-armingrodon-drafts
+Master :armingrodon-remote:"Entw&APw-rfe"
+Slave :armingrodon-local:drafts
+Create Slave
+
+Channel sync-armingrodon-sent
+Master :armingrodon-remote:"Gesendete Objekte"
+Slave :armingrodon-local:sent
+Create Slave
+
+Channel sync-armingrodon-trash
+Master :armingrodon-remote:"Papierkorb"
+Slave :armingrodon-local:trash
+Create Slave
+
+Group armingrodon.de
+Channel sync-armingrodon-default
+Channel sync-armingrodon-drafts
+Channel sync-armingrodon-sent
+Channel sync-armingrodon-trash
+
+#######################################
+# armin.grodon@googlemail.com
+#######################################
+IMAPAccount gmail.com
+Host imap.gmail.com
+User armin.grodon@googlemail.com
+PassCmd "pass show home/email/armin.grodon@googlemail.com"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore gmail-remote
+Account gmail.com
+
+MaildirStore gmail-local
+Subfolders Verbatim
+Flatten .
+Path ~/Mail/gmail.com/
+Inbox ~/Mail/gmail.com/INBOX
+
+Channel sync-gmail-default
+Master :gmail-remote:
+Slave :gmail-local:
+Patterns "INBOX*"
+Create Slave
+
+Channel sync-gmail-drafts
+Master :gmail-remote:"[Google Mail]/Drafts"
+Slave :gmail-local:drafts
+Create Slave
+
+Channel sync-gmail-sent
+Master :gmail-remote:"[Google Mail]/Sent Mail"
+Slave :gmail-local:sent
+Create Slave
+
+Channel sync-gmail-trash
+Master :gmail-remote:"[Google Mail]/Trash"
+Slave :gmail-local:trash
+Create Slave
+
+Group gmail.com
+Channel sync-gmail-default
+Channel sync-gmail-drafts
+Channel sync-gmail-sent
+Channel sync-gmail-trash
+
+#######################################
+# a.grodon@ryte.com
+#######################################
+IMAPAccount ryte.com
+Host imap.gmail.com
+User a.grodon@ryte.com
+PassCmd "pass show ryte/email/a.grodon@ryte.com"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore ryte-remote
+Account ryte.com
+
+MaildirStore ryte-local
+Subfolders Verbatim
+Flatten .
+Path ~/Mail/ryte.com/
+Inbox ~/Mail/ryte.com/INBOX
+
+Channel sync-ryte-default
+Master :ryte-remote:
+Slave :ryte-local:
+Patterns "INBOX*"
+Create Slave
+
+Channel sync-ryte-drafts
+Master :ryte-remote:"[Gmail]/Drafts"
+Slave :ryte-local:drafts
+Create Slave
+
+Channel sync-ryte-sent
+Master :ryte-remote:"[Gmail]/Sent Mail"
+Slave :ryte-local:sent
+Create Slave
+
+Channel sync-ryte-trash
+Master :ryte-remote:"[Gmail]/Bin"
+Slave :ryte-local:trash
+Create Slave
+
+Group ryte.com
+Channel sync-ryte-default
+Channel sync-ryte-drafts
+Channel sync-ryte-sent
+Channel sync-ryte-trash

@@ -4,12 +4,11 @@
 set my_default = "example.tld"
 # set my_2 = "email.com"
 
-# offlineimap mailboxes
-source ~/.mutt/mailboxes
-
 # account macros
 macro index '<esc>1' '<sync-mailbox><refresh><enter-command>source ~/.mutt/accounts/$my_default<enter><change-folder>!<enter>'
 # macro index '<esc>2' '<sync-mailbox><refresh><enter-command>source ~/.mutt/accounts/$my_2<enter><change-folder>!<enter>'
+
+mailboxes `find ~/Mail/ -type d -name 'INBOX*' | sort | tr '\n' ' '`
 
 # default account
 source ~/.mutt/accounts/$my_default
