@@ -197,8 +197,14 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
         switch-input-source-backward "[]"
     kb_sch='org.gnome.settings-daemon.plugins.media-keys.custom-keybinding'
     kb_dir='/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings'
+
+    kb_list='['
+    for i in $(seq 0 9); do
+        kb_list="$kb_list'$kb_dir/custom$i/', "
+    done
+    kb_list="${kb_list/%, /]}"
     gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
-        "['$kb_dir/custom0/', '$kb_dir/custom1/', '$kb_dir/custom2/', '$kb_dir/custom3/', '$kb_dir/custom4/', '$kb_dir/custom5/', '$kb_dir/custom6/', '$kb_dir/custom7/']"
+        "$kb_list"
     gsettings set $kb_sch:$kb_dir/custom0/ name 'Nautilus'
     gsettings set $kb_sch:$kb_dir/custom0/ command 'nautilus'
     gsettings set $kb_sch:$kb_dir/custom0/ binding '<Super>e'
@@ -226,6 +232,13 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
     gsettings set $kb_sch:$kb_dir/custom7/ name 'dnd-toggle'
     gsettings set $kb_sch:$kb_dir/custom7/ command 'dnd-toggle'
     gsettings set $kb_sch:$kb_dir/custom7/ binding '<Super>z'
+
+    gsettings set $kb_sch:$kb_dir/custom8/ name 'System Monitor'
+    gsettings set $kb_sch:$kb_dir/custom8/ command 'gnome-system-monitor'
+    gsettings set $kb_sch:$kb_dir/custom8/ binding '<Primary><Shift>Escape'
+    gsettings set $kb_sch:$kb_dir/custom9/ name 'xkill'
+    gsettings set $kb_sch:$kb_dir/custom9/ command 'xkill'
+    gsettings set $kb_sch:$kb_dir/custom9/ binding '<Super>k'
 
     echo 'Additional settings'
     gsettings set org.gnome.desktop.wm.preferences \
