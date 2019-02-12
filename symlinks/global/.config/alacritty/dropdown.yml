@@ -5,12 +5,11 @@ env:
 
 window:
   dimensions:
-    columns: 80
-    lines: 24
+    columns: 60
+    lines: 20
   padding:
     x: 2
     y: 2
-  decorations: false
 
 tabspaces: 4
 
@@ -18,17 +17,15 @@ draw_bold_text_with_bright_colors: true
 
 font:
   normal:
-    # family: FuraCode Nerd Font
     family: FuraMonoForPowerline Nerd Font
 
   bold:
-    # family: FuraCode Nerd Font
     family: FuraMonoForPowerline Nerd Font
 
   italic:
     family: FuraMonoForPowerline Nerd Font
 
-  size: 7.0
+  size: 12.0
 
   offset:
     x: 0
@@ -41,8 +38,6 @@ font:
   use_thin_strokes: false
 
 render_timer: false
-
-custom_cursor_colors: false
 
 colors:
   # Default colors
@@ -88,16 +83,17 @@ mouse:
   double_click: { threshold: 300 }
   triple_click: { threshold: 300 }
 
-  faux_scrollback_lines: 1
+  faux_scrolling_lines: 1
+
+  hide_when_typing: true
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
 
 dynamic_title: true
 
-hide_cursor_when_typing: true
-
-cursor_style: Block
+cursor:
+  style: Block
 
 live_config_reload: true
 
