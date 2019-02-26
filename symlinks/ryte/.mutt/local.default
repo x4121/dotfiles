@@ -10,7 +10,7 @@ macro index '<esc>1' '<sync-mailbox><refresh><enter-command>source ~/.mutt/accou
 macro index '<esc>2' '<sync-mailbox><refresh><enter-command>source ~/.mutt/accounts/$my_2<enter><change-folder>!<enter>'
 macro index '<esc>3' '<sync-mailbox><refresh><enter-command>source ~/.mutt/accounts/$my_3<enter><change-folder>!<enter>'
 
-mailboxes `find ~/Mail/ -type d -name 'INBOX*' | sort | tr '\n' ' '`
+mailboxes `find ~/Mail/ -type d \( -name 'INBOX*' -o -name 'sent' \) | sort | tr '\n' ' '`
 
 # default account
 source ~/.mutt/accounts/$my_3
