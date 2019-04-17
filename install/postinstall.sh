@@ -55,6 +55,7 @@ if ! [[ -z ${I_DEV+x} ]]; then
     sudo mv "$tmp" /usr/local/bin/docker-compose
     sudo chmod +x /usr/local/bin/docker-compose
     sudo adduser "$USER" docker
+    rm -rf "$tmp"
 
     echo 'Installing scalafmt'
     tmp="$(mktemp -d)"
