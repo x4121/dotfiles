@@ -69,6 +69,7 @@ abbr ts     task sync
 
 # etc
 abbr m      neomutt
+abbr o      xdg-open
 abbr r      ranger
 abbr v      vim
 abbr z      zathura
