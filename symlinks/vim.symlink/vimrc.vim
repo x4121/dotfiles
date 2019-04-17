@@ -31,6 +31,10 @@ command W w !sudo tee % > /dev/null
 " enable modeline support
 set modeline
 
+" Shortcommand for :enew variant for terminal
+command Eterm :term ++curwin
+" Double ESC to escape from terminal
+tnoremap <ESC><ESC> <C-\><C-n>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
