@@ -13,21 +13,26 @@ if ! [[ -z ${I_DEV+x} ]]; then
 
     # shellcheck disable=SC1090
     source "$HOME/.asdf/asdf.sh"
-    asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
-    asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
-    asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby
-    asdf plugin-add java https://github.com/skotchpine/asdf-java
-    asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs
-
+    asdf plugin-add erlang
     asdf install erlang 21.3.5
     asdf global erlang 21.3.5
+
+    asdf plugin-add elixir
     asdf install elixir 1.8.1-otp-21
     asdf global elixir 1.8.1-otp-21
+
+    asdf plugin-add ruby
     asdf install ruby 2.6.1
     asdf global ruby 2.6.1
+
+    asdf plugin-add nodejs
     "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
     asdf install nodejs 11.14.0
     asdf global nodejs 11.14.0
+
+    asdf plugin-add terraform
+    asdf install terraform 0.11.13
+    asdf global terraform 0.11.13
 
     echo 'Installing rust'
     curl https://sh.rustup.rs -sSf | sh >/dev/null
