@@ -25,6 +25,7 @@ if ! [[ -z ${I_DEV+x} ]]; then
     asdf global elixir 1.7.2-otp-21
     asdf install ruby 2.5.1
     asdf global ruby 2.5.1
+    "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
     asdf install nodejs 10.11.0
     asdf global nodejs 10.11.0
 
