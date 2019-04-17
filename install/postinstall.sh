@@ -62,12 +62,18 @@ if ! [[ -z ${I_DEV+x} ]]; then
         -o /usr/local/bin/scalafmt --standalone --main org.scalafmt.cli.Cli
     popd >/dev/null
     rm -rf "$tmp"
-fi
 
-echo 'Installing git-lfs'
-curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
-sudo apt install git-lfs
-git lfs install
+    echo 'Installing git-lfs'
+    curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+    sudo apt install git-lfs
+    git lfs install
+
+    echo 'Installing pre-commit'
+    pip install pre-commit
+
+    echo 'Installing terraform-docs'
+    go get github.com/segmentio/terraform-docs
+fi
 
 pushd "$HOME/.dotfiles" >/dev/null
 
