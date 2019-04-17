@@ -30,7 +30,9 @@ if ! [[ -z ${I_DEV+x} ]]; then
 
     echo 'Installing rust'
     curl https://sh.rustup.rs -sSf | sh >/dev/null
-    cargo install deb-install
+    # shellcheck disable=SC1090
+    source "$HOME/.cargo/env"
+    cargo install cargo-deb
 
     echo 'Installing phoenix'
     mix local.hex --force
