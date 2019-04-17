@@ -293,14 +293,13 @@ rm -rf "$tmp"
 
 echo 'Installing alacritty'
 sudo apt-get install -y \
-    pkg-config freetype6-dev libfontconfig1-dev >/dev/null
+    pkg-config libfreetype6-dev libfontconfig1-dev >/dev/null
 tmp="$(mktemp -d)"
 git clone https://github.com/jwilm/alacritty "$tmp" >/dev/null
 ( cd "$tmp"; cargo deb --install )
 rm -rf "$tmp"
 
 echo 'Setting alacritty as default terminal'
-# sudo update-alternatives --set x-terminal-emulator "$(which alacritty)"
 sudo update-alternatives --install \
     /etc/alternatives/x-terminal-emulator \
     x-terminal-emulator \
