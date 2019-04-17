@@ -12,6 +12,9 @@ source $HOME/.asdf/asdf.fish
 # rust
 set PATH $HOME/.cargo/bin $PATH
 
+# go
+set PATH $HOME/go/bin $PATH
+
 # abbreviations
 if not set -q __abbr_init
   set -gx __abbr_init

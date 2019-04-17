@@ -104,6 +104,7 @@ if [[ $DISPLAY != "" ]]; then
                 cmake\
                 libtool\
             docker-engine\
+            golang\
             inotify-tools\
             jq\
             libwxgtk3.0-dev\
