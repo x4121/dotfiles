@@ -19,15 +19,15 @@ if ! [[ -z ${I_DEV+x} ]]; then
     asdf plugin-add java https://github.com/skotchpine/asdf-java
     asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs
 
-    asdf install erlang 21.0.5
-    asdf global erlang 21.0.5
-    asdf install elixir 1.7.2-otp-21
-    asdf global elixir 1.7.2-otp-21
-    asdf install ruby 2.5.1
-    asdf global ruby 2.5.1
+    asdf install erlang 21.3.5
+    asdf global erlang 21.3.5
+    asdf install elixir 1.8.1-otp-21
+    asdf global elixir 1.8.1-otp-21
+    asdf install ruby 2.6.1
+    asdf global ruby 2.6.1
     "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
-    asdf install nodejs 10.11.0
-    asdf global nodejs 10.11.0
+    asdf install nodejs 11.14.0
+    asdf global nodejs 11.14.0
 
     echo 'Installing rust'
     curl https://sh.rustup.rs -sSf | sh >/dev/null
