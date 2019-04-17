@@ -312,7 +312,7 @@ tmp="$(mktemp -d)"
 git clone https://github.com/sharkdp/bat "$tmp" >/dev/null
 ( cd "$tmp"; cargo deb --install )
 rm -rf "$tmp"
-bat cache --init
+bat cache --build
 
 echo 'Installing tmux plugins'
 "$HOME/.tmux/plugins/tpm/bin/install_plugins"
