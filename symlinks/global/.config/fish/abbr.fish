@@ -42,6 +42,7 @@ abbr gmt    git mergetool #overrides gmt
 abbr gpl    git pull
 abbr gps    git push
 abbr gpf    git push --force-with-lease
+abbr gpu    git push-new
 abbr gs     git status #overrides ghostscript
 abbr gsu    git submodule update
 abbr gt     git tag

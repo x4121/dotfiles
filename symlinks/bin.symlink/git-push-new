@@ -1,0 +1,8 @@
+#!/usr/bin/awk -f
+
+BEGIN {
+    while ("git branch" | getline)
+        if (/^\*/) {
+            system("git push -u origin " $2)
+        }
+}
