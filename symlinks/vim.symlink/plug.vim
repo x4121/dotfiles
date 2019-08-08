@@ -16,7 +16,7 @@ Plug 'derekwyatt/vim-scala'
 " Elixir
 Plug 'elixir-lang/vim-elixir'
 " Web-Stuff
-Plug 'kchmck/vim-coffee-script'
+Plug 'leafgarland/typescript-vim'
 Plug 'tpope/vim-jdaddy' " json
 Plug 'tpope/vim-ragtag' " html/erb
 Plug 'tpope/vim-markdown'
