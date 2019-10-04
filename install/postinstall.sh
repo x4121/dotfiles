@@ -82,6 +82,9 @@ if ! [[ -z ${I_DEV+x} ]]; then
 
     echo 'Installing terraform-docs'
     go get github.com/segmentio/terraform-docs
+
+    echo 'Installing typescript'
+    npm install -g typescript
 fi
 
 pushd "$HOME/.dotfiles" >/dev/null
