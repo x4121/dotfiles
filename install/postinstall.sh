@@ -67,7 +67,7 @@ if ! [[ -z ${I_DEV+x} ]]; then
     pushd "$tmp" >/dev/null
     curl -L -o coursier https://git.io/vgvpD 2>/dev/null
     chmod +x coursier
-    sudo ./coursier bootstrap com.geirsson:scalafmt-cli_2.12:1.3.0 \
+    sudo ./coursier bootstrap org.scalameta:scalafmt-cli_2.12:2.2.2 \
         -o /usr/local/bin/scalafmt --standalone --main org.scalafmt.cli.Cli
     popd >/dev/null
     rm -rf "$tmp"
