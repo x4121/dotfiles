@@ -6,6 +6,8 @@ set incremental-search
 # no gui elements
 set guioptions ""
 
+set recolor "true"
+
 ## colors
 # pager
 set default-bg              "#282828"
@@ -41,10 +43,9 @@ set recolor-darkcolor       "#ebdbb2"
 set recolor-lightcolor      "#282828"
 
 ## mappings
-# next page
+# next/prev page
 map [normal]     d     navigate next
 map [fullscreen] d     navigate next
-# prev page
 map [normal]     u     navigate previous
 map [fullscreen] u     navigate previous
 # quit
@@ -56,6 +57,10 @@ map [fullscreen] c     set recolor
 # toggle statusbar/filename
 map [normal]     b     toggle_statusbar
 map [fullscreen] b     toggle_statusbar
+# toggle toc/index
+map [normal]     i     toggle_index
+map [fullscreen] i     toggle_index
+map [index]      i     toggle_index
 # toggle "book mode" (2 pages horizontal)
 map [normal]     h     toggle_page_mode 2
 map [fullscreen] h     toggle_page_mode 2
