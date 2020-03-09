@@ -62,7 +62,6 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 let g:syntastic_elixir_checkers = ['elixir']
-let g:syntastic_rust_checkers = ['rustc']
 let g:syntastic_scala_checkers = ['fsc']
 
 let g:syntastic_sh_shellcheck_args="-x"
@@ -233,3 +232,9 @@ let g:tmuxline_preset = {
 let g:webdevicons_conceal_nerdtree_brackets = 0
 let g:WebDevIconsOS = 'Linux'
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
+
+
+""""""""""""""""""""""""""""""
+" => Rust
+""""""""""""""""""""""""""""""
+let g:rustfmt_autosave = 1

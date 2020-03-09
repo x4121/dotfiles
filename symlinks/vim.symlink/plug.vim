@@ -26,6 +26,12 @@ Plug 'rodjek/vim-puppet'
 Plug 'rust-lang/rust.vim'
 " Hashicorp
 Plug 'HashiVim/vim-terraform'
+" async language server protocol
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'mattn/vim-lsp-settings'
 " etc
 Plug 'Chiel92/vim-autoformat', { 'on': ['Autoformat'] }
 Plug 'majutsushi/tagbar' " show tags like nerdtree
@@ -47,6 +53,8 @@ Plug 'svermeulen/vim-NotableFt'
 Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'thomasfaingnaert/vim-lsp-snippets'
+Plug 'thomasfaingnaert/vim-lsp-ultisnips'
 
 "" UI
 Plug 'morhetz/gruvbox'
