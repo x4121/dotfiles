@@ -37,7 +37,7 @@ font:
 
   use_thin_strokes: false
 
-render_timer: false
+debug.render_timer: false
 
 colors:
   # Default colors
