@@ -325,20 +325,6 @@ echo 'Installing tmux plugins'
 echo 'Setting up ranger'
 ranger --copy-config=scope
 
-echo 'Making Vim the default editor'
-mimeapps=$HOME/.local/share/applications/mimeapps.list
-mimehead="[Default Applications]"
-if [[ ! -f $mimeapps ]]; then
-    rm -rf "$mimeapps"
-    touch "$mimeapps"
-fi
-if grep -vq "$mimehead" "$mimeapps"; then
-    echo "$mimehead" > "$mimeapps"
-fi
-grep gedit\.desktop "/usr/share/applications/defaults.list" \
-    | sed 's/gedit\.desktop/vim.desktop/' \
-    >> "$mimeapps"
-
 echo 'Enabling mail sync'
 mkdir -p "$HOME/Mail/armingrodon.de"
 mkdir -p "$HOME/Mail/gmail.com"
@@ -346,8 +332,21 @@ mkdir -p "$HOME/Mail/ryte.com"
 systemctl --user enable mbsync.timer
 systemctl --user start mbsync.timer
 
-echo 'Making zathura the default pdf viewer'
-mimeapps=$HOME/.local/share/applications/mimeapps.list
-grep evince\.desktop "/usr/share/applications/defaults.list" \
-    | sed 's/evince\.desktop/zathura.desktop/' \
-    >> "$mimeapps"
+echo 'Setting app defaults'
+localdefaults=$HOME/.local/share/applications/defaults.list
+systemdefaults=/usr/share/applications/defaults.list
+mimehead="[Default Applications]"
+if [[ ! -f $localdefaults ]]; then
+    rm -rf "$localdefaults"
+    touch "$localdefaults"
+fi
+if grep -vq "$mimehead" "$localdefaults"; then
+    echo "$mimehead" > "$localdefaults"
+fi
+
+grep evince\.desktop $systemdefaults \
+    | sed 's/=evince\.desktop/=zathura.desktop/' \
+    >> "$localdefaults"
+grep gedit\.desktop $systemdefaults \
+    | sed 's/=gedit\.desktop/=vim.desktop/' \
+    >> "$localdefaults"
