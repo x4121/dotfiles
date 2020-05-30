@@ -65,7 +65,7 @@ if ! [[ -z ${I_DEV+x} ]]; then
     echo 'Installing scalafmt'
     tmp="$(mktemp -d)"
     pushd "$tmp" >/dev/null
-    curl -L -o coursier https://git.io/vgvpD 2>/dev/null
+    curl -L -o coursier https://git.io/coursier-cli-linux 2>/dev/null
     chmod +x coursier
     sudo ./coursier bootstrap org.scalameta:scalafmt-cli_2.12:2.2.2 \
         -o /usr/local/bin/scalafmt --standalone --main org.scalafmt.cli.Cli
@@ -146,13 +146,9 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
         --install --version latest --extension-id"
     # user themes
     $gnomeshell_install 19
-    # media player indicator
-    $gnomeshell_install 55
     # dash to dock
     $gnomeshell_install 307
     # topicons plus
-    $gnomeshell_install 1031
-    # no topleft hot corner
     $gnomeshell_install 118
     # sound io chooser
     $gnomeshell_install 906
