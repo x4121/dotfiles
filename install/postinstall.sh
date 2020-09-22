@@ -39,6 +39,7 @@ if ! [[ -z ${I_DEV+x} ]]; then
     # shellcheck disable=SC1090
     source "$HOME/.cargo/env"
     cargo install cargo-deb
+    cargo install cargo-watch
 
     echo 'Installing phoenix'
     mix local.hex --force
