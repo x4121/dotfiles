@@ -36,6 +36,7 @@ if ! [[ -z ${I_DEV+x} ]]; then
 
     echo 'Installing rust'
     curl https://sh.rustup.rs -sSf | sh >/dev/null
+    rustup component add rustfmt
     # shellcheck disable=SC1090
     source "$HOME/.cargo/env"
     cargo install cargo-deb
