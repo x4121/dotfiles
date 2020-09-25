@@ -26,6 +26,7 @@ Plug 'rodjek/vim-puppet'
 Plug 'rust-lang/rust.vim'
 " Hashicorp
 Plug 'HashiVim/vim-terraform'
+Plug 'udalov/kotlin-vim'
 " async language server protocol
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'

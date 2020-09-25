@@ -98,6 +98,7 @@ if [[ $DISPLAY != "" ]]; then
             --recv-keys 58118E89F3A912897C070ADBF76221572C52609D >/dev/null
 
         SW="$SW\
+            adb\
             build-essential\
                 autoconf\
                 automake\

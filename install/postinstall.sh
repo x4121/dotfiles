@@ -63,6 +63,9 @@ if ! [[ -z ${I_DEV+x} ]]; then
     sudo adduser "$USER" docker
     rm -rf "$tmp"
 
+    echo 'Adding user to plugdev for adb'
+    sudo adduser "$USER" plugdev
+
     echo 'Installing scalafmt'
     tmp="$(mktemp -d)"
     pushd "$tmp" >/dev/null
