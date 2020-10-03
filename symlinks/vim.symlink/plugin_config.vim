@@ -70,6 +70,8 @@ let g:syntastic_enable_elixir_checker=1
 
 let g:syntastic_python_python_exec = '/usr/bin/python3'
 
+let g:syntastic_rust_cargo_args = 'rustc -- -A dead_code -A unused_variables'
+
 nnoremap <leader>ct :SyntasticToggleMode<CR>
 nnoremap <leader>cc :SyntasticCheck<CR>
 nnoremap <leader>cr :SyntasticReset<CR>
