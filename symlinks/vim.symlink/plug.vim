@@ -24,6 +24,7 @@ Plug 'tpope/vim-markdown'
 Plug 'rodjek/vim-puppet'
 " Rust
 Plug 'rust-lang/rust.vim'
+Plug 'cespare/vim-toml'
 " C#
 Plug 'Omnisharp/omnisharp-vim'
 " Hashicorp
