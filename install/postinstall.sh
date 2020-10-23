@@ -228,11 +228,8 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
     gsettings set $kb_sch:$kb_dir/custom0/ command 'nautilus'
     gsettings set $kb_sch:$kb_dir/custom0/ binding '<Super>e'
     gsettings set $kb_sch:$kb_dir/custom1/ name 'Rofi run'
-    gsettings set $kb_sch:$kb_dir/custom1/ command 'rofi -show run'
+    gsettings set $kb_sch:$kb_dir/custom1/ command 'rofi -combi-modi run,window,drun -show combi'
     gsettings set $kb_sch:$kb_dir/custom1/ binding '<Super>space'
-    gsettings set $kb_sch:$kb_dir/custom2/ name 'Rofi window'
-    gsettings set $kb_sch:$kb_dir/custom2/ command 'rofi -show window'
-    gsettings set $kb_sch:$kb_dir/custom2/ binding 'F10'
     gsettings set $kb_sch:$kb_dir/custom3/ name 'Rofi soundboard'
     gsettings set $kb_sch:$kb_dir/custom3/ command "$HOME/.dotfiles/etc/rofi-soundboard/rofi-soundboard"
     gsettings set $kb_sch:$kb_dir/custom3/ binding 'F9'
