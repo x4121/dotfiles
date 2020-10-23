@@ -1,0 +1,24 @@
+[json]
+serde_derive = "*"
+serde_json = "*"
+serde = { version = "*", features = ["derive"] }
+
+[webclient]
+ureq = "*"
+
+[async-webclient]
+reqwest = "*"
+
+[cli]
+structopt = "*"
+config = "*"
+shellexpand = "*"
+termcolor = "*"
+
+[async]
+futures = "*"
+tokio = { features = ["full"], version = "*" }
+
+[log]
+simple_logger = "*"
+log = "*"

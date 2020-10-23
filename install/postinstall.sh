@@ -41,6 +41,7 @@ if ! [[ -z ${I_DEV+x} ]]; then
     source "$HOME/.cargo/env"
     cargo install cargo-deb
     cargo install cargo-watch
+    cargo install scaffold
 
     echo 'Installing phoenix'
     mix local.hex --force
