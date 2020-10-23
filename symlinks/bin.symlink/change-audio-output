@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# shamelessly stolen from:
+# https://adamsimpson.net/writing/getting-started-with-rofi
+
+sink="$(pactl list short sinks | cut -f2 | rofi -dmenu -p "Change audio output")"
+rofi_exit=$?
+if [[ $rofi_exit -ne 0 ]]; then
+  exit
+fi
+inputs="$(pactl list sink-inputs short | cut -f 1)"
+
+for input in $inputs; do
+  pactl move-sink-input "$input" "$sink"
+done
+
+pactl set-default-sink "$sink"
