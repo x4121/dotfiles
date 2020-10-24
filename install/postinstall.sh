@@ -51,8 +51,10 @@ if [[ -n ${I_DEV+x} ]]; then
         exa \
         fd-find \
         grex \
+        procs \
         ripgrep \
         scaffold \
+        ytop \
         ;
 
 echo 'Setting alacritty as default terminal'
