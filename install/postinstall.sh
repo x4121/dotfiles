@@ -38,9 +38,10 @@ if [[ -n ${I_DEV+x} ]]; then
         --no-modify-path -y >/dev/null
     sudo chown "$USER":sudo /opt/cargo /opt/rust
     sudo chmod g+w /opt/cargo /opt/rustup
+    rustup completions fish > "$HOME/.config/fish/completions/rustup.fish"
     # rustup component add rustfmt
     # shellcheck disable=SC1090
-    source "$HOME/.cargo/env"
+    source "/opt/cargo/env"
     cargo install \
         alacritty \
         bat \

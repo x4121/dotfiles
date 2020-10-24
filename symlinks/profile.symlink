@@ -26,4 +26,6 @@ fi
 
 "$HOME/.bin/export_dbus.sh"
 
-export PATH="/opt/cargo/bin:$PATH"
+export RUSTUP_HOME="/opt/rustup"
+export CARGO_HOME="/opt/cargo"
+export PATH="$CARGO_HOME/bin:$PATH"
