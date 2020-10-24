@@ -22,7 +22,7 @@ bind-key ^B show-urls
 # theoldreader
 urls-source "oldreader"
 oldreader-login "me@armingrodon.de"
-oldreader-passwordeval "pass show www/theoldreader.com/me@armingrodon.de"
+oldreader-passwordeval "pass show home/www/theoldreader.com/me@armingrodon.de"
 oldreader-show-special-feeds no
 oldreader-min-items 100
 

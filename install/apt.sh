@@ -41,7 +41,7 @@ if [[ $DISPLAY != "" ]]; then
             urlview\
             w3m\
         network-manager-openvpn-gnome\
-        newsbeuter\
+        newsboat\
         nextcloud-client-nautilus\
         pass\
         python-setuptools\
