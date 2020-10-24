@@ -1,3 +1,6 @@
+# Launch starship
+starship init fish | source
+
 # Map Control_L to Shift_L + F12 (for tmux prefix)
 pgrep -u $USER xcape > /dev/null; or xcape -e 'Control_L=Shift_L|F12'
 
@@ -10,8 +13,9 @@ set -x BAT_THEME gruvbox-dark
 source $HOME/.asdf/asdf.fish
 
 # rust
-set CARGO_HOME /opt/cargo
-set PATH $CARGO_HOME/bin $PATH
+# set RUSTUP_HOME /opt/rustup
+# set CARGO_HOME /opt/cargo
+# set PATH $CARGO_HOME/bin $PATH
 
 # go
 set PATH $HOME/go/bin $PATH

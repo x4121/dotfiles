@@ -54,6 +54,7 @@ if [[ -n ${I_DEV+x} ]]; then
         procs \
         ripgrep \
         scaffold \
+        starship \
         ytop \
         ;
 
