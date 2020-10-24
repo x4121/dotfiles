@@ -4,7 +4,6 @@ set -e
 # own ppa
 if ! ls /etc/apt/sources.list.d/x4121* >/dev/null; then
     sudo add-apt-repository -y ppa:x4121/ppa >/dev/null
-    sudo add-apt-repository -y ppa:x4121/ripgrep >/dev/null
 fi
 
 SW="apt-transport-tor\
@@ -18,7 +17,6 @@ SW="apt-transport-tor\
         atool\
         caca-utils\
         highlight\
-    ripgrep\
     taskwarrior\
     torsocks\
     trash-cli\

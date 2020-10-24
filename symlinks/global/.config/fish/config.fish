@@ -10,7 +10,8 @@ set -x BAT_THEME gruvbox-dark
 source $HOME/.asdf/asdf.fish
 
 # rust
-set PATH $HOME/.cargo/bin $PATH
+set CARGO_HOME /opt/cargo
+set PATH $CARGO_HOME/bin $PATH
 
 # go
 set PATH $HOME/go/bin $PATH

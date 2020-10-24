@@ -35,13 +35,37 @@ if ! [[ -z ${I_DEV+x} ]]; then
     asdf global terraform 0.11.13
 
     echo 'Installing rust'
-    curl https://sh.rustup.rs -sSf | sh >/dev/null
-    rustup component add rustfmt
+    sudo mkdir /opt/cargo /opt/rustup
+    curl https://sh.rustup.rs -sSf | \
+        sudo env RUSTUP_HOME=/opt/rustup CARGO_HOME=/opt/cargo \
+        sh -s -- --default-toolchain stable --profile default \
+        --no-modify-path -y >/dev/null
+    sudo chown "$USER":sudo /opt/cargo /opt/rust
+    sudo chmod g+w /opt/cargo /opt/rustup
+    # rustup component add rustfmt
     # shellcheck disable=SC1090
     source "$HOME/.cargo/env"
-    cargo install cargo-deb
-    cargo install cargo-watch
-    cargo install scaffold
+    cargo install \
+        alacritty \
+        bat \
+        cargo-deb \
+        cargo-watch \
+        du-dust \
+        exa \
+        fd-find \
+        grex \
+        ripgrep \
+        scaffold \
+        ;
+
+echo 'Setting alacritty as default terminal'
+sudo update-alternatives --install \
+    /etc/alternatives/x-terminal-emulator \
+    x-terminal-emulator \
+    "$(command -v alacritty)" \
+    1000
+sudo ln -sf /etc/alternatives/x-terminal-emulator /usr/bin/x-terminal-emulator
+
 
     echo 'Installing phoenix'
     mix local.hex --force
@@ -128,8 +152,8 @@ if [[ $DISPLAY != "" ]]; then
     sudo pip install awscli
 
     echo 'Setting chromium as default browser'
-    sudo update-alternatives --set gnome-www-browser "$(which chromium-browser)"
-    sudo update-alternatives --set x-www-browser "$(which chromium-browser)"
+    sudo update-alternatives --set gnome-www-browser "$(command -v chromium-browser)"
+    sudo update-alternatives --set x-www-browser "$(command -v chromium-browser)"
 
     echo 'Installing tdrop'
     tmp=$(mktemp -d)
@@ -298,29 +322,6 @@ curl -L https://get.oh-my.fish > "$tmp"
 fish "$tmp" --noninteractive --yes
 echo "omf install" | fish
 rm -rf "$tmp"
-
-echo 'Installing alacritty'
-sudo apt-get install -y \
-    pkg-config libfreetype6-dev libfontconfig1-dev >/dev/null
-tmp="$(mktemp -d)"
-git clone https://github.com/jwilm/alacritty "$tmp" >/dev/null
-( cd "$tmp"; cargo deb --install )
-rm -rf "$tmp"
-
-echo 'Setting alacritty as default terminal'
-sudo update-alternatives --install \
-    /etc/alternatives/x-terminal-emulator \
-    x-terminal-emulator \
-    "$(which alacritty)" \
-    1000
-sudo ln -sf /etc/alternatives/x-terminal-emulator /usr/bin/x-terminal-emulator
-
-echo "Installing bat"
-tmp="$(mktemp -d)"
-git clone https://github.com/sharkdp/bat "$tmp" >/dev/null
-( cd "$tmp"; cargo deb --install )
-rm -rf "$tmp"
-bat cache --build
 
 echo 'Installing tmux plugins'
 "$HOME/.tmux/plugins/tpm/bin/install_plugins"
