@@ -2,7 +2,7 @@
 
 DOTFILES=$HOME/.dotfiles
 
-pushd "$DOTFILES" >&- 2>&-
+pushd "$DOTFILES" >&- 2>&- || exit
 
 echo 'creating symlinks'
 linkables=$( find ./symlinks -maxdepth 1 -name "*.symlink" -exec basename {} \; )
@@ -22,4 +22,4 @@ for file in $linkables; do
     ln -s "$DOTFILES/$file" "$target"
 done
 
-popd >&- 2>&-
+popd >&- 2>&- || exit

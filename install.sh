@@ -24,5 +24,7 @@ case $(hostname -s) in
         ;;
 esac
 
+# shellcheck disable=1090
 . "$HOME/.dotfiles/install/apt.sh"
+# shellcheck disable=1090
 . "$HOME/.dotfiles/install/postinstall.sh"

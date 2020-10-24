@@ -70,7 +70,7 @@ if [[ $DISPLAY != "" ]]; then
             plymouth-theme-ubuntu-gnome-logo"
     fi
 
-    if ! [[ -z ${I_HOME+x} ]]; then
+    if [[ -n ${I_HOME+x} ]]; then
         SW="$SW\
             gimp\
             inkscape\
@@ -79,7 +79,7 @@ if [[ $DISPLAY != "" ]]; then
             vlc"
     fi
 
-    if ! [[ -z ${I_DEV+x} ]]; then
+    if [[ -n ${I_DEV+x} ]]; then
         # sbt
         if [ ! -f /etc/apt/sources.list.d/sbt.list ]; then
             echo "deb https://dl.bintray.com/sbt/debian /" \

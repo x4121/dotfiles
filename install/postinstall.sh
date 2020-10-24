@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-if ! [[ -z ${I_DEV+x} ]]; then
+if [[ -n ${I_DEV+x} ]]; then
     echo 'Installing asdf'
 
     sudo apt-get install -y \
