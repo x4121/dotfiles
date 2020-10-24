@@ -21,10 +21,6 @@ if ! [[ -z ${I_DEV+x} ]]; then
     asdf install elixir 1.8.1-otp-21
     asdf global elixir 1.8.1-otp-21
 
-    asdf plugin-add ruby
-    asdf install ruby 2.6.1
-    asdf global ruby 2.6.1
-
     asdf plugin-add nodejs
     "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
     asdf install nodejs 11.14.0
@@ -72,10 +68,6 @@ sudo ln -sf /etc/alternatives/x-terminal-emulator /usr/bin/x-terminal-emulator
     mix local.rebar --force
     mix archive.install --force \
         https://github.com/phoenixframework/archives/raw/master/phx_new.ez
-
-    echo 'Installing gems'
-    gem install \
-        gem-shut-the-fuck-up bundler git-amnesia >/dev/null
 
     echo 'Installing docker-compose'
     tmp="$(mktemp)"
