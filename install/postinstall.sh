@@ -32,21 +32,22 @@ if [[ -n ${I_DEV+x} ]]; then
 
     echo 'Installing rust'
     sudo mkdir /opt/cargo /opt/rustup
+    sudo chown "$USER":sudo /opt/cargo /opt/rustup
+    sudo chmod g+w /opt/cargo /opt/rustup
     curl https://sh.rustup.rs -sSf | \
-        sudo env RUSTUP_HOME=/opt/rustup CARGO_HOME=/opt/cargo \
+        env RUSTUP_HOME=/opt/rustup CARGO_HOME=/opt/cargo \
         sh -s -- --default-toolchain stable --profile default \
         --no-modify-path -y >/dev/null
-    sudo chown "$USER":sudo /opt/cargo /opt/rust
-    sudo chmod g+w /opt/cargo /opt/rustup
-    rustup completions fish > "$HOME/.config/fish/completions/rustup.fish"
-    # rustup component add rustfmt
     # shellcheck disable=SC1090
     source "/opt/cargo/env"
+    rustup completions fish > "$HOME/.config/fish/completions/rustup.fish"
+    # rustup component add rustfmt
     cargo install \
         alacritty \
         bat \
         cargo-deb \
         cargo-watch \
+        cargo-update \
         du-dust \
         exa \
         fd-find \
