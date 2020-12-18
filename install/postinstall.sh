@@ -45,6 +45,7 @@ if [[ -n ${I_DEV+x} ]]; then
     cargo install \
         alacritty \
         bat \
+        bottom \
         cargo-deb \
         cargo-watch \
         cargo-update \
@@ -56,7 +57,6 @@ if [[ -n ${I_DEV+x} ]]; then
         ripgrep \
         scaffold \
         starship \
-        ytop \
         ;
 
 echo 'Setting alacritty as default terminal'
