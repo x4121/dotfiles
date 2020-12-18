@@ -20,7 +20,6 @@ SW="apt-transport-tor\
     taskwarrior\
     torsocks\
     trash-cli\
-    tree\
     vim-gtk3\
         exuberant-ctags"
 
