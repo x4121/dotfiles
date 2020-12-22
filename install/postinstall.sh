@@ -58,6 +58,7 @@ if [[ -n ${I_DEV+x} ]]; then
         scaffold \
         starship \
         ;
+    starship completions > "$HOME/.config/fish/completions/starship.fish"
 
 echo 'Setting alacritty as default terminal'
 sudo update-alternatives --install \
