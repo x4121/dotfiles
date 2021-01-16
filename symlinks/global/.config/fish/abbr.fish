@@ -68,16 +68,6 @@ abbr tb     task burndown
 abbr tc     task calendar #overrides traffic control
 abbr ts     task sync
 
-# rust app remaps
-abbr ls     exa -F --group-directories-first
-abbr ll     exa -F --group-directories-first -l
-abbr la     exa -F --group-directories-first -la
-abbr tree   exa -T
-abbr cat    bat
-abbr top    btm
-abbr htop   btm
-abbr du     dust
-
 # etc
 abbr m      neomutt
 abbr o      xdg-open
