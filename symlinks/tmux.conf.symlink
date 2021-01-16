@@ -45,6 +45,9 @@ set -g @plugin 'tmux-plugins/vim-tmux-focus-events'
 set -g @plugin 'laktak/extrakto'
 set -g @plugin 'x4121/tmux-tasks'
 set -g @plugin 'x4121/tmux-maildir-counter'
+set -g @plugin 'Morantron/tmux-fingers'
+
+set -g @fingers-key Space
 
 # Enable tmux focus events for vim
 set -g focus-events on
