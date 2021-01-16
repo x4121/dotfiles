@@ -12,8 +12,6 @@ function gall
             __fish.ga.fetch
         case '-s' '--status'
             __fish.ga.status
-        case '-t'
-            __fish.ga.test
         end
     else
         __fish.ga.status
@@ -23,13 +21,9 @@ end
 function __fish.ga.fetch
     for l in (find $__ga_target -mindepth 1 -maxdepth 1 -type d) $__ga_others
         pushd $l
-        if set -l out (git status -s ^ /dev/null)
-            set branch (echo $out | grep -ioe "##.*" | sed -E 's/^## ([^.]*).*/\1/')
-            set dir (__fish.ga.dirname $l)
-            echo -s $__ga_g $dir $__ga_n " (" $__ga_y $branch $__ga_n ")"
-            git fetch --all
-            echo ""
-        end
+        echo -s (starship module directory) (starship module git_branch) (starship module git_status)
+        git fetch --all
+        echo ""
         popd
     end
 end
@@ -37,17 +31,9 @@ end
 function __fish.ga.status
     for l in (find $__ga_target -mindepth 1 -maxdepth 1 -type d) $__ga_others
         pushd $l
-        if git status -s > /dev/null ^ /dev/null
-            set dir (__fish.ga.dirname $l)
-            echo -s $__fish_prompt_cwd $dir $__fish_prompt_normal (__fish_git_prompt)
-        end
+        echo -s (starship module directory) (starship module git_branch) (starship module git_status)
         popd
     end
-end
-
-function __fish.ga.dirname
-    set -l realhome ~
-    echo $argv | sed -e "s|^$realhome|~|" -e 's-\([^/.]\)[^/]*/-\1/-g'
 end
 
 # completion
