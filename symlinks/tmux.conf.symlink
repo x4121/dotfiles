@@ -14,6 +14,8 @@ set-option -g mouse on
 setw -g mode-keys vi
 bind-key -T copy-mode-vi 'v' send -X begin-selection
 bind-key -T copy-mode-vi 'r' send -X rectangle-toggle
+set -g word-separators ' .,:;&$/-+=@!?"[](){}<>'
+set -ga word-separators "'"
 
 # synchronize all panes in a window
 bind C-y setw synchronize-panes
