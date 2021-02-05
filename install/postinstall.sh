@@ -46,12 +46,14 @@ if [[ -n ${I_DEV+x} ]]; then
         alacritty \
         bat \
         bottom \
+        cargo-audit \
         cargo-tarpaulin \
         cargo-update \
         cargo-watch \
         du-dust \
         exa \
         fd-find \
+        git-trim \
         grex \
         procs \
         requestr-cli \
