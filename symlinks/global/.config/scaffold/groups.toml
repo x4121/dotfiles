@@ -15,6 +15,10 @@ config = "*"
 shellexpand = "*"
 termcolor = "*"
 
+[error]
+anyhow = "*"
+thiserror = "*"
+
 [async]
 futures = "*"
 tokio = { features = ["full"], version = "*" }
