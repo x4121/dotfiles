@@ -269,7 +269,7 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
     gsettings set $kb_sch:$kb_dir/custom6/ name 'Dropdown'
     # shellcheck disable=SC2016
     gsettings set $kb_sch:$kb_dir/custom6/ \
-        command 'tdrop -m -h 34%% -y 0 -s dropdown -f "--config-file $HOME/.config/alacritty/dropdown.yml" alacritty'
+        command 'tdrop -ma -h 34% -y 0 -s dropdown -f "--config-file $HOME/.config/alacritty/dropdown.yml" alacritty'
     gsettings set $kb_sch:$kb_dir/custom6/ binding 'F12'
     gsettings set $kb_sch:$kb_dir/custom7/ name 'dnd-toggle'
     gsettings set $kb_sch:$kb_dir/custom7/ command 'dnd-toggle'
