@@ -76,7 +76,9 @@ set whichwrap+=<,>,h,l
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
   set mouse=a
-  set ttymouse=xterm2
+  if !has('nvim')
+    set ttymouse=xterm2
+  endif
 endif
 
 " Ignore case when searching

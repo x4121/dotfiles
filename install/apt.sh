@@ -12,6 +12,8 @@ SW="apt-transport-tor\
         thefuck\
     htop\
     net-tools\
+    neovim\
+        universal-ctags\
     pwgen\
     ranger\
         atool\
@@ -19,9 +21,7 @@ SW="apt-transport-tor\
         highlight\
     taskwarrior\
     torsocks\
-    trash-cli\
-    vim-gtk3\
-        exuberant-ctags"
+    trash-cli"
 
 if [[ $DISPLAY != "" ]]; then
     if ! ls /etc/apt/sources.list.d/nextcloud-devs* >/dev/null; then

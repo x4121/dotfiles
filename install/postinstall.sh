@@ -353,5 +353,5 @@ grep evince\.desktop $systemdefaults \
     | sed 's/=evince\.desktop/=zathura.desktop/' \
     >> "$localdefaults"
 grep gedit\.desktop $systemdefaults \
-    | sed 's/=gedit\.desktop/=vim.desktop/' \
+    | sed 's/=.*gedit\.desktop.*/=nvim.desktop/' \
     >> "$localdefaults"
