@@ -185,6 +185,10 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
     $gnomeshell_install 906
     # openweather
     $gnomeshell_install 750
+    # music indicator
+    $gnomeshell_install 1379
+    # spotify label
+    $gnomeshell_install 2603
 
     echo 'Configuring gnome-shell extensions'
     ext_home="$HOME/.local/share/gnome-shell/extensions"
