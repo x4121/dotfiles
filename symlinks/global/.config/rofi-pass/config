@@ -39,7 +39,7 @@ help_color=""
 
 # Clipboard settings
 # Possible options: primary, clipboard, both
-clip=primary
+clip=clipboard
 
 # Custom Keybindings
 autotype="Alt+1"
