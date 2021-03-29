@@ -29,7 +29,7 @@ abbr gbd    git branch -d
 abbr gc     git commit -m
 abbr gcl    git clone --recursive
 abbr gco    git checkout
-abbr gcom   git checkout master
+abbr gcom   git checkout-main
 abbr gd     git diff
 abbr gdc    git diff --cached
 abbr gdt    git difftool
