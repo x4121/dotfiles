@@ -242,3 +242,12 @@ let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
 " => Rust
 """"""""""""""""""""""""""""""
 let g:rustfmt_autosave = 1
+
+""""""""""""""""""""""""""""""
+" => Markdown
+""""""""""""""""""""""""""""""
+" Interpret yaml front matter as comment
+autocmd BufNewFile,BufRead *.md syntax match Comment /\%^---\_.\{-}---$/
+
+" Open document 'unfolded'
+autocmd BufWinEnter *.md normal zR

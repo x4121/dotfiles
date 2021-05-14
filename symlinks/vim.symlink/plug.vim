@@ -20,6 +20,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'tpope/vim-jdaddy' " json
 Plug 'tpope/vim-ragtag' " html/erb
 Plug 'tpope/vim-markdown'
+Plug 'masukomi/vim-markdown-folding'
 " Puppet
 Plug 'rodjek/vim-puppet'
 " Rust
