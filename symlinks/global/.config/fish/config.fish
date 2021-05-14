@@ -32,6 +32,9 @@ if not set -q __alias_init
   source $HOME/.config/fish/alias.fish
 end
 
+# 1Password
+set -x OP_SESSION_ryte (cat $HOME/.op_session_ryte)
+
 # colored man pages
 set -x LESS_TERMCAP_mb (printf '\e[01;31m') # enter blinking mode - red
 set -x LESS_TERMCAP_md (printf '\e[01;35m') # enter double-bright mode - bold, magenta
