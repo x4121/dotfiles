@@ -331,6 +331,17 @@ rm -rf "$tmp"
 echo 'Installing tmux plugins'
 "$HOME/.tmux/plugins/tpm/bin/install_plugins"
 
+echo 'Installing 1Password cli'
+tmp="$(mktemp -d)"
+curl -fLo "$tmp/op.zip" \
+    https://cache.agilebits.com/dist/1P/op/pkg/v1.9.2/op_linux_amd64_v1.9.2.zip
+unzip "$tmp/op.zip" -d "$tmp"
+gpg --receive-keys 3FEF9748469ADBE15DA7CA80AC2D62742012EA22
+gpg --verify "$tmp/op.sig" "$tmp/op"
+mkdir -p "$HOME/.local/bin"
+mv "$tmp/op" "$HOME/.local/bin/."
+rm -rf "$tmp"
+
 echo 'Setting up ranger'
 ranger --copy-config=scope
 
