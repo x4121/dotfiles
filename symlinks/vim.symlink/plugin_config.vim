@@ -214,20 +214,18 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'rust': ['rustfmt'],
+\   'scala': ['scalafmt'],
 \}
 let g:ale_linters = {
 \   'rust': ['analyzer']
 \}
 let g:ale_fix_on_save = 1
-set omnifunc=ale#completion#OmniFunc
-let g:ale_completion_enabled = 1
-let g:ale_completion_autoimport = 1
 
  nmap <silent> <C-k> <Plug>(ale_previous_wrap)
  nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 function! s:on_lsp_buffer_enabled() abort
-    " setlocal omnifunc=lsp#complete
+    setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
     if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
     nmap <buffer> gd <plug>(lsp-definition)
@@ -241,25 +239,6 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> ]g <plug>(lsp-next-diagnostic)
     nmap <buffer> K <plug>(lsp-hover)
     nmap <buffer> <leader>a <plug>(lsp-code-action)
-    inoremap <buffer> <expr><c-f> lsp#scroll(+4)
-    inoremap <buffer> <expr><c-d> lsp#scroll(-4)
-
-    command! -nargs=0 Format <plug>(lsp-document-format)
-    command! -nargs=? Fold <plug>(lsp-document-format)
-
-    let g:lsp_format_sync_timeout = 1000
-    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
-    autocmd! BufWritePre *.scala call execute('LspDocumentFormatSync')
-
-    if executable('rust-analyzer')
-      au User lsp_setup call lsp#register_server({
-          \   'name': 'Rust Language Server',
-          \   'cmd': {server_info->['rust-analyzer']},
-          \   'whitelist': ['rust'],
-          \ })
-    endif
-
-    " refer to doc to add more commands
 endfunction
 
 augroup lsp_install
