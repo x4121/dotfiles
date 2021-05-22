@@ -48,56 +48,6 @@ let g:indentLine_faster = 1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => syntastic
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:syntastic_ignore_files = ['\m\c\.h$', '\m\.sbt$']
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_elixir_checkers = ['elixir']
-let g:syntastic_scala_checkers = ['fsc']
-
-let g:syntastic_sh_shellcheck_args="-x"
-
-let g:syntastic_enable_elixir_checker=1
-
-let g:syntastic_python_python_exec = '/usr/bin/python3'
-
-let g:syntastic_rust_cargo_args = 'rustc -- -A dead_code -A unused_variables'
-
-nnoremap <leader>ct :SyntasticToggleMode<CR>
-nnoremap <leader>cc :SyntasticCheck<CR>
-nnoremap <leader>cr :SyntasticReset<CR>
-
-nnoremap <leader>n :lnext<CR>
-nnoremap <leader>p :lprevious<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => autoformat
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-noremap <F5> :Autoformat<CR>
-
-function! StartNailgunScalaFmt()
-  execute(':silent! !scalafmt_ng >/dev/null 2>/dev/null &')
-  execute(':silent !ng-nailgun ng-alias scalafmt org.scalafmt.cli.Cli')
-  execute(':redraw!')
-endfunction
-
-au FileType scala call StartNailgunScalaFmt()
-" kill scalafmt_ng if no vim process is running
-au VimLeave * :silent! !sh -c "sleep 2 && pidof vim || pidof vi || pkill -f 'scalafmt_ng'" >/dev/null &
-let g:formatdef_scalafmt = "'ng-nailgun scalafmt --stdin'"
-let g:formatters_scala = ['scalafmt']
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-fish
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set up :make to use fish for syntax checking.
@@ -251,3 +201,69 @@ autocmd BufNewFile,BufRead *.md syntax match Comment /\%^---\_.\{-}---$/
 
 " Open document 'unfolded'
 autocmd BufWinEnter *.md normal zR
+
+""""""""""""""""""""""""""""""
+" => JSON
+""""""""""""""""""""""""""""""
+autocmd FileType json syntax match Comment +\/\/.\+$+
+
+""""""""""""""""""""""""""""""
+" => Ale (LSP)
+""""""""""""""""""""""""""""""
+let g:airline#extensions#ale#enabled = 1
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'rust': ['rustfmt'],
+\}
+let g:ale_linters = {
+\   'rust': ['analyzer']
+\}
+let g:ale_fix_on_save = 1
+set omnifunc=ale#completion#OmniFunc
+let g:ale_completion_enabled = 1
+let g:ale_completion_autoimport = 1
+
+ nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+ nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+function! s:on_lsp_buffer_enabled() abort
+    " setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> gs <plug>(lsp-document-symbol-search)
+    nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+    nmap <buffer> gr <plug>(lsp-references)
+    nmap <buffer> gi <plug>(lsp-implementation)
+    nmap <buffer> gt <plug>(lsp-type-definition)
+    nmap <buffer> <leader>rn <plug>(lsp-rename)
+    nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+    nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+    nmap <buffer> K <plug>(lsp-hover)
+    nmap <buffer> <leader>a <plug>(lsp-code-action)
+    inoremap <buffer> <expr><c-f> lsp#scroll(+4)
+    inoremap <buffer> <expr><c-d> lsp#scroll(-4)
+
+    command! -nargs=0 Format <plug>(lsp-document-format)
+    command! -nargs=? Fold <plug>(lsp-document-format)
+
+    let g:lsp_format_sync_timeout = 1000
+    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+    autocmd! BufWritePre *.scala call execute('LspDocumentFormatSync')
+
+    if executable('rust-analyzer')
+      au User lsp_setup call lsp#register_server({
+          \   'name': 'Rust Language Server',
+          \   'cmd': {server_info->['rust-analyzer']},
+          \   'whitelist': ['rust'],
+          \ })
+    endif
+
+    " refer to doc to add more commands
+endfunction
+
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END

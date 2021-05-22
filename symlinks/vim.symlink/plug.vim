@@ -37,10 +37,11 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'mattn/vim-lsp-settings'
+Plug 'dense-analysis/ale'
 " etc
 Plug 'Chiel92/vim-autoformat', { 'on': ['Autoformat'] }
 Plug 'majutsushi/tagbar' " show tags like nerdtree
-Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
 Plug 'vim-scripts/matchit.zip' " extended matching for '%'
 Plug 'tpope/vim-endwise' " auto close block-statements
 Plug 'Raimondi/delimitMate' " auto close quotes/parens/..

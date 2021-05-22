@@ -109,7 +109,6 @@ if [[ $DISPLAY != "" ]]; then
             rustc\
             sbt\
                 maven\
-                nailgun\
                 openjdk-8-jdk\
             shellcheck"
     fi
