@@ -47,19 +47,23 @@ if [[ -n ${I_DEV+x} ]]; then
         bat \
         bottom \
         cargo-audit \
+        cargo-outdated \
         cargo-tarpaulin \
         cargo-update \
         cargo-watch \
         du-dust \
         exa \
+        fastsar \
         fd-find \
         git-trim \
         grex \
+        navi \
         procs \
         requestr-cli \
         ripgrep \
         scaffold \
         starship \
+        zoxide \
         ;
     starship completions > "$HOME/.config/fish/completions/starship.fish"
 

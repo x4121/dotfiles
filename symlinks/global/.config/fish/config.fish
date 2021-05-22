@@ -12,6 +12,9 @@ set -x BAT_THEME gruvbox-dark
 # asdf
 source $HOME/.asdf/asdf.fish
 
+# zoxide
+zoxide init fish | source
+
 # rust
 # set RUSTUP_HOME /opt/rustup
 # set CARGO_HOME /opt/cargo
