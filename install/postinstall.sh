@@ -118,6 +118,9 @@ sudo ln -sf /etc/alternatives/x-terminal-emulator /usr/bin/x-terminal-emulator
     echo 'Installing terraform-docs'
     go get github.com/segmentio/terraform-docs
 
+    echo 'Installing shfmt'
+    go get mvdan.cc/sh/v3/cmd/shfmt
+
     echo 'Installing typescript'
     npm install -g typescript
 fi
