@@ -94,6 +94,14 @@ if [[ $DISPLAY != "" ]]; then
         sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 \
             --recv-keys 58118E89F3A912897C070ADBF76221572C52609D >/dev/null
 
+        if [ ! -f /etc/apt/sources.list.d/hashicorp.list ]; then
+            echo "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" \
+                | sudo tee -a /etc/apt/sources.list.d/hashicorp.list
+        fi
+        sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 \
+            --recv-keys DA418C88A3219F7B >/dev/null
+
+
         SW="$SW\
             adb\
             build-essential\
@@ -110,7 +118,8 @@ if [[ $DISPLAY != "" ]]; then
             sbt\
                 maven\
                 openjdk-8-jdk\
-            shellcheck"
+            shellcheck\
+            terraform-ls"
     fi
 fi
 
