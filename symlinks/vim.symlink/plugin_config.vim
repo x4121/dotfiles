@@ -10,7 +10,7 @@ if has("win16") || has("win32")
 else
     let g:yankring_history_dir = '~/.vim/temp'
 endif
-nnoremap <leader>y :YRShow<cr>
+nnoremap <leader>Y :YRShow<cr>
 
 
 """"""""""""""""""""""""""""""
@@ -26,7 +26,7 @@ let g:NERDTreeWinPos = "left"
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeDirArrowCollapsible = ''
-map <leader>nn :NERDTreeToggle<cr>
+map <leader>n  :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark<space>
 map <leader>nf :NERDTreeFind<cr>
 
@@ -189,9 +189,13 @@ let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
 
 
 """"""""""""""""""""""""""""""
-" => Rust
+" => Ranger
 """"""""""""""""""""""""""""""
-let g:rustfmt_autosave = 1
+let g:ranger_map_keys = 0
+let g:NERDTreeHijackNetrw = 0
+let g:ranger_replace_netrw = 1
+nmap <leader>r :Ranger<CR>
+
 
 """"""""""""""""""""""""""""""
 " => Markdown
@@ -202,10 +206,12 @@ autocmd BufNewFile,BufRead *.md syntax match Comment /\%^---\_.\{-}---$/
 " Open document 'unfolded'
 autocmd BufWinEnter *.md normal zR
 
+
 """"""""""""""""""""""""""""""
 " => JSON
 """"""""""""""""""""""""""""""
 autocmd FileType json syntax match Comment +\/\/.\+$+
+
 
 """"""""""""""""""""""""""""""
 " => Ale
