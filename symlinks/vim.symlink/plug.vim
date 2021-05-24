@@ -49,7 +49,7 @@ Plug 'tpope/vim-commentary' " add/remove comments
 Plug 'tpope/vim-dadbod'
 
 "" Search
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'francoiscabrol/ranger.vim'
