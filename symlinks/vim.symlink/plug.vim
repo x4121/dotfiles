@@ -30,20 +30,16 @@ Plug 'cespare/vim-toml'
 Plug 'Omnisharp/omnisharp-vim'
 " Hashicorp
 Plug 'HashiVim/vim-terraform'
+" Kotlin
 Plug 'udalov/kotlin-vim'
-" async language server protocol
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'mattn/vim-lsp-settings'
+" coc.nvim
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" linting
+let g:ale_disable_lsp = 1
 Plug 'dense-analysis/ale'
 " etc
-Plug 'Chiel92/vim-autoformat', { 'on': ['Autoformat'] }
 Plug 'majutsushi/tagbar' " show tags like nerdtree
-" Plug 'scrooloose/syntastic'
 Plug 'vim-scripts/matchit.zip' " extended matching for '%'
-Plug 'tpope/vim-endwise' " auto close block-statements
 Plug 'Raimondi/delimitMate' " auto close quotes/parens/..
 Plug 'tpope/vim-commentary' " add/remove comments
 Plug 'tpope/vim-dadbod'
@@ -56,11 +52,8 @@ Plug 'francoiscabrol/ranger.vim'
 Plug 'svermeulen/vim-NotableFt'
 
 "" Completion
-Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'thomasfaingnaert/vim-lsp-snippets'
-Plug 'thomasfaingnaert/vim-lsp-ultisnips'
 
 "" UI
 Plug 'morhetz/gruvbox'
