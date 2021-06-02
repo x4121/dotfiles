@@ -15,6 +15,10 @@ source $HOME/.asdf/asdf.fish
 # zoxide
 zoxide init fish | source
 
+# coursier
+set -x COURSIER_INSTALL_DIR /usr/local/coursier/bin
+set PATH /usr/local/coursier/bin $PATH
+
 # rust
 # set RUSTUP_HOME /opt/rustup
 # set CARGO_HOME /opt/cargo

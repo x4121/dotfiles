@@ -97,13 +97,17 @@ sudo ln -sf /etc/alternatives/x-terminal-emulator /usr/bin/x-terminal-emulator
     echo 'Adding user to plugdev for adb'
     sudo adduser "$USER" plugdev
 
-    echo 'Installing scalafmt'
+    echo 'Installing coursier'
     tmp="$(mktemp -d)"
     pushd "$tmp" >/dev/null
-    curl -L -o coursier https://git.io/coursier-cli-linux 2>/dev/null
-    chmod +x coursier
-    sudo ./coursier bootstrap org.scalameta:scalafmt-cli_2.12:2.2.2 \
-        -o /usr/local/bin/scalafmt --standalone --main org.scalafmt.cli.Cli
+    curl -fLo cs https://git.io/coursier-cli-"$(uname | tr LD ld)" 2>/dev/null
+    chmod +x cs
+    COURSIER_INSTALL_DIR=/usr/local/coursier/bin
+    export COURSIER_INSTALL_DIR
+    sudo mkdir $COURSIER_INSTALL_DIR
+    sudo chown "$USER":sudo $COURSIER_INSTALL_DIR
+    sudo chmod g+w $COURSIER_INSTALL_DIR
+    ./cs install cs scalafmt ammonite
     popd >/dev/null
     rm -rf "$tmp"
 
