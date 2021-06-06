@@ -14,33 +14,37 @@ if [[ -n ${I_DEV+x} ]]; then
     # shellcheck disable=SC1090
     source "$HOME/.asdf/asdf.sh"
     asdf plugin-add erlang
-    asdf install erlang 21.3.5
-    asdf global erlang 21.3.5
+    asdf install erlang 22.3.4.20
+    asdf global erlang 22.3.4.20
 
     asdf plugin-add elixir
-    asdf install elixir 1.8.1-otp-21
-    asdf global elixir 1.8.1-otp-21
+    asdf install elixir 1.12.1-otp-24
+    asdf global elixir 1.12.1-otp-24
 
     asdf plugin-add nodejs
     "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
-    asdf install nodejs 11.14.0
-    asdf global nodejs 11.14.0
+    asdf install nodejs 16.3.0
+    asdf install nodejs 12.22.1
+    asdf global nodejs 16.3.0
+    ln -s "$HOME/.asdf/installs/nodejs/12.22.1" "$HOME/.asdf/installs/nodejs/12"
 
     asdf plugin-add terraform
-    asdf install terraform 0.11.13
-    asdf global terraform 0.11.13
+    asdf install terraform 0.11.15
+    asdf install terraform 0.12.31
+    asdf install terraform 0.13.7
+    asdf global terraform 0.12.31
 
     echo 'Installing rust'
     sudo mkdir /opt/cargo /opt/rustup
     sudo chown "$USER":sudo /opt/cargo /opt/rustup
     sudo chmod g+w /opt/cargo /opt/rustup
-    curl https://sh.rustup.rs -sSf | \
+    curl https://sh.rustup.rs -sSf |
         env RUSTUP_HOME=/opt/rustup CARGO_HOME=/opt/cargo \
-        sh -s -- --default-toolchain stable --profile default \
-        --no-modify-path -y >/dev/null
+            sh -s -- --default-toolchain stable --profile default \
+            --no-modify-path -y >/dev/null
     # shellcheck disable=SC1090
     source "/opt/cargo/env"
-    rustup completions fish > "$HOME/.config/fish/completions/rustup.fish"
+    rustup completions fish >"$HOME/.config/fish/completions/rustup.fish"
     # rustup component add rustfmt
     cargo install \
         alacritty \
@@ -65,16 +69,15 @@ if [[ -n ${I_DEV+x} ]]; then
         starship \
         zoxide \
         ;
-    starship completions > "$HOME/.config/fish/completions/starship.fish"
+    starship completions >"$HOME/.config/fish/completions/starship.fish"
 
-echo 'Setting alacritty as default terminal'
-sudo update-alternatives --install \
-    /etc/alternatives/x-terminal-emulator \
-    x-terminal-emulator \
-    "$(command -v alacritty)" \
-    1000
-sudo ln -sf /etc/alternatives/x-terminal-emulator /usr/bin/x-terminal-emulator
-
+    echo 'Setting alacritty as default terminal'
+    sudo update-alternatives --install \
+        /etc/alternatives/x-terminal-emulator \
+        x-terminal-emulator \
+        "$(command -v alacritty)" \
+        1000
+    sudo ln -sf /etc/alternatives/x-terminal-emulator /usr/bin/x-terminal-emulator
 
     echo 'Installing phoenix'
     mix local.hex --force
@@ -85,9 +88,10 @@ sudo ln -sf /etc/alternatives/x-terminal-emulator /usr/bin/x-terminal-emulator
     echo 'Installing docker-compose'
     tmp="$(mktemp)"
     curl -L \
-        "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$( \
-        uname -s)-$(uname -m)" \
-        > "$tmp" 2>/dev/null
+        "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(
+            uname -s
+        )-$(uname -m)" \
+        >"$tmp" 2>/dev/null
     sudo mkdir -p /usr/local/bin
     sudo mv "$tmp" /usr/local/bin/docker-compose
     sudo chmod +x /usr/local/bin/docker-compose
@@ -334,7 +338,7 @@ sudo chsh -s "$(grep /fish$ /etc/shells | tail -1)" "$USER"
 
 echo 'Installing omf'
 tmp="$(mktemp)"
-curl -L https://get.oh-my.fish > "$tmp"
+curl -L https://get.oh-my.fish >"$tmp"
 fish "$tmp" --noninteractive --yes
 echo "omf install" | fish
 rm -rf "$tmp"
@@ -372,12 +376,12 @@ if [[ ! -f $localdefaults ]]; then
     touch "$localdefaults"
 fi
 if grep -vq "$mimehead" "$localdefaults"; then
-    echo "$mimehead" > "$localdefaults"
+    echo "$mimehead" >"$localdefaults"
 fi
 
-grep evince\.desktop $systemdefaults \
-    | sed 's/=evince\.desktop/=zathura.desktop/' \
-    >> "$localdefaults"
-grep gedit\.desktop $systemdefaults \
-    | sed 's/=.*gedit\.desktop.*/=nvim.desktop/' \
-    >> "$localdefaults"
+grep evince\.desktop $systemdefaults |
+    sed 's/=evince\.desktop/=zathura.desktop/' \
+        >>"$localdefaults"
+grep gedit\.desktop $systemdefaults |
+    sed 's/=.*gedit\.desktop.*/=nvim.desktop/' \
+        >>"$localdefaults"
