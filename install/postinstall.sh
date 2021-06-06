@@ -7,7 +7,7 @@ if [[ -n ${I_DEV+x} ]]; then
     sudo apt-get install -y \
         libssl-dev libncurses5-dev libreadline-dev zlib1g-dev >/dev/null
     git clone https://github.com/asdf-vm/asdf.git \
-        "$HOME/.asdf" --branch v0.5.1 >/dev/null
+        "$HOME/.asdf" --branch v0.8.1 >/dev/null
     mkdir -p "$HOME/.config/fish/completions"
     cp "$HOME/.asdf/completions/asdf.fish" "$HOME/.config/fish/completions"
 
@@ -82,13 +82,12 @@ if [[ -n ${I_DEV+x} ]]; then
     echo 'Installing phoenix'
     mix local.hex --force
     mix local.rebar --force
-    mix archive.install --force \
-        https://github.com/phoenixframework/archives/raw/master/phx_new.ez
+    mix archive.install hex phx_new 1.5.9
 
     echo 'Installing docker-compose'
     tmp="$(mktemp)"
     curl -L \
-        "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(
+        "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(
             uname -s
         )-$(uname -m)" \
         >"$tmp" 2>/dev/null
