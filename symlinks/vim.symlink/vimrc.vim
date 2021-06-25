@@ -269,6 +269,10 @@ map <Leader>p "+p
 " differences
 autocmd BufWritePost * if &diff == 1 | diffupdate | endif
 
+" Use global python, even in venvs
+let g:python_host_prog = "/usr/bin/python"
+let g:python3_host_prog = "/usr/bin/python3"
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => GUI related

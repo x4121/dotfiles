@@ -128,8 +128,9 @@ if [[ -n ${I_DEV+x} ]]; then
     echo 'Installing shfmt'
     go get mvdan.cc/sh/v3/cmd/shfmt
 
-    echo 'Installing typescript'
-    npm install -g typescript
+    echo 'Installing typescript and stuff'
+    npm install -g typescript tslint \
+        yarn prettier
 fi
 
 pushd "$HOME/.dotfiles" >/dev/null
@@ -162,9 +163,8 @@ if [[ $DISPLAY != "" ]]; then
     popd >/dev/null
 
     echo 'Installing mutt dependencies'
-    sudo pip install mutt_ics vobject
-    sudo pip install gcalcli
-    sudo pip install awscli
+    sudo pip install mutt_ics vobject \
+        gcalcli
 
     echo 'Setting chromium as default browser'
     sudo update-alternatives --set gnome-www-browser "$(command -v chromium-browser)"
