@@ -81,11 +81,11 @@ if [[ $DISPLAY != "" ]]; then
     if [[ -n ${I_DEV+x} ]]; then
         # sbt
         if [ ! -f /etc/apt/sources.list.d/sbt.list ]; then
-            echo "deb https://dl.bintray.com/sbt/debian /" \
+            echo "deb https://repo.scala-sbt.org/scalasbt/debian all main" \
                 | sudo tee -a /etc/apt/sources.list.d/sbt.list >/dev/null
         fi
         sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 \
-            --recv 642AC823 >/dev/null
+            --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823 >/dev/null
         # docker
         if [ ! -f /etc/apt/sources.list.d/docker.list ]; then
             echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" \
