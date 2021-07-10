@@ -123,7 +123,7 @@ if [[ -n ${I_DEV+x} ]]; then
     pip install pre-commit
 
     echo 'Installing terraform-docs'
-    go get github.com/segmentio/terraform-docs
+    go get github.com/segmentio/terraform-docs@v0.11.2
 
     echo 'Installing shfmt'
     go get mvdan.cc/sh/v3/cmd/shfmt
