@@ -92,10 +92,11 @@ command! -bang -nargs=* Rg
 
 
 """"""""""""""""""""""""""""""
-" => easymotion
+" => hop
 """"""""""""""""""""""""""""""
-nmap <leader>/ <Plug>(easymotion-sn)
-let g:EasyMotion_smartcase = 1
+:lua require'hop'.setup()
+map <leader>/ :HopPattern<cr>
+map <leader><space> :HopWord<cr>
 
 
 """"""""""""""""""""""""""""""
