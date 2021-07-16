@@ -43,8 +43,6 @@ if [[ $DISPLAY != "" ]]; then
         newsboat\
         nextcloud-client-nautilus\
         pass\
-        python-setuptools\
-        python-pip\
         rofi\
         socat\
         tmux\
