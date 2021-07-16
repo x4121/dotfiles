@@ -209,10 +209,8 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 let g:airline#extensions#ale#enabled = 1
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'json': ['jq'],
 \   'rust': ['rustfmt'],
 \   'scala': ['scalafmt'],
-\   'sh': ['shfmt'],
 \}
 let g:ale_linters = {
 \   'rust': ['analyzer']
