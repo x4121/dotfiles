@@ -13,12 +13,15 @@ Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle', 'NERDTreeFind', '
 " Scala
 Plug 'derekwyatt/vim-sbt'
 Plug 'derekwyatt/vim-scala'
+" Protobuf
+Plug 'uarun/vim-protobuf'
 " Elixir
 Plug 'elixir-lang/vim-elixir'
 " Web-Stuff
 Plug 'leafgarland/typescript-vim'
 Plug 'tpope/vim-jdaddy' " json
 Plug 'tpope/vim-ragtag' " html/erb
+" Markdown
 Plug 'tpope/vim-markdown'
 Plug 'masukomi/vim-markdown-folding'
 " Puppet
