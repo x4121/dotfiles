@@ -33,6 +33,9 @@ setw -g monitor-activity on
 set -g base-index 1
 set -g pane-base-index 1
 
+# Enable true colors
+set-option -ga terminal-overrides ',xterm-256color:Tc'
+
 # airline
 if-shell "test -f ~/.tmux/tmuxline.conf" \
     "source ~/.tmux/tmuxline.conf" \

@@ -43,8 +43,6 @@ if [[ $DISPLAY != "" ]]; then
         newsboat\
         nextcloud-client-nautilus\
         pass\
-        python-setuptools\
-        python-pip\
         rofi\
         socat\
         tmux\
@@ -81,18 +79,19 @@ if [[ $DISPLAY != "" ]]; then
     if [[ -n ${I_DEV+x} ]]; then
         # sbt
         if [ ! -f /etc/apt/sources.list.d/sbt.list ]; then
-            echo "deb https://dl.bintray.com/sbt/debian /" \
+            echo "deb https://repo.scala-sbt.org/scalasbt/debian all main" \
                 | sudo tee -a /etc/apt/sources.list.d/sbt.list >/dev/null
         fi
         sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 \
-            --recv 642AC823 >/dev/null
+            --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823 >/dev/null
         # docker
         if [ ! -f /etc/apt/sources.list.d/docker.list ]; then
-            echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" \
-                | sudo tee -a /etc/apt/sources.list.d/docker.list >/dev/null
+            echo \
+                "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+                $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
         fi
-        sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 \
-            --recv-keys 58118E89F3A912897C070ADBF76221572C52609D >/dev/null
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg |
+            sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
         if [ ! -f /etc/apt/sources.list.d/hashicorp.list ]; then
             echo "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" \
@@ -109,7 +108,9 @@ if [[ $DISPLAY != "" ]]; then
                 automake\
                 cmake\
                 libtool\
-            docker-engine\
+            docker-ce\
+                docker-ce-cli\
+                containerd.io\
             golang\
             inotify-tools\
             jq\

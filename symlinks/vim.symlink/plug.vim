@@ -47,7 +47,7 @@ Plug 'tpope/vim-dadbod'
 "" Search
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'easymotion/vim-easymotion'
+Plug 'phaazon/hop.nvim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim' " required for ranger
 Plug 'svermeulen/vim-NotableFt'

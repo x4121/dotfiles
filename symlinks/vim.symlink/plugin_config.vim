@@ -92,10 +92,11 @@ command! -bang -nargs=* Rg
 
 
 """"""""""""""""""""""""""""""
-" => easymotion
+" => hop
 """"""""""""""""""""""""""""""
-nmap <leader>/ <Plug>(easymotion-sn)
-let g:EasyMotion_smartcase = 1
+:lua require'hop'.setup()
+map <leader>/ :HopPattern<cr>
+map <leader><space> :HopWord<cr>
 
 
 """"""""""""""""""""""""""""""
@@ -208,10 +209,8 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 let g:airline#extensions#ale#enabled = 1
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'json': ['jq'],
 \   'rust': ['rustfmt'],
 \   'scala': ['scalafmt'],
-\   'sh': ['shfmt'],
 \}
 let g:ale_linters = {
 \   'rust': ['analyzer']
@@ -383,7 +382,7 @@ let g:coc_global_extensions = [
       \'coc-json',
       \'coc-metals',
       \'coc-omnisharp',
-      \'coc-python',
+      \'coc-pyright',
       \'coc-rust-analyzer',
       \'coc-sh',
       \'coc-snippets',
