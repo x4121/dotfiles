@@ -1,4 +1,5 @@
 {
+  "coc.preferences.silentAutoupdate": true,
   "diagnostic.displayByAle": true,
   "suggest.enablePreview": true,
   "suggest.minTriggerInputLength": 2,
