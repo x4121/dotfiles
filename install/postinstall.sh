@@ -338,13 +338,6 @@ vim +PlugInstall +qall
 echo 'Setting fish as default shell'
 sudo chsh -s "$(grep /fish$ /etc/shells | tail -1)" "$USER"
 
-echo 'Installing omf'
-tmp="$(mktemp)"
-curl -L https://get.oh-my.fish >"$tmp"
-fish "$tmp" --noninteractive --yes
-echo "omf install" | fish
-rm -rf "$tmp"
-
 echo 'Installing tmux plugins'
 "$HOME/.tmux/plugins/tpm/bin/install_plugins"
 
