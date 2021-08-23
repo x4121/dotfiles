@@ -392,6 +392,9 @@ let g:coc_global_extensions = [
       \'coc-yaml',
       \]
 
+" hard-code node version (for projects with local node version < 12)
+let g:coc_node_path = '$HOME/.asdf/installs/nodejs/latest/bin/node'
+
 """"""""""""""""""""""""""""""
 " => coc-snippets
 """"""""""""""""""""""""""""""
