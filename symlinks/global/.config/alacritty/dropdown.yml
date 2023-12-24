@@ -10,6 +10,8 @@ window:
   padding:
     x: 2
     y: 2
+  dynamic_title: true
+  opacity: 0.9
 
 draw_bold_text_with_bright_colors: true
 
@@ -32,8 +34,6 @@ font:
   glyph_offset:
     x: 0
     y: 0
-
-  use_thin_strokes: false
 
 debug.render_timer: false
 
@@ -71,8 +71,6 @@ bell:
   animation: EaseOutExpo
   duration: 0
 
-background_opacity: 0.9
-
 mouse_bindings:
   - { mouse: Middle, action: PasteSelection }
   - { mouse: Left, action: Copy }
@@ -87,8 +85,6 @@ mouse:
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
-
-window.dynamic_title: true
 
 cursor:
   style: Block

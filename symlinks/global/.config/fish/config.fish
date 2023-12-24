@@ -1,3 +1,10 @@
+set PATH $HOME/.local/bin $PATH
+
+# rust
+set RUSTUP_HOME /opt/rustup
+set CARGO_HOME /opt/cargo
+set PATH $CARGO_HOME/bin $PATH
+
 # Launch starship
 starship init fish | source
 
@@ -19,11 +26,6 @@ zoxide init fish | source
 set -x COURSIER_INSTALL_DIR /usr/local/coursier/bin
 set PATH /usr/local/coursier/bin $PATH
 
-# rust
-# set RUSTUP_HOME /opt/rustup
-# set CARGO_HOME /opt/cargo
-# set PATH $CARGO_HOME/bin $PATH
-
 # go
 set PATH $HOME/go/bin $PATH
 
@@ -38,9 +40,6 @@ if not set -q __alias_init
   set -gx __alias_init
   source $HOME/.config/fish/alias.fish
 end
-
-# 1Password
-set -x OP_SESSION_ryte (cat $HOME/.op_session_ryte)
 
 # colored man pages
 set -x LESS_TERMCAP_mb (printf '\e[01;31m') # enter blinking mode - red

@@ -28,7 +28,7 @@ Plug 'masukomi/vim-markdown-folding'
 Plug 'rodjek/vim-puppet'
 " Rust
 Plug 'rust-lang/rust.vim'
-Plug 'cespare/vim-toml'
+Plug 'cespare/vim-toml', { 'branch': 'main' }
 " C#
 Plug 'Omnisharp/omnisharp-vim'
 " Hashicorp

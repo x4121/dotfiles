@@ -1,20 +1,17 @@
 #!/bin/bash
 set -e
 
-# own ppa
-if ! ls /etc/apt/sources.list.d/x4121* >/dev/null; then
-    sudo add-apt-repository -y ppa:x4121/ppa >/dev/null
-fi
-
 SW="apt-transport-tor\
     ecryptfs-utils\
     fish\
-        thefuck\
     htop\
     net-tools\
     neovim\
         universal-ctags\
     pwgen\
+    python3\
+        python3-pip\
+        python3-venv\
     ranger\
         atool\
         caca-utils\
@@ -29,7 +26,6 @@ if [[ $DISPLAY != "" ]]; then
     fi
 
     SW="$SW\
-        chromium-browser\
         cmus\
         gawk\
         neomutt\
@@ -62,7 +58,7 @@ if [[ $DISPLAY != "" ]]; then
             arc-theme\
             chrome-gnome-shell\
             gnome-session\
-            gnome-tweak-tool\
+            gnome-tweaks\
             numix-icon-theme-circle\
             plymouth-theme-ubuntu-gnome-logo"
     fi
@@ -109,8 +105,10 @@ if [[ $DISPLAY != "" ]]; then
                 cmake\
                 libtool\
             docker-ce\
-                docker-ce-cli\
                 containerd.io\
+                docker-buildx-plugin\
+                docker-ce-cli\
+                docker-compose-plugin\
             golang\
             inotify-tools\
             jq\

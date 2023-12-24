@@ -11,8 +11,7 @@ My dotfiles
 * rofi config
 * XCompose bindings
 * gruvbox colors for most tools
-* autostart/devilspie scripts
-* i3 config (unfinished/testing)
+* autostart scripts
 * GnomeShell extensions
 * sbt config and plugins
 * zathura config
@@ -24,7 +23,7 @@ My dotfiles
 - `wget -q -O - https://armingrodon.de/dot | bash`
 
 ## Warning
-* This project is currently only tested against the most recent\* Ubuntu release (if even!)
+* This project is currently only tested against the most recent\* Ubuntu LTS release (if even!)
 * The install script will overwrite files,
   read the [install.sh](install.sh) and
   [symlinks.sh](symlinks.sh) if you want to know which.

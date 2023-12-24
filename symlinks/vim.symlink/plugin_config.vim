@@ -34,6 +34,7 @@ let g:indentLine_color_term = 239
 let g:indentLine_color_gui = '#09AA08'
 let g:indentLine_char = '┆'
 let g:indentLine_faster = 1
+autocmd FileType json,markdown let g:indentLine_enabled = 0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -215,6 +216,10 @@ let g:ale_fixers = {
 let g:ale_linters = {
 \   'rust': ['analyzer']
 \}
+" ALE fixer messes up markdown
+let g:ale_pattern_options = {
+\   '.*\.md$': {'ale_enabled': 0},
+\}
 let g:ale_fix_on_save = 1
 
 nmap <silent> <M-k> <Plug>(ale_previous_wrap)
@@ -375,7 +380,6 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 let g:coc_global_extensions = [
       \'coc-css',
       \'coc-elixir',
-      \'coc-erlang_ls',
       \'coc-go',
       \'coc-html',
       \'coc-java',

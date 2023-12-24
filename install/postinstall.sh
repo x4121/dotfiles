@@ -7,9 +7,9 @@ if [[ -n ${I_DEV+x} ]]; then
     sudo apt-get install -y \
         libssl-dev libncurses5-dev libreadline-dev zlib1g-dev >/dev/null
     git clone https://github.com/asdf-vm/asdf.git \
-        "$HOME/.asdf" --branch v0.8.1 >/dev/null
+        "$HOME/.asdf" --branch v0.13.1 >/dev/null
     mkdir -p "$HOME/.config/fish/completions"
-    cp "$HOME/.asdf/completions/asdf.fish" "$HOME/.config/fish/completions"
+    ln -s "$HOME/.asdf/completions/asdf.fish" "$HOME/.config/fish/completions"
 
     # shellcheck disable=SC1090
     source "$HOME/.asdf/asdf.sh"
@@ -69,7 +69,7 @@ if [[ -n ${I_DEV+x} ]]; then
         starship \
         zoxide \
         ;
-    starship completions >"$HOME/.config/fish/completions/starship.fish"
+    starship completions fish >"$HOME/.config/fish/completions/starship.fish"
 
     echo 'Setting alacritty as default terminal'
     sudo update-alternatives --install \
@@ -84,18 +84,8 @@ if [[ -n ${I_DEV+x} ]]; then
     mix local.rebar --force
     mix archive.install hex phx_new 1.5.9
 
-    echo 'Installing docker-compose'
-    tmp="$(mktemp)"
-    curl -L \
-        "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(
-            uname -s
-        )-$(uname -m)" \
-        >"$tmp" 2>/dev/null
-    sudo mkdir -p /usr/local/bin
-    sudo mv "$tmp" /usr/local/bin/docker-compose
-    sudo chmod +x /usr/local/bin/docker-compose
+    echo 'Setting up docker user permissions'
     sudo adduser "$USER" docker
-    rm -rf "$tmp"
 
     echo 'Adding user to plugdev for adb'
     sudo adduser "$USER" plugdev
@@ -103,11 +93,11 @@ if [[ -n ${I_DEV+x} ]]; then
     echo 'Installing coursier'
     tmp="$(mktemp -d)"
     pushd "$tmp" >/dev/null
-    curl -fLo cs https://git.io/coursier-cli-"$(uname | tr LD ld)" 2>/dev/null
+    curl -fL https://github.com/coursier/launcher/raw/master/cs-"$(uname -i)"-pc-linux.gz | gzip -d > cs
     chmod +x cs
     COURSIER_INSTALL_DIR=/usr/local/coursier/bin
     export COURSIER_INSTALL_DIR
-    sudo mkdir $COURSIER_INSTALL_DIR
+    sudo mkdir -p $COURSIER_INSTALL_DIR
     sudo chown "$USER":sudo $COURSIER_INSTALL_DIR
     sudo chmod g+w $COURSIER_INSTALL_DIR
     ./cs install cs scalafmt ammonite
@@ -166,10 +156,6 @@ if [[ $DISPLAY != "" ]]; then
     python3 -m pip install mutt_ics vobject \
         gcalcli
 
-    echo 'Setting chromium as default browser'
-    sudo update-alternatives --set gnome-www-browser "$(command -v chromium-browser)"
-    sudo update-alternatives --set x-www-browser "$(command -v chromium-browser)"
-
     echo 'Installing tdrop'
     tmp=$(mktemp -d)
     git clone https://github.com/noctuid/tdrop "$tmp" >/dev/null
@@ -180,12 +166,6 @@ if [[ $DISPLAY != "" ]]; then
 fi
 
 if [[ $DESKTOP_SESSION = gnome ]]; then
-    echo "Remove Ubuntu's ugly gdm/plymouth config"
-    sudo update-alternatives --set gdm3.css \
-        /usr/share/gnome-shell/theme/gnome-shell.css
-    sudo update-alternatives --set default.plymouth \
-        /usr/share/plymouth/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.plymouth
-
     echo 'Installing gnome-shell extensions'
     gnomeshell_install="$HOME/.dotfiles/symlinks/bin.symlink/gnomeshell-extension-manage \
         --install --version latest --extension-id"
@@ -228,14 +208,14 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
         extend-height true
     gsettings set org.gnome.shell.extensions.dash-to-dock \
         show-show-apps-button false
-    # topicons plus
+    # topicons plus TODO: fix
     gsettings set org.gnome.shell.extensions.topicons \
         icon-opacity 250
     gsettings set org.gnome.shell.extensions.topicons \
         icon-size 19
     gsettings set org.gnome.shell.extensions.topicons \
         icon-spacing 9
-    # openweather
+    # openweather TODO: fix
     gsettings set org.gnome.shell.extensions.openweather \
         pressure-unit 'hPa'
     gsettings set org.gnome.shell.extensions.openweather \
@@ -244,7 +224,7 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
         wind-speed-unit 'kph'
     gsettings set org.gnome.shell.extensions.openweather \
         city '48.1371079,11.5753822>München, OB, Bayern, Deutschland >-1'
-    # theme
+    # theme TODO: fix
     gsettings set org.gnome.shell.extensions.user-theme \
         name 'Arc-Dark'
     # enable extensions
@@ -317,9 +297,6 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
         "file:///$HOME/Nextcloud/sync/background.jpg"
     gsettings set org.gnome.desktop.screensaver picture-uri \
         "file:///$HOME/Nextcloud/sync/lockscreen.jpg"
-
-    echo 'Force disabling Wayland'
-    sudo sed -i 's/^#\(WaylandEnable=false\)/\1/' /etc/gdm3/custom.conf
 fi
 
 echo 'Creating symlinks'
@@ -328,7 +305,6 @@ bash ./symlinks.sh >/dev/null
 popd >/dev/null
 
 echo 'Installing Vim-Plugins'
-python -m pip install pynvim
 python3 -m pip install pynvim
 npm install -g neovim
 curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \

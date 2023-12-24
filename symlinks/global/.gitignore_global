@@ -1,5 +1,12 @@
+# editors and IDEs
 /.idea/
-/.bsp/
+/.vscode/
+
+# bloop and metals
+.bsp/
 .bloop/
-/.metals/
-metals.sbt
+.metals/
+project/**/metals.sbt
+
+# ammonite
+/.ammonite/
