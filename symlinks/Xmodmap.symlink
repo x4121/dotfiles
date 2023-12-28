@@ -1,6 +1,0 @@
-! Use Caps_Lock as Multi_key
-keycode 66  = Multi_key
-clear Lock
-
-! Use Alt_R as Caps_Lock
-keycode 108 = Caps_Lock

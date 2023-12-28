@@ -1,6 +1,37 @@
 #!/bin/bash
 set -e
 
+echo 'Disable annoying apt-esm advertisement'
+sudo rm /etc/apt/apt.conf.d/20apt-esm-hook.conf
+sudo touch /etc/apt/apt.conf.d/20apt-esm-hook.conf
+
+echo 'Installing Interception Tools'
+# deb package in repository doesn't work for Ubuntu 22.04
+# sudo add-apt-repository -y ppa:deafmute/interception
+tmp="$(mktemp -d)"
+sudo apt-install -y \
+    cmake libevdev-dev libudev-dev libyaml-cpp-dev libboost-dev
+git clone https://gitlab.com/interception/linux/tools.git "$tmp" >/dev/null
+pushd "$tmp" >/dev/null
+cmake -B build -DCMAKE_BUILD_TYPE=Release
+sudo cmake --build build --target install
+popd >/dev/null
+rm -rf "$tmp"
+tmp="$(mktemp -d)"
+git clone https://gitlab.com/interception/linux/plugins/dual-function-keys.git "$tmp" > /dev/null
+pushd "$tmp" >/dev/null
+make && sudo make install
+popd >/dev/null
+rm -rf "$tmp"
+sed 's/ExecStart.*/ExecStart=\/usr\/local\/bin\/udevmon/' \
+    udevmon.service | sudo tee /etc/systemd/system/udevmon.service
+sudo mkdir -p /etc/interception
+sudo chown -R "$USER":sudo /etc/interception
+ln -s "$HOME/.interception-tools/udevmon.d" /etc/interception/
+ln -s "$HOME/.interception-tools/dual-function-keys.yaml" /etc/interception/
+sudo systemctl daemon-reload
+sudo systemctl enable udevmon.service
+
 if [[ -n ${I_DEV+x} ]]; then
     echo 'Installing asdf'
 
@@ -12,40 +43,50 @@ if [[ -n ${I_DEV+x} ]]; then
     ln -s "$HOME/.asdf/completions/asdf.fish" "$HOME/.config/fish/completions"
 
     # shellcheck disable=SC1090
-    source "$HOME/.asdf/asdf.sh"
-    asdf plugin-add erlang
-    asdf install erlang 22.3.4.20
-    asdf global erlang 22.3.4.20
-
-    asdf plugin-add elixir
-    asdf install elixir 1.12.1-otp-24
-    asdf global elixir 1.12.1-otp-24
-
     asdf plugin-add nodejs
-    "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
-    asdf install nodejs 16.3.0
-    asdf install nodejs 12.22.1
-    asdf global nodejs 16.3.0
-    ln -s "$HOME/.asdf/installs/nodejs/12.22.1" "$HOME/.asdf/installs/nodejs/12"
+    asdf install nodejs 8.17.0
+    asdf install nodejs 16.20.2
+    asdf install nodejs 18.19.0
+    asdf global nodejs 18.19.0
+    ln -s "$HOME/.asdf/installs/nodejs/18.19.0" "$HOME/.asdf/installs/nodejs/latest"
+    ln -s "$HOME/.asdf/installs/nodejs/18.19.0" "$HOME/.asdf/installs/nodejs/18"
+    ln -s "$HOME/.asdf/installs/nodejs/18.19.0" "$HOME/.asdf/installs/nodejs/18.19"
+    ln -s "$HOME/.asdf/installs/nodejs/16.20.2" "$HOME/.asdf/installs/nodejs/16"
+    ln -s "$HOME/.asdf/installs/nodejs/16.20.2" "$HOME/.asdf/installs/nodejs/16.20"
 
     asdf plugin-add terraform
-    asdf install terraform 0.11.15
-    asdf install terraform 0.12.31
+    asdf install terraform 0.12.18
     asdf install terraform 0.13.7
-    asdf global terraform 0.12.31
+    asdf install terraform 1.1.8
+    asdf install terraform 1.3.2
+    asdf global terraform 1.3.2
+
+    echo 'Installing vscode'
+    curl -fLo \
+        'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' \
+        /tmp/code.deb
+    sudo dpkg -i /tmp/code.deb
+    sudo apt-get install -f
 
     echo 'Installing rust'
-    sudo mkdir /opt/cargo /opt/rustup
-    sudo chown "$USER":sudo /opt/cargo /opt/rustup
-    sudo chmod g+w /opt/cargo /opt/rustup
+    CARGO_HOME=/opt/cargo
+    RUSTUP_HOME=/opt/rustup
+    sudo mkdir $CARGO_HOME $RUSTUP_HOME
+    sudo chown "$USER":sudo $CARGO_HOME $RUSTUP_HOME
+    sudo chmod g+w $CARGO_HOME $RUSTUP_HOME
+    export RUSTUP_HOME
+    export CARGO_HOME
     curl https://sh.rustup.rs -sSf |
-        env RUSTUP_HOME=/opt/rustup CARGO_HOME=/opt/cargo \
-            sh -s -- --default-toolchain stable --profile default \
-            --no-modify-path -y >/dev/null
+        sh -s -- --default-toolchain stable --profile default \
+        --no-modify-path -y >/dev/null
     # shellcheck disable=SC1090
     source "/opt/cargo/env"
+    rustup default stable
+    mkdir -p "$HOME/.config/fish/completions"
     rustup completions fish >"$HOME/.config/fish/completions/rustup.fish"
-    # rustup component add rustfmt
+
+    sudo apt-get install -y \
+        libfontconfig-dev
     cargo install \
         alacritty \
         bat \
@@ -57,7 +98,6 @@ if [[ -n ${I_DEV+x} ]]; then
         cargo-watch \
         du-dust \
         exa \
-        fastsar \
         fd-find \
         git-trim \
         grex \
@@ -79,11 +119,6 @@ if [[ -n ${I_DEV+x} ]]; then
         1000
     sudo ln -sf /etc/alternatives/x-terminal-emulator /usr/bin/x-terminal-emulator
 
-    echo 'Installing phoenix'
-    mix local.hex --force
-    mix local.rebar --force
-    mix archive.install hex phx_new 1.5.9
-
     echo 'Setting up docker user permissions'
     sudo adduser "$USER" docker
 
@@ -93,7 +128,7 @@ if [[ -n ${I_DEV+x} ]]; then
     echo 'Installing coursier'
     tmp="$(mktemp -d)"
     pushd "$tmp" >/dev/null
-    curl -fL https://github.com/coursier/launcher/raw/master/cs-"$(uname -i)"-pc-linux.gz | gzip -d > cs
+    curl -fL "https://github.com/coursier/launchers/raw/master/cs-x86_64-pc-linux.gz" | gzip -d > cs
     chmod +x cs
     COURSIER_INSTALL_DIR=/usr/local/coursier/bin
     export COURSIER_INSTALL_DIR
@@ -112,15 +147,29 @@ if [[ -n ${I_DEV+x} ]]; then
     echo 'Installing pre-commit'
     python3 -m pip install pre-commit
 
-    echo 'Installing terraform-docs'
-    go get github.com/segmentio/terraform-docs@v0.11.2
-
-    echo 'Installing shfmt'
-    go get mvdan.cc/sh/v3/cmd/shfmt
-
     echo 'Installing typescript and stuff'
-    npm install -g typescript tslint \
-        yarn prettier
+    npm install -g eslint typescript prettier yarn
+
+    echo 'Installing AWS cli'
+    python3 -m pip install awscli-update
+    awscli-update -q --prefix "$HOME/.local"
+    (crontab -l; echo "0 * * * * \$HOME/.local/bin/awscli-update -q --prefix \$HOME/.local") \
+        | sort -u | crontab -
+
+    echo 'Installing granted'
+    tmp="$(mktemp -d)"
+    pushd "$tmp" >/dev/null
+    granted_version="$(curl -Lso /dev/null -w '%{url_effective}' \
+        'https://github.com/common-fate/granted/releases/latest' \
+        | rev | cut -d'/' -f1 | rev)"
+    curl -L \
+        "https://releases.commonfate.io/granted/$granted_version/granted_${granted_version:1}_linux_x86_64.tar.gz" \
+        -o granted.tar.gz
+    tar -zxf granted.tar.gz
+    sudo cp assume assumego granted /usr/local/bin/
+    cp assume.fish "$HOME/.config/fish/functions/"
+    popd >/dev/null
+    rm -rf "$tmp"
 fi
 
 pushd "$HOME/.dotfiles" >/dev/null
@@ -156,66 +205,112 @@ if [[ $DISPLAY != "" ]]; then
     python3 -m pip install mutt_ics vobject \
         gcalcli
 
-    echo 'Installing tdrop'
-    tmp=$(mktemp -d)
-    git clone https://github.com/noctuid/tdrop "$tmp" >/dev/null
-    pushd "$tmp" >/dev/null
-    sudo make install >/dev/null
-    popd >/dev/null
-    rm -rf "$tmp"
+    echo 'Installing snaps'
+    sudo snap install \
+        discord \
+        postman \
+        roll \
+        slack \
+        spotify \
+        ;
+
+    echo 'Installing flathub'
+    sudo flatpak remote-add --if-not-exists flathub \
+        https://dl.flathub.org/repo/flathub.flatpakrepo
+    flatpak install -y flathub com.github.tchx84.Flatseal
+    flatpak install -y flathub com.dec05eba.gpu_screen_recorder
 fi
 
-if [[ $DESKTOP_SESSION = gnome ]]; then
+if [[ $DESKTOP_SESSION = ubuntu ]]; then
     echo 'Installing gnome-shell extensions'
     gnomeshell_install="$HOME/.dotfiles/symlinks/bin.symlink/gnomeshell-extension-manage \
-        --install --version latest --extension-id"
+        --install --extension-id"
     # user themes
     $gnomeshell_install 19
     # dash to dock
     $gnomeshell_install 307
-    # topicons plus
-    $gnomeshell_install 118
-    # sound io chooser
-    $gnomeshell_install 906
     # openweather
     $gnomeshell_install 750
-    # music indicator
-    $gnomeshell_install 1379
-    # spotify label
-    $gnomeshell_install 2603
+    # topicons plus
+    $gnomeshell_install 1031
+    # no annoyance
+    $gnomeshell_install 2182
+    # ddterm
+    $gnomeshell_install 3780
 
     echo 'Configuring gnome-shell extensions'
     ext_home="$HOME/.local/share/gnome-shell/extensions"
     schema_dir=/usr/share/glib-2.0/schemas/
     sudo cp \
-        "$ext_home/user-theme@gnome-shell-extensions.gcampax.github.com/schemas/org.gnome.shell.extensions.user-theme.gschema.xml" \
         "$ext_home/dash-to-dock@micxgx.gmail.com/schemas/org.gnome.shell.extensions.dash-to-dock.gschema.xml" \
-        "$ext_home/mediaplayer@patapon.info/schemas/org.gnome.shell.extensions.mediaplayer.gschema.xml" \
+        "$ext_home/ddterm@amezin.github.com/schemas/com.github.amezin.ddterm.gschema.xml" \
+        "$ext_home/noannoyance@daase.net//schemas/org.gnome.shell.extensions.noannoyance.gschema.xml" \
         "$ext_home/openweather-extension@jenslody.de/schemas/org.gnome.shell.extensions.openweather.gschema.xml" \
-        "$ext_home/TopIcons@phocean.net/schemas/org.gnome.shell.extensions.topicons.gschema.xml" \
+        "$ext_home/user-theme@gnome-shell-extensions.gcampax.github.com/schemas/org.gnome.shell.extensions.user-theme.gschema.xml" \
         $schema_dir
     sudo glib-compile-schemas $schema_dir
+
     # dash to dock
     gsettings set org.gnome.shell.extensions.dash-to-dock \
-        custom-theme-customize-running-dots true
+        apply-custom-theme false
     gsettings set org.gnome.shell.extensions.dash-to-dock \
-        custom-theme-running-dots true
+        custom-theme-customize-running-dots true
     gsettings set org.gnome.shell.extensions.dash-to-dock \
         custom-theme-shrink true
     gsettings set org.gnome.shell.extensions.dash-to-dock \
         dash-max-icon-size 32
     gsettings set org.gnome.shell.extensions.dash-to-dock \
+        dock-fixed true
+    gsettings set org.gnome.shell.extensions.dash-to-dock \
+        dock-position 'LEFT'
+    gsettings set org.gnome.shell.extensions.dash-to-dock \
         extend-height true
     gsettings set org.gnome.shell.extensions.dash-to-dock \
+        running-indicator-style 'DOTS'
+    gsettings set org.gnome.shell.extensions.dash-to-dock \
         show-show-apps-button false
-    # topicons plus TODO: fix
-    gsettings set org.gnome.shell.extensions.topicons \
-        icon-opacity 250
-    gsettings set org.gnome.shell.extensions.topicons \
-        icon-size 19
-    gsettings set org.gnome.shell.extensions.topicons \
-        icon-spacing 9
-    # openweather TODO: fix
+    gsettings set org.gnome.shell.extensions.dash-to-dock \
+        show-mounts false
+    gsettings set org.gnome.shell.extensions.dash-to-dock \
+        show-trash false
+
+    # ddterm
+    gsettings set com.github.amezin.ddterm \
+        command 'custom-command'
+    gsettings set com.github.amezin.ddterm \
+        custom-command 'tmux new-session -A -s dropdown'
+    gsettings set com.github.amezin.ddterm \
+        custom-font 'FuraMonoForPowerline Nerd Font 12'
+    gsettings set com.github.amezin.ddterm \
+        background-color '#282828'
+    gsettings set com.github.amezin.ddterm \
+        foreground-color '#ebdbb2'
+    gsettings set com.github.amezin.ddterm \
+        notebook-border false
+    gsettings set com.github.amezin.ddterm \
+        palette "['#282828', '#cc241d', '#98971a', '#d79921', '#458588', '#b16286', '#689d6a', '#a89984', '#928374', '#fb4934', '#b8bb26', '#fabd2f', '#83a598', '#d3869b', '#8ec07c', '#ebdbb2']"
+    gsettings set com.github.amezin.ddterm \
+        panel-icon-type 'none'
+    gsettings set com.github.amezin.ddterm \
+        show-scrollbar false
+    gsettings set com.github.amezin.ddterm \
+        tab-policy 'never'
+    gsettings set com.github.amezin.ddterm \
+        use-system-font false
+    gsettings set com.github.amezin.ddterm \
+        use-theme-colors false
+    gsettings set com.github.amezin.ddterm \
+        window-monitor 'focus'
+    gsettings set com.github.amezin.ddterm \
+        window-resizable false
+    gsettings set com.github.amezin.ddterm \
+        window-size 0.34
+
+    # no annoyance
+    gsettings set org.gnome.shell.extensions.noannoyance \
+        enable-ignorelist false
+
+    # openweather
     gsettings set org.gnome.shell.extensions.openweather \
         pressure-unit 'hPa'
     gsettings set org.gnome.shell.extensions.openweather \
@@ -223,17 +318,20 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
     gsettings set org.gnome.shell.extensions.openweather \
         wind-speed-unit 'kph'
     gsettings set org.gnome.shell.extensions.openweather \
-        city '48.1371079,11.5753822>München, OB, Bayern, Deutschland >-1'
-    # theme TODO: fix
+        city '48.7630165,11.4250395>Ingolstadt, Bayern, Deutschland>0'
+
+    # user theme
     gsettings set org.gnome.shell.extensions.user-theme \
         name 'Arc-Dark'
+
     # enable extensions
     gsettings set org.gnome.shell enabled-extensions \
-        "['alternate-tab@gnome-shell-extensions.gcampax.github.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'dash-to-dock@micxgx.gmail.com', 'openweather-extension@jenslody.de', 'TopIcons@phocean.net', 'nohotcorner@azuri.free.fr']"
+        "['openweather-extension@jenslody.de', 'ddterm@amezin.github.com', 'noannoyance@daase.net', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'dash-to-dock@micxgx.gmail.com']"
+
 
     echo 'Setting keyboard shortcuts'
     gsettings set org.gnome.desktop.input-sources xkb-options \
-        "['caps:ctrl_modifier', 'compose:ralt', 'shift:both_capslock_cancel']"
+        "['compose:ralt', 'shift:both_capslock_cancel']"
     gsettings set org.gnome.desktop.wm.keybindings \
         switch-input-source "[]"
     gsettings set org.gnome.desktop.wm.keybindings \
@@ -242,7 +340,7 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
     kb_dir='/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings'
 
     kb_list='['
-    for i in $(seq 0 9); do
+    for i in $(seq 0 7); do
         kb_list="$kb_list'$kb_dir/custom$i/', "
     done
     kb_list="${kb_list/%, /]}"
@@ -254,31 +352,21 @@ if [[ $DESKTOP_SESSION = gnome ]]; then
     gsettings set $kb_sch:$kb_dir/custom1/ name 'Rofi run'
     gsettings set $kb_sch:$kb_dir/custom1/ command 'rofi -combi-modi run,window,drun -show combi'
     gsettings set $kb_sch:$kb_dir/custom1/ binding '<Super>space'
-    gsettings set $kb_sch:$kb_dir/custom3/ name 'Rofi soundboard'
-    gsettings set $kb_sch:$kb_dir/custom3/ command "$HOME/.dotfiles/etc/rofi-soundboard/rofi-soundboard"
-    gsettings set $kb_sch:$kb_dir/custom3/ binding 'F9'
-    gsettings set $kb_sch:$kb_dir/custom4/ name 'Rofi pass'
-    gsettings set $kb_sch:$kb_dir/custom4/ command 'rofi-pass --last-used'
-    gsettings set $kb_sch:$kb_dir/custom4/ binding 'F8'
-    gsettings set $kb_sch:$kb_dir/custom5/ name 'Tmux'
-    gsettings set $kb_sch:$kb_dir/custom5/ \
-        command "alacritty -e tmux new-session -A -s tmux"
-    gsettings set $kb_sch:$kb_dir/custom5/ binding '<Super>Return'
-    gsettings set $kb_sch:$kb_dir/custom6/ name 'Dropdown'
-    # shellcheck disable=SC2016
-    gsettings set $kb_sch:$kb_dir/custom6/ \
-        command 'tdrop -ma -h 34% -y 0 -s dropdown -f "--config-file $HOME/.config/alacritty/dropdown.yml" alacritty'
-    gsettings set $kb_sch:$kb_dir/custom6/ binding 'F12'
-    gsettings set $kb_sch:$kb_dir/custom7/ name 'dnd-toggle'
-    gsettings set $kb_sch:$kb_dir/custom7/ command 'dnd-toggle'
-    gsettings set $kb_sch:$kb_dir/custom7/ binding '<Super>z'
-
-    gsettings set $kb_sch:$kb_dir/custom8/ name 'System Monitor'
-    gsettings set $kb_sch:$kb_dir/custom8/ command 'gnome-system-monitor'
-    gsettings set $kb_sch:$kb_dir/custom8/ binding '<Primary><Shift>Escape'
-    gsettings set $kb_sch:$kb_dir/custom9/ name 'xkill'
-    gsettings set $kb_sch:$kb_dir/custom9/ command 'xkill'
-    gsettings set $kb_sch:$kb_dir/custom9/ binding '<Super>k'
+    gsettings set $kb_sch:$kb_dir/custom2/ name 'Rofi soundboard'
+    gsettings set $kb_sch:$kb_dir/custom2/ command "$HOME/.dotfiles/etc/rofi-soundboard/rofi-soundboard"
+    gsettings set $kb_sch:$kb_dir/custom2/ binding 'F9'
+    gsettings set $kb_sch:$kb_dir/custom3/ name 'Rofi pass'
+    gsettings set $kb_sch:$kb_dir/custom3/ command 'rofi-pass --last-used'
+    gsettings set $kb_sch:$kb_dir/custom3/ binding 'F8'
+    gsettings set $kb_sch:$kb_dir/custom4/ name 'Tmux'
+    gsettings set $kb_sch:$kb_dir/custom4/ command "alacritty -e tmux new-session -A -s tmux"
+    gsettings set $kb_sch:$kb_dir/custom4/ binding '<Super>Return'
+    gsettings set $kb_sch:$kb_dir/custom5/ name 'System Monitor'
+    gsettings set $kb_sch:$kb_dir/custom5/ command 'gnome-system-monitor'
+    gsettings set $kb_sch:$kb_dir/custom5/ binding '<Primary><Shift>Escape'
+    gsettings set $kb_sch:$kb_dir/custom6/ name 'xkill'
+    gsettings set $kb_sch:$kb_dir/custom6/ command 'xkill'
+    gsettings set $kb_sch:$kb_dir/custom6/ binding '<Super>k'
 
     echo 'Additional settings'
     gsettings set org.gnome.desktop.wm.preferences \
@@ -316,17 +404,6 @@ sudo chsh -s "$(grep /fish$ /etc/shells | tail -1)" "$USER"
 
 echo 'Installing tmux plugins'
 "$HOME/.tmux/plugins/tpm/bin/install_plugins"
-
-echo 'Installing 1Password cli'
-tmp="$(mktemp -d)"
-curl -fLo "$tmp/op.zip" \
-    https://cache.agilebits.com/dist/1P/op/pkg/v1.9.2/op_linux_amd64_v1.9.2.zip
-unzip "$tmp/op.zip" -d "$tmp"
-gpg --receive-keys 3FEF9748469ADBE15DA7CA80AC2D62742012EA22
-gpg --verify "$tmp/op.sig" "$tmp/op"
-mkdir -p "$HOME/.local/bin"
-mv "$tmp/op" "$HOME/.local/bin/."
-rm -rf "$tmp"
 
 echo 'Setting up ranger'
 ranger --copy-config=scope

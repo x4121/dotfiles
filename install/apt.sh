@@ -4,10 +4,11 @@ set -e
 SW="apt-transport-tor\
     ecryptfs-utils\
     fish\
-    htop\
+    fzf\
     net-tools\
     neovim\
         universal-ctags\
+    nmap\
     pwgen\
     python3\
         python3-pip\
@@ -27,7 +28,9 @@ if [[ $DISPLAY != "" ]]; then
 
     SW="$SW\
         cmus\
+        flatpak\
         gawk\
+        gparted\
         neomutt\
             isync\
             msmtp\
@@ -39,28 +42,28 @@ if [[ $DISPLAY != "" ]]; then
         newsboat\
         nextcloud-client-nautilus\
         pass\
+        peek\
         rofi\
+            wl-clipboard\
+            xdotool\
         socat\
         tmux\
-            xcape\
         virtualbox\
-        wmctrl\
-        xdotool\
         zathura"
 
-    if [[ $DESKTOP_SESSION = gnome ]]; then
+    if [[ $DESKTOP_SESSION = ubuntu ]]; then
         # numix-icon-theme
         if ! ls /etc/apt/sources.list.d/numix* >/dev/null; then
             sudo add-apt-repository -y ppa:numix/ppa >/dev/null
         fi
 
+        # chrome-gnome-shell is also required for Firefox
         SW="$SW\
             arc-theme\
             chrome-gnome-shell\
             gnome-session\
             gnome-tweaks\
-            numix-icon-theme-circle\
-            plymouth-theme-ubuntu-gnome-logo"
+            numix-icon-theme-circle"
     fi
 
     if [[ -n ${I_HOME+x} ]]; then
@@ -75,26 +78,28 @@ if [[ $DISPLAY != "" ]]; then
     if [[ -n ${I_DEV+x} ]]; then
         # sbt
         if [ ! -f /etc/apt/sources.list.d/sbt.list ]; then
-            echo "deb https://repo.scala-sbt.org/scalasbt/debian all main" \
-                | sudo tee -a /etc/apt/sources.list.d/sbt.list >/dev/null
+            echo "deb [signed-by=/usr/share/keyrings/sbt.gpg] \
+                https://repo.scala-sbt.org/scalasbt/debian all main" \
+                | sudo tee /etc/apt/sources.list.d/sbt.list >/dev/null
+            curl -fsSL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823" \
+                | sudo gpg --dearmor -o /usr/share/keyrings/sbt.gpg
         fi
-        sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 \
-            --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823 >/dev/null
         # docker
         if [ ! -f /etc/apt/sources.list.d/docker.list ]; then
-            echo \
-                "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-                $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
+            echo  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] \
+                https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
+                | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
+            curl -fsSL https://download.docker.com/linux/ubuntu/gpg \
+                | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
         fi
-        curl -fsSL https://download.docker.com/linux/ubuntu/gpg |
-            sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-
+        # hashicorp
         if [ ! -f /etc/apt/sources.list.d/hashicorp.list ]; then
-            echo "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" \
-                | sudo tee -a /etc/apt/sources.list.d/hashicorp.list
+            echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
+                https://apt.releases.hashicorp.com $(lsb_release -cs) main" \
+                | sudo tee /etc/apt/sources.list.d/hashicorp.list
+            curl -fsSL https://apt.releases.hashicorp.com/gpg \
+                | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
         fi
-        sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 \
-            --recv-keys DA418C88A3219F7B >/dev/null
 
 
         SW="$SW\
@@ -109,14 +114,13 @@ if [[ $DISPLAY != "" ]]; then
                 docker-buildx-plugin\
                 docker-ce-cli\
                 docker-compose-plugin\
-            golang\
             inotify-tools\
             jq\
-            libwxgtk3.0-dev\
-            rustc\
+            rpi-imager\
             sbt\
                 maven\
-                openjdk-8-jdk\
+                openjdk-11-jdk\
+                openjdk-17-jdk\
             shellcheck\
             terraform-ls"
     fi
