@@ -1,9 +1,59 @@
-# permanently set alternative root dir
+# permanently set alternative root dir. Use ":" to separate multiple roots
+# which can be switched at runtime with shift+left/right
 # root=/path/to/root
 
 # rofi command. Make sure to have "$@" as last argument
 _rofi () {
-    rofi -z -i -width 700 -no-levenshtein-sort "$@"
+  rofi -i -no-auto-select "$@"
+}
+
+# default command to generate passwords
+_pwgen () {
+  pwgen -y "$@"
+}
+
+# image viewer to display qrcode of selected entry
+# qrencode is needed to generate the image and a viewer
+# that can read from pipes. Known viewers to work are feh and display
+_image_viewer () {
+  # feh -
+  display
+}
+
+# It is possible to use wl-copy and wl-paste from wl-clipboard
+# Just uncomment the lines with wl-copy and wl-paste
+# and comment the xclip lines
+#
+_clip_in_primary() {
+  # xclip
+  wl-copy-p
+}
+
+_clip_in_clipboard() {
+  # xclip -selection clipboard
+  wl-copy
+}
+
+_clip_out_primary() {
+  # xclip -o
+  wl-paste -p
+}
+
+_clip_out_clipboard() {
+  # xclip --selection clipboard -o
+  wl-paste
+}
+
+
+# xdotool needs the keyboard layout to be set using setxkbmap
+# You can do this in your autostart scripts (e.g. xinitrc)
+
+# If for some reason, you cannot do this, you can set the command here.
+# and set fix_layout to true
+fix_layout=false
+
+layout_cmd () {
+  setxkbmap us
 }
 
 
@@ -15,23 +65,25 @@ AUTOTYPE_field='autotype'
 # delay to be used for :delay keyword
 delay=2
 
+# rofi-pass needs to close itself before it can type passwords. Set delay here.
+wait=0.2
+
+# delay between keypresses when typing (in ms)
+type_delay=12
+
 ## Programs to be used
 # Editor
 EDITOR='gvim -f'
 
 # Browser
-BROWSER='firefox'
+BROWSER='xdg-open'
 
 ## Misc settings
 
-default_do='autopass' # copyPass, typeUser, typePass, copyUser, copyUrl, viewEntry, typeMenu, actionMenu, copyMenu, openUrl
+default_do='autotype' # menu, autotype, copyPass, typeUser, typePass, copyUser, copyUrl, viewEntry, typeMenu, actionMenu, copyMenu, openUrl
 auto_enter='false'
 notify='false'
-passlength='20'
-
-# seconds to wait before re-opening showEntry-menu
-# after autotyping an entry. Set to "off" to disable
-count=2
+default_autotype='login :tab pass'
 
 # color of the help messages
 # leave empty for autodetection
@@ -40,6 +92,19 @@ help_color=""
 # Clipboard settings
 # Possible options: primary, clipboard, both
 clip=clipboard
+
+# Seconds before clearing pass from clipboard
+clip_clear=45
+
+## Options for generating new password entries
+
+# open new password entries in editor
+edit_new_pass="true"
+
+# default_user is also used for password files that have no user field.
+#default_user="${ROFI_PASS_DEFAULT_USER-$(whoami)}"
+#default_user2=mary_ann
+#password_length=12
 
 # Custom Keybindings
 autotype="Alt+1"
@@ -57,3 +122,14 @@ action_menu="Alt+a"
 type_menu="Alt+t"
 help="Alt+h"
 switch="Alt+x"
+insert_pass="Alt+n"
+
+# Change the clipboard backend for rofi-pass, valid backends are:
+# xclip
+# wl-clipboard
+clibpoard_backend=wl-clipboard
+
+# Change the backend for rofi-pass, valid backends are:
+# xdotool
+# wtype
+backend=xdotool

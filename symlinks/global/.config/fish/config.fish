@@ -1,4 +1,4 @@
-set PATH $HOME/.local/bin $PATH
+set PATH $HOME/.bin $HOME/.local/bin $PATH
 
 # rust
 set RUSTUP_HOME /opt/rustup
@@ -7,9 +7,6 @@ set PATH $CARGO_HOME/bin $PATH
 
 # Launch starship
 starship init fish | source
-
-# Map Control_L to Shift_L + F12 (for tmux prefix)
-pgrep -u $USER xcape > /dev/null; or xcape -e 'Control_L=Shift_L|F12'
 
 # Vim is the standard text editor.
 set -x EDITOR vim
@@ -25,9 +22,6 @@ zoxide init fish | source
 # coursier
 set -x COURSIER_INSTALL_DIR /usr/local/coursier/bin
 set PATH /usr/local/coursier/bin $PATH
-
-# go
-set PATH $HOME/go/bin $PATH
 
 # abbreviations
 if not set -q __abbr_init

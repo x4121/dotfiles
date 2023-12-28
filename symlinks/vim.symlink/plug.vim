@@ -15,8 +15,6 @@ Plug 'derekwyatt/vim-sbt'
 Plug 'derekwyatt/vim-scala'
 " Protobuf
 Plug 'uarun/vim-protobuf'
-" Elixir
-Plug 'elixir-lang/vim-elixir'
 " Web-Stuff
 Plug 'leafgarland/typescript-vim'
 Plug 'tpope/vim-jdaddy' " json
@@ -48,7 +46,7 @@ Plug 'tpope/vim-commentary' " add/remove comments
 Plug 'tpope/vim-dadbod'
 
 "" Search
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'phaazon/hop.nvim'
 Plug 'francoiscabrol/ranger.vim'

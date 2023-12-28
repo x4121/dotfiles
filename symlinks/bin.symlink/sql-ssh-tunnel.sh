@@ -1,1 +1,0 @@
-../../etc/ryte-tools/scripts/sql-ssh-tunnel.sh
