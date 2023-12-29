@@ -6,8 +6,7 @@ SW="apt-transport-tor\
     fish\
     fzf\
     net-tools\
-    neovim\
-        universal-ctags\
+    universal-ctags\
     nmap\
     pwgen\
     python3\

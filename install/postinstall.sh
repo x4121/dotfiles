@@ -85,10 +85,7 @@ if [[ -n ${I_DEV+x} ]]; then
     mkdir -p "$HOME/.config/fish/completions"
     rustup completions fish >"$HOME/.config/fish/completions/rustup.fish"
 
-    sudo apt-get install -y \
-        libfontconfig-dev
     cargo install \
-        alacritty \
         bat \
         bottom \
         cargo-audit \
@@ -212,6 +209,10 @@ if [[ $DISPLAY != "" ]]; then
         roll \
         slack \
         spotify \
+        ;
+    sudo snap install --classic \
+        alacritty \
+        nvim \
         ;
 
     echo 'Installing flathub'
