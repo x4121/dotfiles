@@ -1,5 +1,0 @@
-source ~/.vim/vimrc.vim
-
-set commentary
-set easymotion
-set surround

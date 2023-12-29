@@ -392,13 +392,6 @@ bash ./symlinks.sh >/dev/null
 
 popd >/dev/null
 
-echo 'Installing Vim-Plugins'
-python3 -m pip install pynvim
-npm install -g neovim
-curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-vim +PlugInstall +qall
-
 echo 'Setting fish as default shell'
 sudo chsh -s "$(grep /fish$ /etc/shells | tail -1)" "$USER"
 
