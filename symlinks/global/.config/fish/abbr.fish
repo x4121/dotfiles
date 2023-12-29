@@ -72,4 +72,6 @@ abbr ts     task sync
 abbr m      neomutt
 abbr o      xdg-open
 abbr r      ranger
-abbr v      vim
+abbr v      nvim
+abbr vi     nvim
+abbr vim    nvim
