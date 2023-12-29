@@ -1,8 +1,8 @@
 set PATH $HOME/.bin $HOME/.local/bin $PATH
 
 # rust
-set RUSTUP_HOME /opt/rustup
-set CARGO_HOME /opt/cargo
+set -x RUSTUP_HOME /opt/rustup
+set -x CARGO_HOME /opt/cargo
 set PATH $CARGO_HOME/bin $PATH
 
 # Launch starship
@@ -25,14 +25,14 @@ set PATH /usr/local/coursier/bin $PATH
 
 # abbreviations
 if not set -q __abbr_init
-  set -gx __abbr_init
-  source $HOME/.config/fish/abbr.fish
+    set -gx __abbr_init
+    source $HOME/.config/fish/abbr.fish
 end
 
 # aliases
 if not set -q __alias_init
-  set -gx __alias_init
-  source $HOME/.config/fish/alias.fish
+    set -gx __alias_init
+    source $HOME/.config/fish/alias.fish
 end
 
 # colored man pages
