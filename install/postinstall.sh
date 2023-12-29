@@ -212,6 +212,7 @@ if [[ $DISPLAY != "" ]]; then
         ;
     sudo snap install --classic \
         alacritty \
+        hub \
         nvim \
         ;
 
