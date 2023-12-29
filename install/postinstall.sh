@@ -181,21 +181,19 @@ if [[ $DISPLAY != "" ]]; then
     rm -rf "$tmp"
 
     echo 'Installing nerd-fonts'
-    fontUrl="https://github.com/ryanoasis/nerd-fonts/raw/1.0.0/patched-fonts"
+    fonts_version="$(curl -Lso /dev/null -w '%{url_effective}' \
+        'https://github.com/ryanoasis/nerd-fonts/releases/latest' \
+        | rev | cut -d'/' -f1 | rev)"
+    fontUrl="https://github.com/ryanoasis/nerd-fonts/releases/download/$fonts_version/"
     mkdir -p "$HOME/.local/share/fonts"
     pushd "$HOME/.local/share/fonts" >/dev/null
-    wget -q \
-        "$fontUrl/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete.ttf"
-    wget -q \
-        "$fontUrl/FiraCode/Regular/complete/Fura%20Code%20Regular%20Nerd%20Font%20Complete.otf"
-    wget -q \
-        "$fontUrl/FiraMono/Regular/complete/Fura%20Mono%20Regular%20for%20Powerline%20Nerd%20Font%20Complete.otf"
-    wget -q \
-        "https://github.com/adobe-fonts/source-code-pro/raw/release/OTF/SourceCodePro-Regular.otf"
-    wget -q \
-        "https://github.com/tonsky/FiraCode/raw/master/distr/otf/FiraCode-Regular.otf"
-    wget -q \
-        "https://github.com/mozilla/Fira/raw/master/otf/FiraMono-Regular.otf"
+    curl -L \
+        "$fontUrl/SourceCodePro.zip" | jar xv
+    curl -L \
+        "$fontUrl/FiraMono.zip" | jar xv
+    curl -L \
+        "$fontUrl/FiraCode.zip" | jar xv
+    fc-cache -f
     popd >/dev/null
 
     echo 'Installing mutt dependencies'
@@ -282,7 +280,7 @@ if [[ $DESKTOP_SESSION = ubuntu ]]; then
     gsettings set com.github.amezin.ddterm \
         custom-command 'tmux new-session -A -s dropdown'
     gsettings set com.github.amezin.ddterm \
-        custom-font 'FuraMonoForPowerline Nerd Font 12'
+        custom-font 'FiraMono Nerd Font 12'
     gsettings set com.github.amezin.ddterm \
         background-color '#282828'
     gsettings set com.github.amezin.ddterm \
