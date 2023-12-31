@@ -8,8 +8,9 @@ set PATH $CARGO_HOME/bin $PATH
 # Launch starship
 starship init fish | source
 
-# Vim is the standard text editor.
-set -x EDITOR vim
+# Vi is the standard text editor.
+# Keep default to vi, so we don't edit passwords in neovim
+set -x EDITOR vi
 
 set -x BAT_THEME gruvbox-dark
 
