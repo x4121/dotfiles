@@ -24,7 +24,7 @@ set -x COURSIER_INSTALL_DIR /usr/local/coursier/bin
 set PATH /usr/local/coursier/bin $PATH
 
 # allow pass-tessen
-set -x PASSWORD_STORE_ENABLE_EXTENSIONS=true
+set -x PASSWORD_STORE_ENABLE_EXTENSIONS true
 
 # abbreviations
 if not set -q __abbr_init
