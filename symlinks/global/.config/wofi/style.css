@@ -1,0 +1,68 @@
+/* Gruvbox colors */
+/* gruvbox-dark-bg0: #282828; */
+/* gruvbox-dark-bg0-soft: #32302f; */
+/* gruvbox-dark-bg3: #665c54; */
+/* gruvbox-dark-fg0: #fbf1c7; */
+/* gruvbox-dark-fg1: #ebdbb2; */
+/* gruvbox-dark-red-dark: #cc241d; */
+/* gruvbox-dark-red-light: #fb4934; */
+/* gruvbox-dark-yellow-dark: #d79921; */
+/* gruvbox-dark-yellow-light: #fabd2f; */
+/* gruvbox-dark-gray: #a89984; */
+
+* {
+  font-family: Fira Mono;
+  box-shadow: none;
+}
+
+window {
+  background-color: #282828;
+}
+
+#input {
+  border-radius: 0px;
+  border: none;
+  border-bottom: 2px solid #a89984;
+  background-color: #282828;
+  color: white;
+  padding: 8px;
+}
+
+#inner-box {
+  background-color: #282828;
+}
+
+#outer-box {
+  background-color: #282828;
+  border: 2px solid #a89984;
+}
+
+#scroll {
+  background-color: #665c54;
+  color: #fbf1c7;
+}
+
+#text {
+  padding: 4px;
+}
+
+#entry {
+  color: #ebdbb2;
+}
+
+#entry:nth-child(even) {
+  background-color: #32302f;
+}
+
+#entry:selected {
+  background-color: #665c54;
+  color: #fbf1c7;
+}
+
+#text:selected {
+  color: #fbf1c7;
+}
+
+#img {
+  margin: 0 4px;
+}

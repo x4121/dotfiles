@@ -175,9 +175,15 @@ fi
 pushd "$HOME/.dotfiles" >/dev/null
 
 if [[ $DISPLAY != "" ]]; then
-	echo 'Installing rofi-pass'
+	echo 'Installing tessen/pass-tessen'
 	tmp="$(mktemp -d)"
-	git clone https://github.com/carnager/rofi-pass "$tmp" >/dev/null
+	git clone https://github.com/ayushnix/tessen "$tmp" >/dev/null
+	pushd "$tmp" >/dev/null
+	sudo make install
+	popd >/dev/null
+	rm -rf "$tmp"
+	tmp="$(mktemp -d)"
+	git clone https://github.com/ayushnix/pass-tessen "$tmp" >/dev/null
 	pushd "$tmp" >/dev/null
 	sudo make install
 	popd >/dev/null
@@ -342,7 +348,7 @@ if [[ $DESKTOP_SESSION = ubuntu ]]; then
 	kb_dir='/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings'
 
 	kb_list='['
-	for i in $(seq 0 7); do
+	for i in $(seq 0 6); do
 		kb_list="$kb_list'$kb_dir/custom$i/', "
 	done
 	kb_list="${kb_list/%, /]}"
@@ -351,24 +357,21 @@ if [[ $DESKTOP_SESSION = ubuntu ]]; then
 	gsettings set $kb_sch:$kb_dir/custom0/ name 'Nautilus'
 	gsettings set $kb_sch:$kb_dir/custom0/ command 'nautilus'
 	gsettings set $kb_sch:$kb_dir/custom0/ binding '<Super>e'
-	gsettings set $kb_sch:$kb_dir/custom1/ name 'Rofi run'
-	gsettings set $kb_sch:$kb_dir/custom1/ command 'rofi -combi-modi run,window,drun -show combi'
+	gsettings set $kb_sch:$kb_dir/custom1/ name 'Wofi'
+	gsettings set $kb_sch:$kb_dir/custom1/ command 'wofi --show drun --allow-images'
 	gsettings set $kb_sch:$kb_dir/custom1/ binding '<Super>space'
-	gsettings set $kb_sch:$kb_dir/custom2/ name 'Rofi soundboard'
-	gsettings set $kb_sch:$kb_dir/custom2/ command "$HOME/.dotfiles/etc/rofi-soundboard/rofi-soundboard"
-	gsettings set $kb_sch:$kb_dir/custom2/ binding 'F9'
-	gsettings set $kb_sch:$kb_dir/custom3/ name 'Rofi pass'
-	gsettings set $kb_sch:$kb_dir/custom3/ command 'rofi-pass --last-used'
-	gsettings set $kb_sch:$kb_dir/custom3/ binding 'F8'
-	gsettings set $kb_sch:$kb_dir/custom4/ name 'Tmux'
-	gsettings set $kb_sch:$kb_dir/custom4/ command "alacritty -e tmux new-session -A -s tmux"
-	gsettings set $kb_sch:$kb_dir/custom4/ binding '<Super>Return'
-	gsettings set $kb_sch:$kb_dir/custom5/ name 'System Monitor'
-	gsettings set $kb_sch:$kb_dir/custom5/ command 'gnome-system-monitor'
-	gsettings set $kb_sch:$kb_dir/custom5/ binding '<Primary><Shift>Escape'
-	gsettings set $kb_sch:$kb_dir/custom6/ name 'xkill'
-	gsettings set $kb_sch:$kb_dir/custom6/ command 'xkill'
-	gsettings set $kb_sch:$kb_dir/custom6/ binding '<Super>k'
+	gsettings set $kb_sch:$kb_dir/custom2/ name 'Tessen'
+	gsettings set $kb_sch:$kb_dir/custom2/ command 'tessen'
+	gsettings set $kb_sch:$kb_dir/custom2/ binding 'F8'
+	gsettings set $kb_sch:$kb_dir/custom3/ name 'Tmux'
+	gsettings set $kb_sch:$kb_dir/custom3/ command "alacritty -e tmux new-session -A -s tmux"
+	gsettings set $kb_sch:$kb_dir/custom3/ binding '<Super>Return'
+	gsettings set $kb_sch:$kb_dir/custom4/ name 'System Monitor'
+	gsettings set $kb_sch:$kb_dir/custom4/ command 'gnome-system-monitor'
+	gsettings set $kb_sch:$kb_dir/custom4/ binding '<Primary><Shift>Escape'
+	gsettings set $kb_sch:$kb_dir/custom5/ name 'xkill'
+	gsettings set $kb_sch:$kb_dir/custom5/ command 'xkill'
+	gsettings set $kb_sch:$kb_dir/custom5/ binding '<Super>k'
 
 	echo 'Additional settings'
 	gsettings set org.gnome.desktop.wm.preferences \

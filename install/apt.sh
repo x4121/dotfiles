@@ -42,9 +42,8 @@ if [[ $DISPLAY != "" ]]; then
         nextcloud-client-nautilus\
         pass\
         peek\
-        rofi\
+        wofi\
             wl-clipboard\
-            xdotool\
         socat\
         tmux\
         virtualbox\
