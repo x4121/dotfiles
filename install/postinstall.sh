@@ -210,25 +210,33 @@ if [[ $DISPLAY != "" ]]; then
 		gcalcli
 
 	echo 'Installing snaps'
-	sudo snap install \
-		discord \
-		postman \
-		roll \
-		slack \
-		spotify \
-		;
-	sudo snap install --classic \
-		alacritty \
-		hub \
-		nvim \
-		;
+	sudo snap install roll
+	sudo snap install --classic alacritty
+	sudo snap install --classic hub
+	sudo snap install --classic nvim
 
 	echo 'Installing flathub'
 	sudo flatpak remote-add --if-not-exists flathub \
 		https://dl.flathub.org/repo/flathub.flatpakrepo
-	flatpak install flathub io.github.seadve.Kooha
-	flatpak install -y flathub com.github.tchx84.Flatseal
-	flatpak install -y flathub com.dec05eba.gpu_screen_recorder
+
+	flatpak install -y flathub \
+		com.calibre_ebook.calibre \
+		com.dec05eba.gpu_screen_recorder \
+		com.discordapp.Discord \
+		com.getpostman.Postman \
+		com.github.tchx84.Flatseal \
+		com.nextcloud.desktopclient.nextcloud \
+		com.slack.Slack \
+		com.spotify.Client \
+		com.visualstudio.code \
+		io.github.seadve.Kooha \
+		org.gimp.GIMP \
+		org.gnome.Extensions \
+		org.inkscape.Inkscape \
+		org.onlyoffice.desktopeditors \
+		org.raspberrypi.rpi-imager \
+		org.videolan.VLC \
+		;
 fi
 
 if [[ $DESKTOP_SESSION = ubuntu ]]; then

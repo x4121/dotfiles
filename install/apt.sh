@@ -21,9 +21,6 @@ SW="apt-transport-tor\
     trash-cli"
 
 if [[ $DISPLAY != "" ]]; then
-	if ! ls /etc/apt/sources.list.d/nextcloud-devs* >/dev/null; then
-		sudo add-apt-repository -y ppa:nextcloud-devs/client >/dev/null
-	fi
 
 	SW="$SW \
         cmus\
@@ -39,7 +36,6 @@ if [[ $DISPLAY != "" ]]; then
             w3m\
         network-manager-openvpn-gnome\
         newsboat\
-        nextcloud-client-nautilus\
         pass\
         wofi\
             wl-clipboard\
@@ -65,11 +61,8 @@ if [[ $DISPLAY != "" ]]; then
 
 	if [[ -n ${I_HOME+x} ]]; then
 		SW="$SW \
-            gimp\
-            inkscape\
             playonlinux\
-            steam\
-            vlc"
+            steam"
 	fi
 
 	if [[ -n ${I_DEV+x} ]]; then
@@ -112,7 +105,6 @@ if [[ $DISPLAY != "" ]]; then
                 docker-compose-plugin\
             inotify-tools\
             jq\
-            rpi-imager\
             sbt\
                 maven\
                 openjdk-11-jdk\
