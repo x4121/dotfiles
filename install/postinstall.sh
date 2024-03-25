@@ -226,6 +226,7 @@ if [[ $DISPLAY != "" ]]; then
 	echo 'Installing flathub'
 	sudo flatpak remote-add --if-not-exists flathub \
 		https://dl.flathub.org/repo/flathub.flatpakrepo
+	flatpak install flathub io.github.seadve.Kooha
 	flatpak install -y flathub com.github.tchx84.Flatseal
 	flatpak install -y flathub com.dec05eba.gpu_screen_recorder
 fi

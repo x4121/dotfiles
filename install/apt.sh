@@ -41,7 +41,6 @@ if [[ $DISPLAY != "" ]]; then
         newsboat\
         nextcloud-client-nautilus\
         pass\
-        peek\
         wofi\
             wl-clipboard\
         socat\
