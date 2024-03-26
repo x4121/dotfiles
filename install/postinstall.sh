@@ -197,11 +197,18 @@ if [[ $DISPLAY != "" ]]; then
 	mkdir -p "$HOME/.local/share/fonts"
 	pushd "$HOME/.local/share/fonts" >/dev/null
 	curl -L \
+		"$fontUrl/NerdFontsSymbolsOnly.zip" | jar xv
+	curl -L \
 		"$fontUrl/SourceCodePro.zip" | jar xv
 	curl -L \
 		"$fontUrl/FiraMono.zip" | jar xv
 	curl -L \
 		"$fontUrl/FiraCode.zip" | jar xv
+	curl -LO 'https://github.com/google/fonts/raw/main/ofl/firamono/FiraMono-Regular.ttf'
+	curl -LO 'https://github.com/google/fonts/raw/main/ofl/firamono/FiraMono-Medium.ttf'
+	curl -LO 'https://github.com/google/fonts/raw/main/ofl/firamono/FiraMono-Bold.ttf'
+	curl -LO 'https://github.com/google/fonts/raw/main/ofl/firacode/FiraCode%5Bwght%5D.ttf'
+	curl -LO 'https://github.com/google/fonts/raw/main/ofl/sourcecodepro/SourceCodePro%5Bwght%5D.ttf'
 	fc-cache -f
 	popd >/dev/null
 
