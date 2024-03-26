@@ -56,7 +56,7 @@ set -g @fingers-key Space
 set -g focus-events on
 
 # Mail counter
-set -g @maildir_counters '~/Mail/armingrodon.de|~/Mail/gmail.com|~/Mail/ryte.com'
+set -g @maildir_counters '~/Mail/armingrodon.de|~/Mail/gmail.com'
 
 # Pain resize parameter
 set-option -g @pane_resize "10"
