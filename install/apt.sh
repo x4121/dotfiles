@@ -61,7 +61,7 @@ if [[ $DISPLAY != "" ]]; then
 
 	if [[ -n ${I_HOME+x} ]]; then
 		SW="$SW \
-            playonlinux\
+            lutris\
             steam"
 	fi
 
