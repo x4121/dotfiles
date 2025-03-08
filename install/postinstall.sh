@@ -425,7 +425,6 @@ ranger --copy-config=scope
 echo 'Enabling mail sync'
 mkdir -p "$HOME/Mail/armingrodon.de"
 mkdir -p "$HOME/Mail/gmail.com"
-mkdir -p "$HOME/Mail/ryte.com"
 systemctl --user enable mbsync.timer
 systemctl --user start mbsync.timer
 
