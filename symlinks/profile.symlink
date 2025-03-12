@@ -25,7 +25,3 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 "$HOME/.bin/export_dbus.sh"
-
-export RUSTUP_HOME="/opt/rustup"
-export CARGO_HOME="/opt/cargo"
-export PATH="$CARGO_HOME/bin:$PATH"

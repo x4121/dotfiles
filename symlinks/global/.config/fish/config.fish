@@ -1,28 +1,17 @@
-set PATH $HOME/.bin $HOME/.local/bin $PATH
-
-# rust
-set -x RUSTUP_HOME /opt/rustup
-set -x CARGO_HOME /opt/cargo
-set PATH $CARGO_HOME/bin $PATH
+set PATH $HOME/.bin $HOME/.local/bin $HOME/.cargo/bin $PATH
 
 # Launch starship
 starship init fish | source
 
-# Vi is the standard text editor.
-# Keep default to vi, so we don't edit passwords in neovim
-set -x EDITOR vi
+# Keep default to vim, so we don't edit passwords in neovim
+set -x EDITOR vim
 
 set -x BAT_THEME gruvbox-dark
 
-# asdf
-source $HOME/.asdf/asdf.fish
+set -x SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent.socket
 
 # zoxide
 zoxide init fish | source
-
-# coursier
-set -x COURSIER_INSTALL_DIR /usr/local/coursier/bin
-set PATH /usr/local/coursier/bin $PATH
 
 # allow pass-tessen
 set -x PASSWORD_STORE_ENABLE_EXTENSIONS true
