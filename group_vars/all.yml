@@ -1,0 +1,42 @@
+roles:
+  default:
+    - packages_default
+    - binaries
+    - cargo
+    - bat
+    - cmus
+    - fish
+    - gnupg
+    - interception_tools
+    - mutt
+    - nvim
+    - pass
+    - ranger
+    - taskwarrior
+    - tmux
+
+  gui:
+    - packages_gui
+    - alacritty
+    - flatpak
+    - fonts
+    - wofi
+    - zathura
+
+  dev:
+    - packages_dev
+    - aws
+    - adb
+    - asdf
+    - docker
+    - git
+    - nodejs
+
+  gaming:
+    - packages_gaming
+
+  gnome:
+    - packages_gnome
+    - gnome
+
+  hyprland: []

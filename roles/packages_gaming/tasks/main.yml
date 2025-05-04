@@ -1,0 +1,8 @@
+- name: Read vars
+  ansible.builtin.include_vars: "{{ ansible_distribution | lower }}.yml"
+
+- name: Install packages
+  become: true
+  ansible.builtin.package:
+    name: "{{ packages }}"
+    state: present

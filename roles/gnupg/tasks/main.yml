@@ -1,0 +1,50 @@
+- name: Install
+  become: true
+  ansible.builtin.package:
+    name:
+      - "{{ role_name }}"
+      - parcimonie
+    state: present
+
+- name: Ensure config folder exists
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.{{ role_name }}"
+    state: directory
+    mode: "0700"
+
+- name: Create gpg config
+  ansible.builtin.template:
+    src: "{{ role_path }}/templates/gpg.conf.j2"
+    dest: "{{ ansible_user_dir }}/.{{ role_name }}/gpg.conf"
+    mode: "0600"
+
+- name: Install dual-function-keys
+  become: true
+  ansible.builtin.shell: |
+    tmp="$(mktemp -d)"
+    git clone https://gitlab.com/interception/linux/plugins/dual-function-keys.git "$tmp"
+    cd "$tmp"
+    make && make install
+    cd -
+    rm -rf "$tmp"
+  args:
+    creates: /usr/local/bin/dual-function-keys
+
+- name: Symlink dirmngr config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/dirmngr.conf"
+    dest: "{{ ansible_user_dir }}/.{{ role_name }}/dirmngr.conf"
+    state: link
+    force: true
+
+- name: Symlink netCA certificate
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/sks-keyservers.netCA.pem"
+    dest: "{{ ansible_user_dir }}/.{{ role_name }}/sks-keyservers.netCA.pem"
+    state: link
+    force: true
+
+- name: Enable service
+  ansible.builtin.service:
+    name: udevmon
+    state: started

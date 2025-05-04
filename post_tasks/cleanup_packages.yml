@@ -1,0 +1,7 @@
+- name: Clean up old packages
+  become: true
+  block:
+    - name: Clean up after 'apt'
+      ansible.builtin.apt:
+        autoremove: true
+      when: ansible_distribution == "Ubuntu"

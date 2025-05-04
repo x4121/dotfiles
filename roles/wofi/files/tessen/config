@@ -1,0 +1,5 @@
+pass_backend="pass"
+dmenu_backend="wofi"
+action="copy"
+notify="false"
+history=/tmp/tessen

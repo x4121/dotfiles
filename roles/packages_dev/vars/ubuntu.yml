@@ -1,0 +1,30 @@
+packages:
+  - build-essential
+  - autoconf # build-essential
+  - automake # build-essential
+  - cmake # build-essential
+  - libtool # build-essential
+  - gawk
+  - gradle
+  - inotify-tools
+  - jq
+  - maven
+  - nmap
+  - openjdk-11-jdk
+  - openjdk-17-jdk
+  - shellcheck
+  - socat
+  - terraform-ls
+  - yq
+
+flatpaks:
+  - com.getpostman.Postman
+  - com.visualstudio.code
+  - org.raspberrypi.rpi-imager
+
+crates:
+  - cargo-audit
+  - cargo-outdated
+  - cargo-tarpaulin
+  - cargo-update
+  - cargo-watch

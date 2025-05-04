@@ -1,0 +1,33 @@
+- name: Read vars
+  ansible.builtin.include_vars: "{{ ansible_distribution | lower }}.yml"
+
+- name: Add hashicorp repository
+  become: true
+  block:
+    - name: Install hashicorp gpg key
+      ansible.builtin.get_url:
+        url: https://apt.releases.hashicorp.com/gpg
+        dest: /usr/share/keyrings/hashicorp-archive-keyring.gpg
+
+    - name: Install hashicorp apt repo
+      ansible.builtin.apt_repository:
+        repo: "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
+        state: present
+        filename: hashicorp
+  when: ansible_distribution == "Ubuntu"
+
+- name: Install packages
+  become: true
+  ansible.builtin.package:
+    name: "{{ packages }}"
+    state: present
+
+- name: Install flatpaks
+  community.general.flatpak:
+    name: "{{ flatpaks }}"
+    state: present
+
+- name: Install default cargo packages
+  community.general.cargo:
+    name: "{{ crates }}"
+    state: present

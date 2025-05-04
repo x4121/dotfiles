@@ -1,0 +1,13 @@
+- name: Symlink binaries
+  ansible.builtin.file:
+    src: "{{ role_path }}/files"
+    dest: "{{ ansible_user_dir }}/.bin"
+    state: link
+    force: true
+
+- name: Update bashrc
+  ansible.builtin.blockinfile:
+    path: "{{ ansible_user_dir }}/.bashrc"
+    block: "[ -d ~/.bin ] && PATH=$PATH:~/.bin"
+    marker: "# {mark} $DOTFILES/roles/binaries"
+    state: present

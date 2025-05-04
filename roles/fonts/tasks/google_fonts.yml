@@ -1,0 +1,23 @@
+- name: Install FiraMono Fonts
+  ansible.builtin.get_url:
+    url: "https://github.com/google/fonts/raw/main/ofl/firamono/{{ font }}.ttf"
+    dest: "{{ ansible_user_dir }}/.local/share/fonts/{{ font }}.ttf"
+  loop_control:
+    loop_var: font
+  with_items:
+    - FiraMono-Regular
+    - FiraMono-Medium
+    - FiraMono-Bold
+  notify: Update font cache
+
+- name: Install FiraCode Font
+  ansible.builtin.get_url:
+    url: "https://github.com/google/fonts/raw/main/ofl/firacode/FiraCode%5Bwght%5D.ttf"
+    dest: "{{ ansible_user_dir }}/.local/share/fonts/FiraCode%5Bwght%5D.ttf"
+  notify: Update font cache
+
+- name: Install SourceCodePro Font
+  ansible.builtin.get_url:
+    url: "https://github.com/google/fonts/raw/main/ofl/sourcecodepro/SourceCodePro%5Bwght%5D.ttf"
+    dest: "{{ ansible_user_dir }}/.local/share/fonts/SourceCodePro%5Bwght%5D.ttf"
+  notify: Update font cache

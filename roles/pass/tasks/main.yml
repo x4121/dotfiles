@@ -1,0 +1,6 @@
+- name: Install
+  become: true
+  ansible.builtin.package:
+    name: "{{ role_name }}"
+    state: present
+# TODO clone password-store

@@ -1,0 +1,12 @@
+- name: Install
+  become: true
+  ansible.builtin.package:
+    name: "{{ role_name }}"
+    state: present
+
+- name: Add flathub
+  become: true
+  community.general.flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo

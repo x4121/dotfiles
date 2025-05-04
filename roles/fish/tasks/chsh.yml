@@ -1,0 +1,7 @@
+- name: Get shell executable
+  ansible.builtin.shell: grep /{{ role_name }}$ /etc/shells | tail -1
+  register: shell
+
+- name: Change shell
+  become: true
+  ansible.builtin.command: chsh -s {{ shell.stdout | quote }} {{ user }}

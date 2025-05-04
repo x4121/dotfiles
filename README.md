@@ -1,45 +1,35 @@
 # dotfiles
 
-My dotfiles
+My dotfiles and installed software
 
 ## Contents
 
-* fish-shell config
-* neovim config and plugins
-* tmux config and plugins
-* Alacritty config
-* mutt config (with mbsync and msmtp)
-* taskwarrior config
-* rofi config
-* XCompose bindings
-* gruvbox colors for most tools
-* autostart scripts
-* GnomeShell extensions
-* sbt config and plugins
-* zathura config
-* ranger config
-* auxiliary scripts/tools
+The repo contains a bootstrap script to download itself and install Ansible.
+The rest of the repository is an Ansible playbook to install and configure everything.
+
+I tried to move all personalized information into `./group_vars/adg.yml` and the host groups in `./inventory`;
+but there might still be roles where I was to lazy to extract everything (e.g. `./roles/mutt`).
 
 ## Install
 
-* `curl -L https://armingrodon.de/dot | bash` or
-* `wget -q -O - https://armingrodon.de/dot | bash`
+- `curl -L https://armingrodon.de/dot | bash` or
+- `wget -q -O - https://armingrodon.de/dot | bash`
 
 ## Warning
 
-* This project is currently only tested against the most recent\* Ubuntu LTS release
+- This project is currently only tested against the most recent\* Ubuntu LTS release
   (if even!)
-* The install script will overwrite files,
-  read the [install.sh](install.sh) and
-  [symlinks.sh](symlinks.sh) if you want to know which.
-* Use at your own risk!
+- The bootstrap script will overwrite files,
+  read the Ansible roles in `./roles` if you want to know which.
+  The roles are assigned in `./group_vars/all.yml` via `./pre_tasks/role_setup.yml`.
+- Use at your own risk!
 
 \* or somewhat recent
 
 ## Other stuff
 
-[Dell C1660 installation](doc/Dell_C1660.md)
+[Dell C1660 installation](docs/Dell_C1660.md)
 
-[GnuPG key generation guide](doc/gpg.md)
+[GnuPG key generation guide](docs/gpg.md)
 
-[Trackpad deactivation guide](doc/trackpad.md)
+[Trackpad deactivation guide](docs/trackpad.md)

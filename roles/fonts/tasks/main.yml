@@ -1,0 +1,11 @@
+- name: Ensure .local/share/fonts exists
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.local/share/fonts"
+    state: directory
+    mode: "0775"
+
+- name: Install Google fonts
+  ansible.builtin.include_tasks: tasks/google_fonts.yml
+
+- name: Install nerd-fonts
+  ansible.builtin.include_tasks: tasks/nerd_fonts.yml

@@ -1,0 +1,47 @@
+- name: Get latest version
+  ansible.builtin.shell: |
+    curl -Lso /dev/null -w '%{url_effective}' \
+    'https://github.com/ryanoasis/nerd-fonts/releases/latest' |
+    rev | cut -d'/' -f1 | rev
+  register: latest_version
+  changed_when: false
+
+- name: Install SourceCodePro nerd-font
+  ansible.builtin.shell: |
+    curl -L \
+    'https://github.com/ryanoasis/nerd-fonts/releases/download/{{ latest_version.stdout }}/SourceCodePro.zip' |
+    jar xv
+  args:
+    chdir: "{{ ansible_user_dir }}/.local/share/fonts"
+    creates: "{{ ansible_user_dir }}/.local/share/fonts/SauceCodeProNerdFont-Medium.ttf"
+  notify: Update font cache
+
+- name: Install FiraMono nerd-font
+  ansible.builtin.shell: |
+    curl -L \
+    'https://github.com/ryanoasis/nerd-fonts/releases/download/{{ latest_version.stdout }}/FiraMono.zip' |
+    jar xv
+  args:
+    chdir: "{{ ansible_user_dir }}/.local/share/fonts"
+    creates: "{{ ansible_user_dir }}/.local/share/fonts/FiraMonoNerdFont-Medium.otf"
+  notify: Update font cache
+
+- name: Install FiraCode nerd-font
+  ansible.builtin.shell: |
+    curl -L \
+    'https://github.com/ryanoasis/nerd-fonts/releases/download/{{ latest_version.stdout }}/FiraCode.zip' |
+    jar xv
+  args:
+    chdir: "{{ ansible_user_dir }}/.local/share/fonts"
+    creates: "{{ ansible_user_dir }}/.local/share/fonts/FiraCodeNerdFont-Medium.ttf"
+  notify: Update font cache
+
+- name: Install NerdFontsSymbolsOnly nerd-font
+  ansible.builtin.shell: |
+    curl -L \
+    'https://github.com/ryanoasis/nerd-fonts/releases/download/{{ latest_version.stdout }}/NerdFontsSymbolsOnly.zip' |
+    jar xv
+  args:
+    chdir: "{{ ansible_user_dir }}/.local/share/fonts"
+    creates: "{{ ansible_user_dir }}/.local/share/fonts/SymbolsNerdFont-Regular.ttf"
+  notify: Update font cache

@@ -1,0 +1,35 @@
+- name: Install
+  become: true
+  ansible.builtin.package:
+    name:
+      - "{{ role_name }}"
+      - wl-clipboard
+    state: present
+
+- name: Symlink config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/{{ role_name }}"
+    dest: "{{ ansible_user_dir }}/.config/{{ role_name }}"
+    state: link
+    force: true
+
+- name: Install tessen
+  become: true
+  ansible.builtin.shell: |
+    tmp="$(mktemp -d)"
+    git clone https://github.com/ayushnix/tessen "$tmp"
+    cd "$tmp"
+    make install
+    cd -
+    rm -rf "$tmp"
+  args:
+    creates: /usr/bin/tessen
+  when: ansible_distribution == "Ubuntu"
+
+- name: Symlink tessen
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/tessen"
+    dest: "{{ ansible_user_dir }}/.config/tessen"
+    state: link
+    force: true
+  when: ansible_distribution == "Ubuntu"

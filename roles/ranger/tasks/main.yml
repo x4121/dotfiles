@@ -1,0 +1,21 @@
+- name: Install
+  become: true
+  ansible.builtin.package:
+    name:
+      - "{{ role_name }}"
+      - atool
+      - caca-utils
+      - highlight
+    state: present
+
+- name: Symlink
+  ansible.builtin.file:
+    src: "{{ role_path }}/files"
+    dest: "{{ ansible_user_dir }}/.config/{{ role_name }}"
+    state: link
+    force: true
+
+- name: Setup scope
+  ansible.builtin.shell: "{{ role_name }} --copy-config=scope"
+  args:
+    creates: "{{ ansible_user_dir }}/.config/{{ role_name }}/scope.sh"

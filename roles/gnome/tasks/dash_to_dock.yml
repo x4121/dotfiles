@@ -1,0 +1,38 @@
+- name: Install extension 'dash to dock'
+  ansible.builtin.shell: "{{ ansible_user_dir }}/.bin/gnomeshell-extension-manager --install --extension-id 307"
+  args:
+    creates: "{{ ansible_user_dir }}/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/"
+
+- name: Install extension schema
+  become: true
+  ansible.builtin.shell: |
+    cp {{ ansible_user_dir }}/.local/share/gnome-shell/extension/dash-to-dock@micxgx.gmail.com/schemas/org.gnome.shell.extensions.dash-to-dock.schema.xml \
+      /usr/share/glib-2.0/schemas/
+    glib-compile-schemas /usr/share/glib-2.0/schemas/
+  args:
+    creates: /usr/share/glib-2.0/schemas/org.gnome.shell.extensions.dash-to-dock.gschema.xml
+
+- name: Configure extension
+  ansible.builtin.shell: |
+    gsettings set org.gnome.shell.extensions.dash-to-dock \
+      apply-custom-theme false
+    gsettings set org.gnome.shell.extensions.dash-to-dock \
+      custom-theme-customize-running-dots true
+    gsettings set org.gnome.shell.extensions.dash-to-dock \
+      custom-theme-shrink true
+    gsettings set org.gnome.shell.extensions.dash-to-dock \
+      dash-max-icon-size 32
+    gsettings set org.gnome.shell.extensions.dash-to-dock \
+      dock-fixed true
+    gsettings set org.gnome.shell.extensions.dash-to-dock \
+      dock-position 'LEFT'
+    gsettings set org.gnome.shell.extensions.dash-to-dock \
+      extend-height true
+    gsettings set org.gnome.shell.extensions.dash-to-dock \
+      running-indicator-style 'DOTS'
+    gsettings set org.gnome.shell.extensions.dash-to-dock \
+      show-show-apps-button false
+    gsettings set org.gnome.shell.extensions.dash-to-dock \
+      show-mounts false
+    gsettings set org.gnome.shell.extensions.dash-to-dock \
+      show-trash false

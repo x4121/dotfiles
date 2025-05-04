@@ -1,0 +1,15 @@
+packages:
+  - apt-transport-tor
+  - curl
+  - ecryptfs-utils
+  - fzf
+  - git
+  - net-tools
+  - pwgen
+  - python3
+  - python3-pip # python3
+  - python3-venv # python3
+  - pipx # python3
+  - torsocks
+  - trash-cli
+  - universal-ctags

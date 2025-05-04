@@ -1,0 +1,18 @@
+- name: Install extension 'no annoyance'
+  ansible.builtin.shell: "{{ ansible_user_dir }}/.bin/gnomeshell-extension-manager --install --extension-id 2182"
+  args:
+    creates: "{{ ansible_user_dir }}/.local/share/gnome-shell/extensions/noannoyance@daase.net/"
+
+- name: Install extension schema
+  become: true
+  ansible.builtin.shell: |
+    cp {{ ansible_user_dir }}/.local/share/gnome-shell/extension/noannoyance@daase.net/schemas/org.gnome.shell.extensions.noannoyance.gschema.xml
+      /usr/share/glib-2.0/schemas/
+    glib-compile-schemas /usr/share/glib-2.0/schemas/
+  args:
+    creates: /usr/share/glib-2.0/schemas/org.gnome.shell.extensions.noannoyance.gschema.xml
+
+- name: Configure extension
+  ansible.builtin.shell: |
+    gsettings set org.gnome.shell.extensions.noannoyance \
+      enable-ignorelist false

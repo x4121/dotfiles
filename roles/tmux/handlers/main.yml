@@ -1,0 +1,2 @@
+- name: Install tpm plugins
+  ansible.builtin.shell: "{{ ansible_user_dir }}/.{{ role_name }}/plugins/tpm/bin/install_plugins"

@@ -1,0 +1,69 @@
+# deb package in repository doesn't work for Ubuntu 22.04
+# sudo add-apt-repository -y ppa:deafmute/interception
+
+- name: Install requirements
+  become: true
+  ansible.builtin.package:
+    name:
+      - cmake
+      - libevdev-dev
+      - libudev-dev
+      - libyaml-cpp-dev
+      - libboost-dev
+    state: present
+  when: ansible_distribution == "Ubuntu"
+
+- name: Install intercept
+  become: true
+  ansible.builtin.shell: |
+    tmp="$(mktemp -d)"
+    git clone https://gitlab.com/interception/linux/tools.git "$tmp"
+    cd "$tmp"
+    cmake -B build -DCMAKE_BUILD_TYPE=Release
+    cmake --build build --target install
+    sed 's/ExecStart.*/ExecStart=\/usr\/local\/bin\/udevmon/' \
+      udevmon.service > /etc/systemd/system/udevmon.service
+    cd -
+    rm -rf "$tmp"
+  args:
+    creates: /usr/local/bin/intercept
+
+- name: Install dual-function-keys
+  become: true
+  ansible.builtin.shell: |
+    tmp="$(mktemp -d)"
+    git clone https://gitlab.com/interception/linux/plugins/dual-function-keys.git "$tmp"
+    cd "$tmp"
+    make && make install
+    cd -
+    rm -rf "$tmp"
+  args:
+    creates: /usr/local/bin/dual-function-keys
+
+- name: Create interception config folder
+  become: true
+  ansible.builtin.file:
+    path: /etc/interception
+    state: directory
+    mode: "0755"
+    owner: "{{ user }}"
+    group: sudo
+
+- name: Symlink config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/dual-function-keys.yaml"
+    dest: /etc/interception/dual-function-keys.yaml
+    state: link
+    force: true
+
+- name: Symlink config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/udevmon.d"
+    dest: /etc/interception/udevmon.d
+    state: link
+    force: true
+
+- name: Enable service
+  ansible.builtin.service:
+    name: udevmon
+    state: started

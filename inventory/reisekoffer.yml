@@ -1,0 +1,11 @@
+all:
+  children:
+    adg:
+dev:
+  children:
+    adg:
+
+adg:
+  hosts:
+    localhost:
+      ansible_connection: local

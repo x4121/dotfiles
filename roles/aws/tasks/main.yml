@@ -1,0 +1,17 @@
+- name: Install updater
+  community.general.pipx:
+    name: awscli-update
+    state: present
+
+- name: Install awscli
+  ansible.builtin.shell: |
+    awscli-update -q --prefix "$HOME/.local"
+  args:
+    creates: "{{ ansible_user_dir }}/.local/bin/aws"
+
+- name: Setup cronjob
+  ansible.builtin.cron:
+    name: update awscli
+    minute: 0
+    job: "$HOME/.local/bin/awscli-update -q --prefix $HOME/.local"
+    state: present

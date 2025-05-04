@@ -1,0 +1,16 @@
+packages:
+  - gparted
+  - network-manager-openvpn-gnome
+  - virtualbox
+
+flatpaks:
+  - com.calibre_ebook.calibre
+  - com.dec05eba.gpu_screen_recorder
+  - com.discordapp.Discord
+  - com.github.tchx84.Flatseal
+  - com.nextcloud.desktopclient.nextcloud
+  - io.github.seadve.Kooha
+  - org.gimp.GIMP
+  - org.inkscape.Inkscape
+  - org.onlyoffice.desktopeditors
+  - org.videolan.VLC

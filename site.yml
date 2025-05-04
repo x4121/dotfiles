@@ -1,0 +1,34 @@
+- name: Dotfiles
+  hosts: localhost
+
+  pre_tasks:
+    - name: Debug ansible facts
+      ansible.builtin.debug:
+        var: ansible_facts
+        verbosity: 2
+
+    - name: Setup roles
+      ansible.builtin.import_tasks: pre_tasks/role_setup.yml
+
+    - name: Ensure required directories exist
+      ansible.builtin.import_tasks: pre_tasks/directory_setup.yml
+
+    - name: Update package cache
+      ansible.builtin.import_tasks: pre_tasks/package_cache_update.yml
+
+  tasks:
+    - name: Debug roles
+      debug:
+        var: host_roles
+        verbosity: 1
+
+    - name: Run roles
+      ansible.builtin.include_role:
+        name: "{{ host_role }}"
+      loop: "{{ host_roles }}"
+      loop_control:
+        loop_var: host_role
+
+  post_tasks:
+    - name: Cleanup old packages
+      ansible.builtin.import_tasks: post_tasks/cleanup_packages.yml

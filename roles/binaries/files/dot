@@ -1,0 +1,80 @@
+#!/usr/bin/env python3
+
+import argparse
+import os
+import platform
+
+parser = argparse.ArgumentParser(prog="dot", description="manage dotfiles")
+parser.add_argument(
+    "action",
+    choices=["apply", "diff", "status"],
+    nargs="?",
+    const="apply",
+    default="apply",
+)
+parser.add_argument(
+    "-f",
+    "--force",
+    help="ansible-galaxy: force overwrite existing collection",
+    action="store_true",
+)
+parser.add_argument(
+    "-v",
+    "--verbose",
+    help="ansible-playbook: print verbose debug output",
+    action="count",
+    default=0,
+)
+parser.add_argument(
+    "-s",
+    "--step",
+    help="ansible-playbook: confirm each task before running",
+    action="store_true",
+)
+parser.add_argument(
+    "-C", "--check", help="ansible-playbook: check + diff", action="store_true"
+)
+parser.add_argument(
+    "-K",
+    help="ansible-playbook: ask for privilege escalation password",
+    action="store_true",
+)
+
+args = parser.parse_args()
+
+ag_args = ""
+if args.force:
+    ag_args += "f"
+if ag_args:
+    ag_args = "-" + ag_args
+
+ap_args = ""
+if args.step:
+    ap_args += "s"
+if args.check:
+    ap_args += "CD"
+if args.K:
+    ap_args += "K"
+if args.verbose > 0:
+    ap_args += "v" * args.verbose
+if ap_args:
+    ap_args = "-" + ap_args
+
+dotfiles = os.getenv("DOTFILES") or "~/.dotfiles"
+hostname = platform.node()
+
+match args.action:
+    case "diff":
+        os.system("git -C %s diff" % dotfiles)
+    case "status":
+        os.system("git -C %s status" % dotfiles)
+    case "apply" | _:
+        os.environ["ANSIBLE_CONFIG"] = "%s/ansible.cfg" % dotfiles
+        os.system(
+            "ansible-galaxy install %s -r '%s/collections/requirements.yml'"
+            % (ag_args, dotfiles)
+        )
+        os.system(
+            "ansible-playbook %s '%s/site.yml' -i '%s/inventory/%s.yml'"
+            % (ap_args, dotfiles, dotfiles, hostname)
+        )

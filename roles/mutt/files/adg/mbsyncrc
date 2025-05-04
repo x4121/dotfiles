@@ -1,0 +1,91 @@
+#######################################
+# me@armingrodon.de
+#######################################
+IMAPAccount armingrodon.de
+Host imap.1und1.de
+User me@armingrodon.de
+PassCmd "pass show home/email/me@armingrodon.de"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore armingrodon-remote
+Account armingrodon.de
+
+MaildirStore armingrodon-local
+Subfolders Verbatim
+Flatten .
+Path ~/Mail/armingrodon.de/
+Inbox ~/Mail/armingrodon.de/INBOX
+
+Channel sync-armingrodon-default
+Far :armingrodon-remote:
+Near :armingrodon-local:
+Patterns "INBOX*"
+Create Near
+
+Channel sync-armingrodon-drafts
+Far :armingrodon-remote:"Entw&APw-rfe"
+Near :armingrodon-local:drafts
+Create Near
+
+Channel sync-armingrodon-sent
+Far :armingrodon-remote:"Gesendete Objekte"
+Near :armingrodon-local:sent
+Create Near
+
+Channel sync-armingrodon-trash
+Far :armingrodon-remote:"Papierkorb"
+Near :armingrodon-local:trash
+Create Near
+
+Group armingrodon.de
+Channel sync-armingrodon-default
+Channel sync-armingrodon-drafts
+Channel sync-armingrodon-sent
+Channel sync-armingrodon-trash
+
+#######################################
+# armin.grodon@googlemail.com
+#######################################
+IMAPAccount gmail.com
+Host imap.gmail.com
+User armin.grodon@googlemail.com
+PassCmd "pass show home/email/armin.grodon@googlemail.com"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore gmail-remote
+Account gmail.com
+
+MaildirStore gmail-local
+Subfolders Verbatim
+Flatten .
+Path ~/Mail/gmail.com/
+Inbox ~/Mail/gmail.com/INBOX
+
+Channel sync-gmail-default
+Far :gmail-remote:
+Near :gmail-local:
+Patterns "INBOX*"
+Create Near
+
+Channel sync-gmail-drafts
+Far :gmail-remote:"[Google Mail]/Drafts"
+Near :gmail-local:drafts
+Create Near
+
+Channel sync-gmail-sent
+Far :gmail-remote:"[Google Mail]/Sent Mail"
+Near :gmail-local:sent
+Create Near
+
+Channel sync-gmail-trash
+Far :gmail-remote:"[Google Mail]/Trash"
+Near :gmail-local:trash
+Create Near
+
+Group gmail.com
+Channel sync-gmail-default
+Channel sync-gmail-drafts
+Channel sync-gmail-sent
+Channel sync-gmail-trash

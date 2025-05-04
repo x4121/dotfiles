@@ -1,0 +1,20 @@
+- name: Install asdf plugin
+  ansible.builtin.shell: "asdf plugin-add {{ role_name }}"
+  args:
+    creates: "{{ ansible_user_dir }}/.asdf/plugins/{{ role_name }}"
+
+- name: Symlink default packages
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/default-npm-packages"
+    dest: "{{ ansible_user_dir }}/.default-npm-packages"
+    state: link
+    force: true
+
+- name: Install versions
+  ansible.builtin.shell: "asdf install {{ role_name }} {{ version }}"
+  args:
+    creates: "{{ ansible_user_dir }}/.asdf/installs/{{ role_name }}/{{ version }}"
+  loop_control:
+    loop_var: version
+  with_items: "{{ versions }}"
+  notify: Set default

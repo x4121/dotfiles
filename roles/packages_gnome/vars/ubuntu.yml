@@ -1,0 +1,9 @@
+packages:
+  - arc-theme
+  - chrome-gnome-shell
+  - gnome-session
+  - gnome-tweaks
+  - numix-icon-theme-circle
+
+flatpaks:
+  - org.gnome.Extensions

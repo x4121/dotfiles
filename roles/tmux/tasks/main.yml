@@ -1,0 +1,25 @@
+- name: Install
+  become: true
+  ansible.builtin.package:
+    name: "{{ role_name }}"
+    state: present
+
+- name: Symlink config file
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/{{ role_name }}.conf"
+    dest: "{{ ansible_user_dir }}/.{{ role_name }}.conf"
+    state: link
+    force: true
+
+- name: Symlink config folder
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/{{ role_name }}"
+    dest: "{{ ansible_user_dir }}/.{{ role_name }}"
+    state: link
+    force: true
+
+- name: Install tpm
+  ansible.builtin.git:
+    repo: "https://github.com/tmux-plugins/tpm"
+    dest: "{{ ansible_user_dir }}/.tmux/plugins/tpm"
+  notify: Install tpm plugins

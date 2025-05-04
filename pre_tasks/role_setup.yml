@@ -1,0 +1,28 @@
+- name: Set default roles
+  ansible.builtin.set_fact:
+    host_roles: "{{ roles.default }}"
+
+- name: Set 'dev' roles
+  ansible.builtin.set_fact:
+    host_roles: "{{ host_roles + roles.dev }}"
+  when: "'dev' in groups"
+
+- name: Set 'gaming' roles
+  ansible.builtin.set_fact:
+    host_roles: "{{ host_roles + roles.gaming }}"
+  when: "'gaming' in groups"
+
+- name: Set 'gui' roles
+  ansible.builtin.set_fact:
+    host_roles: "{{ host_roles + roles.gui }}"
+  when: lookup('env', 'DISPLAY') != ''
+
+- name: Set 'gnome' roles
+  ansible.builtin.set_fact:
+    host_roles: "{{ host_roles + roles.gnome }}"
+  when: "'gnome' in (ansible_env.XDG_CURRENT_DESKTOP | lower)"
+
+- name: Set 'hyprland' roles
+  ansible.builtin.set_fact:
+    host_roles: "{{ host_roles + roles.hyprland }}"
+  when: "'hyprland' in (ansible_env.XDG_CURRENT_DESKTOP | lower)"

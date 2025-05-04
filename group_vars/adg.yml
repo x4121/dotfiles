@@ -1,0 +1,12 @@
+user: adg
+full_name: Armin Grodon
+email: "me@armingrodon.de"
+
+github_handle: x4121
+
+gpg_default_key: "0x0E791C4F6ED9D965A947A38D762DA66161B64188"
+
+openweather_location: "city '48.7630165,11.4250395>Ingolstadt, Bayern, Deutschland>0'"
+
+background: "file:///$HOME/Nextcloud/sync/background.jpg"
+lockscreen: "file:///$HOME/Nextcloud/sync/lockscreen.jpg"

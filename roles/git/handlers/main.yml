@@ -1,0 +1,2 @@
+- name: Initialize git-lfs
+  ansible.builtin.shell: git lfs install

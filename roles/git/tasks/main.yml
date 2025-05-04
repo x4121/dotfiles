@@ -1,0 +1,27 @@
+- name: Install
+  become: true
+  ansible.builtin.package:
+    name:
+      - "{{ role_name }}"
+      - git-lfs
+      - hub
+      - pre-commit
+    state: present
+  notify: Initialize git-lfs
+
+- name: Symlink global gitignore
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/gitignore_global"
+    dest: "{{ ansible_user_dir }}/.gitignore_global"
+    state: link
+    force: true
+
+- name: Create gitconfig
+  ansible.builtin.template:
+    src: "{{ role_path }}/templates/gitconfig.j2"
+    dest: "{{ ansible_user_dir }}/.gitconfig"
+    mode: "0644"
+
+- name: Install lazygit
+  ansible.builtin.include_tasks: tasks/ubuntu_lazygit.yml
+  when: ansible_distribution == "Ubuntu"

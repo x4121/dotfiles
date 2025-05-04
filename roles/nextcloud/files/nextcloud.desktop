@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Nextcloud
+Exec=flatpak run com.nextcloud.desktopclient.nextcloud --background
+Terminal=false
+Type=Application
+StartupNotify=false

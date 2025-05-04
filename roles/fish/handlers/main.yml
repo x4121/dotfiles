@@ -1,0 +1,2 @@
+- name: Set default shell
+  ansible.builtin.include_tasks: tasks/chsh.yml

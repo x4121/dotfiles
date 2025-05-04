@@ -1,0 +1,19 @@
+- name: Install
+  become: true
+  ansible.builtin.package:
+    name: "{{ role_name }}"
+    state: present
+
+- name: Symlink config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/taskrc"
+    dest: "{{ ansible_user_dir }}/.taskrc"
+    state: link
+    force: true
+
+- name: Symlink theme
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/gruvbox-dark-256.taskwarrior.theme"
+    dest: "{{ ansible_user_dir }}/.local/share/gruvbox-dark-256.taskwarrior.theme"
+    state: link
+    force: true

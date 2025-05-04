@@ -1,0 +1,6 @@
+/cache
+/local.default
+/aliases
+/mailboxes
+/gruvbox
+*.pyc

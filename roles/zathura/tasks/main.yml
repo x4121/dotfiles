@@ -1,0 +1,12 @@
+- name: Install
+  become: true
+  ansible.builtin.package:
+    name: "{{ role_name }}"
+    state: present
+
+- name: Symlink config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files"
+    dest: "{{ ansible_user_dir }}/.config/{{ role_name }}"
+    state: link
+    force: true

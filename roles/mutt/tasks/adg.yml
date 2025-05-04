@@ -1,0 +1,50 @@
+- name: Create mail folders
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/Mail/{{ mutt_domain }}"
+    state: directory
+    mode: "0700"
+  loop:
+    - "armingrodon.de"
+    - "gmail.com"
+  loop_control:
+    loop_var: mutt_domain
+
+- name: Symlink accounts
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/adg/accounts//{{ mutt_domain }}"
+    dest: "{{ role_path }}/files/{{ role_name }}/accounts/{{ mutt_domain }}"
+    state: link
+    force: true
+  loop:
+    - "armingrodon.de"
+    - "gmail.com"
+  loop_control:
+    loop_var: mutt_domain
+
+- name: Symlink local.default
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/adg/local.default"
+    dest: "{{ role_path }}/files/{{ role_name }}/local.default"
+    state: link
+    force: true
+
+- name: Symlink mbsyncrc
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/adg/mbsyncrc"
+    dest: "{{ ansible_user_dir }}/.mbsyncrc"
+    state: link
+    force: true
+
+- name: Symlink msmtprc config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/adg/msmtprc"
+    dest: "{{ ansible_user_dir }}/.msmtprc"
+    state: link
+    force: true
+
+- name: Symlink notmuch config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/adg/notmuch-config"
+    dest: "{{ ansible_user_dir }}/.notmuch-config"
+    state: link
+    force: true

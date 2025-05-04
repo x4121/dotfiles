@@ -1,0 +1,46 @@
+- name: Install extension 'ddterm'
+  ansible.builtin.shell: "{{ ansible_user_dir }}/.bin/gnomeshell-extension-manager --install --extension-id 3780"
+  args:
+    creates: "{{ ansible_user_dir }}/.local/share/gnome-shell/extensions/ddterm@amezin.github.com/"
+
+- name: Install extension schema
+  become: true
+  ansible.builtin.shell: |
+    cp {{ ansible_user_dir }}/.local/share/gnome-shell/extension/ddterm@amezin.github.com/schemas/com.github.amezin.ddterm.gschema.xml
+      /usr/share/glib-2.0/schemas/
+    glib-compile-schemas /usr/share/glib-2.0/schemas/
+  args:
+    creates: /usr/share/glib-2.0/schemas/com.github.amezin.ddterm.gschema.xml
+
+- name: Configure extension
+  ansible.builtin.shell: |
+    gsettings set com.github.amezin.ddterm \
+      command 'custom-command'
+    gsettings set com.github.amezin.ddterm \
+      custom-command 'tmux new-session -A -s dropdown'
+    gsettings set com.github.amezin.ddterm \
+      custom-font 'FiraMono Nerd Font 12'
+    gsettings set com.github.amezin.ddterm \
+      background-color '#282828'
+    gsettings set com.github.amezin.ddterm \
+      foreground-color '#ebdbb2'
+    gsettings set com.github.amezin.ddterm \
+      notebook-border false
+    gsettings set com.github.amezin.ddterm \
+      palette "['#282828', '#cc241d', '#98971a', '#d79921', '#458588', '#b16286', '#689d6a', '#a89984', '#928374', '#fb4934', '#b8bb26', '#fabd2f', '#83a598', '#d3869b', '#8ec07c', '#ebdbb2']"
+    gsettings set com.github.amezin.ddterm \
+      panel-icon-type 'none'
+    gsettings set com.github.amezin.ddterm \
+      show-scrollbar false
+    gsettings set com.github.amezin.ddterm \
+      tab-policy 'never'
+    gsettings set com.github.amezin.ddterm \
+      use-system-font false
+    gsettings set com.github.amezin.ddterm \
+      use-theme-colors false
+    gsettings set com.github.amezin.ddterm \
+      window-monitor 'focus'
+    gsettings set com.github.amezin.ddterm \
+      window-resizable false
+    gsettings set com.github.amezin.ddterm \
+      window-size 0.34

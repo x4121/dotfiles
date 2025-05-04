@@ -1,0 +1,35 @@
+- name: Install
+  community.general.cargo:
+    name: "{{ role_name }}"
+  when: ansible_distribution == "Ubuntu"
+
+- name: Symlink config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files"
+    dest: "{{ ansible_user_dir }}/.config/{{ role_name }}"
+    state: link
+    force: true
+
+- name: Check if x-terminal-emulator exists
+  ansible.builtin.stat:
+    path: /etc/alternatives/x-terminal-emulator
+  register: x_terminal_emulator
+
+- name: Get binary
+  ansible.builtin.shell: "command -v {{ role_name }}"
+  register: binary
+  when: not x_terminal_emulator.stat.exists
+
+- name: Create x-terminal-emulator
+  ansible.builtin.shell: "update-alternatives --install /etc/alternatives/x-terminal-emulator x-terminal-emulator {{ binary.stdout }} 1000"
+  args:
+    creates: /etc/alternatives/x-terminal-emulator
+  when: not x_terminal_emulator.stat.exists
+
+- name: Symlink x-terminal-emulator
+  become: true
+  ansible.builtin.file:
+    src: /etc/alternatives/x-terminal-emulator
+    dest: /usr/bin/x-terminal-emulator
+    state: link
+    force: true

@@ -1,0 +1,51 @@
+- name: Install
+  ansible.builtin.package:
+    name:
+      - neomutt
+      - isync
+      - msmtp
+      - notmuch
+      - notmuch-mutt
+      - urlview
+      - w3m
+
+- name: Install python dependencies
+  community.general.pipx:
+    name: mutt_ics
+    state: present
+  tags: debug_mutt
+
+- name: Create mail folder
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/Mail"
+    state: directory
+    mode: "0700"
+
+- name: Install color scheme
+  ansible.builtin.git:
+    repo: "https://github.com/shuber2/mutt-gruvbox.git"
+    dest: "{{ role_path }}/files/{{ role_name }}/gruvbox"
+
+- name: Symlink config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/{{ role_name }}"
+    dest: "{{ ansible_user_dir }}/.{{ role_name }}"
+    state: link
+    force: true
+
+- name: "Check for user config"
+  ansible.builtin.stat:
+    path: "{{ role_path }}/tasks/{{ user }}.yml"
+  register: user_config
+
+- name: Copy user config
+  # These should probably be templates
+  ansible.builtin.include_tasks: "{{ user }}.yml"
+  when: user_config.stat.exists
+# - name: Enable service
+#   ansible.builtin.service:
+#     name: mbsync.timer
+#     state: started
+#systemctl --user enable mbsync.timer
+#systemctl --user start mbsync.timer
+# symlink mutt/aliases -> Nextcloud/sync/mutt.alias

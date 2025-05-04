@@ -1,0 +1,33 @@
+- name: Check if lazygit exists
+  ansible.builtin.stat:
+    path: /usr/local/bin/lazygit
+  register: lazygit
+
+- name: Get installed lazygit version
+  check_mode: false
+  ansible.builtin.shell: |
+    lazygit --version | grep -oP '(?<=, version=)([0-9.]+)'
+  register: current_version
+  when: lazygit.stat.exists
+  changed_when: false
+
+- name: Get latest lazygit version
+  check_mode: false
+  ansible.builtin.shell: |
+    curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \
+      grep -Po '"tag_name": *"v\K[^"]*'
+  register: latest_version
+  changed_when: false
+
+- name: Install lazygit
+  become: true
+  ansible.builtin.shell: |
+    tmp="$(mktemp -d)"
+    cd "$tmp"
+    curl -Lo lazygit.tar.gz \
+      "https://github.com/jesseduffield/lazygit/releases/download/v{{ latest_version.stdout }}/lazygit_{{ latest_version.stdout }}_Linux_x86_64.tar.gz"
+    tar xf lazygit.tar.gz lazygit
+    install lazygit -Dt /usr/local/bin/
+    cd -
+    rm -rf "$tmp"
+  when: not lazygit.stat.exists or (latest_version.stdout != current_version.stdout)

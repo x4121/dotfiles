@@ -1,0 +1,31 @@
+- name: Install
+  become: true
+  ansible.builtin.package:
+    name: "{{ role_name }}"
+    state: present
+  notify: Set default shell
+
+- name: Symlink config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/{{ role_name }}"
+    dest: "{{ ansible_user_dir }}/.config/{{ role_name }}"
+    state: link
+    force: true
+
+- name: Install starship
+  community.general.cargo:
+    name: starship
+    state: present
+
+- name: Symlink starship config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/starship.toml"
+    dest: "{{ ansible_user_dir }}/.config/starship.toml"
+    state: link
+    force: true
+
+- name: Symlink starship completion
+  ansible.builtin.shell: |
+    starship completions fish > "{{ role_path }}/files/{{ role_name }}/completions/starship.fish"
+  args:
+    creates: "{{ role_path }}/files/{{ role_name }}/completions/starship.fish"

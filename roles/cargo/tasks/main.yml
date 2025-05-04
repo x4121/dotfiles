@@ -1,0 +1,54 @@
+- name: Create cargo folder
+  become: true
+  ansible.builtin.file:
+    path: /opt/cargo
+    state: directory
+    mode: "0775"
+    owner: "{{ user }}"
+    group: sudo
+
+- name: Create rustup folder
+  become: true
+  ansible.builtin.file:
+    path: /opt/rustup
+    state: directory
+    mode: "0775"
+    owner: "{{ user }}"
+    group: sudo
+
+- name: Install rustup
+  ansible.builtin.shell: |
+    export CARGO_HOME=/opt/cargo
+    export RUSTUP_HOME=/opt/rustup
+    curl https://sh.rustup.rs -sSf |
+      sh -s -- --default-toolchain stable --profile default --no-modify-path -y
+  args:
+    creates: /opt/cargo/bin/rustup
+
+- name: Update bashrc
+  ansible.builtin.blockinfile:
+    path: "{{ ansible_user_dir }}/.bashrc"
+    block: "{{ lookup('ansible.builtin.file', '{{ role_path }}/files/bashrc_extra.sh') }}"
+    marker: "# {mark} $DOTFILES/roles/cargo"
+    state: present
+
+- name: Symlink completion
+  when: "'fish' in role_names"
+  ansible.builtin.shell: |
+    rustup completions fish > "{{ role_path }}/../fish/files/fish/completions/rustup.fish"
+  args:
+    creates: "{{ role_path }}/../fish/files/fish/completions/rustup.fish"
+
+- name: Install default cargo packages
+  community.general.cargo:
+    name:
+      - bottom
+      - du-dust
+      - eza
+      - fd-find
+      - grex
+      - navi
+      - procs
+      - ripgrep
+      - zoxide
+    state: present
