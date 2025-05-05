@@ -36,7 +36,7 @@ if command -v apt >/dev/null 2>&1; then
   eval " $SUDO apt-get install -y --no-install-recommends \
     apt-transport-https $REQUIRED"
 elif command -v pacman >/dev/null 2>&1; then
-  "$SUDO pacman -Sy $REQUIRED"
+  eval " $SUDO pacman -Sy $REQUIRED"
 fi
 
 echo
