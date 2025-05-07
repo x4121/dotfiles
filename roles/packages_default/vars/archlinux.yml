@@ -4,14 +4,19 @@ packages:
   - dust
   - ecryptfs-utils
   - eza
+  - fd
   - fzf
   - git
+  - grex
   - man-db
+  - navi
   - net-tools
   - os-prober
   - pacman-contrib
+  - procs
   - pwgen
   - python3
+  - ripgrep
   - torsocks
   - trash-cli
   - universal-ctags
