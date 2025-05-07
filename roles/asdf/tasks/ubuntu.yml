@@ -1,0 +1,23 @@
+- name: Install requirements
+  become: true
+  ansible.builtin.package:
+    name:
+      - libssl-dev
+      - libncurses5-dev
+      - libreadline-dev
+      - zlib1g-dev
+    state: present
+
+- name: Install
+  ansible.builtin.git:
+    repo: "https://github.com/asdf-vm/asdf.git"
+    dest: "{{ ansible_user_dir }}/.{{ role_name }}"
+    version: v0.13.1
+
+- name: Symlink completion
+  when: "'fish' in role_names"
+  ansible.builtin.file:
+    src: "{{ ansible_user_dir }}/.{{ role_name }}/completions/{{ role_name }}.fish"
+    dest: "{{ role_path }}/../fish/files/fish/completions/{{ role_name }}.fish"
+    state: link
+    force: true

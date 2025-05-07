@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -e
+
+CACHE=/tmp/count-updates
+MAX_AGE=3600
+
+get_updates () {
+  count=$(checkupdates | wc -l)
+
+  if (($count != 0)); then
+    echo $count
+  fi
+}
+
+if [[ ! -f $CACHE ]]; then
+  get_updates | tee $CACHE
+else
+  age=$(())
+
+  if (($age > $MAX_AGE)); then
+    get_updates | tee $CACHE
+  else
+    cat $CACHE
+  fi
+fi

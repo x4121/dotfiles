@@ -13,9 +13,18 @@
     force: true
 
 - name: Install starship
-  community.general.cargo:
-    name: starship
-    state: present
+  block:
+    - name: Install starship
+      community.general.cargo:
+        name: starship
+        state: present
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Install starship
+      ansible.builtin.package:
+        name: starship
+        state: present
+      when: ansible_distribution == "Archlinux"
 
 - name: Symlink starship config
   ansible.builtin.file:

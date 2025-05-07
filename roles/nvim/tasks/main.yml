@@ -1,9 +1,16 @@
 - name: Install
   become: true
-  community.general.snap:
-    name: "{{ role_name }}"
-    classic: true
-  when: ansible_distribution == "Ubuntu"
+  block:
+    - name: Install
+      community.general.snap:
+        name: "{{ role_name }}"
+        classic: true
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Install
+      ansible.builtin.package:
+        name: neovim
+      when: ansible_distribution == "Archlinux"
 
 - name: Symlink
   ansible.builtin.file:

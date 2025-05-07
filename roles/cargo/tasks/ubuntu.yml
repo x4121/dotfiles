@@ -1,0 +1,17 @@
+- name: Create cargo folder
+  become: true
+  ansible.builtin.file:
+    path: /opt/cargo
+    state: directory
+    mode: "0775"
+    owner: "{{ user }}"
+    group: sudo
+
+- name: Create rustup folder
+  become: true
+  ansible.builtin.file:
+    path: /opt/rustup
+    state: directory
+    mode: "0775"
+    owner: "{{ user }}"
+    group: sudo

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -e
+
+CACHE=/tmp/count-updates
+
+alacritty -e sh -c "echo 'Installing updates'; paru && rm $CACHE"

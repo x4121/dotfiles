@@ -1,7 +1,16 @@
 - name: Install updater
-  community.general.pipx:
-    name: awscli-update
-    state: present
+  block:
+    - name: Install updater
+      community.general.pipx:
+        name: awscli-update
+        state: present
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Install updater
+      ansible.builtin.pip:
+        name: awscli-update
+        state: present
+      when: ansible_distribution == "Archlinux"
 
 - name: Install awscli
   ansible.builtin.shell: |
@@ -15,3 +24,5 @@
     minute: 0
     job: "$HOME/.local/bin/awscli-update -q --prefix $HOME/.local"
     state: present
+
+# TODO: change cron to systemd timer

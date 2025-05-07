@@ -1,0 +1,15 @@
+configuration {
+  modi:              "window,run,ssh,combi,drun";
+  combi-modes:       "window,run,drun";
+  drun-show-actions: true;
+  dpi:               1;
+  terminal:          "alacritty -e tmux";
+  ssh-command:       "{terminal} new -d '{ssh-client} {host}'\; attach\;";
+  run-shell-command: "{terminal} new -d '{cmd}'\; attach\;";
+  run-command:       "fish -c '{cmd}'";
+  run-list-command:  "fish -c functions";
+  kb-element-next:   "";
+  kb-row-select:     "Tab";
+}
+
+@theme "gruvbox-dark"

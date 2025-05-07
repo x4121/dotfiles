@@ -1,8 +1,17 @@
 - name: Install
   become: true
-  ansible.builtin.package:
-    name: "{{ role_name }}"
-    state: present
+  block:
+    - name: Install
+      ansible.builtin.package:
+        name: "{{ role_name }}"
+        state: present
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Install
+      ansible.builtin.package:
+        name: task
+        state: present
+      when: ansible_distribution == "Archlinux"
 
 - name: Symlink config
   ansible.builtin.file:

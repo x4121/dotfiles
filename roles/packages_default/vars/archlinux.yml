@@ -1,0 +1,18 @@
+packages:
+  - bottom
+  - curl
+  - dust
+  - ecryptfs-utils
+  - eza
+  - fzf
+  - git
+  - man-db
+  - net-tools
+  - os-prober
+  - pacman-contrib
+  - pwgen
+  - python3
+  - torsocks
+  - trash-cli
+  - universal-ctags
+  - zoxide

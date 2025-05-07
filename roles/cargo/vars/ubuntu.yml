@@ -1,0 +1,10 @@
+crates:
+  - bottom
+  - du-dust
+  - eza
+  - fd-find
+  - grex
+  - navi
+  - procs
+  - ripgrep
+  - zoxide

@@ -1,17 +1,13 @@
 packages:
-  - build-essential
-  - autoconf # build-essential
-  - automake # build-essential
-  - cmake # build-essential
-  - libtool # build-essential
+  - base-devel
   - gawk
   - gradle
   - inotify-tools
   - jq
   - maven
   - nmap
-  - openjdk-11-jdk
-  - openjdk-17-jdk
+  - jre11-openjdk-headless
+  - jre11-openjdk-headless
   - shellcheck
   - socat
   - yq

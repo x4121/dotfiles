@@ -1,0 +1,13 @@
+- name: Install
+  community.general.pacman:
+    name: "asdf-vm"
+    binary: paru
+    extra_args: --noconfirm
+    state: present
+
+- name: Symlink completion
+  when: "'fish' in role_names"
+  ansible.builtin.shell: |
+    {{ role_name }} completions fish > "{{ role_path }}/../fish/files/fish/completions/{{ role_name }}.fish"
+  args:
+    creates: "{{ role_path }}/../fish/files/fish/completions/{{ role_name }}.fish"

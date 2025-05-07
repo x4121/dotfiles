@@ -9,3 +9,5 @@
 
 - name: Install nerd-fonts
   ansible.builtin.include_tasks: tasks/nerd_fonts.yml
+
+  # TODO: arch install fonts

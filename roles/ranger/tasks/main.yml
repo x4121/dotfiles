@@ -4,7 +4,7 @@
     name:
       - "{{ role_name }}"
       - atool
-      - caca-utils
+      # - caca-utils
       - highlight
     state: present
 
@@ -19,3 +19,5 @@
   ansible.builtin.shell: "{{ role_name }} --copy-config=scope"
   args:
     creates: "{{ ansible_user_dir }}/.config/{{ role_name }}/scope.sh"
+
+# TODO: arch caca-utils

@@ -1,0 +1,23 @@
+packages:
+  - bluez
+  - bluez-utils # bluez
+  - blueman # bluez
+  - cliphist
+  - discord
+  - firefox
+  - gparted
+  - network-manager-openvpn-gnome
+  - pavucontrol
+  - pipewire-pulse # pavucontrol
+  - virtualbox
+
+flatpaks:
+  - com.calibre_ebook.calibre
+  - com.dec05eba.gpu_screen_recorder
+  - com.github.tchx84.Flatseal
+  - com.nextcloud.desktopclient.nextcloud
+  - io.github.seadve.Kooha
+  - org.gimp.GIMP
+  - org.inkscape.Inkscape
+  - org.onlyoffice.desktopeditors
+  - org.videolan.VLC

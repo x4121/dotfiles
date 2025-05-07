@@ -1,0 +1,16 @@
+- name: Install
+  become: true
+  ansible.builtin.package:
+    name:
+      - interception-tools
+      - interception-dual-function-keys
+    state: present
+
+- name: Create interception config folder
+  become: true
+  ansible.builtin.file:
+    path: /etc/interception
+    state: directory
+    mode: "0755"
+    owner: "{{ user }}"
+    group: wheel

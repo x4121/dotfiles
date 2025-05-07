@@ -23,5 +23,14 @@
     mode: "0644"
 
 - name: Install lazygit
-  ansible.builtin.include_tasks: tasks/ubuntu_lazygit.yml
-  when: ansible_distribution == "Ubuntu"
+  block:
+    - name: Install lazygit
+      ansible.builtin.include_tasks: tasks/ubuntu_lazygit.yml
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Install lazygit
+      become: true
+      ansible.builtin.package:
+        name: lazygit
+        state: present
+      when: ansible_distribution == "Archlinux"

@@ -18,17 +18,10 @@ set -x EDITOR vi
 set -x BAT_THEME gruvbox-dark
 
 # asdf
-source $HOME/.asdf/asdf.fish
+test -f $HOME/.asdf/asdf.fish; and source $HOME/.asdf/asdf.fish
 
 # zoxide
 zoxide init fish | source
-
-# coursier
-set -x COURSIER_INSTALL_DIR /usr/local/coursier/bin
-set PATH /usr/local/coursier/bin $PATH
-
-# allow pass-tessen
-set -x PASSWORD_STORE_ENABLE_EXTENSIONS true
 
 # granted
 alias assume="source /usr/local/bin/assume.fish"
@@ -48,6 +41,3 @@ set -x LESS_TERMCAP_se (printf '\e[0m') # leave standout mode
 set -x LESS_TERMCAP_so (printf '\e[01;33m') # enter standout mode - yellow
 set -x LESS_TERMCAP_ue (printf '\e[0m') # leave underline mode
 set -x LESS_TERMCAP_us (printf '\e[04;36m') # enter underline mode - cyan
-
-# gnome-keyring
-# eval (echo (gnome-keyring-daemon -s) | sed -e 's/^\(.*\)/set -x \\1/' -e 's/=/ /' -e 's/\(.*\)$/\1;/')

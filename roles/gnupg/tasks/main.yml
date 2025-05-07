@@ -3,7 +3,7 @@
   ansible.builtin.package:
     name:
       - "{{ role_name }}"
-      - parcimonie
+      # - parcimonie
     state: present
 
 - name: Ensure config folder exists
@@ -17,18 +17,6 @@
     src: "{{ role_path }}/templates/gpg.conf.j2"
     dest: "{{ ansible_user_dir }}/.{{ role_name }}/gpg.conf"
     mode: "0600"
-
-- name: Install dual-function-keys
-  become: true
-  ansible.builtin.shell: |
-    tmp="$(mktemp -d)"
-    git clone https://gitlab.com/interception/linux/plugins/dual-function-keys.git "$tmp"
-    cd "$tmp"
-    make && make install
-    cd -
-    rm -rf "$tmp"
-  args:
-    creates: /usr/local/bin/dual-function-keys
 
 - name: Symlink dirmngr config
   ansible.builtin.file:
@@ -44,7 +32,4 @@
     state: link
     force: true
 
-- name: Enable service
-  ansible.builtin.service:
-    name: udevmon
-    state: started
+# TODO: arch parcimonie

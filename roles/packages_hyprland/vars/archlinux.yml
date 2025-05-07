@@ -1,0 +1,11 @@
+packages:
+  - feh
+  - grim
+  - slurp # grim
+  - hypridle
+  - hyprpaper
+  - hyprpicker
+  - hyprsunset
+  - nwm-dock-hyprland
+  - waybar
+  - xdg-desktop-portal-hyprland

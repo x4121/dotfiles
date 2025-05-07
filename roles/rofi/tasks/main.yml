@@ -1,0 +1,23 @@
+- name: Install
+  become: true
+  ansible.builtin.package:
+    name:
+      - "{{ role_name }}-wayland"
+      - "{{ role_name }}-pass"
+      - wl-clipboard
+      - wtype
+    state: present
+
+- name: Symlink config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/{{ role_name }}"
+    dest: "{{ ansible_user_dir }}/.config/{{ role_name }}"
+    state: link
+    force: true
+
+- name: Symlink rofi-pass config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/rofi-pass"
+    dest: "{{ ansible_user_dir }}/.config/rofi-pass"
+    state: link
+    force: true

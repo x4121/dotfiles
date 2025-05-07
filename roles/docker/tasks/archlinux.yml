@@ -1,0 +1,8 @@
+- name: Install
+  become: true
+  ansible.builtin.package:
+    name:
+      - docker
+      - docker-buildx
+      - docker-compose
+    state: present

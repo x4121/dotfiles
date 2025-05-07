@@ -24,12 +24,10 @@
     rm -rf "$tmp"
   args:
     creates: /usr/bin/tessen
-  when: ansible_distribution == "Ubuntu"
 
-- name: Symlink tessen
+- name: Symlink tessen config
   ansible.builtin.file:
     src: "{{ role_path }}/files/tessen"
     dest: "{{ ansible_user_dir }}/.config/tessen"
     state: link
     force: true
-  when: ansible_distribution == "Ubuntu"

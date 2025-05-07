@@ -1,4 +1,5 @@
 - name: Install
+  become: true
   ansible.builtin.package:
     name:
       - neomutt
@@ -6,14 +7,24 @@
       - msmtp
       - notmuch
       - notmuch-mutt
-      - urlview
+      # - urlview
       - w3m
 
 - name: Install python dependencies
-  community.general.pipx:
-    name: mutt_ics
-    state: present
-  tags: debug_mutt
+  block:
+    - name: Install python dependencies
+      community.general.pipx:
+        name: mutt_ics
+        state: present
+      tags: debug_mutt
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Install python dependencies
+      ansible.builtin.pip:
+        name: mutt_ics
+        state: present
+      tags: debug_mutt
+      when: ansible_distribution == "Archlinux"
 
 - name: Create mail folder
   ansible.builtin.file:
@@ -49,3 +60,5 @@
 #systemctl --user enable mbsync.timer
 #systemctl --user start mbsync.timer
 # symlink mutt/aliases -> Nextcloud/sync/mutt.alias
+
+# TODO: arch urlview
