@@ -18,11 +18,23 @@
   args:
     creates: "{{ ansible_user_dir }}/.local/bin/aws"
 
-- name: Setup cronjob
-  ansible.builtin.cron:
-    name: update awscli
-    minute: 0
-    job: "$HOME/.local/bin/awscli-update -q --prefix $HOME/.local"
-    state: present
-
-# TODO: change cron to systemd timer
+- name: Setup timer
+  block:
+    - name: Copy service
+      ansible.builtin.file:
+        src: "{{ role_path }}/files/awscli-update.service"
+        dest: "{{ ansible_user_dir }}/.config/systemd/user/awscli-update.service"
+        state: link
+        force: true
+    - name: Copy timer
+      ansible.builtin.file:
+        src: "{{ role_path }}/files/awscli-update.timer"
+        dest: "{{ ansible_user_dir }}/.config/systemd/user/awscli-update.timer"
+        state: link
+        force: true
+    - name: Start timer
+      ansible.builtin.systemd_service:
+        name: awscli-update.timer
+        state: started
+        scope: user
+        enabled: true

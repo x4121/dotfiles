@@ -1,0 +1,7 @@
+[Unit]
+Description=AWS cli update service
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/adg/.local/bin/awscli-update -q --prefix /home/adg/.local

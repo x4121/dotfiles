@@ -1,0 +1,10 @@
+[Unit]
+Description=AWS cli update timer
+
+[Timer]
+OnBootSec=5m
+OnUnitActiveSec=1d
+Unit=awscli-update.service
+
+[Install]
+WantedBy=timers.target
