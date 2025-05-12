@@ -53,12 +53,27 @@
   # These should probably be templates
   ansible.builtin.include_tasks: "{{ user }}.yml"
   when: user_config.stat.exists
-# - name: Enable service
-#   ansible.builtin.service:
-#     name: mbsync.timer
-#     state: started
-#systemctl --user enable mbsync.timer
-#systemctl --user start mbsync.timer
+
+- name: Setup mbsync timer
+  block:
+    - name: Copy service
+      ansible.builtin.file:
+        src: "{{ role_path }}/files/systemd/mbsync.service"
+        dest: "{{ ansible_user_dir }}/.config/systemd/user/mbsync.service"
+        state: link
+        force: true
+    - name: Copy timer
+      ansible.builtin.file:
+        src: "{{ role_path }}/files/systemd/mbsync.timer"
+        dest: "{{ ansible_user_dir }}/.config/systemd/user/mbsync.timer"
+        state: link
+        force: true
+    - name: Start timer
+      ansible.builtin.service:
+        name: mbsync.timer
+        state: started
+        scope: user
+        enabled: true
 # symlink mutt/aliases -> Nextcloud/sync/mutt.alias
 
 # TODO: arch urlview
