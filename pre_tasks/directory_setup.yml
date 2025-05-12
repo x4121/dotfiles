@@ -6,6 +6,12 @@
         state: directory
         mode: "0755"
 
+    - name: Ensure .config/systemd/user exists
+      ansible.builtin.file:
+        path: "{{ ansible_user_dir }}/.config/systemd/user"
+        state: directory
+        mode: "0755"
+
     - name: Ensure .local exists
       ansible.builtin.file:
         path: "{{ ansible_user_dir }}/.local"
